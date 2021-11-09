@@ -1,0 +1,14 @@
+﻿using System.Collections.Generic;
+
+namespace DAL_DataAccessLayers
+{
+    public class OPTIONS_VALUES
+    {
+        public int id_Option { get; set; }
+        public int id_Values { get; set; }
+        public string option_Values { get; set; }
+        public bool status_Delete { get; set; }
+        public OPTIONS Options { get; set; }
+        public ICollection<VARIANTS_VALUES> OptionValueses { get; set; }
+    }
+}
