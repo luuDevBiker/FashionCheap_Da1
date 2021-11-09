@@ -1,7 +1,7 @@
 ﻿
-namespace chang
+namespace _3_GUI
 {
-    partial class HoaDon
+    partial class FrmHoaDon
     {
         /// <summary>
         /// Required designer variable.
@@ -63,7 +63,7 @@ namespace chang
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbDark = new chang.RJControls.RJToggleButton();
+            this.tbDark = new RJControls.RJToggleButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();

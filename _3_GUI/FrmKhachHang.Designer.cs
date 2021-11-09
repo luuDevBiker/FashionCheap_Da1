@@ -1,7 +1,7 @@
 ﻿
-namespace chang
+namespace _3_GUI
 {
-    partial class KhachHang
+    partial class FrmKhachHang
     {
         /// <summary>
         /// Required designer variable.
@@ -46,7 +46,7 @@ namespace chang
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.tbDark = new chang.RJControls.RJToggleButton();
+            this.tbDark = new RJControls.RJToggleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 

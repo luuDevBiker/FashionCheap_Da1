@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace chang
+namespace _3_GUI
 {
-    public partial class Main : Form
+    public partial class FrmMain : Form
     {
         
-        public Main()
+        public FrmMain()
         {
             InitializeComponent();
         }
@@ -34,22 +34,22 @@ namespace chang
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new KhachHang(), sender);
+            OpenChildForm(new FrmKhachHang(), sender);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new SanPham(), sender);
+            OpenChildForm(new FrmSanPham(), sender);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new NhanVien(), sender);
+            OpenChildForm(new FrmNhanVien(), sender);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new HoaDon(), sender);
+            OpenChildForm(new FrmHoaDon(), sender);
         }
 
         private void button8_Click(object sender, EventArgs e)

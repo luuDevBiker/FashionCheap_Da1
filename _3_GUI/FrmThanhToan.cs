@@ -8,23 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace chang
+namespace _3_GUI
 {
-    public partial class _7dangnhap : Form
+    public partial class _3thanhtoan : Form
     {
-        public _7dangnhap()
+        public _3thanhtoan()
         {
             InitializeComponent();
         }
-
         private void OpenChildForm(Form childForm, object btnSender)
         {
 
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            this.panelhome.Controls.Add(childForm);
-            this.panelhome.Tag = childForm;
+            this.panel1.Controls.Add(childForm);
+            this.panel1.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
 
@@ -32,10 +31,9 @@ namespace chang
 
         }
 
-        private void btncdg_Click(object sender, EventArgs e)
+        private void label6_Click(object sender, EventArgs e)
         {
 
-            OpenChildForm(new _8dangnhap2(), sender);
         }
     }
 }

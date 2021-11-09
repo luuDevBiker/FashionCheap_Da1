@@ -1,7 +1,7 @@
 ﻿
-namespace chang
+namespace _3_GUI
 {
-    partial class SanPham
+    partial class FrmSanPham
     {
         /// <summary>
         /// Required designer variable.
@@ -56,7 +56,7 @@ namespace chang
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.tbDark = new chang.RJControls.RJToggleButton();
+            this.tbDark = new RJControls.RJToggleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 

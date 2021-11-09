@@ -1,5 +1,5 @@
 ﻿
-namespace chang
+namespace _3_GUI
 {
     partial class _4hosocuatoi
     {

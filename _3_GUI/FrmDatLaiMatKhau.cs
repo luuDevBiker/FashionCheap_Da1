@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace chang
+namespace _3_GUI
 {
-    public partial class DatLaiMatKhau : Form
+    public partial class FrmDatLaiMatKhau : Form
     {
-        public DatLaiMatKhau()
+        public FrmDatLaiMatKhau()
         {
             InitializeComponent();
         }

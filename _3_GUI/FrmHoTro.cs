@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace chang
+namespace _3_GUI
 {
     public partial class _2HoTro : Form
     {

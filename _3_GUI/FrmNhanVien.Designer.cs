@@ -1,7 +1,7 @@
 ﻿
-namespace chang
+namespace _3_GUI
 {
-    partial class NhanVien
+    partial class FrmNhanVien
     {
         /// <summary>
         /// Required designer variable.
@@ -53,7 +53,7 @@ namespace chang
             this.button2 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.tbDark = new chang.RJControls.RJToggleButton();
+            this.tbDark = new RJControls.RJToggleButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();

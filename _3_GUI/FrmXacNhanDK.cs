@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace chang
+namespace _3_GUI
 {
-    public partial class _5dangki : Form
+    public partial class _6dangki2 : Form
     {
-        public _5dangki()
+        public _6dangki2()
         {
             InitializeComponent();
         }
 
-        private void btncdg_Click(object sender, EventArgs e)
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            OpenChildForm(new _6dangki2(), sender);
+
         }
         private void OpenChildForm(Form childForm, object btnSender)
         {
@@ -34,6 +34,11 @@ namespace chang
 
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new _7dangnhap(), sender);
         }
     }
 }

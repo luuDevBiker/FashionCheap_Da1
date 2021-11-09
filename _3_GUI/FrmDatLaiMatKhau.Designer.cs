@@ -1,7 +1,7 @@
 ﻿
-namespace chang
+namespace _3_GUI
 {
-    partial class DatLaiMatKhau
+    partial class FrmDatLaiMatKhau
     {
         /// <summary>
         /// Required designer variable.

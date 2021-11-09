@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace chang
+namespace _3_GUI
 {
-    public partial class SanPham : Form
+    public partial class FrmNhanVien : Form
     {
-        public SanPham()
+        public FrmNhanVien()
         {
             InitializeComponent();
         }

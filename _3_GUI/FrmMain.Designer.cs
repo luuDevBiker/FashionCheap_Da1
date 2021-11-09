@@ -1,7 +1,7 @@
 ﻿
-namespace chang
+namespace _3_GUI
 {
-    partial class Main
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace chang
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -69,7 +69,7 @@ namespace chang
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(142, 386);
+            this.panel1.Size = new System.Drawing.Size(142, 770);
             this.panel1.TabIndex = 4;
             // 
             // button6
@@ -206,7 +206,7 @@ namespace chang
             this.panel2.Location = new System.Drawing.Point(142, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(567, 48);
+            this.panel2.Size = new System.Drawing.Size(1207, 48);
             this.panel2.TabIndex = 5;
             // 
             // button9
@@ -271,7 +271,7 @@ namespace chang
             this.panel4.Location = new System.Drawing.Point(142, 48);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(567, 338);
+            this.panel4.Size = new System.Drawing.Size(1207, 722);
             this.panel4.TabIndex = 6;
             // 
             // panelhome
@@ -281,18 +281,19 @@ namespace chang
             this.panelhome.Location = new System.Drawing.Point(0, 0);
             this.panelhome.Margin = new System.Windows.Forms.Padding(2);
             this.panelhome.Name = "panelhome";
-            this.panelhome.Size = new System.Drawing.Size(567, 338);
+            this.panelhome.Size = new System.Drawing.Size(1207, 722);
             this.panelhome.TabIndex = 0;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(567, 338);
+            this.pictureBox1.Size = new System.Drawing.Size(1207, 722);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -300,7 +301,8 @@ namespace chang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 386);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1349, 770);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
