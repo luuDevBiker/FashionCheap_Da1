@@ -8,5 +8,10 @@ namespace DAL_DataAccessLayers.IServices
 {
     interface IEmployeeService
     {
+        List<EMPLOYEES> getListEMPLOYEES();
+        string AddEMPLOYEES(EMPLOYEES sp);
+        string EditEMPLOYEES(EMPLOYEES sp);
+        string DeleteEMPLOYEES(EMPLOYEES sp);
+        string SaveOEMPLOYEES();
     }
 }

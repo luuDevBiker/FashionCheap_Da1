@@ -6,34 +6,32 @@ using DAL_DataAccessLayers.IServices;
 
 namespace DAL_DataAccessLayers.Service
 {
-    public class Product_Service: IProductService
+    public class ORDERS_Service:IOderService
     {
         private DbContext_FC db;
 
-        public Product_Service()
+        public ORDERS_Service()
         {
-            
             db = new DbContext_FC();
         }
-
-        public List<PRODUCTS> getListProductses()
+        public List<ORDERS> getListORDERS()
         {
             try
             {
-                return  db.Productses.ToList();
+                return db.Orderses.ToList();
             }
-            catch
+            catch (Exception e)
             {
                 return null;
             }
         }
 
-        public string AddProduct(PRODUCTS sp)
+        public string AddORDERS(ORDERS sp)
         {
             sp.status_Delete = true;
             try
             {
-                db.Productses.Add(sp);
+                db.Orderses.Add(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -42,11 +40,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string EditProduct(PRODUCTS sp)
+        public string EditORDERS(ORDERS sp)
         {
+            
             try
             {
-                db.Productses.Update(sp);
+                db.Orderses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -55,12 +54,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string DeleteProduct(PRODUCTS sp)
+        public string DeleteORDERS(ORDERS sp)
         {
             sp.status_Delete = false;
             try
             {
-                db.Productses.Update(sp);
+                db.Orderses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -69,7 +68,7 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string SaveProduct()
+        public string SaveORDERS()
         {
             try
             {

@@ -6,34 +6,33 @@ using DAL_DataAccessLayers.IServices;
 
 namespace DAL_DataAccessLayers.Service
 {
-    public class Product_Service: IProductService
+    public class ORDER_DETAILS_Service:IOderDetailService
     {
         private DbContext_FC db;
 
-        public Product_Service()
+        public ORDER_DETAILS_Service()
         {
-            
             db = new DbContext_FC();
         }
 
-        public List<PRODUCTS> getListProductses()
+        public List<ORDER_DETAILS> getListORDERS()
         {
             try
             {
-                return  db.Productses.ToList();
+                return db.OrderDetailses.ToList();
             }
-            catch
+            catch (Exception e)
             {
                 return null;
             }
         }
 
-        public string AddProduct(PRODUCTS sp)
+        public string AddORDER_DETAILS(ORDER_DETAILS sp)
         {
             sp.status_Delete = true;
             try
             {
-                db.Productses.Add(sp);
+                db.OrderDetailses.Add(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -42,11 +41,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string EditProduct(PRODUCTS sp)
+        public string EditORDER_DETAILS(ORDER_DETAILS sp)
         {
+            
             try
             {
-                db.Productses.Update(sp);
+                db.OrderDetailses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -55,12 +55,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string DeleteProduct(PRODUCTS sp)
+        public string DeleteORDER_DETAILS(ORDER_DETAILS sp)
         {
-            sp.status_Delete = false;
+            sp.status_Delete = true;
             try
             {
-                db.Productses.Update(sp);
+                db.OrderDetailses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -69,8 +69,9 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string SaveProduct()
+        public string SaveORDER_DETAILS()
         {
+            
             try
             {
                 db.SaveChanges();

@@ -6,21 +6,20 @@ using DAL_DataAccessLayers.IServices;
 
 namespace DAL_DataAccessLayers.Service
 {
-    public class Product_Service: IProductService
+    public class ProductOptions_Service:IProductOptionService
     {
         private DbContext_FC db;
 
-        public Product_Service()
+        public ProductOptions_Service()
         {
-            
             db = new DbContext_FC();
         }
 
-        public List<PRODUCTS> getListProductses()
+        public List<PRODUCTS_OPTIONS> getListProductsesOptions()
         {
             try
             {
-                return  db.Productses.ToList();
+                return  db.ProductsOptionses.ToList();
             }
             catch
             {
@@ -28,12 +27,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string AddProduct(PRODUCTS sp)
+        public string AddProductOptions(PRODUCTS_OPTIONS sp)
         {
             sp.status_Delete = true;
             try
             {
-                db.Productses.Add(sp);
+                db.ProductsOptionses.Add(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -42,11 +41,11 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string EditProduct(PRODUCTS sp)
+        public string EditProductOptions(PRODUCTS_OPTIONS sp)
         {
             try
             {
-                db.Productses.Update(sp);
+                db.ProductsOptionses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -55,12 +54,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string DeleteProduct(PRODUCTS sp)
+        public string DeleteProductOptions(PRODUCTS_OPTIONS sp)
         {
             sp.status_Delete = false;
             try
             {
-                db.Productses.Update(sp);
+                db.ProductsOptionses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -69,7 +68,7 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string SaveProduct()
+        public string SaveProductOptions()
         {
             try
             {

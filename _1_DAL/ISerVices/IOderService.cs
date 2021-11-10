@@ -8,5 +8,10 @@ namespace DAL_DataAccessLayers.IServices
 {
     interface IOderService
     {
+        List<ORDERS> getListORDERS();
+        string AddORDERS(ORDERS sp);
+        string EditORDERS(ORDERS sp);
+        string DeleteORDERS(ORDERS sp);
+        string SaveORDERS();
     }
 }

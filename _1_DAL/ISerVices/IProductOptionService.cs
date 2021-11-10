@@ -8,5 +8,10 @@ namespace DAL_DataAccessLayers.IServices
 {
     interface IProductOptionService
     {
+        List<PRODUCTS_OPTIONS> getListProductsesOptions();
+        string AddProductOptions(PRODUCTS_OPTIONS sp);
+        string EditProductOptions(PRODUCTS_OPTIONS sp);
+        string DeleteProductOptions(PRODUCTS_OPTIONS sp);
+        string SaveProductOptions();
     }
 }

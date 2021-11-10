@@ -6,34 +6,34 @@ using DAL_DataAccessLayers.IServices;
 
 namespace DAL_DataAccessLayers.Service
 {
-    public class Product_Service: IProductService
+    public class OPTIONS_Service:IOptionService
     {
         private DbContext_FC db;
 
-        public Product_Service()
+        public OPTIONS_Service()
         {
-            
             db = new DbContext_FC();
         }
 
-        public List<PRODUCTS> getListProductses()
+
+        public List<OPTIONS> getListOption()
         {
             try
             {
-                return  db.Productses.ToList();
+                return db.Optionses.ToList();
             }
-            catch
+            catch (Exception e)
             {
                 return null;
             }
         }
 
-        public string AddProduct(PRODUCTS sp)
+        public string AddOption(OPTIONS sp)
         {
             sp.status_Delete = true;
             try
             {
-                db.Productses.Add(sp);
+                db.Optionses.Add(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -42,11 +42,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string EditProduct(PRODUCTS sp)
+        public string EditOption(OPTIONS sp)
         {
+            
             try
             {
-                db.Productses.Update(sp);
+                db.Optionses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -55,12 +56,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string DeleteProduct(PRODUCTS sp)
+        public string DeleteOption(OPTIONS sp)
         {
             sp.status_Delete = false;
             try
             {
-                db.Productses.Update(sp);
+                db.Optionses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -69,7 +70,7 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string SaveProduct()
+        public string SaveOption()
         {
             try
             {
