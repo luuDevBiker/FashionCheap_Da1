@@ -6,4 +6,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\_1_DAL\_1_DAL.csproj" />
+  </ItemGroup>
+
 </Project>

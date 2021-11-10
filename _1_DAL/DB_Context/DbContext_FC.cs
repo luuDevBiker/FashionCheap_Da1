@@ -13,7 +13,7 @@ namespace DAL_DataAccessLayers.DBContex_FC
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                           "Data Source=LUUPC2\\SQLEXPRESS;Initial Catalog=DB_FashionsCheap;Integrated Security=True");
+                           "Data Source=DESKTOP-2TD0QCA\\SQLEXPRESS01;Persist Security Info=True;User ID=trangtt;Password=123;Initial Catalog=Duan1fs");
                 // thay đường dẫ Data ở đây
             }
         }

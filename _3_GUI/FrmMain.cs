@@ -67,6 +67,10 @@ namespace _3_GUI
         {
              OpenChildForm(new _7dangnhap(), sender);
         }
-        
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Form2(), sender);
+        }
     }
 }

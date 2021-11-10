@@ -15,16 +15,16 @@ namespace _1_DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.12")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("DAL_DataAccessLayers.CUSTOMERS", b =>
                 {
                     b.Property<int>("id_Customer")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("account_Number")
                         .HasColumnType("int");
@@ -63,7 +63,7 @@ namespace _1_DAL.Migrations
                     b.Property<int>("id_Employee")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -99,7 +99,7 @@ namespace _1_DAL.Migrations
                     b.Property<int>("id_Image")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("imge_Path")
                         .HasColumnType("nvarchar(max)");
@@ -117,7 +117,7 @@ namespace _1_DAL.Migrations
                     b.Property<int>("id_Option")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("option_Name")
                         .HasMaxLength(50)
@@ -155,7 +155,7 @@ namespace _1_DAL.Migrations
                     b.Property<int>("id_Order")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("amount_Pay")
                         .HasColumnType("nvarchar(max)");
@@ -237,7 +237,7 @@ namespace _1_DAL.Migrations
                     b.Property<int>("id_Product")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("products_Name")
                         .HasMaxLength(50)
@@ -293,7 +293,7 @@ namespace _1_DAL.Migrations
                     b.Property<int>("id_roles")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("roles_Name")
                         .HasColumnType("nvarchar(max)");
