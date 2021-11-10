@@ -13,7 +13,7 @@ namespace DAL_DataAccessLayers.DBContex_FC
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                           "Data Source=LUUPC2\\SQLEXPRESS;Initial Catalog=DB_FashionsCheap;Integrated Security=True");
+                           "Data Source=DESKTOP-NVB7S6L;Initial Catalog=DB_FashionsCheap;Integrated Security=True");
                 // thay đường dẫ Data ở đây
             }
         }
@@ -38,7 +38,7 @@ namespace DAL_DataAccessLayers.DBContex_FC
         public DbSet<VARIANTS_VALUES> VariantsValueses { get; set; }
         public DbSet<ORDERS> Orderses { get; set; }
         public DbSet<ORDER_DETAILS> OrderDetailses { get; set; }
-        //public DbSet<IMAGES_PRODUCTS> ImagesProductses { get; set; }
+        public DbSet<IMAGES_PRODUCTS> ImagesProductses { get; set; }
         public DbSet<CUSTOMERS> Customerss { get; set; }
         public DbSet<EMPLOYEES> Employeeses { get; set; }
         public DbSet<ROLES_EMPLOYEE> RolesEmployees { get; set; }

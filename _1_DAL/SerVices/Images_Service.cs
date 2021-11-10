@@ -6,34 +6,33 @@ using DAL_DataAccessLayers.IServices;
 
 namespace DAL_DataAccessLayers.Service
 {
-    public class Product_Service: IProductService
+    public class Images_Service:IImageProductSerivce
     {
         private DbContext_FC db;
 
-        public Product_Service()
+        public Images_Service()
         {
-            
             db = new DbContext_FC();
         }
 
-        public List<PRODUCTS> getListProductses()
+        public List<IMAGES_PRODUCTS> getListImageS()
         {
             try
             {
-                return  db.Productses.ToList();
+               return db.ImagesProductses.ToList();
             }
-            catch
+            catch (Exception e)
             {
                 return null;
             }
         }
 
-        public string AddProduct(PRODUCTS sp)
+        public string AddImage(IMAGES_PRODUCTS sp)
         {
             sp.status_Delete = true;
             try
             {
-                db.Productses.Add(sp);
+                db.ImagesProductses.Add(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -42,11 +41,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string EditProduct(PRODUCTS sp)
+        public string EditImage(IMAGES_PRODUCTS sp)
         {
+            
             try
             {
-                db.Productses.Update(sp);
+                db.ImagesProductses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -55,12 +55,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string DeleteProduct(PRODUCTS sp)
+        public string DeleteImage(IMAGES_PRODUCTS sp)
         {
             sp.status_Delete = false;
             try
             {
-                db.Productses.Update(sp);
+                db.ImagesProductses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -69,8 +69,9 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string SaveProduct()
+        public string SaveImage()
         {
+           
             try
             {
                 db.SaveChanges();

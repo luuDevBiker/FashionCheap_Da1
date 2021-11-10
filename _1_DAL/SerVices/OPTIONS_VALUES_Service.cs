@@ -6,34 +6,34 @@ using DAL_DataAccessLayers.IServices;
 
 namespace DAL_DataAccessLayers.Service
 {
-    public class Product_Service: IProductService
+    public class OPTIONS_VALUES_Service:IOptionValueService
     {
         private DbContext_FC db;
 
-        public Product_Service()
+        public OPTIONS_VALUES_Service()
         {
-            
             db = new DbContext_FC();
         }
 
-        public List<PRODUCTS> getListProductses()
+        public List<OPTIONS_VALUES> getListOptionValue()
         {
             try
             {
-                return  db.Productses.ToList();
+                
+                return db.OptionsValueses.ToList();
             }
-            catch
+            catch (Exception e)
             {
                 return null;
             }
         }
 
-        public string AddProduct(PRODUCTS sp)
+        public string AddOptionValue(OPTIONS_VALUES sp)
         {
             sp.status_Delete = true;
             try
             {
-                db.Productses.Add(sp);
+                db.OptionsValueses.Add(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -42,11 +42,11 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string EditProduct(PRODUCTS sp)
+        public string EditOptionValue(OPTIONS_VALUES sp)
         {
             try
             {
-                db.Productses.Update(sp);
+                db.OptionsValueses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -55,12 +55,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string DeleteProduct(PRODUCTS sp)
+        public string DeleteOptionValue(OPTIONS_VALUES sp)
         {
             sp.status_Delete = false;
             try
             {
-                db.Productses.Update(sp);
+                db.OptionsValueses.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -69,7 +69,7 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string SaveProduct()
+        public string SaveOptionValue()
         {
             try
             {
