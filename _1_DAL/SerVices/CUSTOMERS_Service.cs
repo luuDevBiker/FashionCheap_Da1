@@ -6,34 +6,33 @@ using DAL_DataAccessLayers.IServices;
 
 namespace DAL_DataAccessLayers.Service
 {
-    public class Product_Service: IProductService
+    public class CUSTOMERS_Service:ICustomerService
     {
         private DbContext_FC db;
 
-        public Product_Service()
+        public CUSTOMERS_Service()
         {
-            
             db = new DbContext_FC();
         }
 
-        public List<PRODUCTS> getListProductses()
+        public List<CUSTOMERS> getListORDERS()
         {
             try
             {
-                return  db.Productses.ToList();
+                return db.Customerss.ToList();
             }
-            catch
+            catch (Exception e)
             {
                 return null;
             }
         }
 
-        public string AddProduct(PRODUCTS sp)
+        public string AddORDERS(CUSTOMERS sp)
         {
             sp.status_Delete = true;
             try
             {
-                db.Productses.Add(sp);
+                db.Customerss.Add(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -42,11 +41,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string EditProduct(PRODUCTS sp)
+        public string EditORDERS(CUSTOMERS sp)
         {
+           
             try
             {
-                db.Productses.Update(sp);
+                db.Customerss.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -55,12 +55,12 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string DeleteProduct(PRODUCTS sp)
+        public string DeleteORDERS(CUSTOMERS sp)
         {
             sp.status_Delete = false;
             try
             {
-                db.Productses.Update(sp);
+                db.Customerss.Update(sp);
                 return "successful";
             }
             catch (Exception e)
@@ -69,8 +69,9 @@ namespace DAL_DataAccessLayers.Service
             }
         }
 
-        public string SaveProduct()
+        public string SaveORDERS()
         {
+            
             try
             {
                 db.SaveChanges();

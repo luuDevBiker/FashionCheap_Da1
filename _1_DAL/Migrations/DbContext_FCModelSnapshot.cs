@@ -308,14 +308,14 @@ namespace _1_DAL.Migrations
 
             modelBuilder.Entity("DAL_DataAccessLayers.ROLES_EMPLOYEE", b =>
                 {
-                    b.Property<bool>("StatusDelete")
-                        .HasColumnType("bit");
-
                     b.Property<int>("id_Employee")
                         .HasColumnType("int");
 
                     b.Property<int>("id_Roles")
                         .HasColumnType("int");
+
+                    b.Property<bool>("status_Delete")
+                        .HasColumnType("bit");
 
                     b.HasIndex("id_Employee");
 

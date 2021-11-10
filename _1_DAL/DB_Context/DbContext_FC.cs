@@ -13,7 +13,19 @@ namespace DAL_DataAccessLayers.DBContex_FC
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
+<<<<<<< HEAD
                            "Data Source=DESKTOP-2TD0QCA\\SQLEXPRESS01;Persist Security Info=True;User ID=trangtt;Password=123;Initial Catalog=Duan1fs");
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+                           "Data Source=.\\SQLEXPRESS;Initial Catalog=Kien9870;Persist Security Info=True;User ID=Kien2002;Password=123");
+=======
+                           "Data Source=DESKTOP-NVB7S6L;Initial Catalog=DB_FashionsCheap;Integrated Security=True");
+>>>>>>> a47a1f7c04e9949489a110a5334d1338bba6dc53
+=======
+                           "Data Source=DESKTOP-NVB7S6L;Initial Catalog=DB_FashionsCheap;Integrated Security=True");
+>>>>>>> a47a1f7c04e9949489a110a5334d1338bba6dc53
+>>>>>>> 05bfe97615879e1931f9d744c8f1472224bc66fd
                 // thay đường dẫ Data ở đây
             }
         }
@@ -38,7 +50,7 @@ namespace DAL_DataAccessLayers.DBContex_FC
         public DbSet<VARIANTS_VALUES> VariantsValueses { get; set; }
         public DbSet<ORDERS> Orderses { get; set; }
         public DbSet<ORDER_DETAILS> OrderDetailses { get; set; }
-        //public DbSet<IMAGES_PRODUCTS> ImagesProductses { get; set; }
+        public DbSet<IMAGES_PRODUCTS> ImagesProductses { get; set; }
         public DbSet<CUSTOMERS> Customerss { get; set; }
         public DbSet<EMPLOYEES> Employeeses { get; set; }
         public DbSet<ROLES_EMPLOYEE> RolesEmployees { get; set; }

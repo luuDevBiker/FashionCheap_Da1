@@ -8,5 +8,10 @@ namespace DAL_DataAccessLayers.IServices
 {
     interface IOptionValueService
     {
+        List<OPTIONS_VALUES> getListOptionValue();
+        string AddOptionValue(OPTIONS_VALUES sp);
+        string EditOptionValue(OPTIONS_VALUES sp);
+        string DeleteOptionValue(OPTIONS_VALUES sp);
+        string SaveOptionValue();
     }
 }

@@ -8,5 +8,10 @@ namespace DAL_DataAccessLayers.IServices
 {
     interface ICustomerService
     {
+        List<CUSTOMERS> getListORDERS();
+        string AddORDERS(CUSTOMERS sp);
+        string EditORDERS(CUSTOMERS sp);
+        string DeleteORDERS(CUSTOMERS sp);
+        string SaveORDERS();
     }
 }
