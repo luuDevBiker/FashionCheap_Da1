@@ -21,5 +21,24 @@ namespace _3_GUI
         {
 
         }
+
+        private void rjToggleButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (tbDark.Checked)
+            {
+                this.BackColor = Color.Pink;
+
+            }
+            else
+            {
+                this.BackColor = Color.White;
+
+            }
+        }
     }
 }
