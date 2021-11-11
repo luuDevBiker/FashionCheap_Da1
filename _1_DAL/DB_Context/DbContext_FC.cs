@@ -13,19 +13,9 @@ namespace DAL_DataAccessLayers.DBContex_FC
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                           //<<<<<<< HEAD
-                           "Data Source=.\\SQLEXPRESS;Initial Catalog=DuAn11;Persist Security Info=True;User ID=Kien2002;Password=123");
-//=======
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-                           //"Data Source=.\\SQLEXPRESS;Initial Catalog=Kien9870;Persist Security Info=True;User ID=Kien2002;Password=123");
-//=======
-                           //"Data Source=DESKTOP-NVB7S6L;Initial Catalog=DB_FashionsCheap;Integrated Security=True");
-//>>>>>>> a47a1f7c04e9949489a110a5334d1338bba6dc53
-//=======
-                           //"Data Source=DESKTOP-NVB7S6L;Initial Catalog=DB_FashionsCheap;Integrated Security=True");
-//>>>>>>> a47a1f7c04e9949489a110a5334d1338bba6dc53
-//>>>>>>> 05bfe97615879e1931f9d744c8f1472224bc66fd
+                          
+                           "Data Source=DESKTOP-NVB7S6L;Initial Catalog=DB_FashionsCheap;Persist Security Info=True;User ID=kieu96;Password=123");
+
                 // thay đường dẫ Data ở đây
             }
         }
