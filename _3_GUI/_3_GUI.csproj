@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\_1_DAL\_1_DAL.csproj" />
+    <ProjectReference Include="..\_2_BUS\_2_BUS.csproj" />
   </ItemGroup>
 
 </Project>
