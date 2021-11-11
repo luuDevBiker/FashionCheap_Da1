@@ -42,6 +42,9 @@ namespace _3_GUI
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,9 +56,6 @@ namespace _3_GUI
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -106,7 +106,7 @@ namespace _3_GUI
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(62, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(150, 88);
             this.pictureBox1.TabIndex = 0;
@@ -202,6 +202,36 @@ namespace _3_GUI
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Cập Nhật Đơn Hàng";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Comic Sans MS", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(643, 330);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(132, 23);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Đang vận chuyển";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Comic Sans MS", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(643, 240);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(178, 23);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Xác nhận đã nhận hàng";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Comic Sans MS", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(643, 142);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(200, 23);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Giao kiện hàng thành công";
             // 
             // label9
             // 
@@ -299,36 +329,6 @@ namespace _3_GUI
             this.label1.Size = new System.Drawing.Size(133, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Đọc Tất Cả (12)";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Comic Sans MS", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(643, 142);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(200, 23);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "Giao kiện hàng thành công";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Comic Sans MS", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(643, 240);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(178, 23);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "Xác nhận đã nhận hàng";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Comic Sans MS", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(643, 330);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(132, 23);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Đang vận chuyển";
             // 
             // FrmThongBao
             // 

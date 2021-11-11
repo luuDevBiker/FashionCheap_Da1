@@ -110,7 +110,7 @@ namespace _3_GUI
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(36, 30);
+            this.button3.Location = new System.Drawing.Point(189, 30);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 34);
             this.button3.TabIndex = 29;
@@ -123,7 +123,7 @@ namespace _3_GUI
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(178, 30);
+            this.button1.Location = new System.Drawing.Point(47, 30);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(125, 34);
             this.button1.TabIndex = 27;
@@ -181,7 +181,7 @@ namespace _3_GUI
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(683, 180);
+            this.button4.Location = new System.Drawing.Point(683, 189);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(152, 34);
             this.button4.TabIndex = 30;

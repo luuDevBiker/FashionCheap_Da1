@@ -90,7 +90,7 @@ namespace _3_GUI
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(318, 30);
+            this.groupBox3.Location = new System.Drawing.Point(306, 30);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(433, 366);
             this.groupBox3.TabIndex = 19;

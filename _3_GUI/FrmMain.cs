@@ -72,5 +72,29 @@ namespace _3_GUI
         {
             OpenChildForm(new Form2(), sender);
         }
+
+
+        int x = 20, y = 10, a = 1;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                x += a;
+                lblTitle.Location = new Point(x, y);
+                if (x >= 536)
+                {
+                    a = -1;
+                    
+                }
+                if (x <= 10)
+                {
+                    a = 1;
+                    
+                }
+            }
+            catch (Exception ex)
+            { }
+        }
+       
     }
 }
