@@ -40,5 +40,6 @@ namespace _3_GUI
         {
             OpenChildForm(new _7dangnhap(), sender);
         }
+
     }
 }

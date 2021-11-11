@@ -54,7 +54,6 @@ namespace _3_GUI
 
         private void button8_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new _2HoTro(), sender);
         }
 
         private void button10_Click(object sender, EventArgs e)

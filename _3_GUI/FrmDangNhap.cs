@@ -34,8 +34,6 @@ namespace _3_GUI
 
         private void btncdg_Click(object sender, EventArgs e)
         {
-
-            OpenChildForm(new _8dangnhap2(), sender);
         }
     }
 }

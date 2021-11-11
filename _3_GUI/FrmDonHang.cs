@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace _3_GUI
 {
-    public partial class Form1 : Form
+    public partial class FrmDonHang : Form
     {
-        public Form1()
+        public FrmDonHang()
         {
             InitializeComponent();
         }
