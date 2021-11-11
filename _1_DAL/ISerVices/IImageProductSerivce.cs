@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_DataAccessLayers.IServices
 {
-    interface IImageProductSerivce
+    public interface IImageProductSerivce
     {
         List<IMAGES_PRODUCTS> getListImageS();
         string AddImage(IMAGES_PRODUCTS sp);

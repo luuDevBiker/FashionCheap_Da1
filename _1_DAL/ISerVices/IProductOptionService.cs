@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_DataAccessLayers.IServices
 {
-    interface IProductOptionService
+   public interface IProductOptionService
     {
         List<PRODUCTS_OPTIONS> getListProductsesOptions();
         string AddProductOptions(PRODUCTS_OPTIONS sp);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_DataAccessLayers.IServices
 {
-    interface IProductVariantservice
+   public interface IProductVariantservice
     {
         List<PRODUCTS_VARIANTS> getListProductses();
         string AddProductVarriant(PRODUCTS_VARIANTS sp);

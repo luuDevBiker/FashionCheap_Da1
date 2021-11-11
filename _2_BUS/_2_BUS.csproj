@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="IService_BUS\" />
+    <Folder Include="Service_BUS\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\_1_DAL\_1_DAL.csproj" />
   </ItemGroup>
 

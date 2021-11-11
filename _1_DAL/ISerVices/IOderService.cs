@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_DataAccessLayers.IServices
 {
-    interface IOderService
+   public interface IOderService
     {
         List<ORDERS> getListORDERS();
         string AddORDERS(ORDERS sp);

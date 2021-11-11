@@ -7,37 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _2_BUS.IService_BUS;
 using DAL_DataAccessLayers;
 using _2_BUS.Models;
+using _2_BUS.Service_BUS;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace _3_GUI
 {
     public partial class FrmSanPham : Form
     {
-        //private IQLPRODUCSService _iqlproducsService;
+        private IProduct_Service PS_BUS;
         private string _TenSP;
         private string _Theloai;
-        private List<PRODUCTS> _lstProductses;
-        private List<PRODUCTS_VARIANTS> _lstProductsVariantses;
-        private List<PRODUCTS_OPTIONS> _lsProductsOptionses;
-        private List<IMAGES_PRODUCTS> _lstImagesProductses;
-        private List<VARIANTS_VALUES> _lstVariantsValueses;
-        private List<OPTIONS> _lsOptionses;
-        private List<OPTIONS_VALUES> _lstOptionsValueses;
+      
         private List<SanPhamCuThe> _litSanPhamCuThes;
         public FrmSanPham()
         {
             InitializeComponent();
-            _lstProductses = new List<PRODUCTS>();
-            _lstProductses = new List<PRODUCTS>();
-            _lstProductsVariantses = new List<PRODUCTS_VARIANTS>();
-            _lsProductsOptionses = new List<PRODUCTS_OPTIONS>();
-            _lstImagesProductses = new List<IMAGES_PRODUCTS>();
-            _lstVariantsValueses = new List<VARIANTS_VALUES>();
-            _lsOptionses = new List<OPTIONS>();
-            _lstOptionsValueses = new List<OPTIONS_VALUES>();
+            PS_BUS = new Service_formSP();
             _litSanPhamCuThes = new List<SanPhamCuThe>();
+            _litSanPhamCuThes = PS_BUS.LoadDatafromDAL();
             loadata();
         }
 
@@ -86,17 +76,10 @@ namespace _3_GUI
             }
             data_Sanpham.Rows.Clear();
 
-            //var lisst=( from a in _lstVariantsValueses
-            //    join b in _lstOptionsValueses on a.id_Option &a.id_Values equals b.id_Option & b.id_Values
-            //                     join c in _lsOptionses on b.id_Option equals c.id_Option
-            //    join d in _lsProductsOptionses on a.id_Option&a.id_Product equals d.id_Option&d.id_Product
-            //    join e in _lstProductsVariantses on a.id_Variant & a.id_Product equals e.id_Variant & e.id_Product
-            //    join f in _lstProductses on e.id_Product equals f.id_Product
-            //    select new {f.products_Name, b.option_Values, a.quantity, a.import_Price, a.price}).ToList();
-            //foreach (var x in lisst)
-            //{
-            //    data_Sanpham.Rows.Add(x.products_Name, x.option_Values, x.quantity,x.import_Price,x.price);
-            //}
+            foreach (var x in _litSanPhamCuThes)
+            {
+                data_Sanpham.Rows.Add(x.TenSp,x.OptionValues,x.SoLuong,x.GiaNhap,x.Giaban);
+            }
         }
 
         void loadataSearch(string ten)

@@ -8,15 +8,54 @@ namespace _2_BUS.Models
 {
     public class SanPhamCuThe
     {
-        public string TenSp { get; set; }
-        public string DacTinh { get; set; }
-        public int SoLuong { get; set; }
-        public int GiaNhap { get; set; }
-        public int GiaBan { get; set; }
-        public SanPhamCuThe()
-        {
+        private string tenSp;
+        private string option_values;
+        private int soLuong;
+        private int giaNhap;
+        private int giaban;
 
+        public SanPhamCuThe(object enumerable)
+        {
+            
         }
 
+        public SanPhamCuThe(string tenSp, string optionValues, int soLuong, int giaNhap, int giaban)
+        {
+            this.tenSp = tenSp;
+            option_values = optionValues;
+            this.soLuong = soLuong;
+            this.giaNhap = giaNhap;
+            this.giaban = giaban;
+        }
+
+        public string TenSp
+        {
+            get => tenSp;
+            set => tenSp = value;
+        }
+
+        public string OptionValues
+        {
+            get => option_values;
+            set => option_values = value;
+        }
+
+        public int SoLuong
+        {
+            get => soLuong;
+            set => soLuong = value;
+        }
+
+        public int GiaNhap
+        {
+            get => giaNhap;
+            set => giaNhap = value;
+        }
+
+        public int Giaban
+        {
+            get => giaban;
+            set => giaban = value;
+        }
     }
 }

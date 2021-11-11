@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_DataAccessLayers.IServices
 {
-    interface IEmployeeService
+    public interface IEmployeeService
     {
         List<EMPLOYEES> getListEMPLOYEES();
         string AddEMPLOYEES(EMPLOYEES sp);

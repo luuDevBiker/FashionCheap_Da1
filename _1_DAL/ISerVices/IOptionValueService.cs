@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL_DataAccessLayers.IServices
 {
-    interface IOptionValueService
+   public interface IOptionValueService
     {
         List<OPTIONS_VALUES> getListOptionValue();
         string AddOptionValue(OPTIONS_VALUES sp);
