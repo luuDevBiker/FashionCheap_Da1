@@ -38,7 +38,7 @@ namespace _3_GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new _7dangnhap(), sender);
+            OpenChildForm(new FormDangNhap(), sender);
         }
 
     }

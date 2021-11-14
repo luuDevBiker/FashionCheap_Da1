@@ -121,13 +121,19 @@
   <data name="so-awkward-rose-fashion-model-vs-commercial-model" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\so-awkward-rose-fashion-model-vs-commercial-model.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="z2929456288557_f987e987bbf43781798d3fba386f6774" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\z2929456288557_f987e987bbf43781798d3fba386f6774.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="34" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\34.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sqwde" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sqwde.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="23" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\23.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="34" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\34.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="z2929420950062_d744e6baf2b92237ef43a2237939a14e" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\z2929420950062_d744e6baf2b92237ef43a2237939a14e.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

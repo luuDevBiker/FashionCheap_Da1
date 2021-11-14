@@ -58,13 +58,15 @@ namespace _3_GUI
 
         private void button10_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new _5dangki(), sender);
+            FormDangKi frmDangKi = new FormDangKi();
+            frmDangKi.ShowDialog();
         }
     
 
         private void button9_Click(object sender, EventArgs e)
         {
-             OpenChildForm(new _7dangnhap(), sender);
+            FormDangNhap frmDangNhap = new FormDangNhap();
+            frmDangNhap.ShowDialog();
         }
 
         private void button5_Click(object sender, EventArgs e)
