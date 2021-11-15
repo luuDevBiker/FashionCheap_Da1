@@ -12,6 +12,7 @@ namespace DAL_DataAccessLayers
         public string address{ get; set; }
         public string NumberPhone { get; set; }
         public string Email { get; set; }
+        public string PassWord { get; set; }
         public bool status { get; set; }
         public bool status_Delete { get; set; }
         public virtual ICollection<ORDERS> Orders { get; set; }
