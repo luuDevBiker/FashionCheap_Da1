@@ -8,10 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL_DataAccessLayers;
+using DAL_DataAccessLayers.IServices;
+using DAL_DataAccessLayers.Service;
+
 namespace _3_GUI
 {
     public partial class FrmNhanVien : Form
     {
+        private IEmployeeService _iQlEmployeesService;
         private string _TenNhanVien;
         private string _sdt;
         private List<EMPLOYEES> _lstEmployees;
@@ -19,6 +23,7 @@ namespace _3_GUI
         public FrmNhanVien()
         {
             InitializeComponent();
+            _iQlEmployeesService = new EMPLOYEES_Service();
             _lstEmployees = new List<EMPLOYEES>();
             Loaddata();
         }
@@ -36,6 +41,7 @@ namespace _3_GUI
 
             }
         }
+
         void Loaddata()
         {
             data_NhanVien.ColumnCount = 7;
@@ -64,15 +70,17 @@ namespace _3_GUI
                 this.data_NhanVien.Columns.Add(button);
             }
             data_NhanVien.Rows.Clear();
-            foreach (var x in _lstEmployees)
+            foreach (var x in _iQlEmployeesService.getListEMPLOYEES())
             {
-                data_NhanVien.Rows.Add(x.employee_Name, x.bridDate, x.address, x.NumberPhone, x.Email, x.sex ? "Nam" : "Nữ", x.status ? "Hoạt Động" : "Không Hoạt Động");
+                data_NhanVien.Rows.Add(x.employee_Name, x.sex ? "Nam" : "Nữ", x.NumberPhone, x.address, x.Email,
+                    x.bridDate, x.status ? "Hoạt Động" : "Không Hoạt Động");
             }
 
         }
+
         void loadataSearch(string ten)
         {
-          //  _iQlCustomerService.GetlstCustomerses();
+            _iQlEmployeesService.getListEMPLOYEES();
             data_NhanVien.ColumnCount = 7;
             data_NhanVien.Columns[0].Name = "Tên Nhân Viên";
             data_NhanVien.Columns[1].Name = "Giới Tính";
@@ -82,9 +90,10 @@ namespace _3_GUI
             data_NhanVien.Columns[5].Name = "Năm Sinh";
             data_NhanVien.Columns[6].Name = "Trạng Thái";
             data_NhanVien.Rows.Clear();
-           // foreach (var x in _iQlEmployessService.Search(ten))
+            foreach (var x in _iQlEmployeesService.getListEMPLOYEES())
             {
-             //   data_NhanVien.Rows.Add(x.employee_Name, x.bridDate, x.address, x.NumberPhone, x.Email, x.sex ? "Nam" : "Nữ", x.status ? "Hoạt Động" : "Không Hoạt Động");
+                data_NhanVien.Rows.Add(x.employee_Name, x.sex ? "Nam" : "Nữ", x.NumberPhone, x.address, x.Email,
+                    x.bridDate, x.status ? "Hoạt Động" : "Không Hoạt Động");
             }
         }
 
@@ -101,12 +110,13 @@ namespace _3_GUI
             tbx_DiaChi.Text = data_NhanVien.Rows[index].Cells[2].Value.ToString();
             tbx_Email.Text = data_NhanVien.Rows[index].Cells[3].Value.ToString();
             cbx_HoatDong.Checked = data_NhanVien.Rows[index].Cells[4].Value.ToString() == "Hoạt Động" ? true : false;
-            cbx_KhongHoatDong.Checked = data_NhanVien.Rows[index].Cells[4].Value.ToString() == "Không Hoạt Động" ? true : false;
-           // var NV = _iEmployeesService.GetLstKhachHangs().Where(c => c.DienThoai == tbx_SĐT.Text).FirstOrDefault();
-            //if (NV.Phai == "Nam")
+            cbx_KhongHoatDong.Checked =
+                data_NhanVien.Rows[index].Cells[4].Value.ToString() == "Không Hoạt Động" ? true : false;
+            var NV = _iQlEmployeesService.getListEMPLOYEES().Where(c => c.NumberPhone == tbx_SĐT.Text).FirstOrDefault();
+            //if (NV.sex == "Nam")
             //{
             //    cbx_Nam.Checked = true;
-            ////}
+            //}
             //else
             //{
             //    cbx_Nu.Checked = true;
@@ -115,50 +125,50 @@ namespace _3_GUI
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
-        //    EMPLOYEES employes = new EMPLOYEES();
-        //    _sdt = employes.NumberPhone = tbx_SĐT.Text;
-        //    employes.employee_Name = tbx_Ten.Text;
-        //    employes.sex = cbx_Nam.Checked;
-        //    employes.address = tbx_DiaChi.Text;
-        //    employes.Email = tbx_Email.Text;
-        //    if ((MessageBox.Show("Bạn có chắc chắn muốn thêm?",
-        //         "Thông báo !!!!!!!!!!!!!!!",
-        //         MessageBoxButtons.YesNo) == DialogResult.Yes))
-        //    {
-        //        // MessageBox.Show(_iEmployesService.Add(employes));
-        //    }
-        //    Loaddata();
+            EMPLOYEES employes = new EMPLOYEES();
+            _sdt = employes.NumberPhone = tbx_SĐT.Text;
+            employes.employee_Name = tbx_Ten.Text;
+            employes.sex = cbx_Nam.Checked;
+            employes.address = tbx_DiaChi.Text;
+            employes.Email = tbx_Email.Text;
+            if ((MessageBox.Show("Bạn có chắc chắn muốn thêm?",
+                 "Thông báo !!!!!!!!!!!!!!!",
+                 MessageBoxButtons.YesNo) == DialogResult.Yes))
+            {
+                 MessageBox.Show(_iQlEmployeesService.AddEMPLOYEES(employes));
+            }
+            Loaddata();
         }
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            //var NV = _iEmployesService.GetlstCustomerses().Where(c => c.DienThoai == _sdt).FirstOrDefault();
-            //NV.Ten = tbx_Ten.Text;
-            //NV.DiaChi = tbx_DiaChi.Text;
-            //NV.Email = tbx_Email.Text;
-            //NV.TrangThai = cbx_HoatDong.Checked;
-            //NV.Phai = cbx_Nam.Checked ? "Nam" : "Nữ";
-            //if ((MessageBox.Show("Bạn có chắc chắn muốn sửa?",
-            //    "Thông báo !!!!!!!!!!!!!!!",
-            //    MessageBoxButtons.YesNo) == DialogResult.Yes))
-            //{
-            //    // MessageBox.Show(_iEmployesService.Edit(NV));
-            //}
-            //Loaddata();
+            var NV = _iQlEmployeesService.getListEMPLOYEES().Where(c => c.employee_Name == _sdt).FirstOrDefault();
+            NV.employee_Name = tbx_Ten.Text;
+            NV.address = tbx_DiaChi.Text;
+            NV.Email = tbx_Email.Text;
+            NV.status = cbx_HoatDong.Checked;
+            //NV.sex = cbx_Nam.Checked ? "Nam" : "Nữ";
+            if ((MessageBox.Show("Bạn có chắc chắn muốn sửa?",
+                "Thông báo !!!!!!!!!!!!!!!",
+                MessageBoxButtons.YesNo) == DialogResult.Yes))
+            {
+                 MessageBox.Show(_iQlEmployeesService.EditEMPLOYEES(NV));
+            }
+            Loaddata();
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            //var NV = _iEmployesService.GetlstCustomerses().Where(c => c.DienThoai == _).FsirstOrDefault();
-            //NV.TinhTrang = 0;
-            //cbx_Nam.Checked = true;
-            //if ((MessageBox.Show("Bạn có chắc chắc sẽ Xóa?",
-            //    "Thông báo !!!!!!!!!!!!!!!",
-            //    MessageBoxButtons.YesNo) == DialogResult.Yes))
-            //{
-            //    MessageBox.Show(_iEmployesService.Remove(NV));
-            //}
-            //Loaddata();
+            var NV = _iQlEmployeesService.getListEMPLOYEES().Where(c => c.employee_Name == _sdt).FirstOrDefault();
+           // NV.NumberPhone = 0;
+            cbx_Nam.Checked = true;
+            if ((MessageBox.Show("Bạn có chắc chắc sẽ Xóa?",
+                "Thông báo !!!!!!!!!!!!!!!",
+                MessageBoxButtons.YesNo) == DialogResult.Yes))
+            {
+                MessageBox.Show(_iQlEmployeesService.DeleteEMPLOYEES(NV));
+            }
+            Loaddata();
         }
 
         private void btn_Loc_Click(object sender, EventArgs e)
