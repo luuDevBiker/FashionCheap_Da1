@@ -33,14 +33,15 @@ namespace _3_GUI
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_Matkhau = new System.Windows.Forms.TextBox();
+            this.txt_tendangnhap = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,20 +80,20 @@ namespace _3_GUI
             this.label1.TabIndex = 14;
             this.label1.Text = "FashionCheap";
             // 
-            // textBox2
+            // txt_Matkhau
             // 
-            this.textBox2.Location = new System.Drawing.Point(70, 419);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(282, 31);
-            this.textBox2.TabIndex = 19;
+            this.txt_Matkhau.Location = new System.Drawing.Point(70, 419);
+            this.txt_Matkhau.Name = "txt_Matkhau";
+            this.txt_Matkhau.PasswordChar = '*';
+            this.txt_Matkhau.Size = new System.Drawing.Size(282, 31);
+            this.txt_Matkhau.TabIndex = 19;
             // 
-            // textBox1
+            // txt_tendangnhap
             // 
-            this.textBox1.Location = new System.Drawing.Point(70, 328);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(282, 31);
-            this.textBox1.TabIndex = 18;
+            this.txt_tendangnhap.Location = new System.Drawing.Point(70, 328);
+            this.txt_tendangnhap.Name = "txt_tendangnhap";
+            this.txt_tendangnhap.Size = new System.Drawing.Size(282, 31);
+            this.txt_tendangnhap.TabIndex = 18;
             // 
             // label4
             // 
@@ -125,12 +126,13 @@ namespace _3_GUI
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(25)))), ((int)(((byte)(79)))));
-            this.button1.Location = new System.Drawing.Point(70, 509);
+            this.button1.Location = new System.Drawing.Point(70, 539);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(282, 46);
             this.button1.TabIndex = 22;
             this.button1.Text = "Đăng Nhập";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -166,17 +168,30 @@ namespace _3_GUI
             this.linkLabel1.Text = "Quên Mật Khẩu";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(25)))), ((int)(((byte)(79)))));
+            this.linkLabel2.LinkColor = System.Drawing.Color.White;
+            this.linkLabel2.Location = new System.Drawing.Point(129, 494);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(120, 25);
+            this.linkLabel2.TabIndex = 24;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Đổi Mật Khẩu";
+            // 
             // FormDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 626);
+            this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_Matkhau);
+            this.Controls.Add(this.txt_tendangnhap);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
@@ -196,13 +211,14 @@ namespace _3_GUI
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_Matkhau;
+        private System.Windows.Forms.TextBox txt_tendangnhap;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }

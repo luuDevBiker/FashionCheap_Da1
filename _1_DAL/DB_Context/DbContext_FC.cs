@@ -14,7 +14,11 @@ namespace DAL_DataAccessLayers.DBContex_FC
             {
                 optionsBuilder.UseSqlServer(
 
-                           "Data Source=DESKTOP-2TD0QCA\\SQLEXPRESS01;Persist Security Info=True;User ID=trangtt;Password=123;Initial Catalog=trang123");
+//<<<<<<< HEAD
+                           "Data Source=DESKTOP-2TD0QCA\\SQLEXPRESS01;Persist Security Info=True;User ID=trangtt;Password=123;Initial Catalog=Trangpt");
+//=======
+                          // "Data Source=DESKTOP-NVB7S6L;Initial Catalog=DA_FashionCheap;Persist Security Info=True;User ID=kieu96;Password=123");
+//>>>>>>> 2d9d9432cf77a78215193eb0df320c121d008921
 
                 // thay đường dẫ Data ở đây
             }

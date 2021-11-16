@@ -11,6 +11,7 @@ namespace _2_BUS.Models
         public string employee_Name { get; set; }
         public string Email { get; set; }
         public bool status { get; set; }
-
+        public string PassWord { get; set; }
+        public int id_Employee { get; set; }
     }
 }

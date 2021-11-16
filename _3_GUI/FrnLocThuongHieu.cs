@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace _3_GUI
 {
-    public partial class BanHang : Form
+    public partial class FrnLocThuongHieu : Form
     {
-        public BanHang()
+        public FrnLocThuongHieu()
         {
             InitializeComponent();
         }
-
-        
     }
 }
