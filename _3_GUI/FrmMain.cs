@@ -77,6 +77,12 @@ namespace _3_GUI
 
 
         int x = 20, y = 10, a = 1;
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormBanHang(), sender);
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
