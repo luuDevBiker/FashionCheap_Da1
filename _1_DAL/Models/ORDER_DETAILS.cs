@@ -22,7 +22,7 @@ namespace DAL_DataAccessLayers
         public string Discount { get; set; }
         public bool status_Delete { get; set; }
         public virtual VARIANTS_VALUES VariantsValues { get; set; }
-        public virtual ORDERS Orders { get; set; }
+        public virtual ORDERS Orders{ get; set; }
 
 
     }

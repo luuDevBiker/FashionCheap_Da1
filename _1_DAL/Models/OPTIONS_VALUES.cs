@@ -9,6 +9,6 @@ namespace DAL_DataAccessLayers
         public string option_Values { get; set; }
         public bool status_Delete { get; set; }
         public OPTIONS Options { get; set; }
-        public ICollection<VARIANTS_VALUES> OptionValueses { get; set; }
+        public virtual ICollection<VARIANTS_VALUES> OptionValueses { get; set; }
     }
 }
