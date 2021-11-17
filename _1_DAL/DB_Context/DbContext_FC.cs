@@ -14,11 +14,11 @@ namespace DAL_DataAccessLayers.DBContex_FC
             {
                 optionsBuilder.UseSqlServer(
 
-//<<<<<<< HEAD
-                           "Data Source=DESKTOP-2TD0QCA\\SQLEXPRESS01;Persist Security Info=True;User ID=trangtt;Password=123;Initial Catalog=Trangpt");
-//=======
-                          // "Data Source=DESKTOP-NVB7S6L;Initial Catalog=DA_FashionCheap;Persist Security Info=True;User ID=kieu96;Password=123");
-//>>>>>>> 2d9d9432cf77a78215193eb0df320c121d008921
+                           //<<<<<<< HEAD
+                           "Data Source=LUUPC2\\SQLEXPRESS;Initial Catalog=DB_FashionCheap;Integrated Security=True");
+                //=======
+                // "Data Source=DESKTOP-NVB7S6L;Initial Catalog=DA_FashionCheap;Persist Security Info=True;User ID=kieu96;Password=123");
+                //>>>>>>> 2d9d9432cf77a78215193eb0df320c121d008921
 
                 // thay đường dẫ Data ở đây
             }
@@ -76,34 +76,38 @@ namespace DAL_DataAccessLayers.DBContex_FC
 
                 entity.HasOne(p => p.Products)
                     .WithMany(c => c.ProductsOptionses)
-                    .HasForeignKey(c => c.id_Product);
+                    .HasForeignKey(c => c.id_Product)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(p => p.Optionses)
                     .WithMany(c => c.OptionsesProductses)
-                    .HasForeignKey(c => c.id_Option);
+                    .HasForeignKey(c => c.id_Option)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
             // bảng Option_Values
             modelBuilder.Entity<OPTIONS_VALUES>(entity =>
             {
                 entity.ToTable("OPTIONS_VALUES");
-                entity.HasKey(p => p.id_Values );
+                entity.HasKey(p => p.id_Values);
                 entity.HasOne(p => p.Options)
                     .WithMany(c => c.OptionsValueses)
-                    .HasForeignKey(c => c.id_Option);
+                    .HasForeignKey(c => c.id_Option)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
             // Bảng PRODUCTS_VARIANTS
             modelBuilder.Entity<PRODUCTS_VARIANTS>(entity =>
             {
                 entity.ToTable("PRODUCTS_VARIANTS");
-                entity.HasKey(p => p.id_Variant );
+                entity.HasKey(p => p.id_Variant);
                 entity.HasOne(p => p.Products)
                     .WithMany(c => c.ProductsVariantses)
-                    .HasForeignKey(c => c.id_Product);
+                    .HasForeignKey(c => c.id_Product)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
             modelBuilder.Entity<VARIANTS_VALUES>(entity =>
             {
                 entity.ToTable("VARIANTS_VALUES");
-                entity.HasKey(p => new { p.id_Product, p.id_Variant, p.id_Option , p.id_Values });
+                entity.HasKey(p => new { p.id_Product, p.id_Variant, p.id_Option, p.id_Values });
                 //noi bang PRoducts_Variants
                 entity.HasOne<PRODUCTS_VARIANTS>(p => p.ProductsVariants)
                     .WithMany(c => c.VariantValues)
@@ -118,7 +122,7 @@ namespace DAL_DataAccessLayers.DBContex_FC
                 // noi bang OPTION_VALUES
                 entity.HasOne<OPTIONS_VALUES>(i => i.OptionsValues)
                     .WithMany(c => c.OptionValueses)
-                    .HasForeignKey(c =>c.id_Values ).OnDelete(DeleteBehavior.ClientSetNull);
+                    .HasForeignKey(c => c.id_Values).OnDelete(DeleteBehavior.ClientSetNull);
             });
             modelBuilder.Entity<CUSTOMERS>(entity =>
             {
@@ -162,16 +166,14 @@ namespace DAL_DataAccessLayers.DBContex_FC
             modelBuilder.Entity<ORDER_DETAILS>(entity =>
             {
                 entity.ToTable("ORDERS_DETAILS");
-                entity.HasKey(p=>new {p.id_Order,p.id_Product,p.id_Variant,p.id_Option});
+                entity.HasKey(p => new { p.id_Order, p.id_Product, p.id_Variant, p.id_Option, p.id_Values });
                 entity.HasOne<ORDERS>(d => d.Orders)
-                    .WithMany()
+                    .WithMany(p => p.OrDerDetailses)
                     .HasForeignKey(d => d.id_Order)
                     .OnDelete(DeleteBehavior.ClientSetNull);
-
-
                 entity.HasOne<VARIANTS_VALUES>(d => d.VariantsValues)
                     .WithMany(c => c.VariantValues)
-                    .HasForeignKey(d => new { d.id_Product, d.id_Variant, d.id_Option })
+                    .HasForeignKey(d => new { d.id_Product, d.id_Variant, d.id_Option, d.id_Values })
                     .OnDelete(DeleteBehavior.ClientSetNull);
 
             });
@@ -191,10 +193,10 @@ namespace DAL_DataAccessLayers.DBContex_FC
             {
                 entity.ToTable("ROLES");
                 entity.HasKey(c => c.id_roles);
-                });
+            });
 
 
-            }
+        }
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    

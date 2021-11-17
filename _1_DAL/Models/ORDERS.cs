@@ -21,6 +21,6 @@ namespace DAL_DataAccessLayers
         public bool status_Delete{ get; set; }
         public virtual CUSTOMERS Customers { get; set; }
         public virtual EMPLOYEES Employees { get; set; }
-       // public ICollection<ORDER_DETAILS> ODerCollection { get; set; }
+        public virtual ICollection<ORDER_DETAILS> OrDerDetailses{ get; set; }
     }
 }
