@@ -14,7 +14,6 @@ namespace DAL_DataAccessLayers
         public virtual PRODUCTS_VARIANTS ProductsVariants { get; set; }
         public virtual PRODUCTS_OPTIONS ProductsOptions { get; set; }
         public virtual OPTIONS_VALUES OptionsValues { get; set; }
-       public virtual IMAGES_PRODUCTS ImageProducts { get; set; }
         public virtual  ICollection<ORDER_DETAILS> VariantValues { get; set; }
     }
 }

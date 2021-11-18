@@ -7,8 +7,7 @@ namespace DAL_DataAccessLayers
     {
         public int id_Product { get; set; } 
         public int id_Variant { get; set; } 
-        public string sku_id { get; set; }
-        public int id_Image { get; set; }
+        public string Products_Code { get; set; }
         [Column(TypeName = "money")]
         public int import_Price { get; set; }
         [Column(TypeName = "money")]

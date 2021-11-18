@@ -61,19 +61,19 @@ namespace _2_BUS.Service_BUS
 
         public List<SanPhamCuThe> LoadDatafromDAL()
         {
-            var akaka = (from a in _lstVariantsValueses
-                join b in _lstOptionsValueses on a.id_Option & a.id_Values equals b.id_Option & b.id_Values
-                join c in _lsOptionses on b.id_Option equals c.id_Option
-                join d in _lsProductsOptionses on a.id_Option & a.id_Product equals d.id_Option & d.id_Product
-                join e in _lstProductsVariantses on a.id_Variant & a.id_Product equals e.id_Variant & e.id_Product
-                join f in _lstProductses on e.id_Product equals f.id_Product
-                select new { f.products_Name, b.option_Values, a.quantity, a.import_Price, a.price }).ToList();
-            foreach (var x in akaka)
-            {
-                SanPhamCuThe a = new SanPhamCuThe(x.products_Name, x.option_Values, x.quantity, x.import_Price,
-                    x.price);
-                _litSanPhamCuThes.Add(a);
-            }
+            //var akaka = (from a in _lstVariantsValueses
+            //    join b in _lstOptionsValueses on a.id_Option & a.id_Values equals b.id_Option & b.id_Values
+            //    join c in _lsOptionses on b.id_Option equals c.id_Option
+            //    join d in _lsProductsOptionses on a.id_Option & a.id_Product equals d.id_Option & d.id_Product
+            //    join e in _lstProductsVariantses on a.id_Variant & a.id_Product equals e.id_Variant & e.id_Product
+            //    join f in _lstProductses on e.id_Product equals f.id_Product
+            //    select new { f.products_Name, b.option_Values, a.quantity, a.import_Price, a.price }).ToList();
+            //foreach (var x in akaka)
+            //{
+            //    SanPhamCuThe a = new SanPhamCuThe(x.products_Name, x.option_Values, x.quantity, x.import_Price,
+            //        x.price);
+            //    _litSanPhamCuThes.Add(a);
+            //}
 
             return _litSanPhamCuThes;
 

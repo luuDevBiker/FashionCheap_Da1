@@ -88,30 +88,30 @@ namespace _3_GUI
                 this.Data_HoaDon.Columns.Add(button);
             }
             Data_HoaDon.Rows.Clear();
-            var lst = (from nv in _lstEmployeeses
-                       join hd in _lstOrderses on nv.id_Employee equals hd.id_Employee
-                       join kh in _lstcustomerses on hd.id_Customer equals kh.id_Customer
-                       join hdct in _lstOrderDetailses on hd.id_Order equals hdct.id_Order
-                       join sp in _lsVariantsValueses on hdct.id_Variant equals sp.id_Variant
-                       join spct in _lstProductsVariantses on sp.id_Variant equals spct.id_Variant
-                       join Sanpham in _lstProductses on spct.id_Product equals Sanpham.id_Product 
-                       select new
-                       {
-                           id = hd.id_Order,
-                           SanPham = Sanpham.products_Name,
-                           SoLuong = sp.quantity,
-                           kh = kh.customer_Name,
-                           NGayMuaHang = hd.order_Time,
-                           SoTienPhaiTra =  hd.amount_Pay,
-                           SoTienHoanLai = hd.refunds,
-                           GiamGia = hd.discount,
-                           ThanhToan = hd.payments,
-                       }).ToList();
-            foreach (var x in lst)
-            {
-                Data_HoaDon.Rows.Add(x.id, x.SanPham, x.SoLuong, x.kh, x.NGayMuaHang, x.SoTienPhaiTra, x.SoTienHoanLai,
-                    x.GiamGia, x.ThanhToan);
-            }
+            //var lst = (from nv in _lstEmployeeses
+            //           join hd in _lstOrderses on nv.id_Employee equals hd.id_Employee
+            //           join kh in _lstcustomerses on hd.id_Customer equals kh.id_Customer
+            //           join hdct in _lstOrderDetailses on hd.id_Order equals hdct.id_Order
+            //           join sp in _lsVariantsValueses on hdct.id_Variant equals sp.id_Variant
+            //           join spct in _lstProductsVariantses on sp.id_Variant equals spct.id_Variant
+            //           join Sanpham in _lstProductses on spct.id_Product equals Sanpham.id_Product 
+            //           select new
+            //           {
+            //               id = hd.id_Order,
+            //               SanPham = Sanpham.products_Name,
+            //               SoLuong = sp.quantity,
+            //               kh = kh.customer_Name,
+            //               NGayMuaHang = hd.order_Time,
+            //               SoTienPhaiTra =  hd.amount_Pay,
+            //               SoTienHoanLai = hd.refunds,
+            //               GiamGia = hd.discount,
+            //               ThanhToan = hd.payments,
+            //           }).ToList();
+            //foreach (var x in lst)
+            //{
+            //    Data_HoaDon.Rows.Add(x.id, x.SanPham, x.SoLuong, x.kh, x.NGayMuaHang, x.SoTienPhaiTra, x.SoTienHoanLai,
+            //        x.GiamGia, x.ThanhToan);
+            //}
         }
 
         void loadataSearch(string ten)
