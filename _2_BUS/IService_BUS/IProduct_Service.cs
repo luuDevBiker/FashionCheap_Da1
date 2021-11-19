@@ -7,5 +7,7 @@ namespace _2_BUS.IService_BUS
     {
         public List<ProductDetail> LoadDatafromDAL();
         public List<OPTIONS> getCountOption();
+        public string addImage();
+        public string addNewProduct(string name);
     }
 }

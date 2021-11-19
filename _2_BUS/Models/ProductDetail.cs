@@ -16,6 +16,7 @@ namespace _2_BUS.Models
         public List<OPTIONS_VALUES> OptionValue { get; set; }
         public List<IMAGES_PRODUCTS> ImageProduct { get; set; }
         public List<VARIANTS_VALUES> VariantValue { get; set; }
+        public bool Status { get; set; }
         public ProductDetail()
         {
             Product = new PRODUCTS();

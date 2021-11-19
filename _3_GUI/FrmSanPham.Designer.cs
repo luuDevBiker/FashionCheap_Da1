@@ -34,9 +34,6 @@ namespace _3_GUI
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.tbxTimKiem = new System.Windows.Forms.TextBox();
-            this.tbxLocThuongHieu = new System.Windows.Forms.ComboBox();
-            this.tbxLocMau = new System.Windows.Forms.ComboBox();
-            this.tbxLocKichThuoc = new System.Windows.Forms.ComboBox();
             this.btnPhanloai = new System.Windows.Forms.Button();
             this.lblTenSanPham = new System.Windows.Forms.Label();
             this.lblTheLoai = new System.Windows.Forms.Label();
@@ -47,20 +44,26 @@ namespace _3_GUI
             this.lblSl = new System.Windows.Forms.Label();
             this.lblMau = new System.Windows.Forms.Label();
             this.txtTenSp = new System.Windows.Forms.TextBox();
-            this.txtTheLoai = new System.Windows.Forms.TextBox();
-            this.tbxThuonghieu = new System.Windows.Forms.TextBox();
-            this.tbxNhap = new System.Windows.Forms.TextBox();
-            this.tbxBan = new System.Windows.Forms.TextBox();
-            this.tbxSl = new System.Windows.Forms.TextBox();
-            this.tbxMau = new System.Windows.Forms.TextBox();
-            this.tbxSize = new System.Windows.Forms.TextBox();
+            this.txtNhap = new System.Windows.Forms.TextBox();
+            this.txtBan = new System.Windows.Forms.TextBox();
+            this.txtSL = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.txtMaSP = new System.Windows.Forms.TextBox();
             this.lblDacTinh = new System.Windows.Forms.Label();
+            this.btnAddLoai = new System.Windows.Forms.Button();
+            this.btnSize = new System.Windows.Forms.Button();
+            this.btnAddMau = new System.Windows.Forms.Button();
+            this.btnThuongHieu = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.btnAddNewPrd = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.data_Sanpham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,17 +78,17 @@ namespace _3_GUI
             this.data_Sanpham.Name = "data_Sanpham";
             this.data_Sanpham.RowHeadersWidth = 62;
             this.data_Sanpham.RowTemplate.Height = 33;
-            this.data_Sanpham.Size = new System.Drawing.Size(970, 323);
+            this.data_Sanpham.Size = new System.Drawing.Size(992, 323);
             this.data_Sanpham.TabIndex = 0;
             this.data_Sanpham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Sanpham_CellClick);
             this.data_Sanpham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_Sanpham_CellContentClick);
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(869, 181);
+            this.btnThem.Location = new System.Drawing.Point(846, 181);
             this.btnThem.Margin = new System.Windows.Forms.Padding(2);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(90, 27);
+            this.btnThem.Size = new System.Drawing.Size(130, 27);
             this.btnThem.TabIndex = 1;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -93,10 +96,10 @@ namespace _3_GUI
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(869, 240);
+            this.btnSua.Location = new System.Drawing.Point(846, 240);
             this.btnSua.Margin = new System.Windows.Forms.Padding(2);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(90, 27);
+            this.btnSua.Size = new System.Drawing.Size(130, 27);
             this.btnSua.TabIndex = 2;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -104,10 +107,10 @@ namespace _3_GUI
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(869, 303);
+            this.btnXoa.Location = new System.Drawing.Point(846, 303);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(90, 27);
+            this.btnXoa.Size = new System.Drawing.Size(130, 27);
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -115,85 +118,19 @@ namespace _3_GUI
             // 
             // tbxTimKiem
             // 
-            this.tbxTimKiem.Location = new System.Drawing.Point(684, 181);
+            this.tbxTimKiem.Location = new System.Drawing.Point(718, 181);
             this.tbxTimKiem.Margin = new System.Windows.Forms.Padding(2);
             this.tbxTimKiem.Name = "tbxTimKiem";
-            this.tbxTimKiem.Size = new System.Drawing.Size(164, 27);
+            this.tbxTimKiem.Size = new System.Drawing.Size(130, 27);
             this.tbxTimKiem.TabIndex = 4;
             this.tbxTimKiem.Text = "Tìm Kiếm";
             // 
-            // tbxLocThuongHieu
-            // 
-            this.tbxLocThuongHieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.tbxLocThuongHieu.FormattingEnabled = true;
-            this.tbxLocThuongHieu.IntegralHeight = false;
-            this.tbxLocThuongHieu.Items.AddRange(new object[] {
-            "NEM ",
-            "Chic-Land",
-            "Seven AM",
-            "K&K Fashion",
-            "IVy Moda",
-            "Eva de Eva",
-            "Owen",
-            "Pierre Cardin",
-            "Top4man",
-            "4men"});
-            this.tbxLocThuongHieu.Location = new System.Drawing.Point(458, 178);
-            this.tbxLocThuongHieu.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxLocThuongHieu.Name = "tbxLocThuongHieu";
-            this.tbxLocThuongHieu.Size = new System.Drawing.Size(212, 28);
-            this.tbxLocThuongHieu.TabIndex = 5;
-            this.tbxLocThuongHieu.Text = "Lọc Theo Tên Thương Hiệu";
-            this.tbxLocThuongHieu.TextChanged += new System.EventHandler(this.tbxLocThuongHieu_TextChanged);
-            // 
-            // tbxLocMau
-            // 
-            this.tbxLocMau.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.tbxLocMau.FormattingEnabled = true;
-            this.tbxLocMau.IntegralHeight = false;
-            this.tbxLocMau.Items.AddRange(new object[] {
-            "Xanh",
-            "Đỏ",
-            "Đen ",
-            "Trắng",
-            "Tím",
-            "Vàng"});
-            this.tbxLocMau.Location = new System.Drawing.Point(458, 240);
-            this.tbxLocMau.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxLocMau.Name = "tbxLocMau";
-            this.tbxLocMau.Size = new System.Drawing.Size(212, 27);
-            this.tbxLocMau.TabIndex = 6;
-            this.tbxLocMau.Text = "Lọc Theo Tên Màu Sắc";
-            this.tbxLocMau.TextChanged += new System.EventHandler(this.tbxLocMau_TextChanged);
-            // 
-            // tbxLocKichThuoc
-            // 
-            this.tbxLocKichThuoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.tbxLocKichThuoc.FormattingEnabled = true;
-            this.tbxLocKichThuoc.IntegralHeight = false;
-            this.tbxLocKichThuoc.Items.AddRange(new object[] {
-            "36",
-            "37",
-            "38",
-            "39",
-            "40",
-            "41",
-            "42",
-            "43"});
-            this.tbxLocKichThuoc.Location = new System.Drawing.Point(458, 303);
-            this.tbxLocKichThuoc.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxLocKichThuoc.Name = "tbxLocKichThuoc";
-            this.tbxLocKichThuoc.Size = new System.Drawing.Size(212, 27);
-            this.tbxLocKichThuoc.TabIndex = 7;
-            this.tbxLocKichThuoc.Text = "Lọc Theo Kích Thước";
-            this.tbxLocKichThuoc.TextChanged += new System.EventHandler(this.tbxLocKichThuoc_TextChanged);
-            // 
             // btnPhanloai
             // 
-            this.btnPhanloai.Location = new System.Drawing.Point(684, 240);
+            this.btnPhanloai.Location = new System.Drawing.Point(718, 240);
             this.btnPhanloai.Margin = new System.Windows.Forms.Padding(2);
             this.btnPhanloai.Name = "btnPhanloai";
-            this.btnPhanloai.Size = new System.Drawing.Size(164, 27);
+            this.btnPhanloai.Size = new System.Drawing.Size(130, 27);
             this.btnPhanloai.TabIndex = 8;
             this.btnPhanloai.Text = "Phân Loại";
             this.btnPhanloai.UseVisualStyleBackColor = true;
@@ -212,17 +149,18 @@ namespace _3_GUI
             // lblTheLoai
             // 
             this.lblTheLoai.AutoSize = true;
-            this.lblTheLoai.Location = new System.Drawing.Point(24, 115);
+            this.lblTheLoai.Location = new System.Drawing.Point(369, 34);
             this.lblTheLoai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTheLoai.Name = "lblTheLoai";
             this.lblTheLoai.Size = new System.Drawing.Size(66, 20);
             this.lblTheLoai.TabIndex = 10;
             this.lblTheLoai.Text = "Thể loại ";
+            this.lblTheLoai.Click += new System.EventHandler(this.lblTheLoai_Click);
             // 
             // lblThuongHieu
             // 
             this.lblThuongHieu.AutoSize = true;
-            this.lblThuongHieu.Location = new System.Drawing.Point(684, 34);
+            this.lblThuongHieu.Location = new System.Drawing.Point(687, 35);
             this.lblThuongHieu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblThuongHieu.Name = "lblThuongHieu";
             this.lblThuongHieu.Size = new System.Drawing.Size(95, 20);
@@ -232,7 +170,7 @@ namespace _3_GUI
             // lblNhap
             // 
             this.lblNhap.AutoSize = true;
-            this.lblNhap.Location = new System.Drawing.Point(684, 70);
+            this.lblNhap.Location = new System.Drawing.Point(369, 116);
             this.lblNhap.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNhap.Name = "lblNhap";
             this.lblNhap.Size = new System.Drawing.Size(71, 20);
@@ -242,7 +180,7 @@ namespace _3_GUI
             // lblBan
             // 
             this.lblBan.AutoSize = true;
-            this.lblBan.Location = new System.Drawing.Point(684, 113);
+            this.lblBan.Location = new System.Drawing.Point(684, 116);
             this.lblBan.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBan.Name = "lblBan";
             this.lblBan.Size = new System.Drawing.Size(60, 20);
@@ -252,7 +190,7 @@ namespace _3_GUI
             // lblsize
             // 
             this.lblsize.AutoSize = true;
-            this.lblsize.Location = new System.Drawing.Point(378, 110);
+            this.lblsize.Location = new System.Drawing.Point(687, 73);
             this.lblsize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblsize.Name = "lblsize";
             this.lblsize.Size = new System.Drawing.Size(57, 20);
@@ -262,7 +200,7 @@ namespace _3_GUI
             // lblSl
             // 
             this.lblSl.AutoSize = true;
-            this.lblSl.Location = new System.Drawing.Point(369, 30);
+            this.lblSl.Location = new System.Drawing.Point(23, 111);
             this.lblSl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSl.Name = "lblSl";
             this.lblSl.Size = new System.Drawing.Size(72, 20);
@@ -287,61 +225,30 @@ namespace _3_GUI
             this.txtTenSp.Size = new System.Drawing.Size(152, 27);
             this.txtTenSp.TabIndex = 18;
             // 
-            // txtTheLoai
+            // txtNhap
             // 
-            this.txtTheLoai.Location = new System.Drawing.Point(139, 113);
-            this.txtTheLoai.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTheLoai.Name = "txtTheLoai";
-            this.txtTheLoai.Size = new System.Drawing.Size(152, 27);
-            this.txtTheLoai.TabIndex = 19;
+            this.txtNhap.Location = new System.Drawing.Point(458, 113);
+            this.txtNhap.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNhap.Name = "txtNhap";
+            this.txtNhap.ReadOnly = true;
+            this.txtNhap.Size = new System.Drawing.Size(152, 27);
+            this.txtNhap.TabIndex = 22;
             // 
-            // tbxThuonghieu
+            // txtBan
             // 
-            this.tbxThuonghieu.Location = new System.Drawing.Point(786, 34);
-            this.tbxThuonghieu.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxThuonghieu.Name = "tbxThuonghieu";
-            this.tbxThuonghieu.Size = new System.Drawing.Size(152, 27);
-            this.tbxThuonghieu.TabIndex = 21;
+            this.txtBan.Location = new System.Drawing.Point(786, 113);
+            this.txtBan.Margin = new System.Windows.Forms.Padding(2);
+            this.txtBan.Name = "txtBan";
+            this.txtBan.Size = new System.Drawing.Size(152, 27);
+            this.txtBan.TabIndex = 23;
             // 
-            // tbxNhap
+            // txtSL
             // 
-            this.tbxNhap.Location = new System.Drawing.Point(786, 70);
-            this.tbxNhap.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxNhap.Name = "tbxNhap";
-            this.tbxNhap.Size = new System.Drawing.Size(152, 27);
-            this.tbxNhap.TabIndex = 22;
-            // 
-            // tbxBan
-            // 
-            this.tbxBan.Location = new System.Drawing.Point(786, 113);
-            this.tbxBan.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxBan.Name = "tbxBan";
-            this.tbxBan.Size = new System.Drawing.Size(152, 27);
-            this.tbxBan.TabIndex = 23;
-            // 
-            // tbxSl
-            // 
-            this.tbxSl.Location = new System.Drawing.Point(458, 30);
-            this.tbxSl.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxSl.Name = "tbxSl";
-            this.tbxSl.Size = new System.Drawing.Size(152, 27);
-            this.tbxSl.TabIndex = 24;
-            // 
-            // tbxMau
-            // 
-            this.tbxMau.Location = new System.Drawing.Point(458, 70);
-            this.tbxMau.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxMau.Name = "tbxMau";
-            this.tbxMau.Size = new System.Drawing.Size(152, 27);
-            this.tbxMau.TabIndex = 25;
-            // 
-            // tbxSize
-            // 
-            this.tbxSize.Location = new System.Drawing.Point(458, 108);
-            this.tbxSize.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxSize.Name = "tbxSize";
-            this.tbxSize.Size = new System.Drawing.Size(152, 27);
-            this.tbxSize.TabIndex = 26;
+            this.txtSL.Location = new System.Drawing.Point(137, 106);
+            this.txtSL.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSL.Name = "txtSL";
+            this.txtSL.Size = new System.Drawing.Size(152, 27);
+            this.txtSL.TabIndex = 24;
             // 
             // pictureBox1
             // 
@@ -365,44 +272,45 @@ namespace _3_GUI
             this.label1.TabIndex = 28;
             this.label1.Text = "Ảnh";
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(195, 316);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(38, 27);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Location = new System.Drawing.Point(195, 316);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(38, 27);
+            this.btnAdd.TabIndex = 29;
+            this.btnAdd.Text = "+";
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnNext
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(251, 316);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(38, 27);
-            this.button2.TabIndex = 30;
-            this.button2.Text = ">>";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnNext.Location = new System.Drawing.Point(251, 316);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(38, 27);
+            this.btnNext.TabIndex = 30;
+            this.btnNext.Text = ">>";
+            this.btnNext.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnBack
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(139, 316);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(38, 27);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "<<";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnBack.Location = new System.Drawing.Point(139, 316);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(38, 27);
+            this.btnBack.TabIndex = 31;
+            this.btnBack.Text = "<<";
+            this.btnBack.UseVisualStyleBackColor = true;
             // 
             // txtMaSP
             // 
             this.txtMaSP.Location = new System.Drawing.Point(137, 70);
             this.txtMaSP.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaSP.Name = "txtMaSP";
+            this.txtMaSP.ReadOnly = true;
             this.txtMaSP.Size = new System.Drawing.Size(152, 27);
             this.txtMaSP.TabIndex = 33;
             // 
@@ -416,26 +324,130 @@ namespace _3_GUI
             this.lblDacTinh.TabIndex = 32;
             this.lblDacTinh.Text = "Mã SP";
             // 
+            // btnAddLoai
+            // 
+            this.btnAddLoai.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddLoai.Location = new System.Drawing.Point(614, 30);
+            this.btnAddLoai.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddLoai.Name = "btnAddLoai";
+            this.btnAddLoai.Size = new System.Drawing.Size(38, 27);
+            this.btnAddLoai.TabIndex = 29;
+            this.btnAddLoai.Text = "+";
+            this.btnAddLoai.UseVisualStyleBackColor = true;
+            // 
+            // btnSize
+            // 
+            this.btnSize.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSize.Location = new System.Drawing.Point(942, 70);
+            this.btnSize.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSize.Name = "btnSize";
+            this.btnSize.Size = new System.Drawing.Size(38, 27);
+            this.btnSize.TabIndex = 29;
+            this.btnSize.Text = "+";
+            this.btnSize.UseVisualStyleBackColor = true;
+            // 
+            // btnAddMau
+            // 
+            this.btnAddMau.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddMau.Location = new System.Drawing.Point(614, 70);
+            this.btnAddMau.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddMau.Name = "btnAddMau";
+            this.btnAddMau.Size = new System.Drawing.Size(38, 27);
+            this.btnAddMau.TabIndex = 29;
+            this.btnAddMau.Text = "+";
+            this.btnAddMau.UseVisualStyleBackColor = true;
+            // 
+            // btnThuongHieu
+            // 
+            this.btnThuongHieu.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnThuongHieu.Location = new System.Drawing.Point(942, 34);
+            this.btnThuongHieu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThuongHieu.Name = "btnThuongHieu";
+            this.btnThuongHieu.Size = new System.Drawing.Size(38, 27);
+            this.btnThuongHieu.TabIndex = 29;
+            this.btnThuongHieu.Text = "+";
+            this.btnThuongHieu.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(458, 30);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(151, 28);
+            this.comboBox1.TabIndex = 34;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(458, 67);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(151, 28);
+            this.comboBox2.TabIndex = 34;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(786, 32);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(151, 28);
+            this.comboBox3.TabIndex = 34;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(786, 70);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(151, 28);
+            this.comboBox4.TabIndex = 34;
+            // 
+            // btnAddNewPrd
+            // 
+            this.btnAddNewPrd.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddNewPrd.Location = new System.Drawing.Point(293, 31);
+            this.btnAddNewPrd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddNewPrd.Name = "btnAddNewPrd";
+            this.btnAddNewPrd.Size = new System.Drawing.Size(38, 27);
+            this.btnAddNewPrd.TabIndex = 29;
+            this.btnAddNewPrd.Text = "+";
+            this.btnAddNewPrd.UseVisualStyleBackColor = true;
+            this.btnAddNewPrd.Click += new System.EventHandler(this.btnAddNewPrd_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(718, 303);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(130, 27);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // FrmSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(970, 676);
+            this.ClientSize = new System.Drawing.Size(992, 676);
+            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.txtMaSP);
             this.Controls.Add(this.lblDacTinh);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnAddMau);
+            this.Controls.Add(this.btnThuongHieu);
+            this.Controls.Add(this.btnSize);
+            this.Controls.Add(this.btnAddNewPrd);
+            this.Controls.Add(this.btnAddLoai);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.tbxSize);
-            this.Controls.Add(this.tbxMau);
-            this.Controls.Add(this.tbxSl);
-            this.Controls.Add(this.tbxBan);
-            this.Controls.Add(this.tbxNhap);
-            this.Controls.Add(this.tbxThuonghieu);
-            this.Controls.Add(this.txtTheLoai);
+            this.Controls.Add(this.txtSL);
+            this.Controls.Add(this.txtBan);
+            this.Controls.Add(this.txtNhap);
             this.Controls.Add(this.txtTenSp);
             this.Controls.Add(this.lblMau);
             this.Controls.Add(this.lblSl);
@@ -446,10 +458,8 @@ namespace _3_GUI
             this.Controls.Add(this.lblTheLoai);
             this.Controls.Add(this.lblTenSanPham);
             this.Controls.Add(this.btnPhanloai);
-            this.Controls.Add(this.tbxLocKichThuoc);
-            this.Controls.Add(this.tbxLocMau);
-            this.Controls.Add(this.tbxLocThuongHieu);
             this.Controls.Add(this.tbxTimKiem);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
@@ -457,6 +467,7 @@ namespace _3_GUI
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmSanPham";
             this.Text = "SanPham";
+            this.Load += new System.EventHandler(this.FrmSanPham_Load);
             ((System.ComponentModel.ISupportInitialize)(this.data_Sanpham)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -471,9 +482,6 @@ namespace _3_GUI
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.TextBox tbxTimKiem;
-        private System.Windows.Forms.ComboBox tbxLocThuongHieu;
-        private System.Windows.Forms.ComboBox tbxLocMau;
-        private System.Windows.Forms.ComboBox tbxLocKichThuoc;
         private System.Windows.Forms.Button btnPhanloai;
         private System.Windows.Forms.Label lblTenSanPham;
         private System.Windows.Forms.Label lblTheLoai;
@@ -484,20 +492,26 @@ namespace _3_GUI
         private System.Windows.Forms.Label lblSl;
         private System.Windows.Forms.Label lblMau;
         private System.Windows.Forms.TextBox txtTenSp;
-        private System.Windows.Forms.TextBox txtTheLoai;
-        private System.Windows.Forms.TextBox tbxThuonghieu;
-        private System.Windows.Forms.TextBox tbxNhap;
-        private System.Windows.Forms.TextBox tbxBan;
-        private System.Windows.Forms.TextBox tbxSl;
-        private System.Windows.Forms.TextBox tbxMau;
-        private System.Windows.Forms.TextBox tbxSize;
+        private System.Windows.Forms.TextBox txtNhap;
+        private System.Windows.Forms.TextBox txtBan;
+        private System.Windows.Forms.TextBox txtSL;
         private RJControls.RJToggleButton tbDark;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.TextBox txtMaSP;
         private System.Windows.Forms.Label lblDacTinh;
+        private System.Windows.Forms.Button btnAddLoai;
+        private System.Windows.Forms.Button btnSize;
+        private System.Windows.Forms.Button btnAddMau;
+        private System.Windows.Forms.Button btnThuongHieu;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Button btnAddNewPrd;
+        private System.Windows.Forms.Button btnSave;
     }
 }

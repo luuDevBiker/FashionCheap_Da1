@@ -59,6 +59,20 @@ namespace _2_BUS.Service_BUS
             _litSanPhamCuThes = new List<ProductDetail>();
         }
 
+        public string addImage()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public string addNewProduct(string name)
+        {
+            PRODUCTS prd = new PRODUCTS();
+            prd.products_Name = name;
+            prd.status_Delete = false;
+            PS.AddProduct(prd);
+            return "Successful";
+        }
+
         public List<OPTIONS> getCountOption()
         {
             var list = _lsOptionses;
@@ -89,6 +103,8 @@ namespace _2_BUS.Service_BUS
                   {
                       x.ImageProduct.Add(z);
                   });
+                //trạng thái có phải là dữ liệu cũ có trong database hay không nếu cũ : true : false
+                x.Status = true;
                 _litSanPhamCuThes.Add(x);
             });
 
