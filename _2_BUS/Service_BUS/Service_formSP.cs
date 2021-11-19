@@ -8,7 +8,7 @@ using DAL_DataAccessLayers.Service;
 
 namespace _2_BUS.Service_BUS
 {
-    public class Service_formSP:IProduct_Service
+    public class Service_formSP : IProduct_Service
     {
         private IProductService PS;
         private IProductVariantservice PV;
@@ -24,7 +24,7 @@ namespace _2_BUS.Service_BUS
         private List<VARIANTS_VALUES> _lstVariantsValueses;
         private List<OPTIONS> _lsOptionses;
         private List<OPTIONS_VALUES> _lstOptionsValueses;
-        private List<SanPhamCuThe> _litSanPhamCuThes;
+        private List<ProductDetail> _litSanPhamCuThes;
 
         public Service_formSP()
         {
@@ -56,24 +56,41 @@ namespace _2_BUS.Service_BUS
             _lstOptionsValueses = new List<OPTIONS_VALUES>();
             _lstOptionsValueses = OV.getListOptionValue();
             //
-            _litSanPhamCuThes = new List<SanPhamCuThe>();
+            _litSanPhamCuThes = new List<ProductDetail>();
         }
 
-        public List<SanPhamCuThe> LoadDatafromDAL()
+        public List<OPTIONS> getCountOption()
         {
-            //var akaka = (from a in _lstVariantsValueses
-            //    join b in _lstOptionsValueses on a.id_Option & a.id_Values equals b.id_Option & b.id_Values
-            //    join c in _lsOptionses on b.id_Option equals c.id_Option
-            //    join d in _lsProductsOptionses on a.id_Option & a.id_Product equals d.id_Option & d.id_Product
-            //    join e in _lstProductsVariantses on a.id_Variant & a.id_Product equals e.id_Variant & e.id_Product
-            //    join f in _lstProductses on e.id_Product equals f.id_Product
-            //    select new { f.products_Name, b.option_Values, a.quantity, a.import_Price, a.price }).ToList();
-            //foreach (var x in akaka)
-            //{
-            //    SanPhamCuThe a = new SanPhamCuThe(x.products_Name, x.option_Values, x.quantity, x.import_Price,
-            //        x.price);
-            //    _litSanPhamCuThes.Add(a);
-            //}
+            var list = _lsOptionses;
+            return list;
+        }
+
+        public List<ProductDetail> LoadDatafromDAL()
+        {
+            var lisdtOption = _lstVariantsValueses
+                .Join(_lstOptionsValueses, vv => vv.id_Values, ov => ov.id_Values, (vv, ov) => new { vv, ov })
+                .Join(_lsOptionses, i => i.ov.id_Option, o => o.id_Option, (i, o) => new { i.vv, i.ov, o })
+                .Join(_lstProductses, i => i.vv.id_Product, p => p.id_Product, (i, p) => new { i.vv, i.ov, i.o, p })
+                .Join(_lstProductsVariantses, i => i.vv.id_Variant, pv => pv.id_Variant, (i, pv) => new { i.vv, i.p, i.o, i.ov, pv })
+                .ToList();
+            _lstProductsVariantses.ForEach(y =>
+            {
+                var x = new ProductDetail();
+                x.Product = _lstProductses.Where(x => x.id_Product == y.id_Product).FirstOrDefault();
+                x.ProductVariant = y;
+                lisdtOption.Where(i => i.vv.id_Variant == y.id_Variant).ToList().ForEach(z =>
+                  {
+                      x.VariantValue.Add(z.vv);
+                      x.Option.Add(z.o);
+                      x.OptionValue.Add(z.ov);
+                  });
+                var list1 = lisdtOption.Where(x => x.vv.id_Variant == y.id_Variant).ToList();
+                _lstImagesProductses.Where(x => x.id_variant == y.id_Variant).ToList().ForEach(z =>
+                  {
+                      x.ImageProduct.Add(z);
+                  });
+                _litSanPhamCuThes.Add(x);
+            });
 
             return _litSanPhamCuThes;
 
@@ -81,4 +98,3 @@ namespace _2_BUS.Service_BUS
         }
     }
 }
-   
