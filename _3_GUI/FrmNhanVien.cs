@@ -70,6 +70,8 @@ namespace _3_GUI
                 this.data_NhanVien.Columns.Add(button);
             }
             data_NhanVien.Rows.Clear();
+            var lst = _iQlEmployeesService.getListEMPLOYEES();
+            MessageBox.Show(lst.Max(i => i.id_Employee) + "");
             foreach (var x in _iQlEmployeesService.getListEMPLOYEES())
             {
                 data_NhanVien.Rows.Add(x.employee_Name, x.sex ? "Nam" : "Nữ", x.NumberPhone, x.address, x.Email,

@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace _3_GUI
 {
-    public partial class FrmKhuyenMai : Form
+    public partial class FrmBaoCaoLoiNhuan : Form
     {
-        public FrmKhuyenMai()
+        public FrmBaoCaoLoiNhuan()
         {
             InitializeComponent();
         }
-
-       
     }
 }

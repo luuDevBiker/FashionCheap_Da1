@@ -17,7 +17,7 @@ namespace _3_GUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmSanPham());
+            Application.Run(new FormBanHang());
         }
     }
 }

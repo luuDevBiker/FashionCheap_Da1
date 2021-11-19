@@ -21,12 +21,12 @@ namespace _3_GUI
         private string _TenSP;
         private string _Theloai;
       
-        private List<ProductDetail> _litSanPhamCuThes;
+        private List<SanPhamCuThe> _litSanPhamCuThes;
         public FrmSanPham()
         {
             InitializeComponent();
             PS_BUS = new Service_formSP();
-            _litSanPhamCuThes = new List<ProductDetail>();
+            _litSanPhamCuThes = new List<SanPhamCuThe>();
             _litSanPhamCuThes = PS_BUS.LoadDatafromDAL();
             loadata();
         }
@@ -36,38 +36,32 @@ namespace _3_GUI
             if (tbDark.Checked)
             {
                 this.BackColor = Color.Pink;
+
             }
             else
             {
                 this.BackColor = Color.White;
+
             }
         }
 
         void loadata()
         {
-            data_Sanpham.ColumnCount = 15 + PS_BUS.getCountOption().Count();
-            var row = 0;
-            data_Sanpham.Columns[row++].Name = "Tên Sản Phẩm";
-            data_Sanpham.Columns[row++].Name = "Mã sản phẩm";
-            data_Sanpham.Columns[row++].Name = "Số Lượng";
-            data_Sanpham.Columns[row++].Name = "Gía Nhập";
-            data_Sanpham.Columns[row++].Name = "Gía Bán";
-            data_Sanpham.Columns[row].Name = "Id Sản Phẩm";
-            data_Sanpham.Columns[row++].Visible = false;
-            data_Sanpham.Columns[row].Name = "Id variant ";
-            data_Sanpham.Columns[row++].Visible = false;
-            PS_BUS.getCountOption().ForEach(x =>
-            {
-                data_Sanpham.Columns[row].Name = "Id option "+x.id_Option;
-                data_Sanpham.Columns[row++].Visible = false;
-                data_Sanpham.Columns[row].Name = "Id Value"+x.id_Option;
-                data_Sanpham.Columns[row++].Visible = false;
-                data_Sanpham.Columns[row++].Name = x.option_Name;
-            });
+            data_Sanpham.ColumnCount = 9;
+            data_Sanpham.Columns[0].Name = "Tên Sản Phẩm";
+            data_Sanpham.Columns[1].Name = "Thể Loại";
+            data_Sanpham.Columns[2].Name = "Đặc Tính";
+            data_Sanpham.Columns[3].Name = "Số Lượng";
+            data_Sanpham.Columns[4].Name = "Màu sắc";
+            data_Sanpham.Columns[5].Name = "Kích Cỡ";
+            data_Sanpham.Columns[6].Name = "Thương Hiệu";
+            data_Sanpham.Columns[7].Name = "Gía Nhập";
+            data_Sanpham.Columns[8].Name = "Gía Bán";
             DataGridViewComboBoxColumn comboBox = new DataGridViewComboBoxColumn();
             {
                 comboBox.Name = "cmb_dgv";
                 comboBox.HeaderText = "Chức năng";
+                comboBox.Items.Add("Add");
                 comboBox.Items.Add("Update");
                 comboBox.Items.Add("Delete");
                 data_Sanpham.Columns.Add(comboBox);
@@ -84,51 +78,43 @@ namespace _3_GUI
 
             foreach (var x in _litSanPhamCuThes)
             {
-                List<string> objcell = new List<string>();
-                objcell.Add(x.Product.products_Name);
-                objcell.Add(x.ProductVariant.Products_Code);
-                objcell.Add(x.ProductVariant.quantity+"");
-                objcell.Add(x.ProductVariant.import_Price+"");
-                objcell.Add(x.ProductVariant.price+"");
-                objcell.Add(x.ProductVariant.id_Product+"");
-                objcell.Add(x.ProductVariant.id_Variant+"");
-                x.OptionValue.ForEach(i =>
-                {
-                    objcell.Add(i.id_Option+"");
-                    objcell.Add(i.id_Values+"");
-                    objcell.Add(i.option_Values + "");
-                });
-                data_Sanpham.Rows.Add(objcell.ToArray());
-
+                data_Sanpham.Rows.Add(x.TenSp,x.OptionValues,x.SoLuong,x.GiaNhap,x.Giaban);
             }
         }
-        private void data_Sanpham_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        void loadataSearch(string ten)
         {
-            var index = e.RowIndex;
-            var row = data_Sanpham.Rows[index];
-            txtTenSp.Text = row.Cells[0].Value + "";
-            txtMaSP.Text = row.Cells[1].Value + "";
-            txtSL.Text = row.Cells[2].Value + "";
-            txtNhap.Text = row.Cells[3].Value + "";
-            txtBan.Text = row.Cells[4].Value + "";
-            //txtMau.Text = row.Cells[9].Value + "";
-            //txtSize.Text = row.Cells[12].Value + "";
-            //txtTheLoai.Text = row.Cells[15].Value + "";
-            //txtThuonghieu.Text = row.Cells[18].Value + "";
+            //_iqlproducsService.GetlstProducts();
+            data_Sanpham.ColumnCount = 9;
+            data_Sanpham.Columns[0].Name = "Tên Sản Phẩm";
+            data_Sanpham.Columns[1].Name = "Thể Loại";
+            data_Sanpham.Columns[2].Name = "Đặc Tính";
+            data_Sanpham.Columns[3].Name = "Số Lượng";
+            data_Sanpham.Columns[4].Name = "Màu sắc";
+            data_Sanpham.Columns[5].Name = "Kích Cỡ";
+            data_Sanpham.Columns[6].Name = "Thương Hiệu";
+            data_Sanpham.Columns[7].Name = "Gía Nhập";
+            data_Sanpham.Columns[8].Name = "Gía Bán";
+            data_Sanpham.Rows.Clear();
+            //foreach (var VARIABLE in _iqlproducsService.Search(ten))
+            //{
+            //     data_Sanpham.Rows.Add(x.products_Name, x.option_Values, x.quantity,x.import_Price,x.price);
+            //}
         }
+
         private void tbxLocThuongHieu_TextChanged(object sender, EventArgs e)
         {
-
+            loadataSearch(tbxTimKiem.Text);
         }
 
         private void tbxLocMau_TextChanged(object sender, EventArgs e)
         {
-
+            loadataSearch(tbxTimKiem.Text);
         }
 
         private void tbxLocKichThuoc_TextChanged(object sender, EventArgs e)
         {
-
+            loadataSearch(tbxTimKiem.Text);
         }
 
         private void data_Sanpham_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -158,25 +144,6 @@ namespace _3_GUI
 
         }
 
-        private void FrmSanPham_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTheLoai_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAddNewPrd_Click(object sender, EventArgs e)
-        {
-            if(txtTenSp.Text.Length == 0)
-            {
-                MessageBox.Show("Chưa nhập tên sản phẩm","ERROR");
-                return;
-            }
-            var name = txtTenSp.Text;
-            MessageBox.Show(PS_BUS.addNewProduct(name));
-        }
+        
     }
 }
