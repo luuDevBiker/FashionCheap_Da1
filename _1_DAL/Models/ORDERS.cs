@@ -11,12 +11,16 @@ namespace DAL_DataAccessLayers
         public int id_Customer { get; set; }
         public int id_Employee { get; set; }
         public DateTime order_Time{ get; set; }
-        public string discount{ get; set; }
-        public string amount_Pay{ get; set; }
+        [Column(TypeName = "money")]
+        public int discount{ get; set; }
+        [Column(TypeName = "money")]
+        public int amount_Pay{ get; set; }
         [Column(TypeName = "money")]
         public int paying_Customer{ get; set; }
         [Column(TypeName = "money")]
         public int refunds{ get; set; }
+        [Column(TypeName = "money")]
+        public int total_pay{ get; set; }
         public string payments{ get; set; }
         public bool status_Delete{ get; set; }
         public virtual CUSTOMERS Customers { get; set; }
