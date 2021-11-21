@@ -15,7 +15,7 @@ namespace DAL_DataAccessLayers.DBContex_FC
                 optionsBuilder.UseSqlServer(
 
                            //<<<<<<< HEAD
-                           "Data Source=DESKTOP-2TD0QCA\\SQLEXPRESS01;Persist Security Info=True;User ID=trangtt;Password=123;Initial Catalog=Trangpt2");
+                           "Data Source=LUUPC2\\SQLEXPRESS;Initial Catalog=DB_FashionCheap;Integrated Security=True");
                 //=======
                 // "Data Source=DESKTOP-NVB7S6L;Initial Catalog=DA_FashionCheap;Persist Security Info=True;User ID=kieu96;Password=123");
                 //>>>>>>> 2d9d9432cf77a78215193eb0df320c121d008921
@@ -160,20 +160,23 @@ namespace DAL_DataAccessLayers.DBContex_FC
                 entity.HasOne<CUSTOMERS>(d => d.Customers)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.id_Customer);
-
             });
 
             modelBuilder.Entity<ORDER_DETAILS>(entity =>
             {
                 entity.ToTable("ORDERS_DETAILS");
-                entity.HasKey(p => new { p.id_Order, p.id_Product, p.id_Variant, p.id_Option, p.id_Values });
+                entity.HasKey(p => new { p.id_Order, p.id_Product, p.id_Variant });
                 entity.HasOne<ORDERS>(d => d.Orders)
                     .WithMany(p => p.OrDerDetailses)
                     .HasForeignKey(d => d.id_Order)
                     .OnDelete(DeleteBehavior.ClientSetNull);
-                entity.HasOne<VARIANTS_VALUES>(d => d.VariantsValues)
-                    .WithMany(c => c.VariantValues)
-                    .HasForeignKey(d => new { d.id_Product, d.id_Variant, d.id_Option, d.id_Values })
+                entity.HasOne<PRODUCTS_VARIANTS>(d => d.ProductVariants)
+                    .WithMany(c => c.OrderDetailses)
+                    .HasForeignKey(d => d.id_Variant)
+                    .OnDelete(DeleteBehavior.ClientSetNull);
+                entity.HasOne<PRODUCTS>(d => d.Products)
+                    .WithMany(c => c.OrderDetailses)
+                    .HasForeignKey(d => d.id_Product)
                     .OnDelete(DeleteBehavior.ClientSetNull);
 
             });

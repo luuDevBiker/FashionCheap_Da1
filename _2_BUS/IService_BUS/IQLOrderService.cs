@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _2_BUS.Models;
 using DAL_DataAccessLayers;
 
 namespace _2_BUS.IService_BUS
@@ -16,5 +17,6 @@ namespace _2_BUS.IService_BUS
         public List<ORDERS> Search(string nv);
         public List<ORDERS> GetlstOrderses();
         public void GetDb();
+        public List<Order_OrderDetail> JoinTable();
     }
 }

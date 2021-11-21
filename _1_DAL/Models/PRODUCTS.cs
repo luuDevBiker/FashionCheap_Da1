@@ -10,6 +10,6 @@ namespace DAL_DataAccessLayers
         //collect Navigation
         public virtual ICollection<PRODUCTS_OPTIONS> ProductsOptionses { get; set; }
         public virtual ICollection<PRODUCTS_VARIANTS> ProductsVariantses { get; set; }
-
+        public virtual ICollection<ORDER_DETAILS> OrderDetailses { get; set; }
     }
 }

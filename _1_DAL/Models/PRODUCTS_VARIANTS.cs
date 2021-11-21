@@ -17,6 +17,7 @@ namespace DAL_DataAccessLayers
         public PRODUCTS Products{ get; set; }
         public ICollection<VARIANTS_VALUES> VariantValues{ get; set; }
         public ICollection<IMAGES_PRODUCTS> ImageProductses{ get; set; }
+        public ICollection<ORDER_DETAILS> OrderDetailses { get; set; }
 
     }
 }

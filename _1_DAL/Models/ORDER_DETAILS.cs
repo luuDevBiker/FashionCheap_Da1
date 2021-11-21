@@ -11,19 +11,21 @@ namespace DAL_DataAccessLayers
         public int id_Order { get; set; }
         public int id_Product { get; set; }
         public int id_Variant { get; set; }
-        public int id_Option { get; set; }
-        public int id_Values { get; set; }
-
+        // số lượng
         public int quantity { get; set; }
         [Column(TypeName = "money")]
+        // giá tổng tiền của sản phẩm
         public int unit_Price { get; set; }
+        // giá bán 
         [Column(TypeName = "money")]
         public int price_Each { get; set; }
-        public string Discount { get; set; }
+        // giảm giá
+        [Column(TypeName = "money")]
+        public int Discount { get; set; }
         public bool status_Delete { get; set; }
-        public virtual VARIANTS_VALUES VariantsValues { get; set; }
+        public virtual PRODUCTS_VARIANTS ProductVariants { get; set; }
         public virtual ORDERS Orders{ get; set; }
 
-
+        public virtual PRODUCTS Products { get; set; }
     }
 }
