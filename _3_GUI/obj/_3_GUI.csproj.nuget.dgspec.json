@@ -212,6 +212,10 @@
               "target": "Package",
               "version": "[3.6.0, )"
             },
+            "System.Data.OleDb": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "ZXing.Net": {
               "target": "Package",
               "version": "[0.16.6, )"

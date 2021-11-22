@@ -57,3 +57,34 @@ D:\Web\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.csproj.CoreCompileInputs.cache
 D:\Web\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.dll
 D:\Web\_3_GUI\obj\Debug\net5.0-windows\ref\_3_GUI.dll
 D:\Web\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.pdb
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.csproj.AssemblyReference.cache
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.BaoCaoDoanhThu.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FormBanHang.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FormDangKi.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FormDangNhap.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FormQuenMatKhau.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmBaoCaoLoiNhuan.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmBarcode.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmHoaDon.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI._4hosocuatoi.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmKhachHang.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmKhuyenMai.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmLocMaSP.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmMain.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmNhanVien.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmSanPham.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmTheoDanhSach.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmThongKeSanPham.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrnLocThuongHieu.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FromExecl.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.Properties.Resources.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.ThongKe.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.Thongketheongay.resources
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.csproj.GenerateResource.cache
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.GeneratedMSBuildEditorConfig.editorconfig
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.AssemblyInfoInputs.cache
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.AssemblyInfo.cs
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.csproj.CoreCompileInputs.cache
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.dll
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\ref\_3_GUI.dll
+E:\C# (Sharp)\DAMOT\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.pdb

@@ -181,8 +181,8 @@ namespace _3_GUI
             orders.id_Employee = _lstcustomerses.Where(c => c.customer_Name == tbxKhachHang.Text)
                 .Select(c => c.id_Customer).FirstOrDefault();
             orders.order_Time = Convert.ToDateTime(datetimeNgayMuaHang.Text);
-            orders.discount = tbxTrieuKhau.Text;
-            orders.amount_Pay = tbxSoTienTra.Text;
+            orders.discount = Convert.ToInt32(tbxTrieuKhau.Text);
+            orders.amount_Pay = Convert.ToInt32(tbxSoTienTra.Text);
             orders.payments = tbxThanhToan.Text;
             orders.status_Delete = false;
             //or.AddORDERS(orders);
@@ -199,8 +199,8 @@ namespace _3_GUI
         {
             var hoadon = _lstOrderses.Where(c => c.id_Order == id_Hoadon).FirstOrDefault();
             hoadon.order_Time = Convert.ToDateTime(datetimeNgayMuaHang.Text);
-            hoadon.discount = tbxTrieuKhau.Text;
-            hoadon.amount_Pay = tbxSoTienTra.Text;
+            hoadon.discount =Convert.ToInt32(tbxTrieuKhau.Text);
+            hoadon.amount_Pay = Convert.ToInt32(tbxSoTienTra.Text);
             hoadon.payments = tbxThanhToan.Text;
             if ((MessageBox.Show("Bạn có chắc chắc sẽ dùng chức năng trên?",
                 "Thông báo !!!!!!!!!!!!!!!",
@@ -233,8 +233,8 @@ namespace _3_GUI
             orders.id_Employee = _lstcustomerses.Where(c => c.customer_Name == tbxKhachHang.Text)
                 .Select(c => c.id_Customer).FirstOrDefault();
             orders.order_Time = Convert.ToDateTime(datetimeNgayMuaHang.Text);
-            orders.discount = tbxTrieuKhau.Text;
-            orders.amount_Pay = tbxSoTienTra.Text;
+            orders.discount = Convert.ToInt32(tbxTrieuKhau.Text);
+            orders.amount_Pay = Convert.ToInt32(tbxSoTienTra.Text);
             orders.payments = tbxThanhToan.Text;
             orders.status_Delete = false;
             //or.AddORDERS(orders);

@@ -28,3 +28,18 @@ D:\Web\_2_BUS\bin\Debug\net5.0\_2_BUS.pdb
 D:\Web\_2_BUS\bin\Debug\net5.0\_1_DAL.dll
 D:\Web\_2_BUS\bin\Debug\net5.0\_1_DAL.pdb
 D:\Web\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CopyComplete
+E:\C# (Sharp)\DAMOT\_2_BUS\bin\Debug\net5.0\_2_BUS.deps.json
+E:\C# (Sharp)\DAMOT\_2_BUS\bin\Debug\net5.0\_2_BUS.dll
+E:\C# (Sharp)\DAMOT\_2_BUS\bin\Debug\net5.0\ref\_2_BUS.dll
+E:\C# (Sharp)\DAMOT\_2_BUS\bin\Debug\net5.0\_2_BUS.pdb
+E:\C# (Sharp)\DAMOT\_2_BUS\bin\Debug\net5.0\_1_DAL.dll
+E:\C# (Sharp)\DAMOT\_2_BUS\bin\Debug\net5.0\_1_DAL.pdb
+E:\C# (Sharp)\DAMOT\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.AssemblyReference.cache
+E:\C# (Sharp)\DAMOT\_2_BUS\obj\Debug\net5.0\_2_BUS.GeneratedMSBuildEditorConfig.editorconfig
+E:\C# (Sharp)\DAMOT\_2_BUS\obj\Debug\net5.0\_2_BUS.AssemblyInfoInputs.cache
+E:\C# (Sharp)\DAMOT\_2_BUS\obj\Debug\net5.0\_2_BUS.AssemblyInfo.cs
+E:\C# (Sharp)\DAMOT\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CoreCompileInputs.cache
+E:\C# (Sharp)\DAMOT\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CopyComplete
+E:\C# (Sharp)\DAMOT\_2_BUS\obj\Debug\net5.0\_2_BUS.dll
+E:\C# (Sharp)\DAMOT\_2_BUS\obj\Debug\net5.0\ref\_2_BUS.dll
+E:\C# (Sharp)\DAMOT\_2_BUS\obj\Debug\net5.0\_2_BUS.pdb
