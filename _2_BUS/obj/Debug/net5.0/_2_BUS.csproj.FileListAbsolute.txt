@@ -58,3 +58,18 @@ E:\C# (Sharp)\fileCodemoi\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CopyComplete
 E:\C# (Sharp)\fileCodemoi\_2_BUS\obj\Debug\net5.0\_2_BUS.dll
 E:\C# (Sharp)\fileCodemoi\_2_BUS\obj\Debug\net5.0\ref\_2_BUS.dll
 E:\C# (Sharp)\fileCodemoi\_2_BUS\obj\Debug\net5.0\_2_BUS.pdb
+D:\DuAn1_Nhom02\_2_BUS\bin\Debug\net5.0\_2_BUS.deps.json
+D:\DuAn1_Nhom02\_2_BUS\bin\Debug\net5.0\_2_BUS.dll
+D:\DuAn1_Nhom02\_2_BUS\bin\Debug\net5.0\ref\_2_BUS.dll
+D:\DuAn1_Nhom02\_2_BUS\bin\Debug\net5.0\_2_BUS.pdb
+D:\DuAn1_Nhom02\_2_BUS\bin\Debug\net5.0\_1_DAL.dll
+D:\DuAn1_Nhom02\_2_BUS\bin\Debug\net5.0\_1_DAL.pdb
+D:\DuAn1_Nhom02\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.AssemblyReference.cache
+D:\DuAn1_Nhom02\_2_BUS\obj\Debug\net5.0\_2_BUS.GeneratedMSBuildEditorConfig.editorconfig
+D:\DuAn1_Nhom02\_2_BUS\obj\Debug\net5.0\_2_BUS.AssemblyInfoInputs.cache
+D:\DuAn1_Nhom02\_2_BUS\obj\Debug\net5.0\_2_BUS.AssemblyInfo.cs
+D:\DuAn1_Nhom02\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CoreCompileInputs.cache
+D:\DuAn1_Nhom02\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CopyComplete
+D:\DuAn1_Nhom02\_2_BUS\obj\Debug\net5.0\_2_BUS.dll
+D:\DuAn1_Nhom02\_2_BUS\obj\Debug\net5.0\ref\_2_BUS.dll
+D:\DuAn1_Nhom02\_2_BUS\obj\Debug\net5.0\_2_BUS.pdb

@@ -29,6 +29,7 @@ namespace _3_GUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNhanVien));
             this.lbl_Ten = new System.Windows.Forms.Label();
             this.lbl_GioiTinh = new System.Windows.Forms.Label();
             this.lbl_NamSinh = new System.Windows.Forms.Label();
@@ -54,8 +55,10 @@ namespace _3_GUI
             this.tbx_TimKiem = new System.Windows.Forms.TextBox();
             this.btn_Loc = new System.Windows.Forms.Button();
             this.tbDark = new RJControls.RJToggleButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_NhanVien)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_Ten
@@ -210,7 +213,7 @@ namespace _3_GUI
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.data_NhanVien);
-            this.groupBox1.Location = new System.Drawing.Point(34, 313);
+            this.groupBox1.Location = new System.Drawing.Point(34, 378);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(885, 300);
             this.groupBox1.TabIndex = 18;
@@ -218,6 +221,8 @@ namespace _3_GUI
             // 
             // data_NhanVien
             // 
+            this.data_NhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.data_NhanVien.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.data_NhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_NhanVien.Location = new System.Drawing.Point(28, 30);
             this.data_NhanVien.Name = "data_NhanVien";
@@ -232,12 +237,16 @@ namespace _3_GUI
             this.btn_Them.BackColor = System.Drawing.Color.Pink;
             this.btn_Them.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_Them.FlatAppearance.BorderSize = 0;
+            this.btn_Them.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Them.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_Them.ForeColor = System.Drawing.Color.Black;
-            this.btn_Them.Location = new System.Drawing.Point(34, 246);
+            this.btn_Them.Image = ((System.Drawing.Image)(resources.GetObject("btn_Them.Image")));
+            this.btn_Them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Them.Location = new System.Drawing.Point(34, 243);
             this.btn_Them.Name = "btn_Them";
-            this.btn_Them.Size = new System.Drawing.Size(112, 34);
+            this.btn_Them.Size = new System.Drawing.Size(135, 61);
             this.btn_Them.TabIndex = 19;
-            this.btn_Them.Text = "Thêm";
+            this.btn_Them.Text = "   Thêm";
             this.btn_Them.UseVisualStyleBackColor = false;
             this.btn_Them.Click += new System.EventHandler(this.btn_Them_Click);
             // 
@@ -246,12 +255,16 @@ namespace _3_GUI
             this.btn_Sua.BackColor = System.Drawing.Color.Pink;
             this.btn_Sua.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_Sua.FlatAppearance.BorderSize = 0;
+            this.btn_Sua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Sua.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_Sua.ForeColor = System.Drawing.Color.Black;
-            this.btn_Sua.Location = new System.Drawing.Point(194, 249);
+            this.btn_Sua.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sua.Image")));
+            this.btn_Sua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Sua.Location = new System.Drawing.Point(254, 243);
             this.btn_Sua.Name = "btn_Sua";
-            this.btn_Sua.Size = new System.Drawing.Size(112, 34);
+            this.btn_Sua.Size = new System.Drawing.Size(135, 61);
             this.btn_Sua.TabIndex = 20;
-            this.btn_Sua.Text = "Sửa";
+            this.btn_Sua.Text = "   Sửa";
             this.btn_Sua.UseVisualStyleBackColor = false;
             this.btn_Sua.Click += new System.EventHandler(this.btn_Sua_Click);
             // 
@@ -260,18 +273,22 @@ namespace _3_GUI
             this.btn_Xoa.BackColor = System.Drawing.Color.Pink;
             this.btn_Xoa.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_Xoa.FlatAppearance.BorderSize = 0;
+            this.btn_Xoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Xoa.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_Xoa.ForeColor = System.Drawing.Color.Black;
-            this.btn_Xoa.Location = new System.Drawing.Point(383, 249);
+            this.btn_Xoa.Image = ((System.Drawing.Image)(resources.GetObject("btn_Xoa.Image")));
+            this.btn_Xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Xoa.Location = new System.Drawing.Point(503, 243);
             this.btn_Xoa.Name = "btn_Xoa";
-            this.btn_Xoa.Size = new System.Drawing.Size(112, 34);
+            this.btn_Xoa.Size = new System.Drawing.Size(135, 61);
             this.btn_Xoa.TabIndex = 21;
-            this.btn_Xoa.Text = "Xóa";
+            this.btn_Xoa.Text = "   Xóa";
             this.btn_Xoa.UseVisualStyleBackColor = false;
             this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // tbx_TimKiem
             // 
-            this.tbx_TimKiem.Location = new System.Drawing.Point(679, 252);
+            this.tbx_TimKiem.Location = new System.Drawing.Point(631, 341);
             this.tbx_TimKiem.Name = "tbx_TimKiem";
             this.tbx_TimKiem.Size = new System.Drawing.Size(240, 31);
             this.tbx_TimKiem.TabIndex = 23;
@@ -283,10 +300,14 @@ namespace _3_GUI
             this.btn_Loc.BackColor = System.Drawing.Color.Pink;
             this.btn_Loc.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_Loc.FlatAppearance.BorderSize = 0;
+            this.btn_Loc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Loc.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_Loc.ForeColor = System.Drawing.Color.Black;
-            this.btn_Loc.Location = new System.Drawing.Point(549, 249);
+            this.btn_Loc.Image = ((System.Drawing.Image)(resources.GetObject("btn_Loc.Image")));
+            this.btn_Loc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Loc.Location = new System.Drawing.Point(759, 243);
             this.btn_Loc.Name = "btn_Loc";
-            this.btn_Loc.Size = new System.Drawing.Size(112, 34);
+            this.btn_Loc.Size = new System.Drawing.Size(135, 61);
             this.btn_Loc.TabIndex = 24;
             this.btn_Loc.Text = "Lọc";
             this.btn_Loc.UseVisualStyleBackColor = false;
@@ -307,12 +328,22 @@ namespace _3_GUI
             this.tbDark.UseVisualStyleBackColor = true;
             this.tbDark.CheckedChanged += new System.EventHandler(this.tbDark_CheckedChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(594, 341);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(966, 652);
+            this.ClientSize = new System.Drawing.Size(966, 690);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tbDark);
             this.Controls.Add(this.btn_Loc);
             this.Controls.Add(this.tbx_TimKiem);
@@ -341,6 +372,7 @@ namespace _3_GUI
             this.Text = "NhanVien";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.data_NhanVien)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,5 +405,6 @@ namespace _3_GUI
         private System.Windows.Forms.TextBox tbx_TimKiem;
         private System.Windows.Forms.Button btn_Loc;
         private RJControls.RJToggleButton tbDark;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

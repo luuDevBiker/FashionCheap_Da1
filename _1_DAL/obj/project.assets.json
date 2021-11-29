@@ -5802,11 +5802,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\C# (Sharp)\\fileCodemoi\\_1_DAL\\_1_DAL.csproj",
+      "projectUniqueName": "D:\\DuAn1_Nhom02\\_1_DAL\\_1_DAL.csproj",
       "projectName": "_1_DAL",
-      "projectPath": "E:\\C# (Sharp)\\fileCodemoi\\_1_DAL\\_1_DAL.csproj",
+      "projectPath": "D:\\DuAn1_Nhom02\\_1_DAL\\_1_DAL.csproj",
       "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-      "outputPath": "E:\\C# (Sharp)\\fileCodemoi\\_1_DAL\\obj\\",
+      "outputPath": "D:\\DuAn1_Nhom02\\_1_DAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",

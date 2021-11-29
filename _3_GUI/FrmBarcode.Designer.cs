@@ -74,7 +74,7 @@ namespace _3_GUI
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(685, 482);
+            this.btn_Start.Location = new System.Drawing.Point(685, 459);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(112, 34);
             this.btn_Start.TabIndex = 4;

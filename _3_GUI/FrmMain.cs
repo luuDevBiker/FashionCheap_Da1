@@ -51,10 +51,7 @@ namespace _3_GUI
         //{
         //    OpenChildForm(new FrmH(), sender);
         //}
-        private void button5_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FormBanHang(), sender);
-        }
+        
 
         private void button8_Click(object sender, EventArgs e)
         {
@@ -78,7 +75,20 @@ namespace _3_GUI
 
         int x = 20, y = 10, a = 1;
 
-      
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmHoaDon(), sender);
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormBanHang(), sender);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {

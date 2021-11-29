@@ -27,7 +27,7 @@ namespace _3_GUI
             foreach (FilterInfo device in filterInfoCollection)
                 cbo_Camera.Items.Add(device.Name);
             cbo_Camera.SelectedIndex = 0;
-           
+
         }
 
         private void btn_Start_Click(object sender, EventArgs e)
@@ -36,6 +36,8 @@ namespace _3_GUI
             videoCaptureDevice.NewFrame += VideoCaptureDevice_NewFrame;
             videoCaptureDevice.Start();
         }
+
+       
         private void VideoCaptureDevice_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
         {
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
@@ -49,7 +51,6 @@ namespace _3_GUI
                 }));
             }
             pictureBox1.Image = bitmap;
-            //ok dcmmm may
 
         }
     }

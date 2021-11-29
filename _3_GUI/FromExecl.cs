@@ -61,11 +61,11 @@ namespace _3_GUI
                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter("Select * from[Sheet1$]", conn);
                 DataSet theSD = new DataSet();
                 DataTable dt = new DataTable();
-                dataAdapter.Fill(dt);
+                //dataAdapter.Fill(dt);
                 this.dataGridView1.DataSource = dt.DefaultView;
                 for (int i = 0; i < 2; i++)
                 {
-                    // this.Alert("Import Thành Công Rực Rỡ");
+                  //  this.Alert("Import Thành Công Rực Rỡ");
                 }
                 return;
             };
