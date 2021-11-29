@@ -77,6 +77,9 @@ namespace _3_GUI
 
 
         int x = 20, y = 10, a = 1;
+
+      
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
