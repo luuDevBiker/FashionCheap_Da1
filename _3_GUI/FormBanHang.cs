@@ -130,15 +130,15 @@ namespace _3_GUI
         void loadSP()
         {
             dgrid_sp.ColumnCount = 6;
-            var row = 0;
-            dgrid_sp.Columns[row++].Name = "ID Sản Phẩm";
-            dgrid_sp.Columns["ID Sản Phẩm"].Visible = false;
-            dgrid_sp.Columns[row++].Name = "ID Chi Tiết Sản Phẩm";
-            dgrid_sp.Columns["ID Chi Tiết Sản Phẩm"].Visible = false;
-            dgrid_sp.Columns[row++].Name = "Tên Sản Phẩm";
-            dgrid_sp.Columns[row++].Name = "Mã Sản Phẩm";
-            dgrid_sp.Columns[row++].Name = "Giá Bán";
-            dgrid_sp.Columns[row++].Name = "Tồn Kho"; 
+            // var row = 0;
+            dgrid_sp.Columns[0].Name = "ID_Product";
+            dgrid_sp.Columns["ID_Product"].Visible = false;
+            dgrid_sp.Columns[1].Name = "ID_Variant";
+            dgrid_sp.Columns["ID_Variant"].Visible = false;
+            dgrid_sp.Columns[2].Name = "Tên Sản Phẩm";
+            dgrid_sp.Columns[3].Name = "Mã Sản Phẩm";
+            dgrid_sp.Columns[4].Name = "Giá Bán";
+            dgrid_sp.Columns[5].Name = "Tồn Kho";
 
             //PS_BUS.getCountOption().ForEach(x =>
             //{
@@ -213,10 +213,10 @@ namespace _3_GUI
             }
             DataGridViewButtonColumn button = new DataGridViewButtonColumn();
             {
-                button.Name = "btn_dgv";
-                button.HeaderText = "";
+                button.Name = "Delete";
+                button.HeaderText = "Delete";
 
-                button.Text = ("Xác Nhận");
+                button.Text = ("Delete");
                 button.UseColumnTextForButtonValue = true;
                 this.dgrid_giohang.Columns.Add(button);
             }
@@ -247,9 +247,12 @@ namespace _3_GUI
             int row = e.RowIndex;
             if (e.ColumnIndex == dgrid_sp.Columns["select"].Index)
             {
+                int a = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Product"].Value.ToString());
+                int b = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Variant"].Value.ToString());
                 ProductDetail productDetail = new ProductDetail();
-                productDetail = PS_BUS.LoadDatafromDAL().FirstOrDefault(c => c.ProductVariant.id_Variant == Convert.ToInt32(dgrid_sp.Rows[row].Cells[2].Value.ToString())&&
-                                                                             c.Product.id_Product == Convert.ToInt32(dgrid_sp.Rows[row].Cells[1].Value.ToString()));
+
+                productDetail = PS_BUS.LoadDatafromDAL().FirstOrDefault(c => c.Product.id_Product == a &&
+                                                                            c.ProductVariant.id_Variant == b);
                 _lstProductDetails.Add(productDetail);
                 LoadGioHang();
             }
@@ -262,7 +265,7 @@ namespace _3_GUI
             //PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == _id).Select(c => c.ProductVariant.quantity = a);
             //LoadGioHang();
         }
-       
+
         private void dgrid_sp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -295,15 +298,15 @@ namespace _3_GUI
 
         }
         private void button2_Click(object sender, EventArgs e)
-            {
-                MessageBox.Show(
-                    "" + _iQLOrder.JoinTable().Select(x => x.ProductDetail.Product.id_Product).FirstOrDefault() + "",
-                    "Thông báo");
-            }
+        {
+            MessageBox.Show(
+                "" + _iQLOrder.JoinTable().Select(x => x.ProductDetail.Product.id_Product).FirstOrDefault() + "",
+                "Thông báo");
+        }
 
-       
+
     }
-    }
+}
 
 
 
