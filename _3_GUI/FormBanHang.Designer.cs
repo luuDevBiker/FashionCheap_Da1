@@ -119,6 +119,8 @@ namespace _3_GUI
             // 
             // dgrid_giohang
             // 
+            this.dgrid_giohang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgrid_giohang.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgrid_giohang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_giohang.Location = new System.Drawing.Point(6, 42);
             this.dgrid_giohang.Name = "dgrid_giohang";
