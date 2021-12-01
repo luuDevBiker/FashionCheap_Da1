@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using _2_BUS.IService_BUS;
 using _2_BUS.Models;
 using DAL_DataAccessLayers;
@@ -111,6 +112,66 @@ namespace _2_BUS.Service_BUS
             return _litSanPhamCuThes;
 
 
+        }
+
+        public string Addnew(ProductDetail a)
+        {
+            _litSanPhamCuThes.Add(a);
+            PS.AddProduct(a.Product);
+            PV.AddProductVarriant(a.ProductVariant);
+            foreach (var VARIABLE in a.Option)
+            {
+                OS.AddOption(VARIABLE);
+            }
+
+            foreach (var VARIABLE in a.ProductOption)
+            {
+                PO.AddProductOptions(VARIABLE);
+            }
+
+            foreach (var VARIABLE in a.OptionValue)
+            {
+                OV.AddOptionValue(VARIABLE);
+            }
+
+            foreach (var VARIABLE in a.VariantValue)
+            {
+                Vv.AddVARIANTS_VALUES(VARIABLE);
+            }
+
+            return "thêm thành công";
+        }
+
+        public string EditProduct(ProductDetail a)
+        {
+            int vt = _litSanPhamCuThes.FindIndex(c =>
+                c.Product.id_Product == a.Product.id_Product &&
+                c.ProductVariant.id_Variant == a.ProductVariant.id_Variant);
+            _litSanPhamCuThes[vt] = a;
+
+            PS.EditProduct(a.Product);
+            PV.EditProductVarriant(a.ProductVariant);
+            foreach (var VARIABLE in a.Option)
+            {
+                OS.EditOption(VARIABLE);
+            }
+
+            foreach (var VARIABLE in a.ProductOption)
+            {
+                PO.EditProductOptions(VARIABLE);
+            }
+
+            foreach (var VARIABLE in a.OptionValue)
+            {
+                OV.EditOptionValue(VARIABLE);
+            }
+
+            foreach (var VARIABLE in a.VariantValue)
+            {
+                Vv.EditVARIANTS_VALUES(VARIABLE);
+            }
+
+            return " Sửa Thành Công";
         }
     }
 }
