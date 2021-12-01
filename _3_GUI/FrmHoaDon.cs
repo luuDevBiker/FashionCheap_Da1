@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _2_BUS.IService_BUS;
+using _2_BUS.Service_BUS;
 using DAL_DataAccessLayers;
 using DAL_DataAccessLayers.IServices;
 using DAL_DataAccessLayers.Service;
@@ -24,6 +26,7 @@ namespace _3_GUI
         private List<PRODUCTS> _lstProductses;
         private IOderService or = new ORDERS_Service();
         private IOderService _iOderService;
+        
         private int id_Hoadon;
         public FrmHoaDon()
         {
@@ -35,6 +38,8 @@ namespace _3_GUI
             _lstOrderDetailses = new List<ORDER_DETAILS>();
             _lstProductsVariantses = new List<PRODUCTS_VARIANTS>();
             _lstProductses = new List<PRODUCTS>();
+           // _lstCustomerService = new QLCustomerService();
+           
             loadata();
         }
         
@@ -180,6 +185,7 @@ namespace _3_GUI
                 .Select(c => c.id_Employee).FirstOrDefault();
             orders.id_Employee = _lstcustomerses.Where(c => c.customer_Name == tbxKhachHang.Text)
                 .Select(c => c.id_Customer).FirstOrDefault();
+            //orders.id_Order = _lstOrderses.Where(c=>c.)
             orders.order_Time = Convert.ToDateTime(datetimeNgayMuaHang.Text);
             orders.discount =Convert.ToInt32( tbxTrieuKhau.Text);
             orders.amount_Pay =Convert.ToInt32( tbxSoTienTra.Text);

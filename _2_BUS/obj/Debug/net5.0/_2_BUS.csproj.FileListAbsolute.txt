@@ -103,3 +103,18 @@ E:\C# (Sharp)\newsfit\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CopyComplete
 E:\C# (Sharp)\newsfit\_2_BUS\obj\Debug\net5.0\_2_BUS.dll
 E:\C# (Sharp)\newsfit\_2_BUS\obj\Debug\net5.0\ref\_2_BUS.dll
 E:\C# (Sharp)\newsfit\_2_BUS\obj\Debug\net5.0\_2_BUS.pdb
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\bin\Debug\net5.0\_2_BUS.deps.json
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\bin\Debug\net5.0\_2_BUS.dll
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\bin\Debug\net5.0\ref\_2_BUS.dll
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\bin\Debug\net5.0\_2_BUS.pdb
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\bin\Debug\net5.0\_1_DAL.dll
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\bin\Debug\net5.0\_1_DAL.pdb
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.AssemblyReference.cache
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\obj\Debug\net5.0\_2_BUS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\obj\Debug\net5.0\_2_BUS.AssemblyInfoInputs.cache
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\obj\Debug\net5.0\_2_BUS.AssemblyInfo.cs
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CoreCompileInputs.cache
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CopyComplete
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\obj\Debug\net5.0\_2_BUS.dll
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\obj\Debug\net5.0\ref\_2_BUS.dll
+C:\Users\Kien\OneDrive\Desktop\DuAn1\_2_BUS\obj\Debug\net5.0\_2_BUS.pdb

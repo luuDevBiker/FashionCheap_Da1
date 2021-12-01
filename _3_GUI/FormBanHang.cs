@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,10 @@ namespace _3_GUI
         private List<VARIANTS_VALUES> _lstVariants_values;
         private List<PRODUCTS_OPTIONS> _lstProducts_option;
         private List<ProductDetail> _lstProductDetails;
+        private List<CUSTOMERS> _lstcustomerses;
+        private List<EMPLOYEES> _lstEmployeeses;
+        private IQLCustomerService _lstCustomerService;
+        public string email = FormDangNhap.email;
         private string _id;
 
         private IProduct_Service PS_BUS;
@@ -49,9 +54,15 @@ namespace _3_GUI
             _lstVariants_values = new List<VARIANTS_VALUES>();
             _lstProducts_option = new List<PRODUCTS_OPTIONS>();
             _lstProductDetails = new List<ProductDetail>();
+            _lstCustomerService = new QLCustomerService();
             //_lstOptions = new List<OPTIONS>();
             //_lstOption_values =
-
+            foreach (var x in _lstCustomerService.GetlstCustomerses())
+            {
+                cbxTenKhachhang.Items.Add(x.customer_Name);
+                cbxTenKhachhang.SelectedIndex = 0;
+            }
+            tbxMaNhanVien.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault()) ;
             loadSP();
             LoadGioHang();
 
@@ -241,6 +252,15 @@ namespace _3_GUI
                 dgrid_giohang.Rows.Add(objcell.ToArray());
 
             }
+            float sum = 0;
+            for (int i = 0; i < dgrid_giohang.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(dgrid_giohang.Rows[i].Cells[4].Value);
+            }
+            CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+            tbxTongTien.Text = sum.ToString("#,###", cul.NumberFormat) + " " + "VND";
+            tbxKhachCanTra.Text = sum.ToString("#,###", cul.NumberFormat) + " " + "VND";
+            tbxKhachThanhToan.Text = sum.ToString("#,###", cul.NumberFormat) + " " + "VND";
         }
         private void dgrid_sp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -304,7 +324,31 @@ namespace _3_GUI
                 "Thông báo");
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var idKh = _iqLCustomer.GetlstCustomerses().Where(c => c.customer_Name == cbxTenKhachhang.Text)
+                .Select(c => c.id_Customer).FirstOrDefault();
+            var idnv = _iqLEmployees.GetlstEmployeeses().Where(c => c.employee_Name == tbxMaNhanVien.Text)
+                .Select(c => c.id_Employee).FirstOrDefault();
+            ORDERS orders = new ORDERS();
+            //var idOrder = _iQLOrder.GetlstOrderses().Where(c => c.id_Order == tbxMaSp.Text).Select(c => c.id_Order)
+            //    .FirstOrDefault();
+            orders.order_Time = Convert.ToDateTime(DateNgayTao.Text);
+            //orders.discount = Convert.ToInt32(tbxGiamGia.Text);
+            //orders.refunds = Convert.ToInt32(tbxSoTienHoanLai.Text);
+            //orders.amount_Pay = Convert.ToInt32(tbxKhachCanTra.Text);
+            //orders.payments = tbxKhachThanhToan.Text;
+            orders.status_Delete = false;
+            //or.AddORDERS(orders);
+            if ((MessageBox.Show("Bạn có chắc chắc sẽ dùng chức năng trên?",
+                "Thông báo !!!!!!!!!!!!!!!",
+                MessageBoxButtons.YesNo) == DialogResult.Yes))
+            {
+                MessageBox.Show(_iQLOrder.add(orders));
+            }
 
+            LoadGioHang();
+        }
     }
 }
 

@@ -37,19 +37,19 @@ namespace _3_GUI
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.cbxTenKhachhang = new System.Windows.Forms.ComboBox();
+            this.DateNgayTao = new System.Windows.Forms.DateTimePicker();
+            this.tbxSoTienHoanLai = new System.Windows.Forms.TextBox();
+            this.tbxKhachThanhToan = new System.Windows.Forms.TextBox();
+            this.tbxKhachCanTra = new System.Windows.Forms.TextBox();
+            this.tbxTongTien = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbxMaNhanVien = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,10 +59,10 @@ namespace _3_GUI
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tbxThukhac = new System.Windows.Forms.TextBox();
+            this.tbxGiamGia = new System.Windows.Forms.TextBox();
+            this.tbxSoluong = new System.Windows.Forms.TextBox();
+            this.tbxMaSp = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -160,19 +160,19 @@ namespace _3_GUI
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(149)))), ((int)(((byte)(148)))));
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
-            this.tabPage1.Controls.Add(this.textBox14);
-            this.tabPage1.Controls.Add(this.textBox15);
-            this.tabPage1.Controls.Add(this.textBox12);
-            this.tabPage1.Controls.Add(this.textBox13);
+            this.tabPage1.Controls.Add(this.cbxTenKhachhang);
+            this.tabPage1.Controls.Add(this.DateNgayTao);
+            this.tabPage1.Controls.Add(this.tbxSoTienHoanLai);
+            this.tabPage1.Controls.Add(this.tbxKhachThanhToan);
+            this.tabPage1.Controls.Add(this.tbxKhachCanTra);
+            this.tabPage1.Controls.Add(this.tbxTongTien);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.textBox3);
-            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.tbxMaNhanVien);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
@@ -184,46 +184,54 @@ namespace _3_GUI
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Hóa Đơn";
             // 
-            // dateTimePicker1
+            // cbxTenKhachhang
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Location = new System.Drawing.Point(96, 215);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(185, 27);
-            this.dateTimePicker1.TabIndex = 16;
+            this.cbxTenKhachhang.FormattingEnabled = true;
+            this.cbxTenKhachhang.Location = new System.Drawing.Point(127, 66);
+            this.cbxTenKhachhang.Name = "cbxTenKhachhang";
+            this.cbxTenKhachhang.Size = new System.Drawing.Size(151, 28);
+            this.cbxTenKhachhang.TabIndex = 17;
             // 
-            // textBox14
+            // DateNgayTao
             // 
-            this.textBox14.Location = new System.Drawing.Point(150, 557);
-            this.textBox14.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(121, 27);
-            this.textBox14.TabIndex = 15;
+            this.DateNgayTao.CalendarFont = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DateNgayTao.Location = new System.Drawing.Point(96, 215);
+            this.DateNgayTao.Margin = new System.Windows.Forms.Padding(2);
+            this.DateNgayTao.Name = "DateNgayTao";
+            this.DateNgayTao.Size = new System.Drawing.Size(185, 27);
+            this.DateNgayTao.TabIndex = 16;
             // 
-            // textBox15
+            // tbxSoTienHoanLai
             // 
-            this.textBox15.Location = new System.Drawing.Point(150, 499);
-            this.textBox15.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(121, 27);
-            this.textBox15.TabIndex = 14;
+            this.tbxSoTienHoanLai.Location = new System.Drawing.Point(150, 557);
+            this.tbxSoTienHoanLai.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSoTienHoanLai.Name = "tbxSoTienHoanLai";
+            this.tbxSoTienHoanLai.Size = new System.Drawing.Size(121, 27);
+            this.tbxSoTienHoanLai.TabIndex = 15;
             // 
-            // textBox12
+            // tbxKhachThanhToan
             // 
-            this.textBox12.Location = new System.Drawing.Point(150, 436);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(121, 27);
-            this.textBox12.TabIndex = 13;
+            this.tbxKhachThanhToan.Location = new System.Drawing.Point(150, 499);
+            this.tbxKhachThanhToan.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxKhachThanhToan.Name = "tbxKhachThanhToan";
+            this.tbxKhachThanhToan.Size = new System.Drawing.Size(121, 27);
+            this.tbxKhachThanhToan.TabIndex = 14;
             // 
-            // textBox13
+            // tbxKhachCanTra
             // 
-            this.textBox13.Location = new System.Drawing.Point(150, 367);
-            this.textBox13.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(121, 27);
-            this.textBox13.TabIndex = 12;
+            this.tbxKhachCanTra.Location = new System.Drawing.Point(150, 436);
+            this.tbxKhachCanTra.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxKhachCanTra.Name = "tbxKhachCanTra";
+            this.tbxKhachCanTra.Size = new System.Drawing.Size(121, 27);
+            this.tbxKhachCanTra.TabIndex = 13;
+            // 
+            // tbxTongTien
+            // 
+            this.tbxTongTien.Location = new System.Drawing.Point(150, 367);
+            this.tbxTongTien.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxTongTien.Name = "tbxTongTien";
+            this.tbxTongTien.Size = new System.Drawing.Size(121, 27);
+            this.tbxTongTien.TabIndex = 12;
             // 
             // button2
             // 
@@ -236,7 +244,7 @@ namespace _3_GUI
             this.button2.Location = new System.Drawing.Point(90, 646);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(125, 56);
+            this.button2.Size = new System.Drawing.Size(162, 56);
             this.button2.TabIndex = 11;
             this.button2.Text = "   Thanh Toán";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -298,22 +306,15 @@ namespace _3_GUI
             this.button1.TabIndex = 6;
             this.button1.Text = "   Tạo Hóa Đơn";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox3
+            // tbxMaNhanVien
             // 
-            this.textBox3.Location = new System.Drawing.Point(143, 140);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 27);
-            this.textBox3.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(143, 66);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 27);
-            this.textBox2.TabIndex = 3;
+            this.tbxMaNhanVien.Location = new System.Drawing.Point(143, 140);
+            this.tbxMaNhanVien.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxMaNhanVien.Name = "tbxMaNhanVien";
+            this.tbxMaNhanVien.Size = new System.Drawing.Size(121, 27);
+            this.tbxMaNhanVien.TabIndex = 4;
             // 
             // label3
             // 
@@ -338,12 +339,12 @@ namespace _3_GUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 66);
+            this.label1.Location = new System.Drawing.Point(6, 74);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 20);
+            this.label1.Size = new System.Drawing.Size(116, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Mã Hóa Đơn";
+            this.label1.Text = "Tên Khách Hàng";
             // 
             // tabPage2
             // 
@@ -353,10 +354,10 @@ namespace _3_GUI
             this.tabPage2.Controls.Add(this.textBox11);
             this.tabPage2.Controls.Add(this.textBox9);
             this.tabPage2.Controls.Add(this.textBox10);
-            this.tabPage2.Controls.Add(this.textBox7);
-            this.tabPage2.Controls.Add(this.textBox8);
-            this.tabPage2.Controls.Add(this.textBox6);
-            this.tabPage2.Controls.Add(this.textBox5);
+            this.tabPage2.Controls.Add(this.tbxThukhac);
+            this.tabPage2.Controls.Add(this.tbxGiamGia);
+            this.tabPage2.Controls.Add(this.tbxSoluong);
+            this.tabPage2.Controls.Add(this.tbxMaSp);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.label12);
@@ -428,37 +429,37 @@ namespace _3_GUI
             this.textBox10.Size = new System.Drawing.Size(134, 27);
             this.textBox10.TabIndex = 13;
             // 
-            // textBox7
+            // tbxThukhac
             // 
-            this.textBox7.Location = new System.Drawing.Point(149, 278);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(134, 27);
-            this.textBox7.TabIndex = 12;
+            this.tbxThukhac.Location = new System.Drawing.Point(149, 278);
+            this.tbxThukhac.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxThukhac.Name = "tbxThukhac";
+            this.tbxThukhac.Size = new System.Drawing.Size(134, 27);
+            this.tbxThukhac.TabIndex = 12;
             // 
-            // textBox8
+            // tbxGiamGia
             // 
-            this.textBox8.Location = new System.Drawing.Point(146, 204);
-            this.textBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(134, 27);
-            this.textBox8.TabIndex = 11;
+            this.tbxGiamGia.Location = new System.Drawing.Point(146, 204);
+            this.tbxGiamGia.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxGiamGia.Name = "tbxGiamGia";
+            this.tbxGiamGia.Size = new System.Drawing.Size(134, 27);
+            this.tbxGiamGia.TabIndex = 11;
             // 
-            // textBox6
+            // tbxSoluong
             // 
-            this.textBox6.Location = new System.Drawing.Point(146, 128);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(134, 27);
-            this.textBox6.TabIndex = 10;
+            this.tbxSoluong.Location = new System.Drawing.Point(146, 128);
+            this.tbxSoluong.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxSoluong.Name = "tbxSoluong";
+            this.tbxSoluong.Size = new System.Drawing.Size(134, 27);
+            this.tbxSoluong.TabIndex = 10;
             // 
-            // textBox5
+            // tbxMaSp
             // 
-            this.textBox5.Location = new System.Drawing.Point(138, 59);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(134, 27);
-            this.textBox5.TabIndex = 9;
+            this.tbxMaSp.Location = new System.Drawing.Point(138, 59);
+            this.tbxMaSp.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxMaSp.Name = "tbxMaSp";
+            this.tbxMaSp.Size = new System.Drawing.Size(134, 27);
+            this.tbxMaSp.TabIndex = 9;
             // 
             // label14
             // 
@@ -624,8 +625,7 @@ namespace _3_GUI
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbxMaNhanVien;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -647,19 +647,20 @@ namespace _3_GUI
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView dgrid_sp;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.DateTimePicker DateNgayTao;
+        private System.Windows.Forms.TextBox tbxSoTienHoanLai;
+        private System.Windows.Forms.TextBox tbxKhachThanhToan;
+        private System.Windows.Forms.TextBox tbxKhachCanTra;
+        private System.Windows.Forms.TextBox tbxTongTien;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbxThukhac;
+        private System.Windows.Forms.TextBox tbxGiamGia;
+        private System.Windows.Forms.TextBox tbxSoluong;
+        private System.Windows.Forms.TextBox tbxMaSp;
+        private System.Windows.Forms.ComboBox cbxTenKhachhang;
     }
 }

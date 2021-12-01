@@ -16,6 +16,7 @@ namespace _3_GUI
     {
         LoginService loginIService;
         List<Login> logins;
+        public static string email;
         public FormDangNhap()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace _3_GUI
 
                 this.Hide();
                 MessageBox.Show("Đăng nhập thành công", "Thông báo");
+                email = txt_tendangnhap.Text;
                 FrmMain frm = new FrmMain();
                 frm.Show();
 
