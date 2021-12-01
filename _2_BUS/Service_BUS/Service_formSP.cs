@@ -173,5 +173,11 @@ namespace _2_BUS.Service_BUS
 
             return " Sửa Thành Công";
         }
+        public All_List AllListPRO()
+        {
+            All_List a = new All_List(_lstProductses, _lstProductsVariantses, _lsProductsOptionses, _lstVariantsValueses, _lsOptionses, _lstOptionsValueses);
+
+            return a;
+        }
     }
 }
