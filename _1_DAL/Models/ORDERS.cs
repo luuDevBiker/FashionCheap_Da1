@@ -22,6 +22,7 @@ namespace DAL_DataAccessLayers
         [Column(TypeName = "money")]
         public int total_pay{ get; set; }
         public string payments{ get; set; }
+        public int order_status { get; set; }
         public bool status_Delete{ get; set; }
         public virtual CUSTOMERS Customers { get; set; }
         public virtual EMPLOYEES Employees { get; set; }

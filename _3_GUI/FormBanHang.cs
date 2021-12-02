@@ -22,16 +22,7 @@ namespace _3_GUI
         private IQLOrderService _iQLOrder;
         private IQLCustomerService _iqLCustomer;
         private IProduct_Service _iproduct_Service;
-        private List<ORDERS> _lstOrders;
-        private List<ORDER_DETAILS> _lstOrder_Details;
-        private IQLEmployeesService _iqLEmployees;
-        private List<PRODUCTS> _lstProducts;
-        private List<PRODUCTS_VARIANTS> _lstProducts_variants;
-        private List<VARIANTS_VALUES> _lstVariants_values;
-        private List<PRODUCTS_OPTIONS> _lstProducts_option;
-        private List<ProductDetail> _lstProductDetails;
-        private List<CUSTOMERS> _lstcustomerses;
-        private List<EMPLOYEES> _lstEmployeeses;
+       
         private IQLCustomerService _lstCustomerService;
         public string email = FormDangNhap.email;
         private string _id;
@@ -46,14 +37,7 @@ namespace _3_GUI
             _iQLOrder = new QLOrDerService();
             _iqLCustomer = new QLCustomerService();
             PS_BUS = new Service_formSP();
-            _iqLEmployees = new QLEmployessService();
-            _lstOrders = new List<ORDERS>();
-            _lstOrder_Details = new List<ORDER_DETAILS>();
-            _lstProducts = new List<PRODUCTS>();
-            _lstProducts_variants = new List<PRODUCTS_VARIANTS>();
-            _lstVariants_values = new List<VARIANTS_VALUES>();
-            _lstProducts_option = new List<PRODUCTS_OPTIONS>();
-            _lstProductDetails = new List<ProductDetail>();
+            
             _lstCustomerService = new QLCustomerService();
             //_lstOptions = new List<OPTIONS>();
             //_lstOption_values =
@@ -62,7 +46,7 @@ namespace _3_GUI
                 cbxTenKhachhang.Items.Add(x.customer_Name);
                 cbxTenKhachhang.SelectedIndex = 0;
             }
-            tbxMaNhanVien.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault()) ;
+           // tbxMaNhanVien.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault()) ;
             loadSP();
             LoadGioHang();
 
@@ -232,26 +216,26 @@ namespace _3_GUI
                 this.dgrid_giohang.Columns.Add(button);
             }
             dgrid_giohang.Rows.Clear();
-            foreach (var x in _lstProductDetails)
-            {
-                List<string> objcell = new List<string>();
-                objcell.Add(x.Product.products_Name);
-                objcell.Add(x.ProductVariant.Products_Code);
-                objcell.Add("1");
+            //foreach (var x in _lstProductDetails)
+            //{
+            //    List<string> objcell = new List<string>();
+            //    objcell.Add(x.Product.products_Name);
+            //    objcell.Add(x.ProductVariant.Products_Code);
+            //    objcell.Add("1");
 
-                // objcell.Add(x.ProductVariant.quantity + "");
-                //objcell.Add(x.ProductVariant.import_Price + "");
-                //objcell.Add(x.OptionValue.Where(c => c.id_Option == 2).Select(c => c.option_Values)
-                // x.OptionValue.Where(c => c.id_Option == 2 || c.id_Option == 4).Select(c => c.option_Values).ToList().ForEach(y => { objcell.Add(y + ""); });
-                objcell.Add(x.ProductVariant.price + "");
-                // objcell.Add(x.ImageProduct + "");
-                //objcell.Add(x.ProductVariant.id_Product + "");
-                //objcell.Add(x.ProductVariant.id_Variant + "");
-                objcell.Add(Convert.ToString(x.ProductVariant.price * soluong));
+            //    // objcell.Add(x.ProductVariant.quantity + "");
+            //    //objcell.Add(x.ProductVariant.import_Price + "");
+            //    //objcell.Add(x.OptionValue.Where(c => c.id_Option == 2).Select(c => c.option_Values)
+            //    // x.OptionValue.Where(c => c.id_Option == 2 || c.id_Option == 4).Select(c => c.option_Values).ToList().ForEach(y => { objcell.Add(y + ""); });
+            //    objcell.Add(x.ProductVariant.price + "");
+            //    // objcell.Add(x.ImageProduct + "");
+            //    //objcell.Add(x.ProductVariant.id_Product + "");
+            //    //objcell.Add(x.ProductVariant.id_Variant + "");
+            //    objcell.Add(Convert.ToString(x.ProductVariant.price * soluong));
 
-                dgrid_giohang.Rows.Add(objcell.ToArray());
+            //    dgrid_giohang.Rows.Add(objcell.ToArray());
 
-            }
+            //}
             float sum = 0;
             for (int i = 0; i < dgrid_giohang.Rows.Count; i++)
             {
@@ -273,7 +257,7 @@ namespace _3_GUI
 
                 productDetail = PS_BUS.LoadDatafromDAL().FirstOrDefault(c => c.Product.id_Product == a &&
                                                                             c.ProductVariant.id_Variant == b);
-                _lstProductDetails.Add(productDetail);
+               // _lstProductDetails.Add(productDetail);
                 LoadGioHang();
             }
         }
@@ -295,21 +279,21 @@ namespace _3_GUI
         {
             int row = e.RowIndex;
 
-            if (_lstOrder_Details.Where(x =>
-                    x.id_Product == Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[0].Value.ToString())).Select(
-                    x => x.id_Product).FirstOrDefault() !=
-                Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[0].Value.ToString()))
+            //if (_lstOrder_Details.Where(x =>
+            //        x.id_Product == Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[0].Value.ToString())).Select(
+            //        x => x.id_Product).FirstOrDefault() !=
+            //    Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[0].Value.ToString()))
 
-            {
-                //IDHH = Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[0].Value.ToString());
-                //ORDER_DETAILS orderDetails = new ORDER_DETAILS()
-                //{
-                //    id_Order = _iQLOrder.JoinTable().Select(x => x.OrderDetail.id_Order).LastOrDefault() + 1,
-                //     = 1,
-                //    IdthongTinHangHoa = Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[1].Value.ToString()),
-                //    TrangThai = 1,
-                //    IdhoaDon = Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[6].Value.ToString())
-            }
+            //{
+            //    //IDHH = Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[0].Value.ToString());
+            //    //ORDER_DETAILS orderDetails = new ORDER_DETAILS()
+            //    //{
+            //    //    id_Order = _iQLOrder.JoinTable().Select(x => x.OrderDetail.id_Order).LastOrDefault() + 1,
+            //    //     = 1,
+            //    //    IdthongTinHangHoa = Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[1].Value.ToString()),
+            //    //    TrangThai = 1,
+            //    //    IdhoaDon = Convert.ToInt32(dgrid_sanpham.Rows[row].Cells[6].Value.ToString())
+            //}
 
             ;
 
@@ -328,23 +312,23 @@ namespace _3_GUI
         {
             var idKh = _iqLCustomer.GetlstCustomerses().Where(c => c.customer_Name == cbxTenKhachhang.Text)
                 .Select(c => c.id_Customer).FirstOrDefault();
-            var idnv = _iqLEmployees.GetlstEmployeeses().Where(c => c.employee_Name == tbxMaNhanVien.Text)
-                .Select(c => c.id_Employee).FirstOrDefault();
-            ORDERS orders = new ORDERS();
+            //var idnv = _iqLEmployees.GetlstEmployeeses().Where(c => c.employee_Name == tbxMaNhanVien.Text)
+            //    .Select(c => c.id_Employee).FirstOrDefault();
+            //ORDERS orders = new ORDERS();
             //var idOrder = _iQLOrder.GetlstOrderses().Where(c => c.id_Order == tbxMaSp.Text).Select(c => c.id_Order)
             //    .FirstOrDefault();
-            orders.order_Time = Convert.ToDateTime(DateNgayTao.Text);
+          //  orders.order_Time = Convert.ToDateTime(DateNgayTao.Text);
             //orders.discount = Convert.ToInt32(tbxGiamGia.Text);
             //orders.refunds = Convert.ToInt32(tbxSoTienHoanLai.Text);
             //orders.amount_Pay = Convert.ToInt32(tbxKhachCanTra.Text);
             //orders.payments = tbxKhachThanhToan.Text;
-            orders.status_Delete = false;
+          //  orders.status_Delete = false;
             //or.AddORDERS(orders);
             if ((MessageBox.Show("Bạn có chắc chắc sẽ dùng chức năng trên?",
                 "Thông báo !!!!!!!!!!!!!!!",
                 MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                MessageBox.Show(_iQLOrder.add(orders));
+              //  MessageBox.Show(_iQLOrder.add(orders));
             }
 
             LoadGioHang();

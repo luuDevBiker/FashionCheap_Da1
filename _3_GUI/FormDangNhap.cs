@@ -47,12 +47,6 @@ namespace _3_GUI
                 frm.Show();
 
             }
-            else if (logins.Any(c => c.Email == txt_tendangnhap.Text && c.PassWord == txt_Matkhau.Text))
-            {
-                this.Hide();
-                FormQuenMatKhau doiMK = new FormQuenMatKhau(txt_tendangnhap.Text);
-                doiMK.Show();
-            }
             else
             {
                 MessageBox.Show("Thông tin đăng nhập không chính xác, vui lòng kiểm tra lại", "Thông báo");
