@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DuanNhom2\\_3_GUI\\_3_GUI.csproj": {}
+    "E:\\C# (Sharp)\\newsfit\\_3_GUI\\_3_GUI.csproj": {}
   },
   "projects": {
-    "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj": {
+    "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj",
+        "projectUniqueName": "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj",
         "projectName": "_1_DAL",
-        "projectPath": "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj",
+        "projectPath": "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "D:\\DuanNhom2\\_1_DAL\\obj\\",
+        "outputPath": "E:\\C# (Sharp)\\newsfit\\_1_DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -74,14 +74,14 @@
         }
       }
     },
-    "D:\\DuanNhom2\\_2_BUS\\_2_BUS.csproj": {
+    "E:\\C# (Sharp)\\newsfit\\_2_BUS\\_2_BUS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DuanNhom2\\_2_BUS\\_2_BUS.csproj",
+        "projectUniqueName": "E:\\C# (Sharp)\\newsfit\\_2_BUS\\_2_BUS.csproj",
         "projectName": "_2_BUS",
-        "projectPath": "D:\\DuanNhom2\\_2_BUS\\_2_BUS.csproj",
+        "projectPath": "E:\\C# (Sharp)\\newsfit\\_2_BUS\\_2_BUS.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "D:\\DuanNhom2\\_2_BUS\\obj\\",
+        "outputPath": "E:\\C# (Sharp)\\newsfit\\_2_BUS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -98,8 +98,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj": {
-                "projectPath": "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj"
+              "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj": {
+                "projectPath": "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj"
               }
             }
           }
@@ -132,14 +132,14 @@
         }
       }
     },
-    "D:\\DuanNhom2\\_3_GUI\\_3_GUI.csproj": {
+    "E:\\C# (Sharp)\\newsfit\\_3_GUI\\_3_GUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DuanNhom2\\_3_GUI\\_3_GUI.csproj",
+        "projectUniqueName": "E:\\C# (Sharp)\\newsfit\\_3_GUI\\_3_GUI.csproj",
         "projectName": "_3_GUI",
-        "projectPath": "D:\\DuanNhom2\\_3_GUI\\_3_GUI.csproj",
+        "projectPath": "E:\\C# (Sharp)\\newsfit\\_3_GUI\\_3_GUI.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "D:\\DuanNhom2\\_3_GUI\\obj\\",
+        "outputPath": "E:\\C# (Sharp)\\newsfit\\_3_GUI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -156,8 +156,8 @@
           "net5.0-windows7.0": {
             "targetAlias": "net5.0-windows",
             "projectReferences": {
-              "D:\\DuanNhom2\\_2_BUS\\_2_BUS.csproj": {
-                "projectPath": "D:\\DuanNhom2\\_2_BUS\\_2_BUS.csproj"
+              "E:\\C# (Sharp)\\newsfit\\_2_BUS\\_2_BUS.csproj": {
+                "projectPath": "E:\\C# (Sharp)\\newsfit\\_2_BUS\\_2_BUS.csproj"
               }
             }
           }

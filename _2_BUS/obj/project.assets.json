@@ -5725,11 +5725,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\DuanNhom2\\_2_BUS\\_2_BUS.csproj",
+      "projectUniqueName": "E:\\C# (Sharp)\\newsfit\\_2_BUS\\_2_BUS.csproj",
       "projectName": "_2_BUS",
-      "projectPath": "D:\\DuanNhom2\\_2_BUS\\_2_BUS.csproj",
+      "projectPath": "E:\\C# (Sharp)\\newsfit\\_2_BUS\\_2_BUS.csproj",
       "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-      "outputPath": "D:\\DuanNhom2\\_2_BUS\\obj\\",
+      "outputPath": "E:\\C# (Sharp)\\newsfit\\_2_BUS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5746,8 +5746,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj": {
-              "projectPath": "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj"
+            "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj": {
+              "projectPath": "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zcIMqQaleC+wE7A/dmLs3H5eK2HAh9CHBi0S6OyaABUx/D8FL2XfGfDpeSdxMaleYEjyK6XxSdj4h4bZivQUGw==",
+  "dgSpecHash": "FoVNhd6QMxdYNO54zRZVIpmG2HXsmLCCLzeLx8bHZbiJ7ZhnfKk/KSfBN3ZMxcYS0mysUL9cPUv7GTe62fxcsg==",
   "success": true,
-  "projectFilePath": "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj",
+  "projectFilePath": "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MyPC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

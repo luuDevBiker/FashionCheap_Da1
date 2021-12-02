@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj": {}
+    "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj": {}
   },
   "projects": {
-    "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj": {
+    "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj",
+        "projectUniqueName": "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj",
         "projectName": "_1_DAL",
-        "projectPath": "D:\\DuanNhom2\\_1_DAL\\_1_DAL.csproj",
+        "projectPath": "E:\\C# (Sharp)\\newsfit\\_1_DAL\\_1_DAL.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "D:\\DuanNhom2\\_1_DAL\\obj\\",
+        "outputPath": "E:\\C# (Sharp)\\newsfit\\_1_DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
