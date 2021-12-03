@@ -71,7 +71,7 @@ namespace _3_GUI
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Data_HoaDonCho = new System.Windows.Forms.DataGridView();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SĐT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,7 +83,7 @@ namespace _3_GUI
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Data_HoaDonCho)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -111,6 +111,7 @@ namespace _3_GUI
             this.dgrid_sp.TabIndex = 0;
             this.dgrid_sp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellClick);
             this.dgrid_sp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellContentClick);
+            this.dgrid_sp.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellContentDoubleClick);
             // 
             // groupBox1
             // 
@@ -533,7 +534,7 @@ namespace _3_GUI
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Controls.Add(this.Data_HoaDonCho);
             this.groupBox2.Location = new System.Drawing.Point(1127, 20);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
@@ -543,20 +544,20 @@ namespace _3_GUI
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hóa Đơn Chờ";
             // 
-            // dataGridView2
+            // Data_HoaDonCho
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Data_HoaDonCho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Data_HoaDonCho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHD,
             this.TenKH,
             this.SĐT});
-            this.dataGridView2.Location = new System.Drawing.Point(5, 24);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.RowTemplate.Height = 33;
-            this.dataGridView2.Size = new System.Drawing.Size(387, 230);
-            this.dataGridView2.TabIndex = 0;
+            this.Data_HoaDonCho.Location = new System.Drawing.Point(5, 24);
+            this.Data_HoaDonCho.Margin = new System.Windows.Forms.Padding(2);
+            this.Data_HoaDonCho.Name = "Data_HoaDonCho";
+            this.Data_HoaDonCho.RowHeadersWidth = 62;
+            this.Data_HoaDonCho.RowTemplate.Height = 33;
+            this.Data_HoaDonCho.Size = new System.Drawing.Size(387, 230);
+            this.Data_HoaDonCho.TabIndex = 0;
             // 
             // MaHD
             // 
@@ -603,7 +604,7 @@ namespace _3_GUI
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Data_HoaDonCho)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -639,7 +640,7 @@ namespace _3_GUI
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView Data_HoaDonCho;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn SĐT;
