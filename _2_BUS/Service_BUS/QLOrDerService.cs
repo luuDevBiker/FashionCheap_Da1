@@ -101,7 +101,7 @@ namespace _2_BUS.Service_BUS
 
         public List<ORDERS> GetlstOrderses()
         {
-            return null;
+            return _iQlOrderService.getListORDERS();
 
         }
         public void GetDb()

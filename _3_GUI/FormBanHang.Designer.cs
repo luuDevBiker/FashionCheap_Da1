@@ -109,9 +109,7 @@ namespace _3_GUI
             this.dgrid_sp.RowTemplate.Height = 33;
             this.dgrid_sp.Size = new System.Drawing.Size(764, 346);
             this.dgrid_sp.TabIndex = 0;
-            this.dgrid_sp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellClick);
             this.dgrid_sp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellContentClick);
-            this.dgrid_sp.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellContentDoubleClick);
             // 
             // groupBox1
             // 
