@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using _2_BUS.Models;
 using DAL_DataAccessLayers;
+using DAL_DataAccessLayers.IServices;
+using DAL_DataAccessLayers.Service;
 
 
 namespace _3_GUI
@@ -33,7 +35,13 @@ namespace _3_GUI
         private List<VARIANTS_VALUES> _lstVariants_values;
         private List<PRODUCTS_OPTIONS> _lstProducts_option;
         private List<ProductDetail> _lstProductDetails;
+        private IOderService _iQlOrderService;
         public string email = FormDangNhap.email;
+        private IQLOrderService _iCustomer;
+        private IQLOrderService _iEmployee;
+        private IQLOrderService _iQlProduct;
+        private IQLOrderService _iQlOrderDetailService;
+
         private string _id;
 
         private IProduct_Service PS_BUS;
@@ -44,6 +52,10 @@ namespace _3_GUI
         {
             InitializeComponent();
             _iQLOrder = new QLOrDerService();
+            _iQlOrderDetailService = new QLOrDerService();
+            _iCustomer = new QLOrDerService();
+            _iQlProduct = new QLOrDerService();
+            _iEmployee = new QLOrDerService();
             _iqLCustomer = new QLCustomerService();
             PS_BUS = new Service_formSP();
             _lstOrders = new List<ORDERS>();
@@ -57,7 +69,7 @@ namespace _3_GUI
             _lstVariants_values = new List<VARIANTS_VALUES>();
             _lstProducts_option = new List<PRODUCTS_OPTIONS>();
             _lstProductDetails = new List<ProductDetail>();
-
+            _iQlOrderService = new ORDERS_Service();
             _iproduct_Service = new Service_formSP();
             //_lstOptions = new List<OPTIONS>();
             //_lstOption_values =
@@ -269,11 +281,11 @@ namespace _3_GUI
         void loadHoaDonCho()
         {
             Data_HoaDonCho.Rows.Clear();
-            var lst = _lstOrders.Where(c => c.status_Delete == false).ToList();
+            var lst = _iQlOrderService.getListORDERS().Where(c => c.order_status == 0).ToList();
             foreach (var x in lst)
             {
-                Data_HoaDonCho.Rows.Add(x.id_Order, _lstcustomerses.Where(c => c.id_Customer == x.id_Customer).Select(c => c.customer_Name),
-                    _lstcustomerses.Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone));
+                Data_HoaDonCho.Rows.Add(x.id_Order, _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.customer_Name).FirstOrDefault(),
+                    _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone).FirstOrDefault());
             }
         }
         private void dgrid_sp_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -375,7 +387,11 @@ namespace _3_GUI
             LoadGioHang();
         }
 
-       
+        private void tbxKhachThanhToan_TextChanged(object sender, EventArgs e)
+        {
+            tbxSoTienHoanLai.Text = ((Convert.ToInt32(tbxKhachThanhToan.Text)) - (Convert.ToInt32(tbxKhachCanTra.Text)))
+                .ToString();
+        }
     }
 }
 

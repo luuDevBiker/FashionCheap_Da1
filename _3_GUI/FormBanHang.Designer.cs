@@ -217,6 +217,7 @@ namespace _3_GUI
             this.tbxKhachThanhToan.Name = "tbxKhachThanhToan";
             this.tbxKhachThanhToan.Size = new System.Drawing.Size(121, 27);
             this.tbxKhachThanhToan.TabIndex = 14;
+            this.tbxKhachThanhToan.TextChanged += new System.EventHandler(this.tbxKhachThanhToan_TextChanged);
             // 
             // tbxKhachCanTra
             // 
@@ -546,6 +547,7 @@ namespace _3_GUI
             // 
             // Data_HoaDonCho
             // 
+            this.Data_HoaDonCho.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Data_HoaDonCho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Data_HoaDonCho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHD,
@@ -564,21 +566,18 @@ namespace _3_GUI
             this.MaHD.HeaderText = "Mã Hóa Đơn";
             this.MaHD.MinimumWidth = 8;
             this.MaHD.Name = "MaHD";
-            this.MaHD.Width = 150;
             // 
             // TenKH
             // 
             this.TenKH.HeaderText = "Tên Khách Hàng";
             this.TenKH.MinimumWidth = 8;
             this.TenKH.Name = "TenKH";
-            this.TenKH.Width = 150;
             // 
             // SĐT
             // 
             this.SĐT.HeaderText = "Số Điện Thoại";
             this.SĐT.MinimumWidth = 8;
             this.SĐT.Name = "SĐT";
-            this.SĐT.Width = 150;
             // 
             // FormBanHang
             // 

@@ -17,6 +17,10 @@ namespace _3_GUI
 {
     public partial class FrmHoaDon : Form
     {
+        private IQLOrderService _iQLOrder;
+        private IQLCustomerService _iqLCustomer;
+        private IQLEmployeesService _iqLEmployees;
+        private IProductService _iqlProductService;
         private List<CUSTOMERS> _lstcustomerses;
         private List<EMPLOYEES> _lstEmployeeses;
         private List<VARIANTS_VALUES> _lsVariantsValueses;
@@ -26,7 +30,7 @@ namespace _3_GUI
         private List<PRODUCTS> _lstProductses;
         private IOderService or = new ORDERS_Service();
         private IOderService _iOderService;
-        
+
         private int id_Hoadon;
         public FrmHoaDon()
         {
@@ -38,9 +42,13 @@ namespace _3_GUI
             _lstOrderDetailses = new List<ORDER_DETAILS>();
             _lstProductsVariantses = new List<PRODUCTS_VARIANTS>();
             _lstProductses = new List<PRODUCTS>();
+            _iQLOrder = new QLOrDerService();
+            _iqLCustomer = new QLCustomerService();
+            _iqLEmployees = new QLEmployessService();
+            _iOderService = new ORDERS_Service();
+            _iqlProductService = new Product_Service();
            // _lstCustomerService = new QLCustomerService();
-           
-            loadata();
+           loadata();
         }
         
         private void tbDark_CheckedChanged(object sender, EventArgs e)
@@ -98,7 +106,7 @@ namespace _3_GUI
             //           join hdct in _lstOrderDetailses on hd.id_Order equals hdct.id_Order
             //           join sp in _lsVariantsValueses on hdct.id_Variant equals sp.id_Variant
             //           join spct in _lstProductsVariantses on sp.id_Variant equals spct.id_Variant
-            //           join Sanpham in _lstProductses on spct.id_Product equals Sanpham.id_Product 
+            //           join Sanpham in _lstProductses on spct.id_Product equals Sanpham.id_Product
             //           select new
             //           {
             //               id = hd.id_Order,
@@ -106,7 +114,7 @@ namespace _3_GUI
             //               SoLuong = sp.quantity,
             //               kh = kh.customer_Name,
             //               NGayMuaHang = hd.order_Time,
-            //               SoTienPhaiTra =  hd.amount_Pay,
+            //               SoTienPhaiTra = hd.amount_Pay,
             //               SoTienHoanLai = hd.refunds,
             //               GiamGia = hd.discount,
             //               ThanhToan = hd.payments,
@@ -155,8 +163,8 @@ namespace _3_GUI
             var hoadon = _lstOrderses.Where(c => c.id_Order == id_Hoadon).FirstOrDefault();
             tbxSanPham.Text = Data_HoaDon.Rows[index].Cells[1].Value.ToString();
             tbxSoLuong.Text = Data_HoaDon.Rows[index].Cells[2].Value.ToString();
-            tbxNhanVienThanhToan.Text = Data_HoaDon.Rows[index].Cells[3].Value.ToString();
-            tbxKhachHang.Text = Data_HoaDon.Rows[index].Cells[4].Value.ToString();
+            tbxNvThanhToan.Text = Data_HoaDon.Rows[index].Cells[3].Value.ToString();
+            cbxKhachHang.Text = Data_HoaDon.Rows[index].Cells[4].Value.ToString();
             datetimeNgayMuaHang.Text = Data_HoaDon.Rows[index].Cells[5].Value.ToString();
             tbxSoTienTra.Text = Data_HoaDon.Rows[index].Cells[6].Value.ToString();
             tbxSoTienDua.Text = Data_HoaDon.Rows[index].Cells[7].Value.ToString();
@@ -181,15 +189,18 @@ namespace _3_GUI
             //orderDetails.quantity = Convert.ToInt32(tbxSoluong.Text);
             //orderDetails.Discount = tbxChietkhau.Text;
             ORDERS orders = new ORDERS();
-            orders.id_Customer = _lstEmployeeses.Where(c => c.employee_Name == tbxKhachHang.Text)
+            orders.id_Customer = _lstEmployeeses.Where(c => c.employee_Name == cbxKhachHang.Text)
                 .Select(c => c.id_Employee).FirstOrDefault();
-            orders.id_Employee = _lstcustomerses.Where(c => c.customer_Name == tbxKhachHang.Text)
+            orders.id_Employee = _lstcustomerses.Where(c => c.customer_Name == cbxKhachHang.Text)
                 .Select(c => c.id_Customer).FirstOrDefault();
-            //orders.id_Order = _lstOrderses.Where(c=>c.)
-            orders.order_Time = Convert.ToDateTime(datetimeNgayMuaHang.Text);
-            orders.discount =Convert.ToInt32( tbxTrieuKhau.Text);
-            orders.amount_Pay =Convert.ToInt32( tbxSoTienTra.Text);
-            orders.payments = tbxThanhToan.Text;
+            orders.order_Time = Convert.ToDateTime(DateTime.Now);
+            orders.discount = 0;
+            orders.refunds = 0;
+            orders.amount_Pay = 0;
+            orders.paying_Customer = 0;
+            orders.total_pay = 0;
+            orders.payments = "0";
+            orders.order_status = 0;
             orders.status_Delete = false;
             //or.AddORDERS(orders);
             if ((MessageBox.Show("Bạn có chắc chắc sẽ dùng chức năng trên?",
@@ -233,22 +244,32 @@ namespace _3_GUI
 
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            ORDERS orders = new ORDERS();
-            orders.id_Customer = _lstEmployeeses.Where(c => c.employee_Name == tbxKhachHang.Text)
-                .Select(c => c.id_Employee).FirstOrDefault();
-            orders.id_Employee = _lstcustomerses.Where(c => c.customer_Name == tbxKhachHang.Text)
+            var idKh = _iqLCustomer.GetlstCustomerses().Where(c => c.customer_Name == cbxKhachHang.Text)
                 .Select(c => c.id_Customer).FirstOrDefault();
-            orders.order_Time = Convert.ToDateTime(datetimeNgayMuaHang.Text);
-            orders.discount = Convert.ToInt32(tbxTrieuKhau.Text);
-            orders.amount_Pay =Convert.ToInt32( tbxSoTienTra.Text);
-            orders.payments = tbxThanhToan.Text;
+            var idnv = _iqLEmployees.GetlstEmployeeses().Where(c => c.employee_Name == tbxNvThanhToan.Text)
+                .Select(c => c.id_Employee).FirstOrDefault();
+
+            ORDERS orders = new ORDERS();
+            orders.id_Customer = idKh;
+            orders.id_Employee = idnv;
+            //var idOrder = _iQLOrder.GetlstOrderses().Where(c => c.id_Order == Convert.ToInt32()).Select(c => c.id_Order)
+            //    .FirstOrDefault();
+            orders.order_Time = Convert.ToDateTime(DateTime.Now);
+            orders.discount = 0;
+            orders.refunds = 0;
+            orders.amount_Pay = 0;
+            orders.paying_Customer = 0;
+            orders.total_pay = 0;
+            orders.payments = "0";
+            orders.order_status = 0;
             orders.status_Delete = false;
             //or.AddORDERS(orders);
             if ((MessageBox.Show("Bạn có chắc chắc sẽ dùng chức năng trên?",
                 "Thông báo !!!!!!!!!!!!!!!",
                 MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                MessageBox.Show(_iOderService.AddORDERS(orders));
+                _iQLOrder.add(orders);
+                MessageBox.Show(_iQLOrder.Save());
             }
             loadata();
         }

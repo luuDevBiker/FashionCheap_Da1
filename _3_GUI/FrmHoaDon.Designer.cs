@@ -32,6 +32,7 @@ namespace _3_GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHoaDon));
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbxNvThanhToan = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.datetimeNgayMuaHang = new System.Windows.Forms.DateTimePicker();
             this.btnHuy = new System.Windows.Forms.Button();
@@ -44,8 +45,6 @@ namespace _3_GUI
             this.tbxGiamGia = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.tbxPhuongThucThanhToan = new System.Windows.Forms.TextBox();
-            this.tbxKhachHang = new System.Windows.Forms.TextBox();
-            this.tbxNhanVienThanhToan = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tbxTimKiem = new System.Windows.Forms.TextBox();
@@ -67,6 +66,7 @@ namespace _3_GUI
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbxKhachHang = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Data_HoaDon)).BeginInit();
@@ -83,6 +83,8 @@ namespace _3_GUI
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cbxKhachHang);
+            this.panel1.Controls.Add(this.tbxNvThanhToan);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.datetimeNgayMuaHang);
             this.panel1.Controls.Add(this.btnHuy);
@@ -95,8 +97,6 @@ namespace _3_GUI
             this.panel1.Controls.Add(this.tbxGiamGia);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.tbxPhuongThucThanhToan);
-            this.panel1.Controls.Add(this.tbxKhachHang);
-            this.panel1.Controls.Add(this.tbxNhanVienThanhToan);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.tbxTimKiem);
@@ -125,11 +125,19 @@ namespace _3_GUI
             this.panel1.Size = new System.Drawing.Size(971, 602);
             this.panel1.TabIndex = 22;
             // 
+            // tbxNvThanhToan
+            // 
+            this.tbxNvThanhToan.Location = new System.Drawing.Point(162, 108);
+            this.tbxNvThanhToan.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxNvThanhToan.Name = "tbxNvThanhToan";
+            this.tbxNvThanhToan.Size = new System.Drawing.Size(121, 27);
+            this.tbxNvThanhToan.TabIndex = 69;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(658, 314);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 25);
             this.pictureBox1.TabIndex = 68;
@@ -247,22 +255,6 @@ namespace _3_GUI
             this.tbxPhuongThucThanhToan.Name = "tbxPhuongThucThanhToan";
             this.tbxPhuongThucThanhToan.Size = new System.Drawing.Size(121, 27);
             this.tbxPhuongThucThanhToan.TabIndex = 57;
-            // 
-            // tbxKhachHang
-            // 
-            this.tbxKhachHang.Location = new System.Drawing.Point(162, 151);
-            this.tbxKhachHang.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxKhachHang.Name = "tbxKhachHang";
-            this.tbxKhachHang.Size = new System.Drawing.Size(121, 27);
-            this.tbxKhachHang.TabIndex = 56;
-            // 
-            // tbxNhanVienThanhToan
-            // 
-            this.tbxNhanVienThanhToan.Location = new System.Drawing.Point(162, 103);
-            this.tbxNhanVienThanhToan.Margin = new System.Windows.Forms.Padding(2);
-            this.tbxNhanVienThanhToan.Name = "tbxNhanVienThanhToan";
-            this.tbxNhanVienThanhToan.Size = new System.Drawing.Size(121, 27);
-            this.tbxNhanVienThanhToan.TabIndex = 55;
             // 
             // label10
             // 
@@ -493,6 +485,14 @@ namespace _3_GUI
             this.label1.TabIndex = 33;
             this.label1.Text = "Ngày mua hàng";
             // 
+            // cbxKhachHang
+            // 
+            this.cbxKhachHang.FormattingEnabled = true;
+            this.cbxKhachHang.Location = new System.Drawing.Point(162, 151);
+            this.cbxKhachHang.Name = "cbxKhachHang";
+            this.cbxKhachHang.Size = new System.Drawing.Size(151, 28);
+            this.cbxKhachHang.TabIndex = 70;
+            // 
             // FrmHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -524,8 +524,6 @@ namespace _3_GUI
         private System.Windows.Forms.TextBox tbxGiamGia;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbxPhuongThucThanhToan;
-        private System.Windows.Forms.TextBox tbxKhachHang;
-        private System.Windows.Forms.TextBox tbxNhanVienThanhToan;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbxTimKiem;
@@ -552,5 +550,7 @@ namespace _3_GUI
         private System.Windows.Forms.Button btnTaoHoaDon;
         private System.Windows.Forms.DateTimePicker datetimeNgayMuaHang;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox tbxNvThanhToan;
+        private System.Windows.Forms.ComboBox cbxKhachHang;
     }
 }
