@@ -207,6 +207,7 @@ namespace _3_GUI
 
         void LoadGioHang()
         {
+            int soluong = 1;
             dgrid_giohang.ColumnCount = 5;
             var row = 0;
             dgrid_giohang.Columns[row++].Name = "Tên Sản Phẩm";
@@ -228,26 +229,20 @@ namespace _3_GUI
             //    dgrid_giohang.Columns[row++].Visible = false;
             //    dgrid_giohang.Columns[row++].Name = x.option_Name;
             //});
-            DataGridViewButtonColumn Add = new DataGridViewButtonColumn();
+            DataGridViewComboBoxColumn comboBox = new DataGridViewComboBoxColumn();
             {
-                Add.Name = "Add";
-                Add.HeaderText = "";
-                Add.Text = ("Add");
-                Add.UseColumnTextForButtonValue = true;
-                this.dgrid_giohang.Columns.Add(Add);
-            }
-            DataGridViewButtonColumn Remove = new DataGridViewButtonColumn();
-            {
-                Remove.Name = "Remove";
-                Remove.HeaderText = "";
-                Remove.Text = ("Remove");
-                Remove.UseColumnTextForButtonValue = true;
-                this.dgrid_giohang.Columns.Add(Remove);
+                comboBox.Name = "es";
+                comboBox.HeaderText = "Chức năng";
+                comboBox.Items.Add("Add");
+                comboBox.Items.Add("Update");
+                comboBox.Items.Add("Delete");
+                dgrid_giohang.Columns.Add(comboBox);
             }
             DataGridViewButtonColumn button = new DataGridViewButtonColumn();
             {
                 button.Name = "Delete";
-                button.HeaderText = "";
+                button.HeaderText = "Delete";
+
                 button.Text = ("Delete");
                 button.UseColumnTextForButtonValue = true;
                 this.dgrid_giohang.Columns.Add(button);
@@ -258,7 +253,7 @@ namespace _3_GUI
                 List<string> objcell = new List<string>();
                 objcell.Add(x.Product.products_Name);
                 objcell.Add(x.ProductVariant.Products_Code);
-                objcell.Add(x.ProductVariant.quantity + "");
+                objcell.Add("1");
 
                 // objcell.Add(x.ProductVariant.quantity + "");
                 //objcell.Add(x.ProductVariant.import_Price + "");
@@ -268,7 +263,7 @@ namespace _3_GUI
                 // objcell.Add(x.ImageProduct + "");
                 //objcell.Add(x.ProductVariant.id_Product + "");
                 //objcell.Add(x.ProductVariant.id_Variant + "");
-                objcell.Add(Convert.ToString(x.ProductVariant.price * x.ProductVariant.quantity));
+                objcell.Add(Convert.ToString(x.ProductVariant.price * soluong));
 
                 dgrid_giohang.Rows.Add(objcell.ToArray());
 
@@ -293,6 +288,8 @@ namespace _3_GUI
                     _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone).FirstOrDefault());
             }
         }
+
+
         private void dgrid_sp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = e.RowIndex;
@@ -303,36 +300,25 @@ namespace _3_GUI
                 ProductDetail productDetail = new ProductDetail();
 
                 productDetail = PS_BUS.LoadDatafromDAL().FirstOrDefault(c => c.Product.id_Product == a &&
-                                                                            c.ProductVariant.id_Variant == b);
-                var checkitem = _lstProductDetails.FindIndex(c => c.Product.id_Product == a &&
-                                                                            c.ProductVariant.id_Variant == b);
-                if (checkitem < 0)
-                {
-                    productDetail.ProductVariant.quantity = 1;
-                    _lstProductDetails.Add(productDetail);
-
-                }
-                else
-                {
-                    _lstProductDetails[checkitem].ProductVariant.quantity = _lstProductDetails[checkitem].ProductVariant.quantity += 1;
-                }
+                                                                             c.ProductVariant.id_Variant == b);
+                _lstProductDetails.Add(productDetail);
                 LoadGioHang();
             }
         }
-        private void dgrid_giohang_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int roxIndex = e.RowIndex;
-            var _id = int.Parse(dgrid_giohang.Rows[roxIndex].Cells[0].Value.ToString());
-            var a = int.Parse(dgrid_giohang.Rows[roxIndex].Cells[2].Value.ToString()) + 1;
-            PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == _id).Select(c => c.ProductVariant.quantity = a);
-            LoadGioHang();
-        }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void dgrid_sp_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show(
-                "" + _iQLOrder.JoinTable().Select(x => x.ProductDetail.Product.id_Product).FirstOrDefault() + "",
-                "Thông báo");
+            int row = e.RowIndex;
+            if (e.ColumnIndex == dgrid_sp.Columns["select"].Index)
+            {
+                int a = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Product"].Value.ToString());
+                int b = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Variant"].Value.ToString());
+                ProductDetail productDetail = new ProductDetail();
+
+                productDetail = PS_BUS.LoadDatafromDAL().FirstOrDefault(c => c.Product.id_Product == a && c.ProductVariant.id_Variant == b);
+                _lstProductDetails.Add(productDetail);
+                LoadGioHang();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -373,15 +359,18 @@ namespace _3_GUI
             LoadGioHang();
         }
 
-<<<<<<< HEAD
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "" + _iQLOrder.JoinTable().Select(x => x.ProductDetail.Product.id_Product).FirstOrDefault() + "",
+                "Thông báo");
+        }
+
         private void tbxKhachThanhToan_TextChanged(object sender, EventArgs e)
         {
             tbxSoTienHoanLai.Text = ((Convert.ToInt32(tbxKhachThanhToan.Text)) - (Convert.ToInt32(tbxKhachCanTra.Text)))
                 .ToString();
         }
-=======
-
->>>>>>> f2244d0c7b346a337af7adf1cabc2b5d365863ea
     }
 }
 

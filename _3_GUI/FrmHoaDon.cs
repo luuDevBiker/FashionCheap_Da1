@@ -47,8 +47,8 @@ namespace _3_GUI
             _iqLEmployees = new QLEmployessService();
             _iOderService = new ORDERS_Service();
             _iqlProductService = new Product_Service();
-           // _lstCustomerService = new QLCustomerService();
-           loadata();
+            // _lstCustomerService = new QLCustomerService();
+            loadata();
         }
         
         private void tbDark_CheckedChanged(object sender, EventArgs e)

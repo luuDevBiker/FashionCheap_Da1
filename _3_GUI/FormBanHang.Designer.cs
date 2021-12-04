@@ -110,6 +110,7 @@ namespace _3_GUI
             this.dgrid_sp.Size = new System.Drawing.Size(764, 346);
             this.dgrid_sp.TabIndex = 0;
             this.dgrid_sp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellContentClick);
+            this.dgrid_sp.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellContentDoubleClick);
             // 
             // groupBox1
             // 
@@ -135,7 +136,6 @@ namespace _3_GUI
             this.dgrid_giohang.RowTemplate.Height = 33;
             this.dgrid_giohang.Size = new System.Drawing.Size(786, 358);
             this.dgrid_giohang.TabIndex = 0;
-            this.dgrid_giohang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_giohang_CellClick);
             // 
             // textBox1
             // 

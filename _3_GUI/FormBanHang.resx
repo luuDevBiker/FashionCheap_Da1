@@ -61,7 +61,7 @@
   <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        rgAAAK4B+ff3XQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMHSURBVFhH7ddp
+        rAAAAKwBhgk01AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMHSURBVFhH7ddp
         qExhHMfxa8+SoqQo2wtRSiIhS/YIiUheINlKxIubJCJeyBIpQkrKLiK8EGVLlC1L9rVEZCdbuL7fO/Pc
         zp07c+fMubzzq0935tw5Z/7nPOsUkZIsxqA5VuJx+lgur7AdbZEoXqQ1GqWdwjd8hxfugvC/TI3RFevw
         Hv1RcCzAi4UcxwzULX0XPyNgEQNK3xWQbAXYBPni0xmbelmW4Si4iKQF9MQ7nIDnBC/wJeNYZRIVUCv9
@@ -101,7 +101,7 @@
   <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        rgAAAK4B+ff3XQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMHSURBVFhH7ddp
+        rAAAAKwBhgk01AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMHSURBVFhH7ddp
         qExhHMfxa8+SoqQo2wtRSiIhS/YIiUheINlKxIubJCJeyBIpQkrKLiK8EGVLlC1L9rVEZCdbuL7fO/Pc
         zp07c+fMubzzq0935tw5Z/7nPOsUkZIsxqA5VuJx+lgur7AdbZEoXqQ1GqWdwjd8hxfugvC/TI3RFevw
         Hv1RcCzAi4UcxwzULX0XPyNgEQNK3xWQbAXYBPni0xmbelmW4Si4iKQF9MQ7nIDnBC/wJeNYZRIVUCv9
@@ -131,6 +131,15 @@
         vbVYJreCDcMzT0EN6zyx1LLsD6WcXivBo5MhAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="MaHD.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TenKH.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="SĐT.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="MaHD.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
