@@ -133,3 +133,18 @@ C:\Users\Kien\OneDrive\Desktop\DuAn 1\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.Copy
 C:\Users\Kien\OneDrive\Desktop\DuAn 1\_2_BUS\obj\Debug\net5.0\_2_BUS.dll
 C:\Users\Kien\OneDrive\Desktop\DuAn 1\_2_BUS\obj\Debug\net5.0\ref\_2_BUS.dll
 C:\Users\Kien\OneDrive\Desktop\DuAn 1\_2_BUS\obj\Debug\net5.0\_2_BUS.pdb
+D:\FashionCheap_Da1\_2_BUS\bin\Debug\net5.0\_2_BUS.deps.json
+D:\FashionCheap_Da1\_2_BUS\bin\Debug\net5.0\_2_BUS.dll
+D:\FashionCheap_Da1\_2_BUS\bin\Debug\net5.0\ref\_2_BUS.dll
+D:\FashionCheap_Da1\_2_BUS\bin\Debug\net5.0\_2_BUS.pdb
+D:\FashionCheap_Da1\_2_BUS\bin\Debug\net5.0\_1_DAL.dll
+D:\FashionCheap_Da1\_2_BUS\bin\Debug\net5.0\_1_DAL.pdb
+D:\FashionCheap_Da1\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.AssemblyReference.cache
+D:\FashionCheap_Da1\_2_BUS\obj\Debug\net5.0\_2_BUS.GeneratedMSBuildEditorConfig.editorconfig
+D:\FashionCheap_Da1\_2_BUS\obj\Debug\net5.0\_2_BUS.AssemblyInfoInputs.cache
+D:\FashionCheap_Da1\_2_BUS\obj\Debug\net5.0\_2_BUS.AssemblyInfo.cs
+D:\FashionCheap_Da1\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CoreCompileInputs.cache
+D:\FashionCheap_Da1\_2_BUS\obj\Debug\net5.0\_2_BUS.csproj.CopyComplete
+D:\FashionCheap_Da1\_2_BUS\obj\Debug\net5.0\_2_BUS.dll
+D:\FashionCheap_Da1\_2_BUS\obj\Debug\net5.0\ref\_2_BUS.dll
+D:\FashionCheap_Da1\_2_BUS\obj\Debug\net5.0\_2_BUS.pdb
