@@ -79,6 +79,12 @@ namespace _3_GUI
                 cbxTenKhachhang.SelectedIndex = 0;
             }
             tbxMaNhanVien.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault());
+            foreach (var x in _lstCustomerService.GetlstCustomerses())
+            {
+                cbxKhachHang1.Items.Add(x.customer_Name);
+                cbxKhachHang1.SelectedIndex = 0;
+            }
+            tbxMaNhanVien.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault());
             loadSP();
             LoadGioHang();
             loadHoaDonCho();
@@ -366,10 +372,50 @@ namespace _3_GUI
                 "Thông báo");
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "" + _iQLOrder.JoinTable().Select(x => x.ProductDetail.Product.id_Product).FirstOrDefault() + "",
+                "Thông báo");
+            EMPLOYEES employees = new EMPLOYEES();
+            employees.address = tbxDiaChi.Text;
+            employees.NumberPhone = tbxSdt.Text;
+
+            MessageBox.Show("Bạn có muốn in hóa đơn không", "Có");
+        }
+
         private void tbxKhachThanhToan_TextChanged(object sender, EventArgs e)
         {
             tbxSoTienHoanLai.Text = ((Convert.ToInt32(tbxKhachThanhToan.Text)) - (Convert.ToInt32(tbxKhachCanTra.Text)))
                 .ToString();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            loadataSearch(tbxTimKiem.Text);
+        }
+        void loadataSearch(string Tensp)
+        {
+            PS_BUS.LoadDatafromDAL();
+            dgrid_sp.ColumnCount = 6;
+            var row = 0;
+            dgrid_sp.Columns[0].Name = "ID_Product";
+            dgrid_sp.Columns["ID_Product"].Visible = false;
+            dgrid_sp.Columns[1].Name = "ID_Variant";
+            dgrid_sp.Columns["ID_Variant"].Visible = false;
+            dgrid_sp.Columns[2].Name = "Tên Sản Phẩm";
+            dgrid_sp.Columns[3].Name = "Mã Sản Phẩm";
+            dgrid_sp.Columns[4].Name = "Giá Bán";
+            dgrid_sp.Columns[5].Name = "Tồn Kho";
+            foreach (var x in PS_BUS.LoadDatafromDAL())
+            {
+                dgrid_sp.Rows.Add(x.Product, x.ProductVariant);
+            }
         }
     }
 }
