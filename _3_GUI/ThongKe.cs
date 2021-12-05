@@ -34,7 +34,7 @@ namespace _3_GUI
 
         private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Thongketheongay(), sender);
+            OpenChildForm(new FrmThongketheongay(), sender);
         }
 
         private void báoCáoThốngKêDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)

@@ -56,7 +56,7 @@ namespace _3_GUI
         {
             var row = 0;
             dgvDoanhThu.ColumnCount = 4;
-            dgvDoanhThu.Columns[row++].Name = "Ngày";
+            dgvDoanhThu.Columns[row++].Name = "Tháng";
             dgvDoanhThu.Columns[row++].Name = "Doanh thu";
             dgvDoanhThu.Columns[row++].Name = "Tiền vốn";
             dgvDoanhThu.Columns[row++].Name = "Lợi nhuận";
@@ -94,7 +94,7 @@ namespace _3_GUI
         {
             var row = 0;
             dgvDoanhThu.ColumnCount = 4;
-            dgvDoanhThu.Columns[row++].Name = "Ngày";
+            dgvDoanhThu.Columns[row++].Name = "Năm";
             dgvDoanhThu.Columns[row++].Name = "Doanh thu";
             dgvDoanhThu.Columns[row++].Name = "Tiền vốn";
             dgvDoanhThu.Columns[row++].Name = "Lợi nhuận";

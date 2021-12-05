@@ -18,6 +18,7 @@ namespace _2_BUS.Service_BUS
         private IProduct_Service _iQlProduct;
         private IEmployeeService _iEmployee;
         private ICustomerService _iCustomer;
+        private IProductService _iProductService;
         public List<CUSTOMERS> _lstCustomer;
         public List<EMPLOYEES> _lstEmployee;
         private List<ORDERS> _lstOrderses;
@@ -29,6 +30,7 @@ namespace _2_BUS.Service_BUS
 
         public QLOrDerService()
         {
+            _iProductService = new Product_Service();
             _iCustomer = new CUSTOMERS_Service();
             _iQlOrderService = new ORDERS_Service();
             _iQlOrderDetailService = new ORDER_DETAILS_Service();
@@ -120,6 +122,12 @@ namespace _2_BUS.Service_BUS
         public List<PRODUCTS_VARIANTS> getListProduct()
         {
             return _iProductVariant.getListProductses();
+        }
+
+        public List<PRODUCTS> getProduct()
+        {
+            var lst = _iProductService.getListProductses();
+            return lst;
         }
     }
 }

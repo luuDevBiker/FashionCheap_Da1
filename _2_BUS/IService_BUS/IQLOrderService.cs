@@ -15,6 +15,7 @@ namespace _2_BUS.IService_BUS
         public string Remove(ORDERS orders);
         public string Save();
         public List<PRODUCTS_VARIANTS> getListProduct();
+        public List<PRODUCTS> getProduct();
         public List<ORDERS> Search(string nv);
         public List<ORDERS> GetlstOrderses();
         public void GetDb();

@@ -33,7 +33,6 @@ namespace _3_GUI
             this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoThốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.thốngKêLợiNhuậnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelhome = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -44,8 +43,7 @@ namespace _3_GUI
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.thốngKêToolStripMenuItem,
             this.báoCáoThốngKêDoanhThuToolStripMenuItem,
-            this.thốngKêDoanhThuToolStripMenuItem,
-            this.thốngKêLợiNhuậnToolStripMenuItem});
+            this.thốngKêDoanhThuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -56,7 +54,7 @@ namespace _3_GUI
             // thốngKêToolStripMenuItem
             // 
             this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(220, 24);
+            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
             this.thốngKêToolStripMenuItem.Text = "Thống kê bán hàng theo ngày";
             this.thốngKêToolStripMenuItem.Click += new System.EventHandler(this.thốngKêToolStripMenuItem_Click);
             // 
@@ -74,18 +72,11 @@ namespace _3_GUI
             this.thốngKêDoanhThuToolStripMenuItem.Text = "Thống kê sản phẩm";
             this.thốngKêDoanhThuToolStripMenuItem.Click += new System.EventHandler(this.thốngKêDoanhThuToolStripMenuItem_Click);
             // 
-            // thốngKêLợiNhuậnToolStripMenuItem
-            // 
-            this.thốngKêLợiNhuậnToolStripMenuItem.Name = "thốngKêLợiNhuậnToolStripMenuItem";
-            this.thốngKêLợiNhuậnToolStripMenuItem.Size = new System.Drawing.Size(149, 24);
-            this.thốngKêLợiNhuậnToolStripMenuItem.Text = "Thống kê lợi nhuận";
-            this.thốngKêLợiNhuậnToolStripMenuItem.Click += new System.EventHandler(this.thốngKêLợiNhuậnToolStripMenuItem_Click);
-            // 
             // panelhome
             // 
             this.panelhome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelhome.Location = new System.Drawing.Point(0, 28);
-            this.panelhome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelhome.Margin = new System.Windows.Forms.Padding(2);
             this.panelhome.Name = "panelhome";
             this.panelhome.Size = new System.Drawing.Size(1004, 557);
             this.panelhome.TabIndex = 1;
@@ -99,7 +90,7 @@ namespace _3_GUI
             this.Controls.Add(this.panelhome);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormThongKe";
             this.Text = "ThongKe";
             this.Load += new System.EventHandler(this.ThongKe_Load);
@@ -116,7 +107,6 @@ namespace _3_GUI
         private System.Windows.Forms.ToolStripMenuItem thốngKêToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem báoCáoThốngKêDoanhThuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thốngKêDoanhThuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem thốngKêLợiNhuậnToolStripMenuItem;
         private System.Windows.Forms.Panel panelhome;
     }
 }

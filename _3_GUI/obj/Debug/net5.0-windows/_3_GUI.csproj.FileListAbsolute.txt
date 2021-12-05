@@ -989,7 +989,6 @@ D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrnLocThuongHieu.
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FromExecl.resources
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.GuiMailHangLoat.resources
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.Properties.Resources.resources
-D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.Thongketheongay.resources
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.csproj.GenerateResource.cache
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.GeneratedMSBuildEditorConfig.editorconfig
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.AssemblyInfoInputs.cache
@@ -1002,3 +1001,4 @@ D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.pdb
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.genruntimeconfig.cache
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmBaoCaoDoanhYhu.resources
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FormThongKe.resources
+D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmThongketheongay.resources
