@@ -24,6 +24,7 @@ namespace _2_BUS.Service_BUS
         private List<ORDER_DETAILS> _lstOrderDetailses;
         public List<Order_OrderDetail> _lstOrder_OrderDetail;
         public List<ProductDetail> _lstProductDetail;
+        private IProductVariantservice _iProductVariant;
         public static bool _statusSave = true;
 
         public QLOrDerService()
@@ -34,6 +35,7 @@ namespace _2_BUS.Service_BUS
             _lstOrder_OrderDetail = new List<Order_OrderDetail>();
             _iQlProduct = new Service_formSP();
             _iEmployee = new EMPLOYEES_Service();
+            _iProductVariant = new ProductsVariants_Service();
             _lstCustomer = _iCustomer.getListORDERS();
             _lstEmployee = _iEmployee.getListEMPLOYEES();
             _lstProductDetail = _iQlProduct.LoadDatafromDAL();
@@ -51,6 +53,7 @@ namespace _2_BUS.Service_BUS
                 .Join(_lstEmployee, i => i.o.id_Employee, e => e.id_Employee, (i, e) => new { i.o, i.od, i.ct, e })
                 .Join(_lstProductDetail, i => (i.od.id_Product, i.od.id_Variant), pd => (pd.Product.id_Product, pd.ProductVariant.id_Variant), (i, pd) => new { i.od, i.o, i.e, i.ct, pd })
                 .ToList();
+            _lstOrder_OrderDetail.Clear();
             lst.ForEach(x =>
             {
                 Order_OrderDetail item = new Order_OrderDetail();
@@ -106,12 +109,17 @@ namespace _2_BUS.Service_BUS
         }
         public void GetDb()
         {
-            
+
         }
 
         List<ORDERS> IQLOrderService.GetlstOrderses()
         {
             return null;
+        }
+
+        public List<PRODUCTS_VARIANTS> getListProduct()
+        {
+            return _iProductVariant.getListProductses();
         }
     }
 }

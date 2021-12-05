@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace _3_GUI
 {
-    public partial class ThongKe : Form
+    public partial class FormThongKe : Form
     {
-        public ThongKe()
+        public FormThongKe()
         {
             InitializeComponent();
         }
@@ -39,7 +39,7 @@ namespace _3_GUI
 
         private void báoCáoThốngKêDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new BaoCaoDoanhThu(), sender);
+            OpenChildForm(new FrmBaoCaoDoanhYhu(), sender);
         }
 
         private void thốngKêDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)

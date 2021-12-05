@@ -85,6 +85,11 @@ namespace _3_GUI
             OpenChildForm(new FormBanHang(), sender);
         }
 
+        private void button13_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FormThongKe(), sender);
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
 
