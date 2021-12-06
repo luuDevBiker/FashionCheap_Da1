@@ -179,5 +179,257 @@ namespace _2_BUS.Service_BUS
 
             return a;
         }
+
+
+        #region ProDucts
+        public List<PRODUCTS> GetListProductses()
+        {
+            return _lstProductses;
+        }
+        public string addNamePRO(PRODUCTS a)
+        {
+            a.status_Delete = true;
+            _lstProductses.Add(a);
+            if (PS.getListProductses().Any(c => c.products_Name == a.products_Name) == false)
+            {
+                PS.AddProduct(a);
+                return PS.SaveProduct();
+            }
+            else
+            {
+                var b = PS.getListProductses()[PS.getListProductses().FindIndex(c => c.products_Name == a.products_Name)];
+                b.status_Delete = true;
+                PS.EditProduct(b);
+                return PS.SaveProduct();
+            }
+        }
+
+        public string editNamePro(PRODUCTS a)
+        {
+            _lstProductses[_lstProductses.FindIndex(c => c.id_Product == a.id_Product)] = a;
+            PS.EditProduct(a);
+            return PS.SaveProduct();
+        }
+
+        public string RemoveNamePro(PRODUCTS a)
+        {
+            string thichnhau = a.products_Name;
+            _lstProductses.RemoveAt(_lstProductses.FindIndex(c => c.id_Product == a.id_Product));
+            PS.DeleteProduct(a);
+            return PS.SaveProduct();
+        }
+
+        #endregion
+        /// ////////////////////////
+        #region Variant
+        public List<PRODUCTS_VARIANTS> GetListProductVariantses()
+        {
+            return _lstProductsVariantses;
+        }
+        public string addVariant(PRODUCTS_VARIANTS a)
+        {
+            a.status_Delete = true;
+            _lstProductsVariantses.Add(a);
+            if (PV.getListProductses().Any(c => c.Products_Code == a.Products_Code) == false)
+            {
+                PV.AddProductVarriant(a);
+                return PV.SaveProductVarriant();
+            }
+            else
+            {
+                var b = PV.getListProductses()[PV.getListProductses().FindIndex(c => c.Products_Code == a.Products_Code)];
+                b.status_Delete = true;
+                PV.EditProductVarriant(b);
+                return PV.SaveProductVarriant();
+            }
+        }
+
+        public string editVariant(PRODUCTS_VARIANTS a)
+        {
+            _lstProductsVariantses[_lstProductsVariantses.FindIndex(c => c.id_Variant == a.id_Variant)] = a;
+            PV.EditProductVarriant(a);
+            return PV.SaveProductVarriant();
+        }
+
+        public string RemoveVariant(PRODUCTS_VARIANTS a)
+        {
+
+            _lstProductsVariantses.RemoveAt(_lstProductsVariantses.FindIndex(c => c.id_Variant == a.id_Variant));
+            PV.DeleteProductVarriant(a);
+            return PV.SaveProductVarriant();
+        }
+
+        #endregion
+        /// //////////
+        #region OPtions
+        public List<OPTIONS> GetListoOptionses()
+        {
+            return _lsOptionses;
+        }
+        public string addOPtion(OPTIONS a)
+        {
+            a.status_Delete = true;
+            _lsOptionses.Add(a);
+            if (OS.getListOption().Any(c => c.option_Name == a.option_Name) == false)
+            {
+                OS.AddOption(a);
+                return OS.SaveOption();
+            }
+            else
+            {
+                var b = OS.getListOption()[OS.getListOption().FindIndex(c => c.option_Name == a.option_Name)];
+                b.status_Delete = true;
+                OS.EditOption(b);
+                return OS.SaveOption();
+            }
+        }
+
+        public string editOption(OPTIONS a)
+        {
+            _lsOptionses[_lsOptionses.FindIndex(c => c.id_Option == a.id_Option)] = a;
+            OS.EditOption(a);
+            return OS.SaveOption();
+        }
+
+        public string RemoveOPtion(OPTIONS a)
+        {
+
+            _lsOptionses.RemoveAt(_lsOptionses.FindIndex(c => c.id_Option == a.id_Option));
+            OS.DeleteOption(a);
+            return OS.SaveOption();
+        }
+
+        #endregion
+        //////////////////////
+        #region OPtion_Value
+        public List<OPTIONS_VALUES> GetListoOptionvValueses()
+        {
+            return _lstOptionsValueses;
+        }
+        public string addOPtion_Value(OPTIONS_VALUES a)
+        {
+            a.status_Delete = true;
+            _lstOptionsValueses.Add(a);
+            if (OV.getListOptionValue().Any(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option) == false)
+            {
+                OV.AddOptionValue(a);
+                return OV.SaveOptionValue();
+            }
+            else
+            {
+                var b = OV.getListOptionValue()[OV.getListOptionValue().FindIndex(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option)];
+                b.status_Delete = true;
+                OV.EditOptionValue(b);
+                return OV.SaveOptionValue();
+            }
+        }
+
+        public string editProduct_Option(OPTIONS_VALUES a)
+        {
+            _lstOptionsValueses[_lstOptionsValueses.FindIndex(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option)] = a;
+            OV.EditOptionValue(a);
+            return OV.SaveOptionValue();
+        }
+
+        public string RemoveProduct_OPtion(OPTIONS_VALUES a)
+        {
+
+            _lstOptionsValueses.RemoveAt(_lstOptionsValueses.FindIndex(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option));
+            OV.DeleteOptionValue(a);
+            return OS.SaveOption();
+        }
+
+        #endregion
+        /// 
+        #region PRoduct_OPtions
+        public List<PRODUCTS_OPTIONS> GetLisoProductsOptionses()
+        {
+            return _lsProductsOptionses;
+        }
+        public string addProduct_OPtion(PRODUCTS_OPTIONS a)
+        {
+            a.status_Delete = true;
+            _lsProductsOptionses.Add(a);
+            if (PO.getListProductsesOptions().Any(c => c.id_Option == a.id_Option && c.id_Product == a.id_Product) == false)
+            {
+                PO.AddProductOptions(a);
+                return PO.SaveProductOptions();
+            }
+            else
+            {
+                var b = PO.getListProductsesOptions()[PO.getListProductsesOptions().FindIndex(c => c.id_Option == a.id_Option && c.id_Product == a.id_Product)];
+                b.status_Delete = true;
+                PO.EditProductOptions(b);
+                return PO.SaveProductOptions();
+            }
+        }
+
+        public string editProduct_Option(PRODUCTS_OPTIONS a)
+        {
+            _lsProductsOptionses[_lsProductsOptionses.FindIndex(c => c.id_Option == a.id_Option && c.id_Product == a.id_Product)] = a;
+            PO.EditProductOptions(a);
+            return PO.SaveProductOptions();
+        }
+
+        public string RemoveProduct_OPtion(PRODUCTS_OPTIONS a)
+        {
+
+            _lsProductsOptionses.RemoveAt(_lsProductsOptionses.FindIndex(c => c.id_Option == a.id_Option && c.id_Product == a.id_Product));
+            PO.DeleteProductOptions(a);
+            return PO.SaveProductOptions();
+        }
+
+        #endregion
+        //----------------------
+
+        #region VAriant_Valuse
+        public List<VARIANTS_VALUES> GetLisvVariantsValueses()
+        {
+            return _lstVariantsValueses;
+        }
+        public string addVariant_value(VARIANTS_VALUES a)
+        {
+            a.status_Delete = true;
+            _lstVariantsValueses.Add(a);
+            if (Vv.getListVARIANTS_VALUES().Any(c => c.id_Product == a.id_Product && c.id_Option == a.id_Option && c.id_Variant == a.id_Variant && c.id_Values == a.id_Values) == false)
+            {
+                Vv.AddVARIANTS_VALUES(a);
+                return Vv.SaveVARIANTS_VALUES();
+            }
+            else
+            {
+                var b = Vv.getListVARIANTS_VALUES()[Vv.getListVARIANTS_VALUES().FindIndex(c => c.id_Product == a.id_Product && c.id_Option == a.id_Option && c.id_Variant == a.id_Variant && c.id_Values == a.id_Values)];
+                b.status_Delete = true;
+                Vv.EditVARIANTS_VALUES(b);
+                return Vv.SaveVARIANTS_VALUES();
+            }
+        }
+
+        public string editVariant_values(VARIANTS_VALUES a)
+        {
+            _lstVariantsValueses[_lstVariantsValueses.FindIndex(c => c.id_Product == a.id_Product && c.id_Option == a.id_Option && c.id_Variant == a.id_Variant && c.id_Values == a.id_Values)] = a;
+            Vv.EditVARIANTS_VALUES(a);
+            return Vv.SaveVARIANTS_VALUES();
+        }
+
+        public string RemoveVariant_values(VARIANTS_VALUES a)
+        {
+
+            _lstVariantsValueses.RemoveAt(_lstVariantsValueses.FindIndex(c => c.id_Product == a.id_Product && c.id_Option == a.id_Option && c.id_Variant == a.id_Variant && c.id_Values == a.id_Values));
+            Vv.DeleteVARIANTS_VALUES(a);
+            return Vv.SaveVARIANTS_VALUES();
+        }
+
+        #endregion
+
+        public void save()
+        {
+            PS.SaveProduct();
+            PO.SaveProductOptions();
+            PV.SaveProductVarriant();
+            OS.SaveOption();
+            OV.SaveOptionValue();
+            Vv.SaveVARIANTS_VALUES();
+        }
     }
 }
