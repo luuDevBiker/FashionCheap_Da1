@@ -207,9 +207,9 @@ namespace _3_GUI
                 data_CacPhienBan1.Columns[row++].Visible = false;
                 PS_BUS.getCountOption().ForEach(x =>
                 {
-                   //data_CacPhienBan1.Columns[row].Name = "Id option " + x.id_Option;
+                    //data_CacPhienBan1.Columns[row].Name = "Id option " + x.id_Option;
                     data_CacPhienBan1.Columns[row++].Visible = false;
-                  //  data_CacPhienBan1.Columns[row].Name = "Id Value" + x.id_Option;
+                    //  data_CacPhienBan1.Columns[row].Name = "Id Value" + x.id_Option;
                     data_CacPhienBan1.Columns[row++].Visible = false;
                     data_CacPhienBan1.Columns[row++].Name = x.option_Name;
                 });
@@ -277,7 +277,7 @@ namespace _3_GUI
 
         private void btn_AddVariant_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"bạn có muốn thêm sản phẩm {data_CacPhienBan1.Rows[rowIndexVariant].Cells[1].Value.ToString()} không?", " Thông báo!", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show($"bạn có muốn thêm sản phẩm {data_CacPhienBan1.Rows[rowIndexVariant].Cells[0].Value.ToString()} không?", " Thông báo!", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 PRODUCTS_VARIANTS b = new PRODUCTS_VARIANTS();
                 b.id_Product = id_ProAdd;
@@ -286,6 +286,12 @@ namespace _3_GUI
                 b.import_Price = Convert.ToInt32(data_CacPhienBan1.Rows[rowIndexVariant].Cells[2].Value.ToString());
                 b.price = Convert.ToInt32(data_CacPhienBan1.Rows[rowIndexVariant].Cells[3].Value.ToString());
                 PS_BUS.addVariant(b);
+                PS_BUS.save();
+                int idvv = PS_BUS.GetListProductVariantses()
+                    .Where(c => c.Products_Code == data_CacPhienBan1.Rows[rowIndexVariant].Cells[0].Value.ToString())
+                    .Select(c => c.id_Variant).FirstOrDefault();
+                int aidvv = PS_BUS.GetListProductVariantses()[
+                    PS_BUS.GetListProductVariantses().FindIndex(c => c.Products_Code == b.Products_Code)].id_Variant;
                 //----------------------------------------------------------------------------------------------------------------------------------------------
                 for (int i = 1; i < soOption; i++)
                 {
@@ -293,41 +299,57 @@ namespace _3_GUI
                     OPTIONS newoOptions = new OPTIONS();
                     newoOptions.option_Name = data_CacPhienBan1.Columns[$"option{i}"].HeaderText;
                     PS_BUS.addOPtion(newoOptions);
-
+                    PS_BUS.save();
+                    int idop = PS_BUS.GetListoOptionses()[
+                                           PS_BUS.GetListoOptionses().FindIndex(c => c.option_Name == newoOptions.option_Name)].id_Option;
+                    int aidop = PS_BUS.GetListoOptionses().Where(c => c.option_Name == ddr4).Select(c => c.id_Option)
+                        .FirstOrDefault();
                     // thêm option_values
                     OPTIONS_VALUES newOptionsValues = new OPTIONS_VALUES();
 
                     newOptionsValues.id_Option =
                         PS_BUS.GetListoOptionses()[
                             PS_BUS.GetListoOptionses().FindIndex(c => c.option_Name == newoOptions.option_Name)].id_Option;
+                    int tam = newOptionsValues.id_Option;
 
-                    string aka = data_CacPhienBan1.Rows[rowIndexVariant].Cells[$"option{i}"].Value.ToString();
                     newOptionsValues.option_Values =
                         data_CacPhienBan1.Rows[rowIndexVariant].Cells[$"option{i}"].Value.ToString();
+                    string aka = data_CacPhienBan1.Rows[rowIndexVariant].Cells[$"option{i}"].Value.ToString();
                     PS_BUS.addOPtion_Value(newOptionsValues);
+                    PS_BUS.save();
+
+                    ////////////
+                    int idopva = PS_BUS.GetListoOptionvValueses().Where(c => c.option_Values == aka)
+                        .Select(c => c.id_Values).FirstOrDefault();
+                    int idopva1 = PS_BUS.GetListoOptionvValueses().Where(c => c.option_Values == aka)
+                        .Select(c => c.id_Option).FirstOrDefault();
+                    int đệt= PS_BUS.GetListoOptionvValueses()[
+                        PS_BUS.GetListoOptionvValueses().FindIndex(c => c.option_Values == newOptionsValues.option_Values)].id_Values;
                     //thêm product_option
                     PRODUCTS_OPTIONS newProductsOptions = new PRODUCTS_OPTIONS();
                     newProductsOptions.id_Product = id_ProAdd;
                     newProductsOptions.id_Option = PS_BUS.GetListoOptionses()[
                         PS_BUS.GetListoOptionses().FindIndex(c => c.option_Name == newoOptions.option_Name)].id_Option;
-                    PS_BUS.addProduct_OPtion(new PRODUCTS_OPTIONS());
-                    //Thêm Variant_option
+                    PS_BUS.addProduct_OPtion(newProductsOptions);
+                    PS_BUS.save();
+                    //Thêm Variant_values
                     VARIANTS_VALUES newValues = new VARIANTS_VALUES();
                     newValues.id_Product = id_ProAdd;
                     newValues.id_Variant = PS_BUS.GetListProductVariantses()[
                         PS_BUS.GetListProductVariantses().FindIndex(c => c.Products_Code == b.Products_Code)].id_Variant;
-                    newValues.id_Option= PS_BUS.GetListoOptionses()[
+                    newValues.id_Option = PS_BUS.GetListoOptionses()[
                         PS_BUS.GetListoOptionses().FindIndex(c => c.option_Name == newoOptions.option_Name)].id_Option;
-                    newValues.id_Variant= PS_BUS.GetListoOptionvValueses()[
+                    newValues.id_Variant = PS_BUS.GetListoOptionvValueses()[
                         PS_BUS.GetListoOptionvValueses().FindIndex(c => c.option_Values == newOptionsValues.option_Values)].id_Values;
 
                     PS_BUS.addVariant_value(newValues);
+                    PS_BUS.save();
                 }
 
                 MessageBox.Show(" thành CÔng!", $" Bạn đã thêm {b.Products_Code}!");
             }
 
-            loadOPtionSP(PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == id_ProAdd).ToList());
+            // loadOPtionSP(PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == id_ProAdd).ToList());
             loadata();
             PS_BUS.save();
             Flag = false;

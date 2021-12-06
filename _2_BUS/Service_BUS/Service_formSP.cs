@@ -184,7 +184,7 @@ namespace _2_BUS.Service_BUS
         #region ProDucts
         public List<PRODUCTS> GetListProductses()
         {
-            return _lstProductses;
+            return PS.getListProductses();
         }
         public string addNamePRO(PRODUCTS a)
         {
@@ -224,7 +224,7 @@ namespace _2_BUS.Service_BUS
         #region Variant
         public List<PRODUCTS_VARIANTS> GetListProductVariantses()
         {
-            return _lstProductsVariantses;
+            return PV.getListProductses();
         }
         public string addVariant(PRODUCTS_VARIANTS a)
         {
@@ -264,7 +264,7 @@ namespace _2_BUS.Service_BUS
         #region OPtions
         public List<OPTIONS> GetListoOptionses()
         {
-            return _lsOptionses;
+            return OS.getListOption();
         }
         public string addOPtion(OPTIONS a)
         {
@@ -304,10 +304,13 @@ namespace _2_BUS.Service_BUS
         #region OPtion_Value
         public List<OPTIONS_VALUES> GetListoOptionvValueses()
         {
-            return _lstOptionsValueses;
+            return OV.getListOptionValue();
         }
         public string addOPtion_Value(OPTIONS_VALUES a)
         {
+            string dd = a.option_Values;
+            int dda = a.id_Option;
+            
             a.status_Delete = true;
             _lstOptionsValueses.Add(a);
             if (OV.getListOptionValue().Any(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option) == false)
@@ -344,7 +347,7 @@ namespace _2_BUS.Service_BUS
         #region PRoduct_OPtions
         public List<PRODUCTS_OPTIONS> GetLisoProductsOptionses()
         {
-            return _lsProductsOptionses;
+            return PO.getListProductsesOptions();
         }
         public string addProduct_OPtion(PRODUCTS_OPTIONS a)
         {
@@ -385,7 +388,7 @@ namespace _2_BUS.Service_BUS
         #region VAriant_Valuse
         public List<VARIANTS_VALUES> GetLisvVariantsValueses()
         {
-            return _lstVariantsValueses;
+            return Vv.getListVARIANTS_VALUES();
         }
         public string addVariant_value(VARIANTS_VALUES a)
         {

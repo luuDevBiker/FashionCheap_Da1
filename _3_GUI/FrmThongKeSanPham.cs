@@ -31,6 +31,7 @@ namespace _3_GUI
             tKSanPham = new TKSanPham();
             _lsSPban = new List<ProductDetail>();
             _lsSPban = _SP.LoadDatafromDAL();
+            loadDataTatCa(_lsSPban);
 
         }
 
