@@ -10,6 +10,10 @@ namespace _2_BUS.IService_BUS
         public string addImage();
         public string addNewProduct(string name);
         public All_List AllListPRO();
+        public List<PRODUCTS> GetListProductses();
+        public string addNamePRO(PRODUCTS a);
+        public string editNamePro(PRODUCTS a);
+        public string RemoveNamePro(PRODUCTS a);
         public List<PRODUCTS_VARIANTS> GetListProductVariantses();
         public string addVariant(PRODUCTS_VARIANTS a);
         public string editVariant(PRODUCTS_VARIANTS a);
