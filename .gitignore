@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /_1_DAL/Migrations
 /_1_DAL/DB_Context
+/_3_GUI/obj/Debug/net5.0-windows
+/_1_DAL/DB_Context

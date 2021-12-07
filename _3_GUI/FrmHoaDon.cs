@@ -30,6 +30,8 @@ namespace _3_GUI
         private List<PRODUCTS> _lstProductses;
         private IOderService or = new ORDERS_Service();
         private IOderService _iOderService;
+        private IQLCustomerService _lstCustomerService;
+        public string email = FormDangNhap.email;
 
         private int id_Hoadon;
         public FrmHoaDon()
@@ -39,6 +41,7 @@ namespace _3_GUI
             _lstEmployeeses = new List<EMPLOYEES>();
             _lsVariantsValueses = new List<VARIANTS_VALUES>();
             _lstOrderses = new List<ORDERS>();
+            _lstCustomerService = new QLCustomerService();
             _lstOrderDetailses = new List<ORDER_DETAILS>();
             _lstProductsVariantses = new List<PRODUCTS_VARIANTS>();
             _lstProductses = new List<PRODUCTS>();
@@ -48,6 +51,12 @@ namespace _3_GUI
             _iOderService = new ORDERS_Service();
             _iqlProductService = new Product_Service();
             // _lstCustomerService = new QLCustomerService();
+            foreach (var x in _lstCustomerService.GetlstCustomerses())
+            {
+                cbxKhachHang.Items.Add(x.customer_Name);
+                cbxKhachHang.SelectedIndex = 0;
+            }
+            tbxNvThanhToan.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault());
             loadata();
         }
         
