@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\_2_BUS",
+    "\\_2_BUS\\Service_BUS"
   ],
-  "SelectedNode": "\\FashionCheap_Da1.sln",
+  "SelectedNode": "\\_2_BUS\\Service_BUS\\Service_formSP.cs",
   "PreviewInSolutionExplorer": false
 }

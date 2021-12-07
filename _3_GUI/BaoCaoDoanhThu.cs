@@ -42,7 +42,7 @@ namespace _3_GUI
         }
         private void loadDataNgay(string day)
         {
-            var lstDetail = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == day);
+            var lstDetail = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == day).GroupBy(i => i.Order.order_Time).Select(z => z.First()).ToList();
             var countpay = lstDetail.Sum(x => x.Order.total_pay);
             var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
             var countOrder = lstDetail.Select(x => x.Order).ToList().Count;
@@ -53,46 +53,37 @@ namespace _3_GUI
         private void loadDataThang(int month, int year)
         {
             loadDGV();
-            var countpay = _lstItem.Where(x => x.Order.order_Time.Month == month).Sum(x => x.Order.total_pay);
+            var countpay = _lstItem.Where(x => x.Order.order_Time.Month == month).GroupBy(i => i.Order.order_Time).Select(j => j.First()).Sum(x => x.Order.total_pay);
             var lstDetail = _lstItem.Where(x => x.Order.order_Time.Month == month && x.Order.order_Time.Year == year).ToList();
             var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
             var countOrder = lstDetail.Select(c => c.Order).ToList().Count;
             dgvDoanhThu.Rows.Add(month + "/" + year, countOrder, countProduct, _OrderFall.Count, countpay);
         }
-        private void loadDataNam()
+        private void loadDataNam(int year)
         {
             loadDGV();
-            var item = _lstItem.Select(i => i.Order).ToList();
+            var item = _lstItem.Select(i => i.Order).GroupBy(j=>j.order_Time).Select(d=>d.First()).ToList();
             var detail = _lstItem.Select(x => x.OrderDetail).ToList();
-            var listProductVariant = _IOder.getListProduct();
-            var minyear = _lstItem.Min(x => x.Order.order_Time.Year);
-            var maxyear = _lstItem.Max(x => x.Order.order_Time.Year);
+            var month = item.Where(x => x.order_Time.Year == year).ToList();
+            var countpay = item.Where(x => x.order_Time.Year == year).Sum(x => x.total_pay);
+            var lstDetail = _lstItem.Where(x => x.Order.order_Time.Year == year).ToList();
+            var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
+            var countOrder = lstDetail.Select(x => x.Order).ToList().Count;
+            _OrderFall = lstDetail.Where(o => o.Order.order_status == 1).ToList();
+            dgvDoanhThu.Rows.Add(year, countOrder, countProduct, _OrderFall.Count, countpay);
 
-            var countpay = 0;
-            var import_money = 0;
-            for (int mi = minyear; mi < maxyear + 1; mi++)
-            {
-                var month = item.Where(x => x.order_Time.Year == mi).ToList();
-                countpay = item.Where(x => x.order_Time.Year == mi).Sum(x => x.total_pay);
-
-                var lstDetail = _lstItem.Where(x => x.Order.order_Time.Year == mi).ToList();
-                var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
-                var countOrder = lstDetail.Select(x => x.Order).ToList().Count;
-                _OrderFall = lstDetail.Where(o => o.Order.order_status == 1).ToList();
-                dgvDoanhThu.Rows.Add(mi, countOrder, countProduct, _OrderFall.Count, countpay);
-            }
         }
         private void rdbTKNgay_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbTKNgay.Checked == true)
             {
                 loadDGV();
-                var lstDay = _lstItem.GroupBy(x => x.Order.order_Time).ToList();
+                var lstDay = _lstItem.GroupBy(x => x.Order.order_Time).Select(o => o.First()).ToList();
                 lstDay.ForEach(x =>
                 {
-                    loadDataNgay(x.Key.ToString().Split(" ")[0]);
+                    loadDataNgay(x.Order.order_Time.ToString().Split(" ")[0]);
                 });
-                
+
             }
         }
 
@@ -116,11 +107,17 @@ namespace _3_GUI
 
         private void rdbNam_CheckedChanged(object sender, EventArgs e)
         {
-            loadDataNam();
+            var minyear = _lstItem.Min(x => x.Order.order_Time.Year);
+            var maxyear = _lstItem.Max(x => x.Order.order_Time.Year);
+            for (int mi = minyear; mi < maxyear + 1; mi++)
+            {
+                loadDataNam(mi);
+            }
         }
 
         private void btnDoanhThu_Click(object sender, EventArgs e)
         {
+            loadDGV();
             var time = mcTime.SelectionRange.Start.ToString();
             time = time.Split(" ")[0];
             var listProductVariant = _IOder.getListProduct();
