@@ -37,11 +37,11 @@ namespace _3_GUI
         private List<ProductDetail> _lstProductDetails;
         private IOderService _iQlOrderService;
         public string email = FormDangNhap.email;
-        private IQLOrderService _iCustomer;
-        private IQLOrderService _iEmployee;
-        private IQLOrderService _iQlProduct;
-        private IQLOrderService _iQlOrderDetailService;
-
+        private string toancuc;
+        private string _idhoadon;
+        private int whenClick;
+        private TinhTien _Tinhtien;
+        private int tong;
         private string _id;
 
         private IProduct_Service PS_BUS;
@@ -52,10 +52,6 @@ namespace _3_GUI
         {
             InitializeComponent();
             _iQLOrder = new QLOrDerService();
-            _iQlOrderDetailService = new QLOrDerService();
-            _iCustomer = new QLOrDerService();
-            _iQlProduct = new QLOrDerService();
-            _iEmployee = new QLOrDerService();
             _iqLCustomer = new QLCustomerService();
             PS_BUS = new Service_formSP();
             _lstOrders = new List<ORDERS>();
@@ -279,6 +275,7 @@ namespace _3_GUI
             {
                 sum += Convert.ToInt32(dgrid_giohang.Rows[i].Cells[4].Value);
             }
+            tong = Convert.ToInt32(sum);
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
             tbxTongTien.Text = sum.ToString("#,###", cul.NumberFormat) + " " + "VND";
             tbxKhachCanTra.Text = sum.ToString("#,###", cul.NumberFormat) + " " + "VND";
@@ -287,11 +284,11 @@ namespace _3_GUI
         void loadHoaDonCho()
         {
             Data_HoaDonCho.Rows.Clear();
-            var lst = _iQlOrderService.getListORDERS().Where(c => c.order_status == 0).ToList();
+            var lst = _iQlOrderService.getListORDERS().ToList();
             foreach (var x in lst)
             {
                 Data_HoaDonCho.Rows.Add(x.id_Order, _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.customer_Name).FirstOrDefault(),
-                    _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone).FirstOrDefault());
+                    _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone).FirstOrDefault(), x.order_status == 1 ? "Đã Thanh Toán" : "Chưa Thanh Toán");
             }
         }
 
@@ -370,6 +367,11 @@ namespace _3_GUI
             MessageBox.Show(
                 "" + _iQLOrder.JoinTable().Select(x => x.ProductDetail.Product.id_Product).FirstOrDefault() + "",
                 "Thông báo");
+            var ls = _iQlOrderService.getListORDERS().Where(c => c.id_Order == Convert.ToInt32(toancuc)).FirstOrDefault();
+            ls.order_status = 1;
+            _iQlOrderService.EditORDERS(ls);
+            _iQlOrderService.SaveORDERS();
+            loadHoaDonCho();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -391,8 +393,23 @@ namespace _3_GUI
 
         private void tbxKhachThanhToan_TextChanged(object sender, EventArgs e)
         {
-            tbxSoTienHoanLai.Text = ((Convert.ToInt32(tbxKhachThanhToan.Text)) - (Convert.ToInt32(tbxKhachCanTra.Text)))
-                .ToString();
+            //tbxSoTienHoanLai.Text = _Tinhtien.tienthua(int.Parse(tbxKhachThanhToan.Text), tong).ToString();
+            if (tbxSoTienHoanLai.Text != "")
+            {
+                if (_Tinhtien.tienthua(int.Parse(tbxKhachThanhToan.Text), tong) == 0)
+                {
+                    tbxSoTienHoanLai.Text = "0";
+                }
+                else
+                {
+                    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+                    tbxSoTienHoanLai.Text = _Tinhtien.tienthua(int.Parse(tbxKhachThanhToan.Text), tong).ToString("#,###", cul.NumberFormat) + " " + "VND";
+                }
+            }
+            else
+            {
+                tbxSoTienHoanLai.Text = "0";
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
