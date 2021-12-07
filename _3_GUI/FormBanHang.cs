@@ -23,54 +23,38 @@ namespace _3_GUI
     {
         private IQLOrderService _iQLOrder;
         private IQLCustomerService _iqLCustomer;
-        private IProduct_Service _iproduct_Service;
         private List<ORDERS> _lstOrders;
-        private List<ORDER_DETAILS> _lstOrder_Details;
         private IQLCustomerService _lstCustomerService;
         private IQLEmployeesService _iqLEmployees;
         private List<CUSTOMERS> _lstcustomerses;
-        private List<EMPLOYEES> _lstEmployeeses;
-        private List<PRODUCTS> _lstProducts;
-        private List<PRODUCTS_VARIANTS> _lstProducts_variants;
-        private List<VARIANTS_VALUES> _lstVariants_values;
-        private List<PRODUCTS_OPTIONS> _lstProducts_option;
+        private IOderDetailService _iOrderDetailService;
         private List<ProductDetail> _lstProductDetails;
         private IOderService _iQlOrderService;
         public string email = FormDangNhap.email;
-        private IQLOrderService _iCustomer;
-        private IQLOrderService _iEmployee;
-        private IQLOrderService _iQlProduct;
-        private IQLOrderService _iQlOrderDetailService;
-
+        //public string Excel = FromExecl.excel;
         private string _id;
-
+        private string toancuc;
+        private string _idhoadon;
         private IProduct_Service PS_BUS;
+
+        private IProductVariantservice _iProductVariant;
 
         //private List<OPTIONS> _lstOptions;
         //private List<OPTIONS_VALUES> _lstOption_values;
         public FormBanHang()
         {
             InitializeComponent();
+            _iProductVariant = new ProductsVariants_Service();
             _iQLOrder = new QLOrDerService();
-            _iQlOrderDetailService = new QLOrDerService();
-            _iCustomer = new QLOrDerService();
-            _iQlProduct = new QLOrDerService();
-            _iEmployee = new QLOrDerService();
             _iqLCustomer = new QLCustomerService();
             PS_BUS = new Service_formSP();
             _lstOrders = new List<ORDERS>();
-            _lstOrder_Details = new List<ORDER_DETAILS>();
             _lstCustomerService = new QLCustomerService();
             _iqLEmployees = new QLEmployessService();
-            _lstProducts = new List<PRODUCTS>();
             _lstcustomerses = new List<CUSTOMERS>();
-            _lstEmployeeses = new List<EMPLOYEES>();
-            _lstProducts_variants = new List<PRODUCTS_VARIANTS>();
-            _lstVariants_values = new List<VARIANTS_VALUES>();
-            _lstProducts_option = new List<PRODUCTS_OPTIONS>();
             _lstProductDetails = new List<ProductDetail>();
             _iQlOrderService = new ORDERS_Service();
-            _iproduct_Service = new Service_formSP();
+            _iOrderDetailService = new ORDER_DETAILS_Service();
             //_lstOptions = new List<OPTIONS>();
             //_lstOption_values =
             foreach (var x in _lstCustomerService.GetlstCustomerses())
@@ -291,10 +275,15 @@ namespace _3_GUI
             foreach (var x in lst)
             {
                 Data_HoaDonCho.Rows.Add(x.id_Order, _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.customer_Name).FirstOrDefault(),
-                    _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone).FirstOrDefault());
+                    _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone).FirstOrDefault(), x.order_status == 1 ? "Đã Thanh Toán" : "Chưa Thanh Toán");
             }
         }
 
+        private void Data_HoaDonCho_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            toancuc = Data_HoaDonCho.Rows[index].Cells[0].Value.ToString();
+        }
 
         private void dgrid_sp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -370,6 +359,11 @@ namespace _3_GUI
             MessageBox.Show(
                 "" + _iQLOrder.JoinTable().Select(x => x.ProductDetail.Product.id_Product).FirstOrDefault() + "",
                 "Thông báo");
+            var ls = _iQlOrderService.getListORDERS().Where(c => c.id_Order == Convert.ToInt32(toancuc)).FirstOrDefault();
+            ls.order_status = 1;
+            _iQlOrderService.EditORDERS(ls);
+            _iQlOrderService.SaveORDERS();
+            loadHoaDonCho();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -416,6 +410,24 @@ namespace _3_GUI
             {
                 dgrid_sp.Rows.Add(x.Product, x.ProductVariant);
             }
+        }
+
+        private void Data_HoaDonCho_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var index = e.RowIndex;
+            if (index < 0)
+            {
+                return; ;
+            }
+
+            var idorder = Data_HoaDonCho.Rows[index].Cells[0].Value + "";
+            var lisDetail = _iOrderDetailService.getListORDERS().Where(x => x.id_Order == int.Parse(idorder)).ToList();
+            var listProductVariant = _iProductVariant.getListProductses();
+
+            lisDetail.ForEach(x =>
+            {
+                //dgrid_sp.Rows.Add()
+            });
         }
     }
 }
