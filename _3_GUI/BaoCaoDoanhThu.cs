@@ -42,34 +42,76 @@ namespace _3_GUI
         }
         private void loadDataNgay(string day)
         {
-            var lstDetail = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == day).GroupBy(i => i.Order.order_Time).Select(z => z.First()).ToList();
-            var countpay = lstDetail.Sum(x => x.Order.total_pay);
-            var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
-            var countOrder = lstDetail.Select(x => x.Order).ToList().Count;
-            var oderFall = lstDetail.Where(x => x.Order.order_status == 1).ToList().Count;
+            var lstDetail = _lstItem
+                .Where(x => x.Order.order_Time.ToString()
+                .Split(" ")[0] == day)
+                .GroupBy(i => i.Order.order_Time)
+                .Select(z => z.First())
+                .ToList();
+            var countpay = lstDetail
+                .Sum(x => x.Order.total_pay);
+            var countProduct = lstDetail
+                .Select(x => x.OrderDetail)
+                .ToList().Count;
+            var countOrder = lstDetail
+                .Select(x => x.Order)
+                .ToList().Count;
+            var oderFall = lstDetail
+                .Where(x => x.Order.order_status == 1)
+                .ToList().Count;
 
             dgvDoanhThu.Rows.Add(day, countOrder, countProduct, oderFall, countpay);
         }
         private void loadDataThang(int month, int year)
         {
-            loadDGV();
-            var countpay = _lstItem.Where(x => x.Order.order_Time.Month == month).GroupBy(i => i.Order.order_Time).Select(j => j.First()).Sum(x => x.Order.total_pay);
-            var lstDetail = _lstItem.Where(x => x.Order.order_Time.Month == month && x.Order.order_Time.Year == year).ToList();
-            var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
-            var countOrder = lstDetail.Select(c => c.Order).ToList().Count;
-            dgvDoanhThu.Rows.Add(month + "/" + year, countOrder, countProduct, _OrderFall.Count, countpay);
+            var countpay = _lstItem
+                .Where(x => x.Order.order_Time.Month == month)
+                .GroupBy(i => i.Order.order_Time)
+                .Select(j => j.First())
+                .Sum(x => x.Order.total_pay);
+            var lstDetail = _lstItem
+                .Where(x => x.Order.order_Time.Month == month && x.Order.order_Time.Year == year)
+                .ToList();
+            var countProduct = lstDetail
+                .Select(x => x.OrderDetail)
+                .ToList().Count;
+            var countOrder = lstDetail
+                .Select(c => c.Order)
+                .ToList().Count;
+            var oderFall = lstDetail
+                .Where(x => x.Order.order_status == 1)
+                .ToList().Count;
+            dgvDoanhThu.Rows.Add(month + "/" + year, countOrder, countProduct, oderFall, countpay);
         }
         private void loadDataNam(int year)
         {
             loadDGV();
-            var item = _lstItem.Select(i => i.Order).GroupBy(j=>j.order_Time).Select(d=>d.First()).ToList();
-            var detail = _lstItem.Select(x => x.OrderDetail).ToList();
-            var month = item.Where(x => x.order_Time.Year == year).ToList();
-            var countpay = item.Where(x => x.order_Time.Year == year).Sum(x => x.total_pay);
-            var lstDetail = _lstItem.Where(x => x.Order.order_Time.Year == year).ToList();
-            var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
-            var countOrder = lstDetail.Select(x => x.Order).ToList().Count;
-            _OrderFall = lstDetail.Where(o => o.Order.order_status == 1).ToList();
+            var item = _lstItem
+                .Select(i => i.Order)
+                .GroupBy(j=>j.order_Time)
+                .Select(d=>d.First())
+                .ToList();
+            var detail = _lstItem
+                .Select(x => x.OrderDetail)
+                .ToList();
+            var month = item
+                .Where(x => x.order_Time.Year == year)
+                .ToList();
+            var countpay = item
+                .Where(x => x.order_Time.Year == year)
+                .Sum(x => x.total_pay);
+            var lstDetail = _lstItem
+                .Where(x => x.Order.order_Time.Year == year)
+                .ToList();
+            var countProduct = lstDetail
+                .Select(x => x.OrderDetail)
+                .ToList().Count;
+            var countOrder = lstDetail
+                .Select(x => x.Order)
+                .ToList().Count;
+            _OrderFall = lstDetail
+                .Where(o => o.Order.order_status == 1)
+                .ToList();
             dgvDoanhThu.Rows.Add(year, countOrder, countProduct, _OrderFall.Count, countpay);
 
         }
@@ -78,7 +120,10 @@ namespace _3_GUI
             if (rdbTKNgay.Checked == true)
             {
                 loadDGV();
-                var lstDay = _lstItem.GroupBy(x => x.Order.order_Time).Select(o => o.First()).ToList();
+                var lstDay = _lstItem
+                    .GroupBy(x => x.Order.order_Time)
+                    .Select(o => o.First())
+                    .ToList();
                 lstDay.ForEach(x =>
                 {
                     loadDataNgay(x.Order.order_Time.ToString().Split(" ")[0]);
@@ -89,6 +134,7 @@ namespace _3_GUI
 
         private void rdbThang_CheckedChanged(object sender, EventArgs e)
         {
+            loadDGV();
             if (rdbThang.Checked == true)
             {
                 var minyear = _lstItem.Min(x => x.Order.order_Time.Year);
@@ -100,7 +146,6 @@ namespace _3_GUI
                     {
                         loadDataThang(ji, mi);
                     }
-
                 }
             }
         }
@@ -121,12 +166,25 @@ namespace _3_GUI
             var time = mcTime.SelectionRange.Start.ToString();
             time = time.Split(" ")[0];
             var listProductVariant = _IOder.getListProduct();
-
             var countpay = 0;
-            countpay = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == time).Sum(x => x.Order.total_pay);
-            var countOrder = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == time).ToList().Count;
-            var OrderFall = _lstItem.Where(x => x.Order.order_status == 1).ToList();
-            var countProduct = _lstItem.Where(z => z.Order.order_Time.ToString().Split(" ")[0] == time).Select(x => x.OrderDetail).ToList().Count;
+            countpay = _lstItem
+                .Where(x => x.Order.order_Time.ToString()
+                .Split(" ")[0] == time)
+                .GroupBy(f => f.Order.order_Time)
+                .Select(s => s.First())
+                .Sum(x => x.Order.total_pay);
+            var countOrder = _lstItem.
+                Where(x => x.Order.order_Time.ToString()
+                .Split(" ")[0] == time)
+                .ToList().Count;
+            var OrderFall = _lstItem
+                .Where(x => x.Order.order_status == 1)
+                .ToList();
+            var countProduct = _lstItem
+                .Where(z => z.Order.order_Time.ToString()
+                .Split(" ")[0] == time)
+                .Select(x => x.OrderDetail)
+                .ToList().Count;
 
             dgvDoanhThu.Rows.Add(time, countOrder, countProduct, OrderFall.Count, countpay);
             lblNgay.Text = "Ngày làm việc : " + time;
@@ -141,10 +199,22 @@ namespace _3_GUI
             loadDGV();
             var time = DateTime.Now.ToString().Split(" ")[0];
             var countpay = 0;
-            countpay = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == time).Sum(x => x.Order.total_pay);
-            var countOrder = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == time).ToList().Count;
-            var OrderFall = _lstItem.Where(x => x.Order.order_status == 1).ToList();
-            var countProduct = _lstItem.Where(z => z.Order.order_Time.ToString().Split(" ")[0] == time).Select(x => x.OrderDetail).ToList().Count;
+            countpay = _lstItem
+                .Where(x => x.Order.order_Time.ToString()
+                .Split(" ")[0] == time)
+                .Sum(x => x.Order.total_pay);
+            var countOrder = _lstItem
+                .Where(x => x.Order.order_Time.ToString()
+                .Split(" ")[0] == time)
+                .ToList().Count;
+            var OrderFall = _lstItem
+                .Where(x => x.Order.order_status == 1 && x.Order.order_Time.ToString() == time)
+                .ToList();
+            var countProduct = _lstItem
+                .Where(z => z.Order.order_Time.ToString()
+                .Split(" ")[0] == time)
+                .Select(x => x.OrderDetail)
+                .ToList().Count;
 
             dgvDoanhThu.Rows.Add(time, countOrder, countProduct, OrderFall.Count, countpay);
             lblNgay.Text = "Ngày làm việc : " + time;
@@ -171,30 +241,44 @@ namespace _3_GUI
         private void dgvDoanhThu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var index = e.RowIndex;
-            if (index < 0)
+            if (index < 0 || dgvDoanhThu.Rows[index].Cells[0].Value == null)
             {
                 return;
             }
             var row = dgvDoanhThu.Rows[index];
             var time = row.Cells[0].Value + "";
             var timeSplit = time.Split('/');
-
+            var test = timeSplit.Length;
             if (timeSplit.Length == 1)
             {
-                _OrderFall = _lstItem.Where(x => x.Order.order_Time.Year == int.Parse(time) && x.Order.order_status == 1).ToList();
+                _OrderFall = _lstItem
+                    .Where(x => x.Order.order_Time.Year == int.Parse(time) && x.Order.order_status == 1)
+                    .GroupBy(o=>o.Order.order_Time)
+                    .Select(d=>d.First())
+                    .ToList();
             }
-            if (time.Length == 2)
+            else if (timeSplit.Length == 2)
             {
                 _OrderFall = _lstItem.Where(x =>
                 x.Order.order_Time.Month == int.Parse(timeSplit[0])
                 && x.Order.order_Time.Year == int.Parse(timeSplit[1])
-                && x.Order.order_status == 1).ToList();
+                && x.Order.order_status == 1).GroupBy(f=>f.Order.order_Time)
+                .Select(s=>s.First())
+                .ToList();
             }
-            if (time.Length == 3)
+            else if(timeSplit.Length == 3)
             {
                 _OrderFall = _lstItem.Where(x =>
-                x.Order.order_Time.ToString().Split(" ")[0] == time
-                && x.Order.order_status == 1).ToList();
+                x.Order.order_Time.ToString()
+                .Split(" ")[0] == time
+                && x.Order.order_status == 1)
+                    .GroupBy(f => f.Order.order_Time)
+                    .Select(s => s.First())
+                    .ToList();
+            }
+            else
+            {
+                _OrderFall.Clear();
             }
             lblNgay.Text = "Ngày làm việc : " + time;
             lblSoDon.Text = "Số đơn xuất ra : " + row.Cells[1].Value + "";
