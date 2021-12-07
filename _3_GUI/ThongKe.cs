@@ -31,11 +31,6 @@ namespace _3_GUI
             childForm.BringToFront();
             childForm.Show();
         }
-
-        private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
-        }
-
         private void báoCáoThốngKêDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FrmBaoCaoDoanhYhu(), sender);

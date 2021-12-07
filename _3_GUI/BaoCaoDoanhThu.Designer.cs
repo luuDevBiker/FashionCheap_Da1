@@ -136,11 +136,12 @@ namespace _3_GUI
             this.dgvDoanhThu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDoanhThu.Size = new System.Drawing.Size(1294, 436);
             this.dgvDoanhThu.TabIndex = 13;
+            this.dgvDoanhThu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDoanhThu_CellClick);
             // 
             // lblSoDon
             // 
             this.lblSoDon.AutoSize = true;
-            this.lblSoDon.Location = new System.Drawing.Point(12, 142);
+            this.lblSoDon.Location = new System.Drawing.Point(47, 138);
             this.lblSoDon.Name = "lblSoDon";
             this.lblSoDon.Size = new System.Drawing.Size(12, 20);
             this.lblSoDon.TabIndex = 16;
@@ -161,7 +162,7 @@ namespace _3_GUI
             // lblSoSP
             // 
             this.lblSoSP.AutoSize = true;
-            this.lblSoSP.Location = new System.Drawing.Point(12, 200);
+            this.lblSoSP.Location = new System.Drawing.Point(47, 196);
             this.lblSoSP.Name = "lblSoSP";
             this.lblSoSP.Size = new System.Drawing.Size(12, 20);
             this.lblSoSP.TabIndex = 18;
@@ -170,7 +171,7 @@ namespace _3_GUI
             // lblSoDonHuy
             // 
             this.lblSoDonHuy.AutoSize = true;
-            this.lblSoDonHuy.Location = new System.Drawing.Point(12, 258);
+            this.lblSoDonHuy.Location = new System.Drawing.Point(47, 254);
             this.lblSoDonHuy.Name = "lblSoDonHuy";
             this.lblSoDonHuy.Size = new System.Drawing.Size(12, 20);
             this.lblSoDonHuy.TabIndex = 18;
@@ -180,7 +181,7 @@ namespace _3_GUI
             // lblDoanhThu
             // 
             this.lblDoanhThu.AutoSize = true;
-            this.lblDoanhThu.Location = new System.Drawing.Point(12, 328);
+            this.lblDoanhThu.Location = new System.Drawing.Point(47, 324);
             this.lblDoanhThu.Name = "lblDoanhThu";
             this.lblDoanhThu.Size = new System.Drawing.Size(12, 20);
             this.lblDoanhThu.TabIndex = 18;
@@ -189,7 +190,7 @@ namespace _3_GUI
             // lblNgay
             // 
             this.lblNgay.AutoSize = true;
-            this.lblNgay.Location = new System.Drawing.Point(12, 86);
+            this.lblNgay.Location = new System.Drawing.Point(47, 82);
             this.lblNgay.Name = "lblNgay";
             this.lblNgay.Size = new System.Drawing.Size(12, 20);
             this.lblNgay.TabIndex = 16;
@@ -197,11 +198,10 @@ namespace _3_GUI
             // 
             // pnDonHuy
             // 
-            this.pnDonHuy.Location = new System.Drawing.Point(454, 51);
+            this.pnDonHuy.Location = new System.Drawing.Point(394, 51);
             this.pnDonHuy.Name = "pnDonHuy";
-            this.pnDonHuy.Size = new System.Drawing.Size(852, 323);
+            this.pnDonHuy.Size = new System.Drawing.Size(912, 323);
             this.pnDonHuy.TabIndex = 19;
-            this.pnDonHuy.Paint += new System.Windows.Forms.PaintEventHandler(this.pnDonHuy_Paint);
             // 
             // FrmBaoCaoDoanhYhu
             // 

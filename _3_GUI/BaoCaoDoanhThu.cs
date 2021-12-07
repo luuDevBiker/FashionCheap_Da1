@@ -19,6 +19,7 @@ namespace _3_GUI
         private List<ProductDetail> _lstProductDetail;
         private IQLOrderService _IOder;
         private List<Order_OrderDetail> _lstItem;
+        private List<Order_OrderDetail> _OrderFall;
         public FrmBaoCaoDoanhYhu()
         {
             InitializeComponent();
@@ -26,82 +27,41 @@ namespace _3_GUI
             _SP = new Service_formSP();
             _IOder = new QLOrDerService();
             _lstItem = _IOder.JoinTable();
-
+            _OrderFall = new List<Order_OrderDetail>();
         }
-
-        private void loadDataNgay()
+        private void loadDGV()
         {
             var row = 0;
-            dgvDoanhThu.ColumnCount = 4;
-            dgvDoanhThu.Columns[row++].Name = "Ngày";
+            dgvDoanhThu.ColumnCount = 5;
+            dgvDoanhThu.Columns[row++].Name = "Thời gian";
+            dgvDoanhThu.Columns[row++].Name = "Số đơn bán được";
             dgvDoanhThu.Columns[row++].Name = "Số Sp bán được";
             dgvDoanhThu.Columns[row++].Name = "Số đơn hủy";
             dgvDoanhThu.Columns[row++].Name = "Doanh thu";
             dgvDoanhThu.Rows.Clear();
-            var lstItem = _IOder.JoinTable();
-            var item = _lstItem.GroupBy(x => x.Order.order_Time).Select(x => x).ToList();
-            var listProductVariant = _IOder.getListProduct();
-            item.ForEach(x =>
-            {
-                var countpay = 0;
-                var import_money = 0;
-                foreach (var i in x)
-                {
-                    countpay += i.Order.total_pay;
-                    var pr = listProductVariant.Where(x => x.id_Variant == i.OrderDetail.id_Variant).FirstOrDefault();
-                    import_money = pr.import_Price * i.OrderDetail.quantity;
-                }
-                dgvDoanhThu.Rows.Add(x.Key, countpay, import_money, countpay - import_money);
-            });
         }
-        private void loadDataThang()
+        private void loadDataNgay(string day)
         {
-            var row = 0;
-            dgvDoanhThu.ColumnCount = 4;
-            dgvDoanhThu.Columns[row++].Name = "Ngày";
-            dgvDoanhThu.Columns[row++].Name = "Số Sp bán được";
-            dgvDoanhThu.Columns[row++].Name = "Số đơn hủy";
-            dgvDoanhThu.Columns[row++].Name = "Doanh thu";
-            dgvDoanhThu.Rows.Clear();
-          
-            var item = _lstItem.Select(i => i.Order).ToList();
-            var detail = _lstItem.Select(x => x.OrderDetail).ToList();
-            var listProductVariant = _IOder.getListProduct();
-            var minyear = _lstItem.Min(x => x.Order.order_Time.Year);
-            var maxyear = _lstItem.Max(x => x.Order.order_Time.Year);
+            var lstDetail = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == day);
+            var countpay = lstDetail.Sum(x => x.Order.total_pay);
+            var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
+            var countOrder = lstDetail.Select(x => x.Order).ToList().Count;
+            var oderFall = lstDetail.Where(x => x.Order.order_status == 1).ToList().Count;
 
-            var countpay = 0;
-            var import_money = 0;
-            for (int mi = minyear; mi < maxyear + 1; mi++)
-            {
-                for (int ji = 1; ji < 13; ji++)
-                {
-                    var month = item.Where(x => x.order_Time.Month == ji).ToList();
-                    countpay = item.Where(x => x.order_Time.Month == ji).Sum(x => x.total_pay);
-                    month.ForEach(x =>
-                    {
-                        var listDetail = detail.Where(z => z.id_Order == x.id_Order).ToList();
-                        listDetail.ForEach(p =>
-                        {
-                            var pr = listProductVariant.Where(q => q.id_Variant == p.id_Variant).FirstOrDefault();
-                            import_money = pr.import_Price * p.quantity;
-                        });
-                    });
-                    dgvDoanhThu.Rows.Add(ji + "/" + mi, countpay, import_money, countpay - import_money);
-                }
-
-            }
+            dgvDoanhThu.Rows.Add(day, countOrder, countProduct, oderFall, countpay);
+        }
+        private void loadDataThang(int month, int year)
+        {
+            loadDGV();
+            var countpay = _lstItem.Where(x => x.Order.order_Time.Month == month).Sum(x => x.Order.total_pay);
+            var lstDetail = _lstItem.Where(x => x.Order.order_Time.Month == month && x.Order.order_Time.Year == year).ToList();
+            var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
+            var countOrder = lstDetail.Select(c => c.Order).ToList().Count;
+            dgvDoanhThu.Rows.Add(month + "/" + year, countOrder, countProduct, _OrderFall.Count, countpay);
         }
         private void loadDataNam()
         {
-            var row = 0;
-            dgvDoanhThu.ColumnCount = 4;
-            dgvDoanhThu.Columns[row++].Name = "Ngày";
-            dgvDoanhThu.Columns[row++].Name = "Số Sp bán được";
-            dgvDoanhThu.Columns[row++].Name = "Số đơn hủy";
-            dgvDoanhThu.Columns[row++].Name = "Doanh thu";
-            dgvDoanhThu.Rows.Clear();
-            
+            loadDGV();
             var item = _lstItem.Select(i => i.Order).ToList();
             var detail = _lstItem.Select(x => x.OrderDetail).ToList();
             var listProductVariant = _IOder.getListProduct();
@@ -114,23 +74,25 @@ namespace _3_GUI
             {
                 var month = item.Where(x => x.order_Time.Year == mi).ToList();
                 countpay = item.Where(x => x.order_Time.Year == mi).Sum(x => x.total_pay);
-                month.ForEach(x =>
-                    {
-                        var listDetail = detail.Where(z => z.id_Order == x.id_Order).ToList();
-                        listDetail.ForEach(p =>
-                            {
-                                var pr = listProductVariant.Where(q => q.id_Variant == p.id_Variant).FirstOrDefault();
-                                import_money = pr.import_Price * p.quantity;
-                            });
-                    });
-                dgvDoanhThu.Rows.Add(mi, countpay, import_money, countpay - import_money);
+
+                var lstDetail = _lstItem.Where(x => x.Order.order_Time.Year == mi).ToList();
+                var countProduct = lstDetail.Select(x => x.OrderDetail).ToList().Count;
+                var countOrder = lstDetail.Select(x => x.Order).ToList().Count;
+                _OrderFall = lstDetail.Where(o => o.Order.order_status == 1).ToList();
+                dgvDoanhThu.Rows.Add(mi, countOrder, countProduct, _OrderFall.Count, countpay);
             }
         }
         private void rdbTKNgay_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbTKNgay.Checked == true)
             {
-                loadDataNgay();
+                loadDGV();
+                var lstDay = _lstItem.GroupBy(x => x.Order.order_Time).ToList();
+                lstDay.ForEach(x =>
+                {
+                    loadDataNgay(x.Key.ToString().Split(" ")[0]);
+                });
+                
             }
         }
 
@@ -138,7 +100,17 @@ namespace _3_GUI
         {
             if (rdbThang.Checked == true)
             {
-                loadDataThang();
+                var minyear = _lstItem.Min(x => x.Order.order_Time.Year);
+                var maxyear = _lstItem.Max(x => x.Order.order_Time.Year);
+
+                for (int mi = minyear; mi < maxyear + 1; mi++)
+                {
+                    for (int ji = 1; ji < 13; ji++)
+                    {
+                        loadDataThang(ji, mi);
+                    }
+
+                }
             }
         }
 
@@ -151,35 +123,38 @@ namespace _3_GUI
         {
             var time = mcTime.SelectionRange.Start.ToString();
             time = time.Split(" ")[0];
-
-            var row = 0;
-            dgvDoanhThu.ColumnCount = 5;
-            dgvDoanhThu.Columns[row++].Name = "Ngày";
-            dgvDoanhThu.Columns[row++].Name = "Số đơn bán được";
-            dgvDoanhThu.Columns[row++].Name = "Số Sp bán được";
-            dgvDoanhThu.Columns[row++].Name = "Số đơn hủy";
-            dgvDoanhThu.Columns[row++].Name = "Doanh thu";
-            dgvDoanhThu.Rows.Clear();
             var listProductVariant = _IOder.getListProduct();
 
             var countpay = 0;
-            var import_money = 0;
             countpay = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == time).Sum(x => x.Order.total_pay);
-            var countOrder = _lstItem.Where(x=>x.Order.order_Time.ToString().Split(" ")[0] == time).ToList().Count;
+            var countOrder = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == time).ToList().Count;
             var OrderFall = _lstItem.Where(x => x.Order.order_status == 1).ToList();
             var countProduct = _lstItem.Where(z => z.Order.order_Time.ToString().Split(" ")[0] == time).Select(x => x.OrderDetail).ToList().Count;
 
-            dgvDoanhThu.Rows.Add(time, countOrder,countProduct, OrderFall.Count, countpay);
+            dgvDoanhThu.Rows.Add(time, countOrder, countProduct, OrderFall.Count, countpay);
             lblNgay.Text = "Ngày làm việc : " + time;
-            lblSoDon.Text = "Số đơn xuất ra : " + countOrder+"";
+            lblSoDon.Text = "Số đơn xuất ra : " + countOrder + "";
             lblSoSP.Text = "Số sản phẩm bán được : " + countProduct;
-            lblSoDonHuy.Text = "Số đơn hủy : "  + OrderFall.Count;
+            lblSoDonHuy.Text = "Số đơn hủy : " + OrderFall.Count;
             lblDoanhThu.Text = "Doanh thu : " + countpay;
         }
 
         private void rdbNow_CheckedChanged(object sender, EventArgs e)
         {
+            loadDGV();
+            var time = DateTime.Now.ToString().Split(" ")[0];
+            var countpay = 0;
+            countpay = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == time).Sum(x => x.Order.total_pay);
+            var countOrder = _lstItem.Where(x => x.Order.order_Time.ToString().Split(" ")[0] == time).ToList().Count;
+            var OrderFall = _lstItem.Where(x => x.Order.order_status == 1).ToList();
+            var countProduct = _lstItem.Where(z => z.Order.order_Time.ToString().Split(" ")[0] == time).Select(x => x.OrderDetail).ToList().Count;
 
+            dgvDoanhThu.Rows.Add(time, countOrder, countProduct, OrderFall.Count, countpay);
+            lblNgay.Text = "Ngày làm việc : " + time;
+            lblSoDon.Text = "Số đơn xuất ra : " + countOrder + "";
+            lblSoSP.Text = "Số sản phẩm bán được : " + countProduct;
+            lblSoDonHuy.Text = "Số đơn hủy : " + OrderFall.Count;
+            lblDoanhThu.Text = "Doanh thu : " + countpay;
         }
         private void OpenChildForm(Form childForm, object btnSender)
         {
@@ -193,15 +168,43 @@ namespace _3_GUI
         }
         private void lblSoDonHuy_Click(object sender, EventArgs e)
         {
-            var time = mcTime.SelectionRange.Start.ToString();
-            time = time.Split(" ")[0];
-            var lstOrder = _lstItem.Where(x => x.Order.order_status == 1).ToList();
-            OpenChildForm(new FrmDonHuy(lstOrder), sender);
+            OpenChildForm(new FrmDonHuy(_OrderFall), sender);
         }
 
-        private void pnDonHuy_Paint(object sender, PaintEventArgs e)
+        private void dgvDoanhThu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            var index = e.RowIndex;
+            if (index < 0)
+            {
+                return;
+            }
+            var row = dgvDoanhThu.Rows[index];
+            var time = row.Cells[0].Value + "";
+            var timeSplit = time.Split('/');
 
+            if (timeSplit.Length == 1)
+            {
+                _OrderFall = _lstItem.Where(x => x.Order.order_Time.Year == int.Parse(time) && x.Order.order_status == 1).ToList();
+            }
+            if (time.Length == 2)
+            {
+                _OrderFall = _lstItem.Where(x =>
+                x.Order.order_Time.Month == int.Parse(timeSplit[0])
+                && x.Order.order_Time.Year == int.Parse(timeSplit[1])
+                && x.Order.order_status == 1).ToList();
+            }
+            if (time.Length == 3)
+            {
+                _OrderFall = _lstItem.Where(x =>
+                x.Order.order_Time.ToString().Split(" ")[0] == time
+                && x.Order.order_status == 1).ToList();
+            }
+            lblNgay.Text = "Ngày làm việc : " + time;
+            lblSoDon.Text = "Số đơn xuất ra : " + row.Cells[1].Value + "";
+            lblSoSP.Text = "Số sản phẩm bán được : " + row.Cells[2].Value + "";
+            lblSoDonHuy.Text = "Số đơn hủy : " + row.Cells[3].Value + "";
+            lblDoanhThu.Text = "Doanh thu : " + row.Cells[4].Value + "";
+            lblSoDonHuy_Click(null, null);
         }
     }
 }
