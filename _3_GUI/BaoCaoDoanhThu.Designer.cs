@@ -201,6 +201,7 @@ namespace _3_GUI
             this.pnDonHuy.Name = "pnDonHuy";
             this.pnDonHuy.Size = new System.Drawing.Size(852, 323);
             this.pnDonHuy.TabIndex = 19;
+            this.pnDonHuy.Paint += new System.Windows.Forms.PaintEventHandler(this.pnDonHuy_Paint);
             // 
             // FrmBaoCaoDoanhYhu
             // 

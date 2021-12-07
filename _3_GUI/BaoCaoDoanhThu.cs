@@ -198,5 +198,10 @@ namespace _3_GUI
             var lstOrder = _lstItem.Where(x => x.Order.order_status == 1).ToList();
             OpenChildForm(new FrmDonHuy(lstOrder), sender);
         }
+
+        private void pnDonHuy_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
