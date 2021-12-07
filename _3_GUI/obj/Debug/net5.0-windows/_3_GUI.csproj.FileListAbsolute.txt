@@ -1001,3 +1001,4 @@ D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.genruntimeconfig.
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmBaoCaoDoanhYhu.resources
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FormThongKe.resources
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmDonHuy.resources
+D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmBanDuoc.resources

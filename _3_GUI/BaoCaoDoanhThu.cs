@@ -20,6 +20,7 @@ namespace _3_GUI
         private IQLOrderService _IOder;
         private List<Order_OrderDetail> _lstItem;
         private List<Order_OrderDetail> _OrderFall;
+        private List<Order_OrderDetail> _OrderDetail;
         public FrmBaoCaoDoanhYhu()
         {
             InitializeComponent();
@@ -88,8 +89,8 @@ namespace _3_GUI
             loadDGV();
             var item = _lstItem
                 .Select(i => i.Order)
-                .GroupBy(j=>j.order_Time)
-                .Select(d=>d.First())
+                .GroupBy(j => j.order_Time)
+                .Select(d => d.First())
                 .ToList();
             var detail = _lstItem
                 .Select(x => x.OrderDetail)
@@ -241,6 +242,7 @@ namespace _3_GUI
         private void dgvDoanhThu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var index = e.RowIndex;
+            var indexColumn = e.ColumnIndex;
             if (index < 0 || dgvDoanhThu.Rows[index].Cells[0].Value == null)
             {
                 return;
@@ -253,8 +255,13 @@ namespace _3_GUI
             {
                 _OrderFall = _lstItem
                     .Where(x => x.Order.order_Time.Year == int.Parse(time) && x.Order.order_status == 1)
-                    .GroupBy(o=>o.Order.order_Time)
-                    .Select(d=>d.First())
+                    .GroupBy(o => o.Order.order_Time)
+                    .Select(d => d.First())
+                    .ToList();
+                _OrderFall = _lstItem
+                    .Where(x => x.Order.order_Time.Year == int.Parse(time) && x.Order.order_status == 0)
+                    .GroupBy(o => o.Order.order_Time)
+                    .Select(d => d.First())
                     .ToList();
             }
             else if (timeSplit.Length == 2)
@@ -262,16 +269,28 @@ namespace _3_GUI
                 _OrderFall = _lstItem.Where(x =>
                 x.Order.order_Time.Month == int.Parse(timeSplit[0])
                 && x.Order.order_Time.Year == int.Parse(timeSplit[1])
-                && x.Order.order_status == 1).GroupBy(f=>f.Order.order_Time)
-                .Select(s=>s.First())
-                .ToList();
+                && x.Order.order_status == 1).GroupBy(f => f.Order.order_Time)
+                    .Select(s => s.First())
+                    .ToList();
+                _OrderDetail = _lstItem.Where(x =>
+                x.Order.order_Time.Month == int.Parse(timeSplit[0])
+                && x.Order.order_Time.Year == int.Parse(timeSplit[1])
+                && x.Order.order_status == 0).GroupBy(f => f.Order.order_Time)
+                    .Select(s => s.First())
+                    .ToList();
             }
-            else if(timeSplit.Length == 3)
+            else if (timeSplit.Length == 3)
             {
                 _OrderFall = _lstItem.Where(x =>
                 x.Order.order_Time.ToString()
                 .Split(" ")[0] == time
                 && x.Order.order_status == 1)
+                    .GroupBy(f => f.Order.order_Time)
+                    .Select(s => s.First())
+                    .ToList();
+                _OrderDetail = _lstItem.Where(x =>
+                x.Order.order_Time.ToString()
+                .Split(" ")[0] == time && x.Order.order_status == 0)
                     .GroupBy(f => f.Order.order_Time)
                     .Select(s => s.First())
                     .ToList();
@@ -285,7 +304,20 @@ namespace _3_GUI
             lblSoSP.Text = "Số sản phẩm bán được : " + row.Cells[2].Value + "";
             lblSoDonHuy.Text = "Số đơn hủy : " + row.Cells[3].Value + "";
             lblDoanhThu.Text = "Doanh thu : " + row.Cells[4].Value + "";
-            lblSoDonHuy_Click(null, null);
+            if (indexColumn == 1)
+            {
+                lblSoSP_Click(null, null);
+            }
+            else if (indexColumn == 3)
+            {
+                lblSoDonHuy_Click(null, null);
+            }
+
+        }
+
+        private void lblSoSP_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmBanDuoc(_OrderDetail),sender);
         }
     }
 }

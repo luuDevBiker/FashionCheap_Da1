@@ -167,6 +167,7 @@ namespace _3_GUI
             this.lblSoSP.Size = new System.Drawing.Size(12, 20);
             this.lblSoSP.TabIndex = 18;
             this.lblSoSP.Text = ".";
+            this.lblSoSP.Click += new System.EventHandler(this.lblSoSP_Click);
             // 
             // lblSoDonHuy
             // 

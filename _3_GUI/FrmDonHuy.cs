@@ -36,5 +36,6 @@ namespace _3_GUI
                 dgvDonHuy.Rows.Add(x.Employee.id_Employee, x.Employee.employee_Name, x.Customer.numberPhone, x.Customer.customer_Name, x.Order.status);
             });
         }
+
     }
 }

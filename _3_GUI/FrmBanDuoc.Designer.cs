@@ -1,7 +1,7 @@
 ﻿
 namespace _3_GUI
 {
-    partial class FrmDonHuy
+    partial class FrmBanDuoc
     {
         /// <summary>
         /// Required designer variable.
@@ -29,40 +29,38 @@ namespace _3_GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvDonHuy = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDonHuy)).BeginInit();
+            this.dgvSanPhamBanDuoc = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPhamBanDuoc)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvDonHuy
+            // dgvSanPhamBanDuoc
             // 
-            this.dgvDonHuy.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDonHuy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDonHuy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDonHuy.Location = new System.Drawing.Point(0, 0);
-            this.dgvDonHuy.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvDonHuy.Name = "dgvDonHuy";
-            this.dgvDonHuy.RowHeadersWidth = 62;
-            this.dgvDonHuy.RowTemplate.Height = 33;
-            this.dgvDonHuy.Size = new System.Drawing.Size(814, 395);
-            this.dgvDonHuy.TabIndex = 0;
+            this.dgvSanPhamBanDuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSanPhamBanDuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSanPhamBanDuoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSanPhamBanDuoc.Location = new System.Drawing.Point(0, 0);
+            this.dgvSanPhamBanDuoc.Name = "dgvSanPhamBanDuoc";
+            this.dgvSanPhamBanDuoc.RowHeadersWidth = 51;
+            this.dgvSanPhamBanDuoc.RowTemplate.Height = 29;
+            this.dgvSanPhamBanDuoc.Size = new System.Drawing.Size(762, 360);
+            this.dgvSanPhamBanDuoc.TabIndex = 0;
             // 
-            // FrmDonHuy
+            // FrmBanDuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(814, 395);
-            this.Controls.Add(this.dgvDonHuy);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FrmDonHuy";
-            this.Text = "FrmBaoCaoLoiNhuan";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDonHuy)).EndInit();
+            this.ClientSize = new System.Drawing.Size(762, 360);
+            this.Controls.Add(this.dgvSanPhamBanDuoc);
+            this.Name = "FrmBanDuoc";
+            this.Text = "Sản Phẩm Bán Được";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSanPhamBanDuoc)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvDonHuy;
+        private System.Windows.Forms.DataGridView dgvSanPhamBanDuoc;
     }
 }

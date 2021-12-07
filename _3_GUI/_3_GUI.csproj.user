@@ -5,6 +5,9 @@
     <Compile Update="BaoCaoDoanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmBanDuoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormBanHang.cs">
       <SubType>Form</SubType>
     </Compile>
