@@ -46,10 +46,5 @@ namespace _3_GUI
         {
             OpenChildForm(new FrmThongKeSanPham(), sender);
         }
-
-        private void thốngKêLợiNhuậnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new FrmBaoCaoLoiNhuan(), sender);
-        }
     }
 }

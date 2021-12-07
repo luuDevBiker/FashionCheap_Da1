@@ -30,7 +30,6 @@ namespace _3_GUI
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoThốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêDoanhThuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelhome = new System.Windows.Forms.Panel();
@@ -41,7 +40,6 @@ namespace _3_GUI
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thốngKêToolStripMenuItem,
             this.báoCáoThốngKêDoanhThuToolStripMenuItem,
             this.thốngKêDoanhThuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -50,13 +48,6 @@ namespace _3_GUI
             this.menuStrip1.Size = new System.Drawing.Size(1004, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // thốngKêToolStripMenuItem
-            // 
-            this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
-            this.thốngKêToolStripMenuItem.Text = "Thống kê bán hàng theo ngày";
-            this.thốngKêToolStripMenuItem.Click += new System.EventHandler(this.thốngKêToolStripMenuItem_Click);
             // 
             // báoCáoThốngKêDoanhThuToolStripMenuItem
             // 
@@ -104,7 +95,6 @@ namespace _3_GUI
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem thốngKêToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem báoCáoThốngKêDoanhThuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thốngKêDoanhThuToolStripMenuItem;
         private System.Windows.Forms.Panel panelhome;

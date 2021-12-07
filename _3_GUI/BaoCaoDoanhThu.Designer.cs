@@ -35,8 +35,15 @@ namespace _3_GUI
             this.rdbThang = new System.Windows.Forms.RadioButton();
             this.rdbNam = new System.Windows.Forms.RadioButton();
             this.btnDoanhThu = new System.Windows.Forms.Button();
-            this.dgvDoanhThu = new System.Windows.Forms.DataGridView();
             this.mcTime = new System.Windows.Forms.MonthCalendar();
+            this.dgvDoanhThu = new System.Windows.Forms.DataGridView();
+            this.lblSoDon = new System.Windows.Forms.Label();
+            this.rdbNow = new System.Windows.Forms.RadioButton();
+            this.lblSoSP = new System.Windows.Forms.Label();
+            this.lblSoDonHuy = new System.Windows.Forms.Label();
+            this.lblDoanhThu = new System.Windows.Forms.Label();
+            this.lblNgay = new System.Windows.Forms.Label();
+            this.pnDonHuy = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +70,7 @@ namespace _3_GUI
             // rdbTKNgay
             // 
             this.rdbTKNgay.AutoSize = true;
-            this.rdbTKNgay.Location = new System.Drawing.Point(1379, 78);
+            this.rdbTKNgay.Location = new System.Drawing.Point(1341, 324);
             this.rdbTKNgay.Margin = new System.Windows.Forms.Padding(2);
             this.rdbTKNgay.Name = "rdbTKNgay";
             this.rdbTKNgay.Size = new System.Drawing.Size(161, 24);
@@ -76,7 +83,7 @@ namespace _3_GUI
             // rdbThang
             // 
             this.rdbThang.AutoSize = true;
-            this.rdbThang.Location = new System.Drawing.Point(1379, 128);
+            this.rdbThang.Location = new System.Drawing.Point(1341, 374);
             this.rdbThang.Margin = new System.Windows.Forms.Padding(2);
             this.rdbThang.Name = "rdbThang";
             this.rdbThang.Size = new System.Drawing.Size(167, 24);
@@ -89,7 +96,7 @@ namespace _3_GUI
             // rdbNam
             // 
             this.rdbNam.AutoSize = true;
-            this.rdbNam.Location = new System.Drawing.Point(1379, 182);
+            this.rdbNam.Location = new System.Drawing.Point(1341, 428);
             this.rdbNam.Margin = new System.Windows.Forms.Padding(2);
             this.rdbNam.Name = "rdbNam";
             this.rdbNam.Size = new System.Drawing.Size(158, 24);
@@ -101,7 +108,7 @@ namespace _3_GUI
             // 
             // btnDoanhThu
             // 
-            this.btnDoanhThu.Location = new System.Drawing.Point(1452, 473);
+            this.btnDoanhThu.Location = new System.Drawing.Point(1452, 746);
             this.btnDoanhThu.Margin = new System.Windows.Forms.Padding(2);
             this.btnDoanhThu.Name = "btnDoanhThu";
             this.btnDoanhThu.Size = new System.Drawing.Size(147, 37);
@@ -110,32 +117,104 @@ namespace _3_GUI
             this.btnDoanhThu.UseVisualStyleBackColor = true;
             this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
             // 
+            // mcTime
+            // 
+            this.mcTime.Location = new System.Drawing.Point(1341, 496);
+            this.mcTime.Name = "mcTime";
+            this.mcTime.TabIndex = 15;
+            // 
             // dgvDoanhThu
             // 
             this.dgvDoanhThu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDoanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDoanhThu.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
-            this.dgvDoanhThu.Location = new System.Drawing.Point(12, 30);
+            this.dgvDoanhThu.Location = new System.Drawing.Point(12, 389);
             this.dgvDoanhThu.MultiSelect = false;
             this.dgvDoanhThu.Name = "dgvDoanhThu";
             this.dgvDoanhThu.RowHeadersWidth = 51;
             this.dgvDoanhThu.RowTemplate.Height = 29;
             this.dgvDoanhThu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDoanhThu.Size = new System.Drawing.Size(1294, 718);
+            this.dgvDoanhThu.Size = new System.Drawing.Size(1294, 436);
             this.dgvDoanhThu.TabIndex = 13;
             // 
-            // mcTime
+            // lblSoDon
             // 
-            this.mcTime.Location = new System.Drawing.Point(1341, 223);
-            this.mcTime.Name = "mcTime";
-            this.mcTime.TabIndex = 15;
+            this.lblSoDon.AutoSize = true;
+            this.lblSoDon.Location = new System.Drawing.Point(12, 142);
+            this.lblSoDon.Name = "lblSoDon";
+            this.lblSoDon.Size = new System.Drawing.Size(12, 20);
+            this.lblSoDon.TabIndex = 16;
+            this.lblSoDon.Text = ".";
+            // 
+            // rdbNow
+            // 
+            this.rdbNow.AutoSize = true;
+            this.rdbNow.Location = new System.Drawing.Point(1341, 277);
+            this.rdbNow.Name = "rdbNow";
+            this.rdbNow.Size = new System.Drawing.Size(152, 24);
+            this.rdbNow.TabIndex = 17;
+            this.rdbNow.TabStop = true;
+            this.rdbNow.Text = "Thống kê hôm nay";
+            this.rdbNow.UseVisualStyleBackColor = true;
+            this.rdbNow.CheckedChanged += new System.EventHandler(this.rdbNow_CheckedChanged);
+            // 
+            // lblSoSP
+            // 
+            this.lblSoSP.AutoSize = true;
+            this.lblSoSP.Location = new System.Drawing.Point(12, 200);
+            this.lblSoSP.Name = "lblSoSP";
+            this.lblSoSP.Size = new System.Drawing.Size(12, 20);
+            this.lblSoSP.TabIndex = 18;
+            this.lblSoSP.Text = ".";
+            // 
+            // lblSoDonHuy
+            // 
+            this.lblSoDonHuy.AutoSize = true;
+            this.lblSoDonHuy.Location = new System.Drawing.Point(12, 258);
+            this.lblSoDonHuy.Name = "lblSoDonHuy";
+            this.lblSoDonHuy.Size = new System.Drawing.Size(12, 20);
+            this.lblSoDonHuy.TabIndex = 18;
+            this.lblSoDonHuy.Text = ".";
+            this.lblSoDonHuy.Click += new System.EventHandler(this.lblSoDonHuy_Click);
+            // 
+            // lblDoanhThu
+            // 
+            this.lblDoanhThu.AutoSize = true;
+            this.lblDoanhThu.Location = new System.Drawing.Point(12, 328);
+            this.lblDoanhThu.Name = "lblDoanhThu";
+            this.lblDoanhThu.Size = new System.Drawing.Size(12, 20);
+            this.lblDoanhThu.TabIndex = 18;
+            this.lblDoanhThu.Text = ".";
+            // 
+            // lblNgay
+            // 
+            this.lblNgay.AutoSize = true;
+            this.lblNgay.Location = new System.Drawing.Point(12, 86);
+            this.lblNgay.Name = "lblNgay";
+            this.lblNgay.Size = new System.Drawing.Size(12, 20);
+            this.lblNgay.TabIndex = 16;
+            this.lblNgay.Text = ".";
+            // 
+            // pnDonHuy
+            // 
+            this.pnDonHuy.Location = new System.Drawing.Point(454, 51);
+            this.pnDonHuy.Name = "pnDonHuy";
+            this.pnDonHuy.Size = new System.Drawing.Size(852, 323);
+            this.pnDonHuy.TabIndex = 19;
             // 
             // FrmBaoCaoDoanhYhu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(1621, 760);
+            this.ClientSize = new System.Drawing.Size(1621, 837);
+            this.Controls.Add(this.pnDonHuy);
+            this.Controls.Add(this.lblDoanhThu);
+            this.Controls.Add(this.lblSoDonHuy);
+            this.Controls.Add(this.lblSoSP);
+            this.Controls.Add(this.rdbNow);
+            this.Controls.Add(this.lblNgay);
+            this.Controls.Add(this.lblSoDon);
             this.Controls.Add(this.mcTime);
             this.Controls.Add(this.dgvDoanhThu);
             this.Controls.Add(this.btnDoanhThu);
@@ -161,7 +240,14 @@ namespace _3_GUI
         private System.Windows.Forms.RadioButton rdbThang;
         private System.Windows.Forms.RadioButton rdbNam;
         private System.Windows.Forms.Button btnDoanhThu;
-        private System.Windows.Forms.DataGridView dgvDoanhThu;
         private System.Windows.Forms.MonthCalendar mcTime;
+        private System.Windows.Forms.DataGridView dgvDoanhThu;
+        private System.Windows.Forms.Label lblSoDon;
+        private System.Windows.Forms.RadioButton rdbNow;
+        private System.Windows.Forms.Label lblSoSP;
+        private System.Windows.Forms.Label lblSoDonHuy;
+        private System.Windows.Forms.Label lblDoanhThu;
+        private System.Windows.Forms.Label lblNgay;
+        private System.Windows.Forms.Panel pnDonHuy;
     }
 }
