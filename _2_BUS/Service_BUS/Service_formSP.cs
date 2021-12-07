@@ -79,7 +79,11 @@ namespace _2_BUS.Service_BUS
             var list = _lsOptionses;
             return list;
         }
-
+        public List<PRODUCTS_OPTIONS> getCountOption(int a)
+        {
+            var list = _lsProductsOptionses.Where(c => c.id_Product == a).ToList();
+            return list;
+        }
         public List<ProductDetail> LoadDatafromDAL()
         {
             var lisdtOption = _lstVariantsValueses
