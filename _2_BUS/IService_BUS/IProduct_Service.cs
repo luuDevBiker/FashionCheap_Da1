@@ -6,7 +6,8 @@ namespace _2_BUS.IService_BUS
     public interface IProduct_Service
     {
         public List<ProductDetail> LoadDatafromDAL();
-        public List<OPTIONS> getCountOption();
+        public List<PRODUCTS_OPTIONS> getCountOption(int a);
+        public List<OPTIONS> getCountOptionloadtong();
         public string addImage();
         public string addNewProduct(string name);
         public All_List AllListPRO();
@@ -24,8 +25,8 @@ namespace _2_BUS.IService_BUS
         public string RemoveOPtion(OPTIONS a);
         public List<OPTIONS_VALUES> GetListoOptionvValueses();
         public string addOPtion_Value(OPTIONS_VALUES a);
-        public string editProduct_Option(OPTIONS_VALUES a);
-        public string RemoveProduct_OPtion(OPTIONS_VALUES a);
+        public string editOPtion_value(OPTIONS_VALUES a);
+        public string RemoveOPtion_values(OPTIONS_VALUES a);
         public List<PRODUCTS_OPTIONS> GetLisoProductsOptionses();
         public string addProduct_OPtion(PRODUCTS_OPTIONS a);
         public string editProduct_Option(PRODUCTS_OPTIONS a);

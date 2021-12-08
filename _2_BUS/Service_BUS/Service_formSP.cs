@@ -113,6 +113,15 @@ namespace _2_BUS.Service_BUS
 
 
         }
+        public List<OPTIONS> getCountOptionloadtong()
+        {
+            var list = _lsOptionses; return list;
+        }
+        public List<PRODUCTS_OPTIONS> getCountOption(int a)
+        {
+            var list = _lsProductsOptionses.Where(c => c.id_Product == a).ToList();
+            return list;
+        }
 
         public string Addnew(ProductDetail a)
         {
@@ -327,14 +336,14 @@ namespace _2_BUS.Service_BUS
             }
         }
 
-        public string editProduct_Option(OPTIONS_VALUES a)
+        public string editOPtion_value(OPTIONS_VALUES a)
         {
             _lstOptionsValueses[_lstOptionsValueses.FindIndex(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option)] = a;
             OV.EditOptionValue(a);
             return OV.SaveOptionValue();
         }
 
-        public string RemoveProduct_OPtion(OPTIONS_VALUES a)
+        public string RemoveOPtion_values(OPTIONS_VALUES a)
         {
 
             _lstOptionsValueses.RemoveAt(_lstOptionsValueses.FindIndex(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option));
