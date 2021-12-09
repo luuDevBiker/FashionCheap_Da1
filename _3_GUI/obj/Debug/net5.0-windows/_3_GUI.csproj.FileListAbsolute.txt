@@ -998,7 +998,6 @@ D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.dll
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\ref\_3_GUI.dll
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.pdb
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.genruntimeconfig.cache
-D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmBaoCaoDoanhYhu.resources
 D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FormThongKe.resources
-D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmDonHuy.resources
-D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmBanDuoc.resources
+D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmThongTinDonHang.resources
+D:\Web\FashionCheap_Da1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.FrmBaoCaoDoanhThu.resources

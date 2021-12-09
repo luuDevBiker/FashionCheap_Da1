@@ -1,7 +1,7 @@
 ﻿
 namespace _3_GUI
 {
-    partial class FrmBaoCaoDoanhYhu
+    partial class FrmBaoCaoDoanhThu
     {
         /// <summary>
         /// Required designer variable.
@@ -131,6 +131,7 @@ namespace _3_GUI
             this.dgvDoanhThu.Location = new System.Drawing.Point(12, 389);
             this.dgvDoanhThu.MultiSelect = false;
             this.dgvDoanhThu.Name = "dgvDoanhThu";
+            this.dgvDoanhThu.ReadOnly = true;
             this.dgvDoanhThu.RowHeadersWidth = 51;
             this.dgvDoanhThu.RowTemplate.Height = 29;
             this.dgvDoanhThu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -146,6 +147,7 @@ namespace _3_GUI
             this.lblSoDon.Size = new System.Drawing.Size(12, 20);
             this.lblSoDon.TabIndex = 16;
             this.lblSoDon.Text = ".";
+            this.lblSoDon.Click += new System.EventHandler(this.lblSoDon_Click);
             // 
             // rdbNow
             // 
@@ -204,7 +206,7 @@ namespace _3_GUI
             this.pnDonHuy.Size = new System.Drawing.Size(912, 323);
             this.pnDonHuy.TabIndex = 19;
             // 
-            // FrmBaoCaoDoanhYhu
+            // FrmBaoCaoDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -226,7 +228,7 @@ namespace _3_GUI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FrmBaoCaoDoanhYhu";
+            this.Name = "FrmBaoCaoDoanhThu";
             this.Text = "BaoCaoDoanhThu";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoanhThu)).EndInit();
             this.ResumeLayout(false);

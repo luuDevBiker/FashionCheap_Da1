@@ -33,7 +33,7 @@ namespace _3_GUI
         }
         private void báoCáoThốngKêDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmBaoCaoDoanhYhu(), sender);
+            OpenChildForm(new FrmBaoCaoDoanhThu(), sender);
         }
 
         private void thốngKêDoanhThuToolStripMenuItem_Click(object sender, EventArgs e)

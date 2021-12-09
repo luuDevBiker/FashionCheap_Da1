@@ -6060,20 +6060,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MyPC\\.nuget\\packages\\": {}
+    "C:\\Users\\admin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Camera\\New folder\\_3_GUI\\_3_GUI.csproj",
+      "projectUniqueName": "D:\\Web\\FashionCheap_Da1\\_3_GUI\\_3_GUI.csproj",
       "projectName": "_3_GUI",
-      "projectPath": "E:\\Camera\\New folder\\_3_GUI\\_3_GUI.csproj",
-      "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-      "outputPath": "E:\\Camera\\New folder\\_3_GUI\\obj\\",
+      "projectPath": "D:\\Web\\FashionCheap_Da1\\_3_GUI\\_3_GUI.csproj",
+      "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+      "outputPath": "D:\\Web\\FashionCheap_Da1\\_3_GUI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"
@@ -6086,11 +6091,11 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj": {
-              "projectPath": "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj"
+            "D:\\Web\\FashionCheap_Da1\\_1_DAL\\_1_DAL.csproj": {
+              "projectPath": "D:\\Web\\FashionCheap_Da1\\_1_DAL\\_1_DAL.csproj"
             },
-            "E:\\Camera\\New folder\\_2_BUS\\_2_BUS.csproj": {
-              "projectPath": "E:\\Camera\\New folder\\_2_BUS\\_2_BUS.csproj"
+            "D:\\Web\\FashionCheap_Da1\\_2_BUS\\_2_BUS.csproj": {
+              "projectPath": "D:\\Web\\FashionCheap_Da1\\_2_BUS\\_2_BUS.csproj"
             }
           }
         }
@@ -6136,24 +6141,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.12, 5.0.12]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -6162,7 +6149,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   },

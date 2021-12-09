@@ -1,7 +1,7 @@
 ﻿
 namespace _3_GUI
 {
-    partial class FrmDonHuy
+    partial class FrmThongTinDonHang
     {
         /// <summary>
         /// Required designer variable.
