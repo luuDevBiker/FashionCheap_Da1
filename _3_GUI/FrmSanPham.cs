@@ -51,6 +51,9 @@ namespace _3_GUI
         }
         void loadata(int a)
         {
+            _lstVariantOptionsOfProduct = PS_BUS.LoadDatafromDAL().Where(c =>
+                c.Product.id_Product == a).ToList();
+            
             data_ThongTinSanPham1.ColumnCount = 7 + PS_BUS.getCountOption(a).Count();
             var row = 0;
             data_ThongTinSanPham1.Columns[row++].Name = "Tên Sản Phẩm";
@@ -120,8 +123,8 @@ namespace _3_GUI
             if (rowindexSP < 0 ||
                 rowindexSP >= PS_BUS.GetListProductses().Where(c => c.status_Delete == true).Count()) return;
             id_ProAdd = Convert.ToInt16(data_TenSanPham1.Rows[rowindexSP].Cells["ID_Product"].Value.ToString());
-            _lstVariantOptionsOfProduct = _litSanPhamCuThes.Where(c =>
-                c.Product.id_Product == id_ProAdd).ToList();
+            //_lstVariantOptionsOfProduct = _litSanPhamCuThes.Where(c =>
+            //    c.Product.id_Product == id_ProAdd).ToList();
             loadata(id_ProAdd);
         }
 
@@ -211,58 +214,74 @@ namespace _3_GUI
         {
             if (MessageBox.Show($"bạn có muốn thêm sản phẩm {txt_Masp.Text} không?", " Thông báo!", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                PRODUCTS_VARIANTS b = new PRODUCTS_VARIANTS();
-                b.id_Product = id_ProAdd;
-                b.Products_Code = txt_Masp.Text;
-                b.quantity = Convert.ToInt16(txt_SoLuong.Text);
-                b.import_Price = Convert.ToInt32(txt_giaNhap.Text);
-                b.price = Convert.ToInt32(txt_giaBan.Text);
-                PS_BUS.addVariant(b);
-                PS_BUS.save();
+                //PRODUCTS_VARIANTS b = new PRODUCTS_VARIANTS();
+                //b.id_Product = id_ProAdd;
+                //b.Products_Code = txt_Masp.Text;
+                //b.quantity = Convert.ToInt16(txt_SoLuong.Text);
+                //b.import_Price = Convert.ToInt32(txt_giaNhap.Text);
+                //b.price = Convert.ToInt32(txt_giaBan.Text);
+                //PS_BUS.addVariant(b);
+                //PS_BUS.save();
                 ///========================================================================================================================================================
+                ProductDetail aDetail = new ProductDetail();
+                aDetail.Product.id_Product = id_ProAdd;
+                aDetail.ProductVariant.id_Product = id_ProAdd;
+                aDetail.ProductVariant.Products_Code = txt_Masp.Text;
+                aDetail.ProductVariant.quantity = Convert.ToInt16(txt_SoLuong.Text);
+                aDetail.ProductVariant.import_Price = Convert.ToInt32(txt_giaNhap.Text);
+                aDetail.ProductVariant.price = Convert.ToInt32(txt_giaBan.Text);
+
                 //----------------------------------------------------------------------------------------------------------------------------------------------
-                for (int i = 1; i < data_CacPhienBan1.Rows.Count; i++)
+                for (int i = 0; i < data_CacPhienBan1.Rows.Count - 1; i++)
                 {
                     // Thêm Option
                     OPTIONS newoOptions = new OPTIONS();
-                    newoOptions.option_Name = data_CacPhienBan1.Rows[i].Cells["option_name"].Value.ToString(); ;
-                    PS_BUS.addOPtion(newoOptions);
-                    
+                    string name = data_CacPhienBan1.Rows[i].Cells[2].Value.ToString();
+                    newoOptions.option_Name = data_CacPhienBan1.Rows[i].Cells[2].Value.ToString();
+                    aDetail.Option.Add(newoOptions);
+                    // PS_BUS.addOPtion(newoOptions);
+
                     // thêm option_values
                     OPTIONS_VALUES newOptionsValues = new OPTIONS_VALUES();
-                    newOptionsValues.id_Option =
-                        PS_BUS.GetListoOptionses().Where(c => c.option_Name == newoOptions.option_Name).Select(c => c.id_Option).FirstOrDefault();
-                    string tam = data_CacPhienBan1.Rows[i].Cells["option_name"].Value.ToString();
-                    newOptionsValues.option_Values = data_CacPhienBan1.Rows[i].Cells["value_name"].Value.ToString();
-                    //string aka = data_CacPhienBan1.Rows[i].Cells[1].Value.ToString();
-                    PS_BUS.addOPtion_Value(newOptionsValues);
-                    
-                    //thêm product_option
-                    PRODUCTS_OPTIONS newProductsOptions = new PRODUCTS_OPTIONS();
-                    newProductsOptions.id_Product = id_ProAdd;
-                    newProductsOptions.id_Option = PS_BUS.GetListoOptionses().Where(c => c.option_Name == newoOptions.option_Name).Select(c => c.id_Option).FirstOrDefault();
-                    PS_BUS.addProduct_OPtion(newProductsOptions);
-                    
-                    //Thêm Variant_values
-                    VARIANTS_VALUES newValues = new VARIANTS_VALUES();
-                    newValues.id_Product = id_ProAdd;
-                    newValues.id_Variant = PS_BUS.GetListProductVariantses()[
-                        PS_BUS.GetListProductVariantses().FindIndex(c => c.Products_Code == b.Products_Code)].id_Variant;
-                    newValues.id_Option = PS_BUS.GetListoOptionses()[
-                        PS_BUS.GetListoOptionses().FindIndex(c => c.option_Name == newoOptions.option_Name)].id_Option;
-                    newValues.id_Values = PS_BUS.GetListoOptionvValueses()[
-                        PS_BUS.GetListoOptionvValueses().FindIndex(c => c.option_Values == newOptionsValues.option_Values)].id_Values;
+                    string tam = data_CacPhienBan1.Rows[i].Cells[2].Value.ToString();
 
-                    PS_BUS.addVariant_value(newValues);
+                    //newOptionsValues.id_Option =
+                    //    PS_BUS.GetListoOptionses().Where(c => c.option_Name == tam).Select(c => c.id_Option).FirstOrDefault();
+                    // newOptionsValues.id_Option=Convert.ToInt16(data_CacPhienBan1.Rows[i].Cells[2].Value.ToString());
+                    newOptionsValues.option_Values = data_CacPhienBan1.Rows[i].Cells[3].Value.ToString();
+                    //string aka = data_CacPhienBan1.Rows[i].Cells[1].Value.ToString();
+                    //  PS_BUS.addOPtion_Value(newOptionsValues);
+                    aDetail.OptionValue.Add(newOptionsValues);
+
+                    //thêm product_option
+                    //PRODUCTS_OPTIONS newProductsOptions = new PRODUCTS_OPTIONS();
+                    //newProductsOptions.id_Product = id_ProAdd;
+                    //newProductsOptions.id_Option = PS_BUS.GetListoOptionses().Where(c => c.option_Name == newoOptions.option_Name).Select(c => c.id_Option).FirstOrDefault();
+                    //PS_BUS.addProduct_OPtion(newProductsOptions);
+
+                    ////Thêm Variant_values
+                    //VARIANTS_VALUES newValues = new VARIANTS_VALUES();
+                    //newValues.id_Product = id_ProAdd;
+                    //newValues.id_Variant = PS_BUS.GetListProductVariantses()[
+                    //    PS_BUS.GetListProductVariantses().FindIndex(c => c.Products_Code == b.Products_Code)].id_Variant;
+                    //newValues.id_Option = PS_BUS.GetListoOptionses()[
+                    //    PS_BUS.GetListoOptionses().FindIndex(c => c.option_Name == newoOptions.option_Name)].id_Option;
+                    //newValues.id_Values = PS_BUS.GetListoOptionvValueses()[
+                    //    PS_BUS.GetListoOptionvValueses().FindIndex(c => c.option_Values == newOptionsValues.option_Values)].id_Values;
+
+                    //PS_BUS.addVariant_value(newValues);
 
                 }
-
-                MessageBox.Show(" thành CÔng!", $" Bạn đã thêm {b.Products_Code}!");
+                _lstVariantOptionsOfProduct.Clear();
+                int a = id_ProAdd;
+                _litSanPhamCuThes= PS_BUS.LoadDatafromDAL();
+                loadata(id_ProAdd);
+                MessageBox.Show(PS_BUS.Addnew(aDetail), $" Bạn đã thêm !");
             }
-            loadata(id_ProAdd);
-            loadOPtionSP(1);
-            PS_BUS.save();
+
+
             Flag = false;
+
 
         }
 
@@ -274,14 +293,14 @@ namespace _3_GUI
             productTemp.ProductVariant.Products_Code = txt_Masp.Text;
             productTemp.ProductVariant.quantity = Convert.ToInt16(txt_SoLuong.Text);
             productTemp.ProductVariant.import_Price = Convert.ToInt32(txt_giaNhap.Text);
-            productTemp.ProductVariant.price=Convert.ToInt32(txt_giaBan.Text);
-
-            for (int i = 1; i < data_CacPhienBan1.Rows.Count; i++)
+            productTemp.ProductVariant.price = Convert.ToInt32(txt_giaBan.Text);
+            PS_BUS.editVariant(productTemp.ProductVariant);
+            for (int i = 0; i < data_CacPhienBan1.Rows.Count - 1; i++)
             {
                 // Thêm Option
                 OPTIONS newoOptions = new OPTIONS();
                 string SosanhOpDB = data_CacPhienBan1.Rows[i].Cells["option_name"].Value.ToString();
-                if (PS_BUS.GetListoOptionses().Any(c=>c.option_Name==SosanhOpDB))
+                if (PS_BUS.GetListoOptionses().Any(c => c.option_Name == SosanhOpDB))
                 {
                     newoOptions = PS_BUS.GetListoOptionses().FirstOrDefault(c => c.option_Name == SosanhOpDB);
                     PS_BUS.editOption(newoOptions);
@@ -292,25 +311,30 @@ namespace _3_GUI
                     PS_BUS.addOPtion(newoOptions);
 
                 }
-                
+
                 // thêm option_values
                 OPTIONS_VALUES newOptionsValues = new OPTIONS_VALUES();
                 string tam = data_CacPhienBan1.Rows[i].Cells["value_name"].Value.ToString();
-                if (PS_BUS.GetListoOptionvValueses().Any(c=>c.option_Values==tam))
+                bool ll = PS_BUS.GetListoOptionvValueses().Any(c => c.option_Values == tam);
+                if (PS_BUS.GetListoOptionvValueses().Any(c => c.option_Values == tam))
                 {
-                    newOptionsValues = PS_BUS.GetListoOptionvValueses().FirstOrDefault(c => c.option_Values==tam);
-                    PS_BUS.editOPtion_value(newOptionsValues);
+                    newOptionsValues = PS_BUS.GetListoOptionvValueses().FirstOrDefault(c => c.option_Values == tam);
+                    newOptionsValues.id_Option = newoOptions.id_Option;
+                    // PS_BUS.addOPtion_Value(newOptionsValues);
                 }
                 else
                 {
-                     newOptionsValues.id_Option =
-                    PS_BUS.GetListoOptionses().Where(c => c.option_Name == newoOptions.option_Name).Select(c => c.id_Option).FirstOrDefault();
-                     newOptionsValues.option_Values = tam;
-                     PS_BUS.addOPtion_Value(newOptionsValues);
+                    newOptionsValues.id_Option =
+                   PS_BUS.GetListoOptionses().Where(c => c.option_Name == newoOptions.option_Name).Select(c => c.id_Option).FirstOrDefault();
+                    newOptionsValues.option_Values = tam;
+                    // PS_BUS.addOPtion_Value(newOptionsValues);
 
                 }
-                PS_BUS.editOPtion_value(newOptionsValues);
 
+                if (PS_BUS.GetListoOptionvValueses().Any(c => c.option_Values == tam))
+                {
+                    PS_BUS.editOption_Value(newOptionsValues);
+                }
                 //thêm product_option
                 PRODUCTS_OPTIONS newProductsOptions = new PRODUCTS_OPTIONS();
                 newProductsOptions.id_Product = id_ProAdd;
@@ -330,7 +354,8 @@ namespace _3_GUI
                 PS_BUS.editVariant_values(newValues);
 
             }
-
+            loadata(id_ProAdd);
+            loadOPtionSP(idVariaant);
 
         }
         private void btn_xoaVariant_Click(object sender, EventArgs e)

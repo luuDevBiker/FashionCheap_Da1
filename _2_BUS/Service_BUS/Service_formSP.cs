@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+
 using _2_BUS.IService_BUS;
 using _2_BUS.Models;
+
 using DAL_DataAccessLayers;
 using DAL_DataAccessLayers.IServices;
 using DAL_DataAccessLayers.Service;
@@ -60,6 +62,25 @@ namespace _2_BUS.Service_BUS
             _litSanPhamCuThes = new List<ProductDetail>();
         }
 
+        void loadAllList()
+        {
+            _lstProductses = PS.getListProductses();
+            _lstOptionsValueses = OV.getListOptionValue();
+            _lsOptionses = OS.getListOption();
+            _lstVariantsValueses = Vv.getListVARIANTS_VALUES();
+            _lsProductsOptionses = PO.getListProductsesOptions();
+            _lstProductsVariantses = PV.getListProductses();
+
+        }
+        void clearall()
+        {
+            _lsOptionses.Clear();
+            _lsProductsOptionses.Clear();
+            _lstOptionsValueses.Clear();
+            _lstProductsVariantses.Clear();
+            _lstProductses.Clear();
+            _lstVariantsValueses.Clear();
+        }
         public string addImage()
         {
             throw new System.NotImplementedException();
@@ -74,14 +95,21 @@ namespace _2_BUS.Service_BUS
             return "Successful";
         }
 
-        public List<OPTIONS> getCountOption()
+
+
+        public List<OPTIONS> getCountOptionloadtong()
         {
-            var list = _lsOptionses;
+            var list = _lsOptionses; return list;
+        }
+        public List<PRODUCTS_OPTIONS> getCountOption(int a)
+        {
+            var list = _lsProductsOptionses.Where(c => c.id_Product == a).ToList();
             return list;
         }
 
         public List<ProductDetail> LoadDatafromDAL()
         {
+            _litSanPhamCuThes.Clear();
             var lisdtOption = _lstVariantsValueses
                 .Join(_lstOptionsValueses, vv => vv.id_Values, ov => ov.id_Values, (vv, ov) => new { vv, ov })
                 .Join(_lsOptionses, i => i.ov.id_Option, o => o.id_Option, (i, o) => new { i.vv, i.ov, o })
@@ -111,43 +139,110 @@ namespace _2_BUS.Service_BUS
 
             return _litSanPhamCuThes;
 
-
-        }
-        public List<OPTIONS> getCountOptionloadtong()
-        {
-            var list = _lsOptionses; return list;
-        }
-        public List<PRODUCTS_OPTIONS> getCountOption(int a)
-        {
-            var list = _lsProductsOptionses.Where(c => c.id_Product == a).ToList();
-            return list;
         }
 
         public string Addnew(ProductDetail a)
-        {
-            _litSanPhamCuThes.Add(a);
-            PS.AddProduct(a.Product);
+        {// thêm Product Vảiant
+            int idProduct = a.Product.id_Product;
             PV.AddProductVarriant(a.ProductVariant);
-            foreach (var VARIABLE in a.Option)
-            {
-                OS.AddOption(VARIABLE);
-            }
+            PV.SaveProductVarriant();
+            //-----------------------------------------
+            for (int i = 0; i < a.Option.Count; i++)
+            {//-------------- Thêm vảo  OPtion--------------
+                int beu = a.Option[i].id_Option;
+                string aa = a.Option[i].option_Name;
+                a.Option[i].status_Delete = true;
+                if (OS.getListOption().Any(c => c.option_Name == a.Option[i].option_Name) == false)
+                {
+                    OS.AddOption(a.Option[i]);
+                    OS.SaveOption();
+                }
+                else
+                {
+                    var b = OS.getListOption()[OS.getListOption().FindIndex(c => c.option_Name == a.Option[i].option_Name)];
+                    b.status_Delete = true;
+                    OS.EditOption(b);
+                    OS.SaveOption();
+                }
 
-            foreach (var VARIABLE in a.ProductOption)
-            {
-                PO.AddProductOptions(VARIABLE);
-            }
+                //
+                //-------------- Thêm vảo  OPtion vaLues--------------
 
-            foreach (var VARIABLE in a.OptionValue)
-            {
-                OV.AddOptionValue(VARIABLE);
-            }
+                int newId_OPtion = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                a.OptionValue[i].id_Option = newId_OPtion;
+                string beuValue = a.OptionValue[i].option_Values;
+                a.OptionValue[i].status_Delete = true;
+                if (OV.getListOptionValue().Any(c => c.option_Values == beuValue && c.id_Option == newId_OPtion) == false)
+                {
+                    OV.AddOptionValue(a.OptionValue[i]);
+                    OV.SaveOptionValue();
+                }
+                else
+                {
+                    var b = OV.getListOptionValue()[OV.getListOptionValue().FindIndex(c => c.option_Values == beuValue && c.id_Option == newId_OPtion)];
+                    b.status_Delete = true;
+                    OV.EditOptionValue(b);
+                    OV.SaveOptionValue();
+                }
+                //a.OptionValue[i].id_Option = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                //OV.AddOptionValue(a.OptionValue[i]);
+                //OV.SaveOptionValue();
+                //
+                //-------------- Thêm vảo Product OPtion--------------
 
-            foreach (var VARIABLE in a.VariantValue)
-            {
-                Vv.AddVARIANTS_VALUES(VARIABLE);
+                //  var aIdProduct = a.ProductOption[i].id_Product;
+                PRODUCTS_OPTIONS newProductOption = new PRODUCTS_OPTIONS();
+                newProductOption.id_Product = idProduct;
+                newProductOption.id_Option = newId_OPtion;
+                newProductOption.status_Delete = true;
+                // _lsProductsOptionses.Add(newProductOption);
+                if (PO.getListProductsesOptions().Any(c => c.id_Option == newProductOption.id_Option && c.id_Product == newProductOption.id_Product) == false)
+                {
+                    PO.AddProductOptions(newProductOption);
+                    PO.SaveProductOptions();
+                }
+                else
+                {
+                    var b = PO.getListProductsesOptions()[PO.getListProductsesOptions().FindIndex(c => c.id_Option == newProductOption.id_Option && c.id_Product == newProductOption.id_Product)];
+                    b.status_Delete = true;
+                    PO.EditProductOptions(b);
+                    PO.SaveProductOptions();
+                }
+                //
+                //--------------- Thêm vào Variant values-------------
+                int testbeu = a.Product.id_Product;
+                int testbeu2 = PV.getListProductses().Where(c => c.Products_Code == a.ProductVariant.Products_Code).Select(c => c.id_Variant).FirstOrDefault();
+                int testbeu3 = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                int testbeu4 = OV.getListOptionValue()
+                    .Where(c => c.option_Values == a.OptionValue[i].option_Values &&
+                                c.id_Option == a.OptionValue[i].id_Option).Select(c => c.id_Values).FirstOrDefault();
+                VARIANTS_VALUES newVariantsValues = new VARIANTS_VALUES();
+                newVariantsValues.id_Product = a.Product.id_Product;
+                newVariantsValues.id_Variant = PV.getListProductses().Where(c => c.Products_Code == a.ProductVariant.Products_Code).Select(c => c.id_Variant).FirstOrDefault();
+                newVariantsValues.id_Option = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                newVariantsValues.id_Values = OV.getListOptionValue()
+                    .Where(c => c.option_Values == a.OptionValue[i].option_Values &&
+                                c.id_Option == a.OptionValue[i].id_Option).Select(c => c.id_Values).FirstOrDefault();
+                newVariantsValues.status_Delete = true;
+                // _lstVariantsValueses.Add(newVariantsValues);
+                if (Vv.getListVARIANTS_VALUES().Any(c => c.id_Product == testbeu && c.id_Option == testbeu3
+                && c.id_Variant == testbeu2 && c.id_Values == testbeu4) == false)
+                {
+                    Vv.AddVARIANTS_VALUES(newVariantsValues);
+                    Vv.SaveVARIANTS_VALUES();
+                }
+                else
+                {
+                    var b = Vv.getListVARIANTS_VALUES()[Vv.getListVARIANTS_VALUES().FindIndex(c => c.id_Product == testbeu && c.id_Option == testbeu3
+                        && c.id_Variant == testbeu2 && c.id_Values == testbeu4)];
+                    b.status_Delete = true;
+                    Vv.EditVARIANTS_VALUES(b);
+                    Vv.SaveVARIANTS_VALUES();
+                }
             }
-
+            clearall();
+            loadAllList();
+            LoadDatafromDAL();
             return "thêm thành công";
         }
 
@@ -319,7 +414,7 @@ namespace _2_BUS.Service_BUS
         {
             string dd = a.option_Values;
             int dda = a.id_Option;
-            
+
             a.status_Delete = true;
             _lstOptionsValueses.Add(a);
             if (OV.getListOptionValue().Any(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option) == false)
@@ -336,7 +431,7 @@ namespace _2_BUS.Service_BUS
             }
         }
 
-        public string editOPtion_value(OPTIONS_VALUES a)
+        public string editOption_Value(OPTIONS_VALUES a)
         {
             _lstOptionsValueses[_lstOptionsValueses.FindIndex(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option)] = a;
             OV.EditOptionValue(a);
@@ -419,7 +514,8 @@ namespace _2_BUS.Service_BUS
 
         public string editVariant_values(VARIANTS_VALUES a)
         {
-            _lstVariantsValueses[_lstVariantsValueses.FindIndex(c => c.id_Product == a.id_Product && c.id_Option == a.id_Option && c.id_Variant == a.id_Variant && c.id_Values == a.id_Values)] = a;
+
+            _lstVariantsValueses[_lstVariantsValueses.FindIndex(c => c.id_Product == a.id_Product && c.id_Variant == a.id_Variant)] = a;
             Vv.EditVARIANTS_VALUES(a);
             return Vv.SaveVARIANTS_VALUES();
         }

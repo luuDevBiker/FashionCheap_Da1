@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Camera\\aaaaaddasd\\_1_DAL\\_1_DAL.csproj": {}
+    "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj": {}
   },
   "projects": {
-    "E:\\Camera\\aaaaaddasd\\_1_DAL\\_1_DAL.csproj": {
+    "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Camera\\aaaaaddasd\\_1_DAL\\_1_DAL.csproj",
+        "projectUniqueName": "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj",
         "projectName": "_1_DAL",
-        "projectPath": "E:\\Camera\\aaaaaddasd\\_1_DAL\\_1_DAL.csproj",
+        "projectPath": "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "E:\\Camera\\aaaaaddasd\\_1_DAL\\obj\\",
+        "outputPath": "E:\\Camera\\New folder\\_1_DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
