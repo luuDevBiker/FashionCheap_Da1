@@ -10,6 +10,10 @@
     <PackageReference Include="AForge.Video" Version="2.2.5" />
     <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
     <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.Data.OleDb" Version="6.0.0" />
     <PackageReference Include="ZXing.Net" Version="0.16.6" />
   </ItemGroup>

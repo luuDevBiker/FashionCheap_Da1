@@ -35,13 +35,18 @@ namespace _3_GUI
             this.DGV_TKSanPham = new System.Windows.Forms.DataGridView();
             this.rdbSanPhamNhieuNhat = new System.Windows.Forms.RadioButton();
             this.rdbSanPhamItNhat = new System.Windows.Forms.RadioButton();
+            this.dtpTime = new System.Windows.Forms.DateTimePicker();
+            this.btnLoc = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblDayNow = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_TKSanPham)).BeginInit();
             this.SuspendLayout();
             // 
             // rdbTatCaSanPham
             // 
             this.rdbTatCaSanPham.AutoSize = true;
-            this.rdbTatCaSanPham.Location = new System.Drawing.Point(1013, 191);
+            this.rdbTatCaSanPham.Location = new System.Drawing.Point(1003, 17);
             this.rdbTatCaSanPham.Margin = new System.Windows.Forms.Padding(2);
             this.rdbTatCaSanPham.Name = "rdbTatCaSanPham";
             this.rdbTatCaSanPham.Size = new System.Drawing.Size(138, 24);
@@ -54,26 +59,28 @@ namespace _3_GUI
             // rdbSanPhamBanChay
             // 
             this.rdbSanPhamBanChay.AutoSize = true;
-            this.rdbSanPhamBanChay.Location = new System.Drawing.Point(1013, 269);
+            this.rdbSanPhamBanChay.Location = new System.Drawing.Point(1003, 95);
             this.rdbSanPhamBanChay.Margin = new System.Windows.Forms.Padding(2);
             this.rdbSanPhamBanChay.Name = "rdbSanPhamBanChay";
-            this.rdbSanPhamBanChay.Size = new System.Drawing.Size(158, 24);
+            this.rdbSanPhamBanChay.Size = new System.Drawing.Size(252, 24);
             this.rdbSanPhamBanChay.TabIndex = 1;
             this.rdbSanPhamBanChay.TabStop = true;
-            this.rdbSanPhamBanChay.Text = "Sản Phẩm bán chạy";
+            this.rdbSanPhamBanChay.Text = "Sản Phẩm bán chạy trong 6 tháng";
             this.rdbSanPhamBanChay.UseVisualStyleBackColor = true;
+            this.rdbSanPhamBanChay.CheckedChanged += new System.EventHandler(this.rdbSanPhamBanChay_CheckedChanged);
             // 
             // rdbSanPhamE
             // 
             this.rdbSanPhamE.AutoSize = true;
-            this.rdbSanPhamE.Location = new System.Drawing.Point(1013, 229);
+            this.rdbSanPhamE.Location = new System.Drawing.Point(1003, 55);
             this.rdbSanPhamE.Margin = new System.Windows.Forms.Padding(2);
             this.rdbSanPhamE.Name = "rdbSanPhamE";
-            this.rdbSanPhamE.Size = new System.Drawing.Size(207, 24);
+            this.rdbSanPhamE.Size = new System.Drawing.Size(301, 24);
             this.rdbSanPhamE.TabIndex = 2;
             this.rdbSanPhamE.TabStop = true;
-            this.rdbSanPhamE.Text = "Sản Phẩm không bán được";
+            this.rdbSanPhamE.Text = "Sản Phẩm không bán được trong 6 tháng";
             this.rdbSanPhamE.UseVisualStyleBackColor = true;
+            this.rdbSanPhamE.CheckedChanged += new System.EventHandler(this.rdbSanPhamE_CheckedChanged);
             // 
             // DGV_TKSanPham
             // 
@@ -90,31 +97,81 @@ namespace _3_GUI
             // rdbSanPhamNhieuNhat
             // 
             this.rdbSanPhamNhieuNhat.AutoSize = true;
-            this.rdbSanPhamNhieuNhat.Location = new System.Drawing.Point(1013, 312);
+            this.rdbSanPhamNhieuNhat.Location = new System.Drawing.Point(1003, 138);
             this.rdbSanPhamNhieuNhat.Name = "rdbSanPhamNhieuNhat";
             this.rdbSanPhamNhieuNhat.Size = new System.Drawing.Size(228, 24);
             this.rdbSanPhamNhieuNhat.TabIndex = 4;
             this.rdbSanPhamNhieuNhat.TabStop = true;
             this.rdbSanPhamNhieuNhat.Text = "Sản phẩm có số lượng > 1000";
             this.rdbSanPhamNhieuNhat.UseVisualStyleBackColor = true;
+            this.rdbSanPhamNhieuNhat.CheckedChanged += new System.EventHandler(this.rdbSanPhamNhieuNhat_CheckedChanged);
             // 
             // rdbSanPhamItNhat
             // 
             this.rdbSanPhamItNhat.AutoSize = true;
-            this.rdbSanPhamItNhat.Location = new System.Drawing.Point(1013, 354);
+            this.rdbSanPhamItNhat.Location = new System.Drawing.Point(1003, 180);
             this.rdbSanPhamItNhat.Name = "rdbSanPhamItNhat";
             this.rdbSanPhamItNhat.Size = new System.Drawing.Size(228, 24);
             this.rdbSanPhamItNhat.TabIndex = 4;
             this.rdbSanPhamItNhat.TabStop = true;
             this.rdbSanPhamItNhat.Text = "Sản phẩm có số lượng < 1000";
             this.rdbSanPhamItNhat.UseVisualStyleBackColor = true;
+            this.rdbSanPhamItNhat.CheckedChanged += new System.EventHandler(this.rdbSanPhamItNhat_CheckedChanged);
+            // 
+            // dtpTime
+            // 
+            this.dtpTime.Location = new System.Drawing.Point(1005, 303);
+            this.dtpTime.Name = "dtpTime";
+            this.dtpTime.Size = new System.Drawing.Size(250, 27);
+            this.dtpTime.TabIndex = 5;
+            // 
+            // btnLoc
+            // 
+            this.btnLoc.Location = new System.Drawing.Point(1177, 543);
+            this.btnLoc.Name = "btnLoc";
+            this.btnLoc.Size = new System.Drawing.Size(159, 42);
+            this.btnLoc.TabIndex = 6;
+            this.btnLoc.Text = "Lọc danh sách";
+            this.btnLoc.UseVisualStyleBackColor = true;
+            this.btnLoc.Click += new System.EventHandler(this.btnLoc_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1005, 267);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "lọc danh sách từ ngày :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1005, 355);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 20);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "đến ngày :";
+            // 
+            // lblDayNow
+            // 
+            this.lblDayNow.AutoSize = true;
+            this.lblDayNow.Location = new System.Drawing.Point(1005, 409);
+            this.lblDayNow.Name = "lblDayNow";
+            this.lblDayNow.Size = new System.Drawing.Size(0, 20);
+            this.lblDayNow.TabIndex = 7;
             // 
             // FrmThongKeSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(1272, 597);
+            this.ClientSize = new System.Drawing.Size(1348, 597);
+            this.Controls.Add(this.lblDayNow);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnLoc);
+            this.Controls.Add(this.dtpTime);
             this.Controls.Add(this.rdbSanPhamItNhat);
             this.Controls.Add(this.rdbSanPhamNhieuNhat);
             this.Controls.Add(this.DGV_TKSanPham);
@@ -138,5 +195,10 @@ namespace _3_GUI
         private System.Windows.Forms.DataGridView DGV_TKSanPham;
         private System.Windows.Forms.RadioButton rdbSanPhamNhieuNhat;
         private System.Windows.Forms.RadioButton rdbSanPhamItNhat;
+        private System.Windows.Forms.DateTimePicker dtpTime;
+        private System.Windows.Forms.Button btnLoc;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblDayNow;
     }
 }
