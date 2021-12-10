@@ -317,7 +317,7 @@ namespace _3_GUI
         }
 
         #endregion
-        private RJControls.RJToggleButton tbDark;
+      
         private System.Windows.Forms.DataGridView data_TenSanPham1;
         private System.Windows.Forms.GroupBox data_TenSanPham;
         private System.Windows.Forms.GroupBox data_CacPhienBan;

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using _2_BUS.IService_BUS;
 using _2_BUS.Models;
+
 using DAL_DataAccessLayers;
 using DAL_DataAccessLayers.IServices;
 using DAL_DataAccessLayers.Service;
@@ -31,15 +32,15 @@ namespace _2_BUS.Service_BUS
         {
             PS = new Product_Service();
             _lstProductses = new List<PRODUCTS>();
-            _lstProductses = PS.getListProductses();
+
             //
             PV = new ProductsVariants_Service();
             _lstProductsVariantses = new List<PRODUCTS_VARIANTS>();
-            _lstProductsVariantses = PV.getListProductses();
+
             //
             PO = new ProductOptions_Service();
             _lsProductsOptionses = new List<PRODUCTS_OPTIONS>();
-            _lsProductsOptionses = PO.getListProductsesOptions();
+
             //
             Image = new Images_Service();
             _lstImagesProductses = new List<IMAGES_PRODUCTS>();
@@ -47,19 +48,39 @@ namespace _2_BUS.Service_BUS
             //
             Vv = new VARIANTS_VALUES_Service();
             _lstVariantsValueses = new List<VARIANTS_VALUES>();
-            _lstVariantsValueses = Vv.getListVARIANTS_VALUES();
+
             //
             OS = new OPTIONS_Service();
             _lsOptionses = new List<OPTIONS>();
-            _lsOptionses = OS.getListOption();
+
             //
             OV = new OPTIONS_VALUES_Service();
             _lstOptionsValueses = new List<OPTIONS_VALUES>();
-            _lstOptionsValueses = OV.getListOptionValue();
+            //
+            loadAllList();
             //
             _litSanPhamCuThes = new List<ProductDetail>();
         }
 
+        void loadAllList()
+        {
+            _lstProductses = PS.getListProductses().Where(c=>c.status_Delete==true).ToList();
+            _lstOptionsValueses = OV.getListOptionValue().Where(c => c.status_Delete == true).ToList(); ;
+            _lsOptionses = OS.getListOption().Where(c => c.status_Delete == true).ToList(); ;
+            _lstVariantsValueses = Vv.getListVARIANTS_VALUES().Where(c => c.status_Delete == true).ToList(); ;
+            _lsProductsOptionses = PO.getListProductsesOptions().Where(c => c.status_Delete == true).ToList(); ;
+            _lstProductsVariantses = PV.getListProductses().Where(c => c.status_Delete == true).ToList(); ;
+
+        }
+        void clearall()
+        {
+            _lsOptionses.Clear();
+            _lsProductsOptionses.Clear();
+            _lstOptionsValueses.Clear();
+            _lstProductsVariantses.Clear();
+            _lstProductses.Clear();
+            _lstVariantsValueses.Clear();
+        }
         public string addImage()
         {
             throw new System.NotImplementedException();
@@ -74,9 +95,15 @@ namespace _2_BUS.Service_BUS
             return "Successful";
         }
 
-        public List<OPTIONS> getCountOption()
+
+
+        public List<OPTIONS> getCountOptionloadtong()
         {
-            var list = _lsOptionses;
+            var list = _lsOptionses; return list;
+        }
+        public List<PRODUCTS_OPTIONS> getCountOption(int a)
+        {
+            var list = _lsProductsOptionses.Where(c => c.id_Product == a).ToList();
             return list;
         }
 
@@ -112,76 +139,274 @@ namespace _2_BUS.Service_BUS
 
             return _litSanPhamCuThes;
 
-
-        }
-        public List<OPTIONS> getCountOptionloadtong()
-        {
-            var list = _lsOptionses; return list;
-        }
-        public List<PRODUCTS_OPTIONS> getCountOption(int a)
-        {
-            var list = _lsProductsOptionses.Where(c => c.id_Product == a).ToList();
-            return list;
         }
 
         public string Addnew(ProductDetail a)
-        {
-            _litSanPhamCuThes.Add(a);
-            PS.AddProduct(a.Product);
+        {// thêm Product Vảiant
+            int idProduct = a.Product.id_Product;
             PV.AddProductVarriant(a.ProductVariant);
-            foreach (var VARIABLE in a.Option)
-            {
-                OS.AddOption(VARIABLE);
-            }
+            PV.SaveProductVarriant();
+            //-----------------------------------------
+            for (int i = 0; i < a.Option.Count; i++)
+            {//-------------- Thêm vảo  OPtion--------------
+                int beu = a.Option[i].id_Option;
+                string aa = a.Option[i].option_Name;
+                a.Option[i].status_Delete = true;
+                if (OS.getListOption().Any(c => c.option_Name == a.Option[i].option_Name) == false)
+                {
+                    OS.AddOption(a.Option[i]);
+                    OS.SaveOption();
+                }
+                else
+                {
+                    var b = OS.getListOption()[OS.getListOption().FindIndex(c => c.option_Name == a.Option[i].option_Name)];
+                    b.status_Delete = true;
+                    OS.EditOption(b);
+                    OS.SaveOption();
+                }
 
-            foreach (var VARIABLE in a.ProductOption)
-            {
-                PO.AddProductOptions(VARIABLE);
-            }
+                //
+                //-------------- Thêm vảo  OPtion vaLues--------------
 
-            foreach (var VARIABLE in a.OptionValue)
-            {
-                OV.AddOptionValue(VARIABLE);
-            }
+                int newId_OPtion = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                a.OptionValue[i].id_Option = newId_OPtion;
+                string beuValue = a.OptionValue[i].option_Values;
+                a.OptionValue[i].status_Delete = true;
+                if (OV.getListOptionValue().Any(c => c.option_Values == beuValue && c.id_Option == newId_OPtion) == false)
+                {
+                    OV.AddOptionValue(a.OptionValue[i]);
+                    OV.SaveOptionValue();
+                }
+                else
+                {
+                    var b = OV.getListOptionValue()[OV.getListOptionValue().FindIndex(c => c.option_Values == beuValue && c.id_Option == newId_OPtion)];
+                    b.status_Delete = true;
+                    OV.EditOptionValue(b);
+                    OV.SaveOptionValue();
+                }
+                //a.OptionValue[i].id_Option = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                //OV.AddOptionValue(a.OptionValue[i]);
+                //OV.SaveOptionValue();
+                //
+                //-------------- Thêm vảo Product OPtion--------------
 
-            foreach (var VARIABLE in a.VariantValue)
-            {
-                Vv.AddVARIANTS_VALUES(VARIABLE);
+                //  var aIdProduct = a.ProductOption[i].id_Product;
+                PRODUCTS_OPTIONS newProductOption = new PRODUCTS_OPTIONS();
+                newProductOption.id_Product = idProduct;
+                newProductOption.id_Option = newId_OPtion;
+                newProductOption.status_Delete = true;
+                // _lsProductsOptionses.Add(newProductOption);
+                if (PO.getListProductsesOptions().Any(c => c.id_Option == newProductOption.id_Option && c.id_Product == newProductOption.id_Product) == false)
+                {
+                    PO.AddProductOptions(newProductOption);
+                    PO.SaveProductOptions();
+                }
+                else
+                {
+                    var b = PO.getListProductsesOptions()[PO.getListProductsesOptions().FindIndex(c => c.id_Option == newProductOption.id_Option && c.id_Product == newProductOption.id_Product)];
+                    b.status_Delete = true;
+                    PO.EditProductOptions(b);
+                    PO.SaveProductOptions();
+                }
+                //
+                //--------------- Thêm vào Variant values-------------
+                int testbeu = a.Product.id_Product;
+                int testbeu2 = PV.getListProductses().Where(c => c.Products_Code == a.ProductVariant.Products_Code).Select(c => c.id_Variant).FirstOrDefault();
+                int testbeu3 = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                int testbeu4 = OV.getListOptionValue()
+                    .Where(c => c.option_Values == a.OptionValue[i].option_Values &&
+                                c.id_Option == a.OptionValue[i].id_Option).Select(c => c.id_Values).FirstOrDefault();
+                VARIANTS_VALUES newVariantsValues = new VARIANTS_VALUES();
+                newVariantsValues.id_Product = a.Product.id_Product;
+                newVariantsValues.id_Variant = PV.getListProductses().Where(c => c.Products_Code == a.ProductVariant.Products_Code).Select(c => c.id_Variant).FirstOrDefault();
+                newVariantsValues.id_Option = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                newVariantsValues.id_Values = OV.getListOptionValue()
+                    .Where(c => c.option_Values == a.OptionValue[i].option_Values &&
+                                c.id_Option == a.OptionValue[i].id_Option).Select(c => c.id_Values).FirstOrDefault();
+                newVariantsValues.status_Delete = true;
+                // _lstVariantsValueses.Add(newVariantsValues);
+                if (Vv.getListVARIANTS_VALUES().Any(c => c.id_Product == testbeu && c.id_Option == testbeu3
+                && c.id_Variant == testbeu2 && c.id_Values == testbeu4) == false)
+                {
+                    Vv.AddVARIANTS_VALUES(newVariantsValues);
+                    Vv.SaveVARIANTS_VALUES();
+                }
+                else
+                {
+                    var b = Vv.getListVARIANTS_VALUES()[Vv.getListVARIANTS_VALUES().FindIndex(c => c.id_Product == testbeu && c.id_Option == testbeu3
+                        && c.id_Variant == testbeu2 && c.id_Values == testbeu4)];
+                    b.status_Delete = true;
+                    Vv.EditVARIANTS_VALUES(b);
+                    Vv.SaveVARIANTS_VALUES();
+                }
             }
-
+            clearall();
+            loadAllList();
+            LoadDatafromDAL();
             return "thêm thành công";
         }
 
-        public string EditProduct(ProductDetail a)
+        public string EditProduct_Variant(ProductDetail a)
         {
-            int vt = _litSanPhamCuThes.FindIndex(c =>
-                c.Product.id_Product == a.Product.id_Product &&
-                c.ProductVariant.id_Variant == a.ProductVariant.id_Variant);
-            _litSanPhamCuThes[vt] = a;
+            int idProduct = a.Product.id_Product;
+            var ProVariantEdit = PV.getListProductses().FirstOrDefault(c => c.id_Variant == a.ProductVariant.id_Variant);
+            ProVariantEdit.Products_Code = a.ProductVariant.Products_Code;
+            ProVariantEdit.quantity = a.ProductVariant.quantity;
+            ProVariantEdit.import_Price = a.ProductVariant.import_Price;
+            ProVariantEdit.price = a.ProductVariant.price;
 
-            PS.EditProduct(a.Product);
-            PV.EditProductVarriant(a.ProductVariant);
-            foreach (var VARIABLE in a.Option)
+            PV.EditProductVarriant(ProVariantEdit);
+            PV.SaveProductVarriant();
+            //-----------------------------------------
+            for (int i = 0; i < a.Option.Count; i++)
             {
-                OS.EditOption(VARIABLE);
-            }
+                // xóa những thuộc tính cũ
 
-            foreach (var VARIABLE in a.ProductOption)
+                //-------------- Thêm vảo  OPtion--------------
+                var optionEdit = OS.getListOption().FirstOrDefault(c => c.id_Option == a.Option[i].id_Option);
+
+                optionEdit.status_Delete = true;
+                if (OS.getListOption().Any(c => c.option_Name == a.Option[i].option_Name) == false)
+                {
+                    OS.AddOption(optionEdit);
+                    OS.SaveOption();
+                }
+                else
+                {
+
+                    OS.EditOption(optionEdit);
+                    OS.SaveOption();
+                }
+
+                //
+                //-------------- Thêm vảo  OPtion vaLues--------------
+                OPTIONS_VALUES optionsValuesEdit = new OPTIONS_VALUES();
+                int newId_OPtion = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                optionsValuesEdit.id_Option = optionEdit.id_Option;
+                optionsValuesEdit.option_Values = a.OptionValue[i].option_Values;
+                a.OptionValue[i].status_Delete = true;
+
+                if (OV.getListOptionValue().Any(c => c.option_Values == optionsValuesEdit.option_Values && c.id_Option == optionsValuesEdit.id_Option) == false)
+                {
+
+                    OV.AddOptionValue(optionsValuesEdit);
+                    OV.SaveOptionValue();
+                }
+                else
+                {
+                    optionsValuesEdit.id_Values = OV.getListOptionValue()
+                        .Where(c => c.option_Values == optionsValuesEdit.option_Values).Select(c => c.id_Values)
+                        .FirstOrDefault();
+                    OV.EditOptionValue(optionsValuesEdit);
+                    OV.SaveOptionValue();
+                }
+                //a.OptionValue[i].id_Option = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                //OV.AddOptionValue(a.OptionValue[i]);
+                //OV.SaveOptionValue();
+                //
+                //-------------- Thêm vảo Product OPtion--------------
+
+                //  var aIdProduct = a.ProductOption[i].id_Product;
+                PRODUCTS_OPTIONS newProductOption = new PRODUCTS_OPTIONS();
+                newProductOption.id_Product = idProduct;
+                newProductOption.id_Option = optionEdit.id_Option;
+                newProductOption.status_Delete = true;
+                // _lsProductsOptionses.Add(newProductOption);
+                if (PO.getListProductsesOptions().Any(c => c.id_Option == newProductOption.id_Option && c.id_Product == newProductOption.id_Product) == false)
+                {
+                    PO.AddProductOptions(newProductOption);
+                    PO.SaveProductOptions();
+                }
+                else
+                {
+
+                    PO.EditProductOptions(newProductOption);
+                    PO.SaveProductOptions();
+                }
+                //
+                //--------------- Thêm vào Variant values-------------
+                int testbeu = a.Product.id_Product;
+                int testbeu2 = PV.getListProductses().Where(c => c.Products_Code == a.ProductVariant.Products_Code).Select(c => c.id_Variant).FirstOrDefault();
+                int testbeu3 = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                int testbeu4 = OV.getListOptionValue()
+                    .Where(c => c.option_Values == a.OptionValue[i].option_Values &&
+                                c.id_Option == a.OptionValue[i].id_Option).Select(c => c.id_Values).FirstOrDefault();
+                VARIANTS_VALUES newVariantsValues = new VARIANTS_VALUES();
+                newVariantsValues.id_Product = a.Product.id_Product;
+                newVariantsValues.id_Variant = ProVariantEdit.id_Variant;
+
+                //newVariantsValues.id_Option = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                // //newVariantsValues.id_Values = OV.getListOptionValue().Where(c => c.option_Values == a.OptionValue[i].option_Values &&
+                //            c.id_Option == a.OptionValue[i].id_Option).Select(c => c.id_Values).FirstOrDefault();
+                newVariantsValues.status_Delete = true;
+                // _lstVariantsValueses.Add(newVariantsValues);
+                if (Vv.getListVARIANTS_VALUES().Any(c => c.id_Product == testbeu && c.id_Option == testbeu3
+                        && c.id_Variant == testbeu2 && c.id_Values == testbeu4))
+                {
+                    Vv.EditVARIANTS_VALUES(newVariantsValues);
+                    Vv.SaveVARIANTS_VALUES();
+
+                }
+                else if (Vv.getListVARIANTS_VALUES().Any(c => c.id_Product == testbeu && c.id_Option == testbeu3
+                             && c.id_Variant == testbeu2))
+                {
+                    newVariantsValues.id_Option =
+                    newVariantsValues.id_Values = OV.getListOptionValue()
+                        .Where(c => c.option_Values == a.OptionValue[i].option_Values &&
+                                    c.id_Option == a.OptionValue[i].id_Option).Select(c => c.id_Values).FirstOrDefault();
+                    Vv.EditVARIANTS_VALUES(newVariantsValues);
+                    Vv.SaveVARIANTS_VALUES();
+                }
+                else
+                {
+                    newVariantsValues.id_Option = OS.getListOption().Where(c => c.option_Name == a.Option[i].option_Name).Select(c => c.id_Option).FirstOrDefault();
+                    newVariantsValues.id_Values = OV.getListOptionValue()
+                        .Where(c => c.option_Values == a.OptionValue[i].option_Values &&
+                                    c.id_Option == a.OptionValue[i].id_Option).Select(c => c.id_Values).FirstOrDefault();
+
+                    Vv.AddVARIANTS_VALUES(newVariantsValues);
+                    Vv.SaveVARIANTS_VALUES();
+                }
+
+            }
+            clearall();
+            loadAllList();
+            LoadDatafromDAL();
+            return "Sửa thành công";
+        }
+
+        public string DEleteProVariant(ProductDetail a)
+        {
+            for (int i = 0; i < a.Option.Count; i++)
             {
-                PO.EditProductOptions(VARIABLE);
-            }
+                VARIANTS_VALUES newVariantsValues = new VARIANTS_VALUES();
+                newVariantsValues = Vv.getListVARIANTS_VALUES().FirstOrDefault(c =>
+                    c.id_Product == a.Product.id_Product &&
+                    c.id_Variant == a.ProductVariant.id_Variant &&
+                    c.id_Option == a.Option[i].id_Option &&
+                    c.id_Values == a.OptionValue[i].id_Values);
+                Vv.DeleteVARIANTS_VALUES(newVariantsValues);
+////////////////////////////////////////////////////////////////////---------------------------------------------------------------
+                PRODUCTS_OPTIONS newProductsOptions = new PRODUCTS_OPTIONS();
+                newProductsOptions = PO.getListProductsesOptions().FirstOrDefault(c =>
+                    c.id_Product == a.Product.id_Product && c.id_Option == a.Option[i].id_Option);
+                PO.DeleteProductOptions(newProductsOptions); 
+                
+                ////////////////////////////////////////////////////////////////////---------------------------------------------------------------
+                OPTIONS_VALUES newOptionsValues= new OPTIONS_VALUES();
+                newOptionsValues = OV.getListOptionValue().FirstOrDefault(c => c.id_Option == a.Option[i].id_Option && c.id_Values == a.OptionValue[i].id_Values);
+                OV.DeleteOptionValue(newOptionsValues);
+                ////////////////////////////////////////////////////////////////////-----------------------------------------------
 
-            foreach (var VARIABLE in a.OptionValue)
-            {
-                OV.EditOptionValue(VARIABLE);
+                OPTIONS newOptions= new OPTIONS();
+                newOptions = OS.getListOption().FirstOrDefault(c => c.id_Option == a.Option[i].id_Option);
+                OS.DeleteOption(newOptions);
             }
-
-            foreach (var VARIABLE in a.VariantValue)
-            {
-                Vv.EditVARIANTS_VALUES(VARIABLE);
-            }
-
-            return " Sửa Thành Công";
+            PRODUCTS_VARIANTS newProductsVariants=  new PRODUCTS_VARIANTS();
+            newProductsVariants = PV.getListProductses().FirstOrDefault(c =>
+                c.id_Variant == a.ProductVariant.id_Variant && c.id_Product == a.Product.id_Product);
+            PV.DeleteProductVarriant(newProductsVariants);
+            return " Xóa Thành Công";
         }
         public All_List AllListPRO()
         {
@@ -320,7 +545,7 @@ namespace _2_BUS.Service_BUS
         {
             string dd = a.option_Values;
             int dda = a.id_Option;
-            
+
             a.status_Delete = true;
             _lstOptionsValueses.Add(a);
             if (OV.getListOptionValue().Any(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option) == false)
@@ -337,7 +562,7 @@ namespace _2_BUS.Service_BUS
             }
         }
 
-        public string editOPtion_value(OPTIONS_VALUES a)
+        public string editOption_Value(OPTIONS_VALUES a)
         {
             _lstOptionsValueses[_lstOptionsValueses.FindIndex(c => c.id_Values == a.id_Values && c.id_Option == a.id_Option)] = a;
             OV.EditOptionValue(a);
@@ -420,7 +645,8 @@ namespace _2_BUS.Service_BUS
 
         public string editVariant_values(VARIANTS_VALUES a)
         {
-            _lstVariantsValueses[_lstVariantsValueses.FindIndex(c => c.id_Product == a.id_Product && c.id_Option == a.id_Option && c.id_Variant == a.id_Variant && c.id_Values == a.id_Values)] = a;
+
+            _lstVariantsValueses[_lstVariantsValueses.FindIndex(c => c.id_Product == a.id_Product && c.id_Variant == a.id_Variant)] = a;
             Vv.EditVARIANTS_VALUES(a);
             return Vv.SaveVARIANTS_VALUES();
         }
