@@ -44,7 +44,6 @@ namespace _3_GUI
             this.cbm_NamSinh = new System.Windows.Forms.ComboBox();
             this.cbx_Nam = new System.Windows.Forms.CheckBox();
             this.cbx_Nu = new System.Windows.Forms.CheckBox();
-            this.cbx_Khac = new System.Windows.Forms.CheckBox();
             this.cbx_KhongHoatDong = new System.Windows.Forms.CheckBox();
             this.cbx_HoatDong = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -53,9 +52,9 @@ namespace _3_GUI
             this.btn_Sua = new System.Windows.Forms.Button();
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.tbx_TimKiem = new System.Windows.Forms.TextBox();
-            this.btn_Loc = new System.Windows.Forms.Button();
             this.tbDark = new RJControls.RJToggleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_NhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -169,26 +168,18 @@ namespace _3_GUI
             this.cbx_Nam.TabIndex = 13;
             this.cbx_Nam.Text = "Nam";
             this.cbx_Nam.UseVisualStyleBackColor = true;
+            this.cbx_Nam.CheckedChanged += new System.EventHandler(this.cbx_Nam_CheckedChanged);
             // 
             // cbx_Nu
             // 
             this.cbx_Nu.AutoSize = true;
-            this.cbx_Nu.Location = new System.Drawing.Point(302, 64);
+            this.cbx_Nu.Location = new System.Drawing.Point(351, 63);
             this.cbx_Nu.Name = "cbx_Nu";
             this.cbx_Nu.Size = new System.Drawing.Size(62, 29);
             this.cbx_Nu.TabIndex = 14;
             this.cbx_Nu.Text = "Nữ";
             this.cbx_Nu.UseVisualStyleBackColor = true;
-            // 
-            // cbx_Khac
-            // 
-            this.cbx_Khac.AutoSize = true;
-            this.cbx_Khac.Location = new System.Drawing.Point(370, 63);
-            this.cbx_Khac.Name = "cbx_Khac";
-            this.cbx_Khac.Size = new System.Drawing.Size(75, 29);
-            this.cbx_Khac.TabIndex = 15;
-            this.cbx_Khac.Text = "Khác";
-            this.cbx_Khac.UseVisualStyleBackColor = true;
+            this.cbx_Nu.CheckedChanged += new System.EventHandler(this.cbx_Nu_CheckedChanged);
             // 
             // cbx_KhongHoatDong
             // 
@@ -213,9 +204,9 @@ namespace _3_GUI
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.data_NhanVien);
-            this.groupBox1.Location = new System.Drawing.Point(34, 378);
+            this.groupBox1.Location = new System.Drawing.Point(-2, 378);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(885, 300);
+            this.groupBox1.Size = new System.Drawing.Size(966, 300);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             // 
@@ -224,11 +215,11 @@ namespace _3_GUI
             this.data_NhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_NhanVien.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.data_NhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_NhanVien.Location = new System.Drawing.Point(28, 30);
+            this.data_NhanVien.Location = new System.Drawing.Point(14, 30);
             this.data_NhanVien.Name = "data_NhanVien";
             this.data_NhanVien.RowHeadersWidth = 62;
             this.data_NhanVien.RowTemplate.Height = 33;
-            this.data_NhanVien.Size = new System.Drawing.Size(833, 257);
+            this.data_NhanVien.Size = new System.Drawing.Size(931, 257);
             this.data_NhanVien.TabIndex = 0;
             this.data_NhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_NhanVien_CellContentClick);
             // 
@@ -242,7 +233,7 @@ namespace _3_GUI
             this.btn_Them.ForeColor = System.Drawing.Color.Black;
             this.btn_Them.Image = ((System.Drawing.Image)(resources.GetObject("btn_Them.Image")));
             this.btn_Them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Them.Location = new System.Drawing.Point(34, 243);
+            this.btn_Them.Location = new System.Drawing.Point(66, 243);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(135, 61);
             this.btn_Them.TabIndex = 19;
@@ -260,7 +251,7 @@ namespace _3_GUI
             this.btn_Sua.ForeColor = System.Drawing.Color.Black;
             this.btn_Sua.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sua.Image")));
             this.btn_Sua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sua.Location = new System.Drawing.Point(254, 243);
+            this.btn_Sua.Location = new System.Drawing.Point(278, 243);
             this.btn_Sua.Name = "btn_Sua";
             this.btn_Sua.Size = new System.Drawing.Size(135, 61);
             this.btn_Sua.TabIndex = 20;
@@ -278,7 +269,7 @@ namespace _3_GUI
             this.btn_Xoa.ForeColor = System.Drawing.Color.Black;
             this.btn_Xoa.Image = ((System.Drawing.Image)(resources.GetObject("btn_Xoa.Image")));
             this.btn_Xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Xoa.Location = new System.Drawing.Point(503, 243);
+            this.btn_Xoa.Location = new System.Drawing.Point(512, 243);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(135, 61);
             this.btn_Xoa.TabIndex = 21;
@@ -294,24 +285,6 @@ namespace _3_GUI
             this.tbx_TimKiem.TabIndex = 23;
             this.tbx_TimKiem.Text = "Tìm Kiếm";
             this.tbx_TimKiem.TextChanged += new System.EventHandler(this.tbx_TimKiem_TextChanged);
-            // 
-            // btn_Loc
-            // 
-            this.btn_Loc.BackColor = System.Drawing.Color.Pink;
-            this.btn_Loc.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btn_Loc.FlatAppearance.BorderSize = 0;
-            this.btn_Loc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Loc.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_Loc.ForeColor = System.Drawing.Color.Black;
-            this.btn_Loc.Image = ((System.Drawing.Image)(resources.GetObject("btn_Loc.Image")));
-            this.btn_Loc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Loc.Location = new System.Drawing.Point(759, 243);
-            this.btn_Loc.Name = "btn_Loc";
-            this.btn_Loc.Size = new System.Drawing.Size(135, 61);
-            this.btn_Loc.TabIndex = 24;
-            this.btn_Loc.Text = "Lọc";
-            this.btn_Loc.UseVisualStyleBackColor = false;
-            this.btn_Loc.Click += new System.EventHandler(this.btn_Loc_Click);
             // 
             // tbDark
             // 
@@ -337,15 +310,33 @@ namespace _3_GUI
             this.pictureBox1.TabIndex = 26;
             this.pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Pink;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(695, 243);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 61);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "   Execl";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(966, 690);
+            this.ClientSize = new System.Drawing.Size(965, 690);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tbDark);
-            this.Controls.Add(this.btn_Loc);
             this.Controls.Add(this.tbx_TimKiem);
             this.Controls.Add(this.btn_Xoa);
             this.Controls.Add(this.btn_Sua);
@@ -353,7 +344,6 @@ namespace _3_GUI
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbx_KhongHoatDong);
             this.Controls.Add(this.cbx_HoatDong);
-            this.Controls.Add(this.cbx_Khac);
             this.Controls.Add(this.cbx_Nu);
             this.Controls.Add(this.cbx_Nam);
             this.Controls.Add(this.cbm_NamSinh);
@@ -394,7 +384,6 @@ namespace _3_GUI
         private System.Windows.Forms.ComboBox cbm_NamSinh;
         private System.Windows.Forms.CheckBox cbx_Nam;
         private System.Windows.Forms.CheckBox cbx_Nu;
-        private System.Windows.Forms.CheckBox cbx_Khac;
         private System.Windows.Forms.CheckBox cbx_KhongHoatDong;
         private System.Windows.Forms.CheckBox cbx_HoatDong;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -403,8 +392,8 @@ namespace _3_GUI
         private System.Windows.Forms.Button btn_Sua;
         private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.TextBox tbx_TimKiem;
-        private System.Windows.Forms.Button btn_Loc;
         private RJControls.RJToggleButton tbDark;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

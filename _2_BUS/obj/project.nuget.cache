@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c2ull/7/czl84a9auPJREistEj/HFJ/r8uIrjqcsO9BtA/5wXDOVH4//5Rst6zfE+yFkfwRr3hNhMzy1gHb/fw==",
+  "dgSpecHash": "P3XLdP1eSgem4U9lrg9I85QSMnQfBKVOQrn5sC3AII5FsIZHDoTmESfrZS9HMn4x6i44aeu9jDz34vPshku7GA==",
   "success": true,
-  "projectFilePath": "E:\\Camera\\New folder\\_2_BUS\\_2_BUS.csproj",
+  "projectFilePath": "D:\\TrangPTPH15762_DuAn1\\_2_BUS\\_2_BUS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
@@ -97,10 +97,7 @@
     "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

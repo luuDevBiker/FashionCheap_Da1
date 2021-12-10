@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Camera\\New folder\\_2_BUS\\_2_BUS.csproj": {}
+    "D:\\TrangPTPH15762_DuAn1\\_2_BUS\\_2_BUS.csproj": {}
   },
   "projects": {
-    "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj": {
+    "D:\\TrangPTPH15762_DuAn1\\_1_DAL\\_1_DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj",
+        "projectUniqueName": "D:\\TrangPTPH15762_DuAn1\\_1_DAL\\_1_DAL.csproj",
         "projectName": "_1_DAL",
-        "projectPath": "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj",
+        "projectPath": "D:\\TrangPTPH15762_DuAn1\\_1_DAL\\_1_DAL.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "E:\\Camera\\New folder\\_1_DAL\\obj\\",
+        "outputPath": "D:\\TrangPTPH15762_DuAn1\\_1_DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,37 +65,23 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Camera\\New folder\\_2_BUS\\_2_BUS.csproj": {
+    "D:\\TrangPTPH15762_DuAn1\\_2_BUS\\_2_BUS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Camera\\New folder\\_2_BUS\\_2_BUS.csproj",
+        "projectUniqueName": "D:\\TrangPTPH15762_DuAn1\\_2_BUS\\_2_BUS.csproj",
         "projectName": "_2_BUS",
-        "projectPath": "E:\\Camera\\New folder\\_2_BUS\\_2_BUS.csproj",
+        "projectPath": "D:\\TrangPTPH15762_DuAn1\\_2_BUS\\_2_BUS.csproj",
         "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
-        "outputPath": "E:\\Camera\\New folder\\_2_BUS\\obj\\",
+        "outputPath": "D:\\TrangPTPH15762_DuAn1\\_2_BUS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -112,8 +98,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj": {
-                "projectPath": "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj"
+              "D:\\TrangPTPH15762_DuAn1\\_1_DAL\\_1_DAL.csproj": {
+                "projectPath": "D:\\TrangPTPH15762_DuAn1\\_1_DAL\\_1_DAL.csproj"
               }
             }
           }
@@ -137,26 +123,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[5.0.0, 5.0.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cpgpvKYJliSh4Wm5kejzw/tzsJKpZbK+F2JOv0FEuirGCvBYVy9eUh7DSp1H4d8+gwCUgyjXAWJoN6RBm3UgkA==",
+  "dgSpecHash": "Mzdrqit0NONiplpsFY8mYLKYTysaybEkRb4hjADI7LtTwaZq4lqy2rDx9yrPLdsESsa8wrceO3GEzouHIeOmbA==",
   "success": true,
-  "projectFilePath": "E:\\Camera\\New folder\\_3_GUI\\_3_GUI.csproj",
+  "projectFilePath": "D:\\TrangPTPH15762_DuAn1\\_3_GUI\\_3_GUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MyPC\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\aforge.video\\2.2.5\\aforge.video.2.2.5.nupkg.sha512",
@@ -105,11 +105,7 @@
     "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\zxing.net\\0.16.6\\zxing.net.0.16.6.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Users\\MyPC\\.nuget\\packages\\zxing.net\\0.16.6\\zxing.net.0.16.6.nupkg.sha512"
   ],
   "logs": [
     {

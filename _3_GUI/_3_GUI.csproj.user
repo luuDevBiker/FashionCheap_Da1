@@ -2,7 +2,73 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="BaoCaoDoanhThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormDangKi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormDangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormQuenMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmBarcode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmHoSoCuaToi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmKhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmLocMaSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmTheoDanhSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmThongKeSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmThongTinDonHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrnLocThuongHieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FromExecl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="GuiMailHangLoat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RJControls\RJToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="tudong.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
