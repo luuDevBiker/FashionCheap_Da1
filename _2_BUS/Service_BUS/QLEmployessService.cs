@@ -16,7 +16,7 @@ namespace _2_BUS.Service_BUS
         private IEmployeeService _iEmployeeService;
         private List<EMPLOYEES> _getlstEmployeeses;
         public static bool _StatusSave = true;
-        private NhanVien nhanVien;
+
         private IROLES_EMPLOYEE_Service _rolesEmployeeService;
         private List<ROLES_EMPLOYEE> _listRolesEmployees;
         private ROLES_EMPLOYEE _rolesEmployee;
@@ -25,7 +25,7 @@ namespace _2_BUS.Service_BUS
             _iEmployeeService = new EMPLOYEES_Service();
             _getlstEmployeeses = new List<EMPLOYEES>();
            
-            nhanVien = new NhanVien();
+  
             _rolesEmployeeService = new ROLES_EMPLOYEE_Service();
             _listRolesEmployees = new List<ROLES_EMPLOYEE>();
             _rolesEmployee = new ROLES_EMPLOYEE();
@@ -101,28 +101,6 @@ namespace _2_BUS.Service_BUS
         public void EditEMPLOYEES(EMPLOYEES pass)
         {
             //throw new NotImplementedException();
-        }
-
-        private List<NhanVien> getlistviewNhanViens()
-        {
-            var lst = (from _iEmployeeService in _getlstEmployeeses
-                join _rolesEmployeeService in _listRolesEmployees on _iEmployeeService.id_Employee equals
-                    _rolesEmployeeService.id_Employee
-                select new NhanVien(_rolesEmployeeService, _iEmployeeService, _iEmployeeService.employee_Name,
-                    _iEmployeeService.Email, _rolesEmployeeService.id_Roles)).ToList();
-            return lst;
-        }
-
-        public List<NhanVien> getNhanViens()
-        {
-            try
-            {
-                return getlistviewNhanViens();
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
         }
     }
 }

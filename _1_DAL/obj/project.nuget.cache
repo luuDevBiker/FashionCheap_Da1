@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G/KZPyA68/5c+S4dvVYojcusNwcuRN63xcgMB4SeuSdSbg3T5tmK0NQfXU8sYpZJktsQvT9teZ6FgxpCXQ5FUw==",
+  "dgSpecHash": "IRZxvJpCz8GlKKIsdzCdLr7GdkC8KNf7fh+GhXBI3VI1xD71Axd0SzNBsKBg1487hBijQLSG2lmCIsxsQNc4PQ==",
   "success": true,
-  "projectFilePath": "D:\\TrangPTPH15762_DuAn1\\_1_DAL\\_1_DAL.csproj",
+  "projectFilePath": "E:\\Camera\\New folder\\_1_DAL\\_1_DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MyPC\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -100,7 +100,10 @@
     "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\MyPC\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\MyPC\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }
