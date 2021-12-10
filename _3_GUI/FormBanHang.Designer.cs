@@ -54,6 +54,8 @@ namespace _3_GUI
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.DataNgayTao1 = new System.Windows.Forms.DateTimePicker();
+            this.cbxKhachHang1 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.tbxSdt = new System.Windows.Forms.TextBox();
@@ -71,8 +73,10 @@ namespace _3_GUI
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SĐT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbxKhachHang1 = new System.Windows.Forms.ComboBox();
-            this.DataNgayTao1 = new System.Windows.Forms.DateTimePicker();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_sp)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -108,7 +112,7 @@ namespace _3_GUI
             this.dgrid_sp.Size = new System.Drawing.Size(764, 346);
             this.dgrid_sp.TabIndex = 0;
             this.dgrid_sp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellContentClick);
-            this.dgrid_sp.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellContentDoubleClick);
+        
             // 
             // groupBox1
             // 
@@ -370,6 +374,21 @@ namespace _3_GUI
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Đặt Hàng";
             // 
+            // DataNgayTao1
+            // 
+            this.DataNgayTao1.Location = new System.Drawing.Point(18, 476);
+            this.DataNgayTao1.Name = "DataNgayTao1";
+            this.DataNgayTao1.Size = new System.Drawing.Size(250, 27);
+            this.DataNgayTao1.TabIndex = 18;
+            // 
+            // cbxKhachHang1
+            // 
+            this.cbxKhachHang1.FormattingEnabled = true;
+            this.cbxKhachHang1.Location = new System.Drawing.Point(121, 130);
+            this.cbxKhachHang1.Name = "cbxKhachHang1";
+            this.cbxKhachHang1.Size = new System.Drawing.Size(151, 28);
+            this.cbxKhachHang1.TabIndex = 17;
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(126)))), ((int)(((byte)(124)))));
@@ -515,7 +534,8 @@ namespace _3_GUI
             this.Data_HoaDonCho.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHD,
             this.TenKH,
-            this.SĐT});
+            this.SĐT,
+            this.TrangThai});
             this.Data_HoaDonCho.Location = new System.Drawing.Point(5, 24);
             this.Data_HoaDonCho.Margin = new System.Windows.Forms.Padding(2);
             this.Data_HoaDonCho.Name = "Data_HoaDonCho";
@@ -523,6 +543,7 @@ namespace _3_GUI
             this.Data_HoaDonCho.RowTemplate.Height = 33;
             this.Data_HoaDonCho.Size = new System.Drawing.Size(387, 230);
             this.Data_HoaDonCho.TabIndex = 0;
+            this.Data_HoaDonCho.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Data_HoaDonCho_CellClick);
             // 
             // MaHD
             // 
@@ -542,20 +563,29 @@ namespace _3_GUI
             this.SĐT.MinimumWidth = 8;
             this.SĐT.Name = "SĐT";
             // 
-            // cbxKhachHang1
+            // TrangThai
             // 
-            this.cbxKhachHang1.FormattingEnabled = true;
-            this.cbxKhachHang1.Location = new System.Drawing.Point(121, 130);
-            this.cbxKhachHang1.Name = "cbxKhachHang1";
-            this.cbxKhachHang1.Size = new System.Drawing.Size(151, 28);
-            this.cbxKhachHang1.TabIndex = 17;
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
             // 
-            // DataNgayTao1
+            // printDialog1
             // 
-            this.DataNgayTao1.Location = new System.Drawing.Point(18, 476);
-            this.DataNgayTao1.Name = "DataNgayTao1";
-            this.DataNgayTao1.Size = new System.Drawing.Size(250, 27);
-            this.DataNgayTao1.TabIndex = 18;
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // FormBanHang
             // 
@@ -638,5 +668,9 @@ namespace _3_GUI
         private System.Windows.Forms.ComboBox cbxTenKhachhang;
         private System.Windows.Forms.ComboBox cbxKhachHang1;
         private System.Windows.Forms.DateTimePicker DataNgayTao1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

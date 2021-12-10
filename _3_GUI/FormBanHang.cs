@@ -28,6 +28,8 @@ namespace _3_GUI
         private List<ORDER_DETAILS> _lstOrder_Details;
         private IQLCustomerService _lstCustomerService;
         private IQLEmployeesService _iqLEmployees;
+        // private IOderDetailService _lstOderDetailService;
+        private IQLOrderService _lsOrderService;
         private List<CUSTOMERS> _lstcustomerses;
         private List<EMPLOYEES> _lstEmployeeses;
         private List<PRODUCTS> _lstProducts;
@@ -59,7 +61,9 @@ namespace _3_GUI
             _lstCustomerService = new QLCustomerService();
             _iqLEmployees = new QLEmployessService();
             _lstProducts = new List<PRODUCTS>();
+            _lsOrderService = new QLOrDerService();
             _lstcustomerses = new List<CUSTOMERS>();
+            _Tinhtien = new TinhTien();
             _lstEmployeeses = new List<EMPLOYEES>();
             _lstProducts_variants = new List<PRODUCTS_VARIANTS>();
             _lstVariants_values = new List<VARIANTS_VALUES>();
@@ -67,8 +71,6 @@ namespace _3_GUI
             _lstProductDetails = new List<ProductDetail>();
             _iQlOrderService = new ORDERS_Service();
             _iproduct_Service = new Service_formSP();
-            //_lstOptions = new List<OPTIONS>();
-            //_lstOption_values =
             foreach (var x in _lstCustomerService.GetlstCustomerses())
             {
                 cbxTenKhachhang.Items.Add(x.customer_Name);
@@ -204,6 +206,7 @@ namespace _3_GUI
 
                 dgrid_sp.Rows.Add(objcell.ToArray());
 
+
             }
         }
 
@@ -255,7 +258,7 @@ namespace _3_GUI
                 List<string> objcell = new List<string>();
                 objcell.Add(x.Product.products_Name);
                 objcell.Add(x.ProductVariant.Products_Code);
-                objcell.Add("1");
+                objcell.Add(x.ProductVariant.quantity + "");
 
                 // objcell.Add(x.ProductVariant.quantity + "");
                 //objcell.Add(x.ProductVariant.import_Price + "");
@@ -292,6 +295,35 @@ namespace _3_GUI
             }
         }
 
+        private void Data_HoaDonCho_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgrid_giohang.Rows.Clear();
+            int index = e.RowIndex;
+            int soluong = 1;
+            toancuc = Data_HoaDonCho.Rows[index].Cells[0].Value.ToString();
+            //var order = _lsOrderService.getListProduct().Where(c => c.id_Order == Convert.ToInt32(toancuc)).ToList();
+            var order = _lsOrderService.JoinTable().Where(c => c.OrderDetail.id_Order == Convert.ToInt32(toancuc))
+                .Select(c => c.OrderDetail.id_Product).ToList();
+            //var sp = PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == order).ToList();
+            List<ProductDetail> productDetails = new List<ProductDetail>();
+            foreach (var x in order)
+            {
+                var ps = PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == x).ToList();
+                foreach (var productDetail in ps) productDetails.Add(productDetail);
+            }
+            foreach (var x in productDetails)
+            {
+                List<string> objcell = new List<string>();
+                objcell.Add(x.Product.products_Name);
+                objcell.Add(x.ProductVariant.Products_Code);
+                objcell.Add("1");
+                objcell.Add(x.ProductVariant.price + "");
+                objcell.Add(Convert.ToString(x.ProductVariant.price * soluong));
+                dgrid_giohang.Rows.Add(objcell.ToArray());
+            }
+
+            productDetails = new List<ProductDetail>();
+        }
 
         private void dgrid_sp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -304,25 +336,23 @@ namespace _3_GUI
 
                 productDetail = PS_BUS.LoadDatafromDAL().FirstOrDefault(c => c.Product.id_Product == a &&
                                                                              c.ProductVariant.id_Variant == b);
-                _lstProductDetails.Add(productDetail);
+                var checkitem = _lstProductDetails.FindIndex(c => c.Product.id_Product == a &&
+                                                                  c.ProductVariant.id_Variant == b);
+                if (checkitem < 0)
+                {
+                    productDetail.ProductVariant.quantity = 1;
+                    _lstProductDetails.Add(productDetail);
+
+                }
+                else
+                {
+                    _lstProductDetails[checkitem].ProductVariant.quantity = _lstProductDetails[checkitem].ProductVariant.quantity += 1;
+                }
                 LoadGioHang();
             }
         }
 
-        private void dgrid_sp_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int row = e.RowIndex;
-            if (e.ColumnIndex == dgrid_sp.Columns["select"].Index)
-            {
-                int a = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Product"].Value.ToString());
-                int b = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Variant"].Value.ToString());
-                ProductDetail productDetail = new ProductDetail();
-
-                productDetail = PS_BUS.LoadDatafromDAL().FirstOrDefault(c => c.Product.id_Product == a && c.ProductVariant.id_Variant == b);
-                _lstProductDetails.Add(productDetail);
-                LoadGioHang();
-            }
-        }
+      
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -349,17 +379,10 @@ namespace _3_GUI
                 "Thông báo !!!!!!!!!!!!!!!",
                 MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                MessageBox.Show(_iQLOrder.add(orders));
+                _iQLOrder.add(orders);
                 MessageBox.Show(_iQLOrder.Save());
             }
-            Data_HoaDonCho.Rows.Clear();
-            var lst = _lstOrders.Where(c => c.status_Delete == false).ToList();
-            foreach (var x in lst)
-            {
-                Data_HoaDonCho.Rows.Add(x.id_Order, _lstcustomerses.Where(c => c.id_Customer == x.id_Customer).Select(c => c.customer_Name),
-                    _lstcustomerses.Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone));
-            }
-            LoadGioHang();
+            loadHoaDonCho();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -371,12 +394,19 @@ namespace _3_GUI
             ls.order_status = 1;
             _iQlOrderService.EditORDERS(ls);
             _iQlOrderService.SaveORDERS();
+            LoadGioHang();
             loadHoaDonCho();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.Document = printDocument1;
+            DialogResult result = printDialog1.ShowDialog();
+            if (result == DialogResult.OK) ;
+            {
+                printDocument1.Print();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -393,7 +423,6 @@ namespace _3_GUI
 
         private void tbxKhachThanhToan_TextChanged(object sender, EventArgs e)
         {
-            //tbxSoTienHoanLai.Text = _Tinhtien.tienthua(int.Parse(tbxKhachThanhToan.Text), tong).ToString();
             if (tbxSoTienHoanLai.Text != "")
             {
                 if (_Tinhtien.tienthua(int.Parse(tbxKhachThanhToan.Text), tong) == 0)
@@ -433,6 +462,19 @@ namespace _3_GUI
             {
                 dgrid_sp.Rows.Add(x.Product, x.ProductVariant);
             }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Hóa Đơn Bán ", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new PointF(10, 10));
+            e.Graphics.DrawString("" + "Tên Khách Hàng :" + Convert.ToString(cbxTenKhachhang.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Mã Nhân Viên :" + Convert.ToString(tbxMaNhanVien.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Ngày Tạo :" + Convert.ToString(DateNgayTao.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Tổng Tiền :" + Convert.ToString(tbxTongTien.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Khách Cần Trả  :" + Convert.ToString(tbxKhachCanTra.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Khách Thanh Toán :" + Convert.ToString(tbxKhachThanhToan.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Số Tiền Hoàn Lại :" + Convert.ToString(tbxSoTienHoanLai.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("OFFICE ADDRESS", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
         }
     }
 }
