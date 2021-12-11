@@ -37,6 +37,8 @@ namespace _3_GUI
             this.data_CacPhienBan = new System.Windows.Forms.GroupBox();
             this.data_CacPhienBan1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_Clean = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_giaBan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,7 +71,7 @@ namespace _3_GUI
             this.data_TenSanPham1.Name = "data_TenSanPham1";
             this.data_TenSanPham1.RowHeadersWidth = 62;
             this.data_TenSanPham1.RowTemplate.Height = 33;
-            this.data_TenSanPham1.Size = new System.Drawing.Size(323, 241);
+            this.data_TenSanPham1.Size = new System.Drawing.Size(397, 241);
             this.data_TenSanPham1.TabIndex = 1;
             this.data_TenSanPham1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_TenSanPham1_CellClick);
             this.data_TenSanPham1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_TenSanPham1_CellContentClick);
@@ -84,14 +86,14 @@ namespace _3_GUI
             this.data_TenSanPham.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.data_TenSanPham.Name = "data_TenSanPham";
             this.data_TenSanPham.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.data_TenSanPham.Size = new System.Drawing.Size(341, 325);
+            this.data_TenSanPham.Size = new System.Drawing.Size(418, 340);
             this.data_TenSanPham.TabIndex = 2;
             this.data_TenSanPham.TabStop = false;
             this.data_TenSanPham.Text = "Danh Sách hàng kinh doanh";
             // 
             // btn_XoaName
             // 
-            this.btn_XoaName.Location = new System.Drawing.Point(233, 284);
+            this.btn_XoaName.Location = new System.Drawing.Point(277, 284);
             this.btn_XoaName.Name = "btn_XoaName";
             this.btn_XoaName.Size = new System.Drawing.Size(78, 29);
             this.btn_XoaName.TabIndex = 9;
@@ -101,7 +103,7 @@ namespace _3_GUI
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(129, 284);
+            this.button4.Location = new System.Drawing.Point(160, 284);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(78, 29);
             this.button4.TabIndex = 8;
@@ -111,7 +113,7 @@ namespace _3_GUI
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(22, 284);
+            this.button5.Location = new System.Drawing.Point(40, 284);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(78, 29);
             this.button5.TabIndex = 7;
@@ -122,11 +124,11 @@ namespace _3_GUI
             // data_CacPhienBan
             // 
             this.data_CacPhienBan.Controls.Add(this.data_CacPhienBan1);
-            this.data_CacPhienBan.Location = new System.Drawing.Point(401, 8);
+            this.data_CacPhienBan.Location = new System.Drawing.Point(487, 13);
             this.data_CacPhienBan.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.data_CacPhienBan.Name = "data_CacPhienBan";
             this.data_CacPhienBan.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.data_CacPhienBan.Size = new System.Drawing.Size(753, 325);
+            this.data_CacPhienBan.Size = new System.Drawing.Size(844, 325);
             this.data_CacPhienBan.TabIndex = 3;
             this.data_CacPhienBan.TabStop = false;
             this.data_CacPhienBan.Text = "các thuộc tính";
@@ -136,17 +138,18 @@ namespace _3_GUI
             this.data_CacPhienBan1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_CacPhienBan1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.data_CacPhienBan1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_CacPhienBan1.Location = new System.Drawing.Point(14, 27);
+            this.data_CacPhienBan1.Location = new System.Drawing.Point(24, 22);
             this.data_CacPhienBan1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.data_CacPhienBan1.Name = "data_CacPhienBan1";
             this.data_CacPhienBan1.RowHeadersWidth = 62;
             this.data_CacPhienBan1.RowTemplate.Height = 33;
-            this.data_CacPhienBan1.Size = new System.Drawing.Size(717, 288);
+            this.data_CacPhienBan1.Size = new System.Drawing.Size(802, 289);
             this.data_CacPhienBan1.TabIndex = 2;
-         
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_Save);
+            this.groupBox2.Controls.Add(this.btn_Clean);
             this.groupBox2.Controls.Add(this.data_CacPhienBan);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txt_giaBan);
@@ -159,17 +162,37 @@ namespace _3_GUI
             this.groupBox2.Controls.Add(this.btn_AddVariant);
             this.groupBox2.Controls.Add(this.btn_Editvariant);
             this.groupBox2.Controls.Add(this.btn_xoaVariant);
-            this.groupBox2.Location = new System.Drawing.Point(373, 13);
+            this.groupBox2.Location = new System.Drawing.Point(453, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1167, 338);
+            this.groupBox2.Size = new System.Drawing.Size(1334, 338);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chi tiết Sản Phẩm";
             // 
+            // btn_Save
+            // 
+            this.btn_Save.Location = new System.Drawing.Point(363, 205);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(96, 29);
+            this.btn_Save.TabIndex = 16;
+            this.btn_Save.Text = "Lưu";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // btn_Clean
+            // 
+            this.btn_Clean.Location = new System.Drawing.Point(185, 262);
+            this.btn_Clean.Name = "btn_Clean";
+            this.btn_Clean.Size = new System.Drawing.Size(96, 29);
+            this.btn_Clean.TabIndex = 15;
+            this.btn_Clean.Text = "Clear";
+            this.btn_Clean.UseVisualStyleBackColor = true;
+            this.btn_Clean.Click += new System.EventHandler(this.btn_Clean_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(54, 200);
+            this.label3.Location = new System.Drawing.Point(23, 205);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 20);
             this.label3.TabIndex = 14;
@@ -177,7 +200,7 @@ namespace _3_GUI
             // 
             // txt_giaBan
             // 
-            this.txt_giaBan.Location = new System.Drawing.Point(167, 196);
+            this.txt_giaBan.Location = new System.Drawing.Point(136, 201);
             this.txt_giaBan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_giaBan.Name = "txt_giaBan";
             this.txt_giaBan.Size = new System.Drawing.Size(178, 27);
@@ -186,7 +209,7 @@ namespace _3_GUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(54, 148);
+            this.label2.Location = new System.Drawing.Point(23, 153);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 20);
             this.label2.TabIndex = 12;
@@ -194,7 +217,7 @@ namespace _3_GUI
             // 
             // txt_giaNhap
             // 
-            this.txt_giaNhap.Location = new System.Drawing.Point(167, 144);
+            this.txt_giaNhap.Location = new System.Drawing.Point(136, 149);
             this.txt_giaNhap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_giaNhap.Name = "txt_giaNhap";
             this.txt_giaNhap.Size = new System.Drawing.Size(178, 27);
@@ -203,7 +226,7 @@ namespace _3_GUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 97);
+            this.label1.Location = new System.Drawing.Point(23, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 20);
             this.label1.TabIndex = 10;
@@ -211,7 +234,7 @@ namespace _3_GUI
             // 
             // txt_SoLuong
             // 
-            this.txt_SoLuong.Location = new System.Drawing.Point(167, 93);
+            this.txt_SoLuong.Location = new System.Drawing.Point(136, 98);
             this.txt_SoLuong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_SoLuong.Name = "txt_SoLuong";
             this.txt_SoLuong.Size = new System.Drawing.Size(178, 27);
@@ -220,7 +243,7 @@ namespace _3_GUI
             // đù
             // 
             this.đù.AutoSize = true;
-            this.đù.Location = new System.Drawing.Point(54, 40);
+            this.đù.Location = new System.Drawing.Point(23, 49);
             this.đù.Name = "đù";
             this.đù.Size = new System.Drawing.Size(99, 20);
             this.đù.TabIndex = 8;
@@ -228,7 +251,7 @@ namespace _3_GUI
             // 
             // txt_Masp
             // 
-            this.txt_Masp.Location = new System.Drawing.Point(167, 36);
+            this.txt_Masp.Location = new System.Drawing.Point(136, 46);
             this.txt_Masp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Masp.Name = "txt_Masp";
             this.txt_Masp.Size = new System.Drawing.Size(178, 27);
@@ -236,7 +259,7 @@ namespace _3_GUI
             // 
             // btn_AddVariant
             // 
-            this.btn_AddVariant.Location = new System.Drawing.Point(37, 265);
+            this.btn_AddVariant.Location = new System.Drawing.Point(363, 45);
             this.btn_AddVariant.Name = "btn_AddVariant";
             this.btn_AddVariant.Size = new System.Drawing.Size(96, 29);
             this.btn_AddVariant.TabIndex = 4;
@@ -246,7 +269,7 @@ namespace _3_GUI
             // 
             // btn_Editvariant
             // 
-            this.btn_Editvariant.Location = new System.Drawing.Point(166, 265);
+            this.btn_Editvariant.Location = new System.Drawing.Point(363, 97);
             this.btn_Editvariant.Name = "btn_Editvariant";
             this.btn_Editvariant.Size = new System.Drawing.Size(96, 29);
             this.btn_Editvariant.TabIndex = 5;
@@ -256,7 +279,7 @@ namespace _3_GUI
             // 
             // btn_xoaVariant
             // 
-            this.btn_xoaVariant.Location = new System.Drawing.Point(280, 265);
+            this.btn_xoaVariant.Location = new System.Drawing.Point(363, 148);
             this.btn_xoaVariant.Name = "btn_xoaVariant";
             this.btn_xoaVariant.Size = new System.Drawing.Size(96, 29);
             this.btn_xoaVariant.TabIndex = 6;
@@ -273,7 +296,7 @@ namespace _3_GUI
             this.data_ThongTinSanPham.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.data_ThongTinSanPham.Name = "data_ThongTinSanPham";
             this.data_ThongTinSanPham.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.data_ThongTinSanPham.Size = new System.Drawing.Size(1531, 475);
+            this.data_ThongTinSanPham.Size = new System.Drawing.Size(1771, 499);
             this.data_ThongTinSanPham.TabIndex = 4;
             this.data_ThongTinSanPham.TabStop = false;
             this.data_ThongTinSanPham.Text = "Thông Tin Sản Phẩm";
@@ -288,7 +311,7 @@ namespace _3_GUI
             this.data_ThongTinSanPham1.Name = "data_ThongTinSanPham1";
             this.data_ThongTinSanPham1.RowHeadersWidth = 62;
             this.data_ThongTinSanPham1.RowTemplate.Height = 33;
-            this.data_ThongTinSanPham1.Size = new System.Drawing.Size(1507, 440);
+            this.data_ThongTinSanPham1.Size = new System.Drawing.Size(1756, 466);
             this.data_ThongTinSanPham1.TabIndex = 2;
             this.data_ThongTinSanPham1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_ThongTinSanPham1_CellClick_1);
             // 
@@ -297,7 +320,7 @@ namespace _3_GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(1552, 701);
+            this.ClientSize = new System.Drawing.Size(1799, 868);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.data_ThongTinSanPham);
             this.Controls.Add(this.data_TenSanPham);
@@ -339,5 +362,7 @@ namespace _3_GUI
         private System.Windows.Forms.TextBox txt_SoLuong;
         private System.Windows.Forms.Label đù;
         private System.Windows.Forms.TextBox txt_Masp;
+        private Button btn_Save;
+        private Button btn_Clean;
     }
 }

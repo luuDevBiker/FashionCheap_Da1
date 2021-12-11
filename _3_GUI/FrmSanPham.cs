@@ -38,6 +38,7 @@ namespace _3_GUI
             _lstVariantOptionsOfProduct = new List<ProductDetail>();
             loadOPtionSP(-2);
             LoadSarnPham();
+            loadata(-2);
         }
 
         void loadata(int a)
@@ -61,7 +62,8 @@ namespace _3_GUI
                 data_ThongTinSanPham1.Columns[row++].Name = PS_BUS.GetListoOptionses().Where(c => c.id_Option == x.id_Option).Select(c => c.option_Name).FirstOrDefault();
             });
             data_ThongTinSanPham1.Rows.Clear();
-
+            if (a==-2) return;
+           
             foreach (var x in _lstVariantOptionsOfProduct)
             {
                 List<string> objcell = new List<string>();
@@ -196,9 +198,6 @@ namespace _3_GUI
                         opptionProVar.Option.Where(c => c.id_Option == VARIABLE.id_Option).Select(c => c.option_Name).FirstOrDefault(),
                         VARIABLE.option_Values);
                 }
-
-                listOptionsestoAdd = opptionProVar.Option;
-                listOP_VAtoAdd = opptionProVar.OptionValue;
             }
         }
         private void btn_AddVariant_Click(object sender, EventArgs e)
@@ -229,13 +228,13 @@ namespace _3_GUI
                     aDetail.OptionValue.Add(newOptionsValues);
 
                 }
-                _lstVariantOptionsOfProduct.Clear();
-                int a = id_ProAdd;
-                _litSanPhamCuThes = PS_BUS.LoadDatafromDAL();
-                loadata(id_ProAdd);
+
                 MessageBox.Show(PS_BUS.Addnew(aDetail), $" Bạn đã thêm !");
             }
-
+            _lstVariantOptionsOfProduct.Clear();
+            int a = id_ProAdd;
+            _litSanPhamCuThes = PS_BUS.LoadDatafromDAL();
+            loadata(id_ProAdd);
 
             Flag = false;
 
@@ -341,6 +340,21 @@ namespace _3_GUI
                 idVariaant = Convert.ToInt16(data_ThongTinSanPham1.Rows[row].Cells["Id variant "].Value.ToString());
                 loadOPtionSP(idVariaant);
             }
+        }
+
+        private void btn_Clean_Click(object sender, EventArgs e)
+        {
+            txt_Masp.Clear();
+            txt_SoLuong.Clear();
+            txt_giaNhap.Clear();
+            txt_giaBan.Clear();
+            loadOPtionSP(-2);
+        }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            PS_BUS.save();
+            MessageBox.Show(" Lưu Thanh Công!", " Thông báo");
         }
     }
 }
