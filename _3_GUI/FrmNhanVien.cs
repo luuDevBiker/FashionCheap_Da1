@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace _3_GUI
             _lstEmployees = new List<EMPLOYEES>();
             Loaddata();
             NV = new EMPLOYEES();
-
+            txt_dataemail.Visible = false;
         }
 
         private void tbDark_CheckedChanged(object sender, EventArgs e)
@@ -212,6 +213,36 @@ namespace _3_GUI
         {
             FromExecl frrFromExecl = new FromExecl();
             frrFromExecl.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GuiMailHangLoat fmGuiMailHangLoat = new GuiMailHangLoat();
+            fmGuiMailHangLoat.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "Text Document|*.txt", ValidateNames = true })
+            {
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    txt_dataemail.Text = saveFileDialog.FileName;
+                    //
+                    TextWriter textWriter = new StreamWriter(txt_dataemail.Text);
+                    for (int i = 0; i < data_NhanVien.RowCount - 1; i++)//row
+                    {
+
+                        textWriter.Write(Convert.ToString(data_NhanVien.Rows[i].Cells["Email"].Value + "\n"));
+
+                    }
+                    textWriter.Close();
+                    for (int i = 0; i < 2; i++)
+                    {
+                        
+                    }
+                }
+            }
         }
     }
 

@@ -55,6 +55,9 @@ namespace _3_GUI
             this.tbDark = new RJControls.RJToggleButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.txt_dataemail = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_NhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -233,7 +236,7 @@ namespace _3_GUI
             this.btn_Them.ForeColor = System.Drawing.Color.Black;
             this.btn_Them.Image = ((System.Drawing.Image)(resources.GetObject("btn_Them.Image")));
             this.btn_Them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Them.Location = new System.Drawing.Point(66, 243);
+            this.btn_Them.Location = new System.Drawing.Point(25, 243);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(135, 61);
             this.btn_Them.TabIndex = 19;
@@ -251,7 +254,7 @@ namespace _3_GUI
             this.btn_Sua.ForeColor = System.Drawing.Color.Black;
             this.btn_Sua.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sua.Image")));
             this.btn_Sua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sua.Location = new System.Drawing.Point(278, 243);
+            this.btn_Sua.Location = new System.Drawing.Point(210, 243);
             this.btn_Sua.Name = "btn_Sua";
             this.btn_Sua.Size = new System.Drawing.Size(135, 61);
             this.btn_Sua.TabIndex = 20;
@@ -269,7 +272,7 @@ namespace _3_GUI
             this.btn_Xoa.ForeColor = System.Drawing.Color.Black;
             this.btn_Xoa.Image = ((System.Drawing.Image)(resources.GetObject("btn_Xoa.Image")));
             this.btn_Xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Xoa.Location = new System.Drawing.Point(512, 243);
+            this.btn_Xoa.Location = new System.Drawing.Point(389, 243);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(135, 61);
             this.btn_Xoa.TabIndex = 21;
@@ -320,7 +323,7 @@ namespace _3_GUI
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(695, 243);
+            this.button1.Location = new System.Drawing.Point(571, 243);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 61);
             this.button1.TabIndex = 27;
@@ -328,12 +331,58 @@ namespace _3_GUI
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Pink;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(759, 243);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(154, 61);
+            this.button2.TabIndex = 28;
+            this.button2.Text = "   Gửi mail hàng loạt";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Pink;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(179, 311);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(135, 61);
+            this.button3.TabIndex = 29;
+            this.button3.Text = "   Xóa";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txt_dataemail
+            // 
+            this.txt_dataemail.Location = new System.Drawing.Point(351, 341);
+            this.txt_dataemail.Name = "txt_dataemail";
+            this.txt_dataemail.Size = new System.Drawing.Size(150, 31);
+            this.txt_dataemail.TabIndex = 30;
+            // 
             // FrmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.ClientSize = new System.Drawing.Size(965, 690);
+            this.Controls.Add(this.txt_dataemail);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tbDark);
@@ -395,5 +444,8 @@ namespace _3_GUI
         private RJControls.RJToggleButton tbDark;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txt_dataemail;
     }
 }

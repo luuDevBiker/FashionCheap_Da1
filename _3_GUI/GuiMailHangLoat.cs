@@ -33,8 +33,8 @@ namespace _3_GUI
 
         private void btn_Send_Click(object sender, EventArgs e)
         {
-            Thread thread = new Thread(() =>
-            {
+           
+            
                 attach = null;
                 try
                 {
@@ -51,15 +51,16 @@ namespace _3_GUI
                 string email;
                 while ((email = sr.ReadLine()) != null)
                 {
-                    GuiMail(txt_TenDangNhap.Text, email, txt_Subject.Text, txt_Message.Text, attach);
+                    GuiMail("trangptph15672@fpt.edu.vn", email, txt_Subject.Text, txt_Message.Text, attach);
                 }
-                sr.Close();
+               // GuiMail("trangptph15672@fpt.edu.vn", "thuyenlaph16978@fpt.edu.vn", txt_Subject.Text, txt_Message.Text, attach);
+          //  sr.Close();
             }
-            );
-            thread.Start();
-        }
+         
+         
+        
         //gửi mail theo các thông tin truyền vào 
-        void GuiMail(string from, string to, string subject,string message, Attachment file =null )
+        void GuiMail(string from, string to, string subject,string message, Attachment file  )
         {
 
             //MailMessage mess = new MailMessage(from, to, subject, message);
@@ -78,7 +79,7 @@ namespace _3_GUI
             }
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new NetworkCredential(txt_TenDangNhap.Text, txt_MatKhau.Text);
+            smtpClient.Credentials = new NetworkCredential("trangptph15762@fpt.edu.vn", "phithitrang2706");
             smtpClient.Send(mailMessage);
 
         }

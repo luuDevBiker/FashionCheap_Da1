@@ -168,7 +168,7 @@ namespace _3_GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 680);
+            this.ClientSize = new System.Drawing.Size(694, 448);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txt_Message);
             this.Controls.Add(this.btn_Send);
