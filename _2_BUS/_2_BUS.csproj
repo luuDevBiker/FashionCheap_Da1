@@ -8,4 +8,8 @@
     <ProjectReference Include="..\_1_DAL\_1_DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Service_BUS\Utility\" />
+  </ItemGroup>
+
 </Project>

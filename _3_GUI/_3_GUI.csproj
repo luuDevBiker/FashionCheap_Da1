@@ -23,4 +23,8 @@
     <ProjectReference Include="..\_2_BUS\_2_BUS.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Utility\" />
+  </ItemGroup>
+
 </Project>

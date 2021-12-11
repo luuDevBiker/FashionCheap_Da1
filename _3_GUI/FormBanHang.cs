@@ -28,6 +28,8 @@ namespace _3_GUI
         private List<ORDER_DETAILS> _lstOrder_Details;
         private IQLCustomerService _lstCustomerService;
         private IQLEmployeesService _iqLEmployees;
+        // private IOderDetailService _lstOderDetailService;
+        private IQLOrderService _lsOrderService;
         private List<CUSTOMERS> _lstcustomerses;
         private List<EMPLOYEES> _lstEmployeeses;
         private List<PRODUCTS> _lstProducts;
@@ -36,8 +38,9 @@ namespace _3_GUI
         private List<PRODUCTS_OPTIONS> _lstProducts_option;
         private List<ProductDetail> _lstProductDetails;
         private IOderService _iQlOrderService;
+        private IOderDetailService _lstOderDetailService;
         public string email = FormDangNhap.email;
-        private string toancuc;
+        private int toancuc;
         private string _idhoadon;
         private int whenClick;
         private TinhTien _Tinhtien;
@@ -59,7 +62,10 @@ namespace _3_GUI
             _lstCustomerService = new QLCustomerService();
             _iqLEmployees = new QLEmployessService();
             _lstProducts = new List<PRODUCTS>();
+            _lsOrderService = new QLOrDerService();
             _lstcustomerses = new List<CUSTOMERS>();
+            _lstOderDetailService = new ORDER_DETAILS_Service();
+            _Tinhtien = new TinhTien();
             _lstEmployeeses = new List<EMPLOYEES>();
             _lstProducts_variants = new List<PRODUCTS_VARIANTS>();
             _lstVariants_values = new List<VARIANTS_VALUES>();
@@ -67,28 +73,24 @@ namespace _3_GUI
             _lstProductDetails = new List<ProductDetail>();
             _iQlOrderService = new ORDERS_Service();
             _iproduct_Service = new Service_formSP();
-            //_lstOptions = new List<OPTIONS>();
-            //_lstOption_values =
             foreach (var x in _lstCustomerService.GetlstCustomerses())
             {
                 cbxTenKhachhang.Items.Add(x.customer_Name);
                 cbxTenKhachhang.SelectedIndex = 0;
             }
-            tbxMaNhanVien.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault());
+            txtMaNhanVien.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault());
             foreach (var x in _lstCustomerService.GetlstCustomerses())
             {
                 cbxKhachHang1.Items.Add(x.customer_Name);
                 cbxKhachHang1.SelectedIndex = 0;
             }
-            tbxMaNhanVien.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault());
+            txtMaNhanVien.Text = Convert.ToString(_iqLEmployees.GetlstEmployeeses().Where(c => c.Email == email).Select(c => c.id_Employee).FirstOrDefault());
             loadSP();
             LoadGioHang();
             loadHoaDonCho();
-        }
-
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-
+            cbxPhuongThucThanhToan.Items.Add("ATM");
+            cbxPhuongThucThanhToan.Items.Add("Tiền mặt");
+            cbxPhuongThucThanhToan.SelectedIndex = 0;
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -97,65 +99,12 @@ namespace _3_GUI
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            //this.panel1.Controls.Add(childForm);
-            //this.panel1.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
 
 
         }
-        //    void LoadData()
-        //    {
-        //        dgrid_sp.ColumnCount = 7;
-        //        var row = 0;
-        //        dgrid_sp.Columns[row++].Name = "Tên Sản Phẩm";
-        //        dgrid_sp.Columns[row++].Name = "Mã Sản Phẩm";
-        //        dgrid_sp.Columns[row++].Name = "Số Lượng";
-        //        dgrid_sp.Columns[row++].Name = "Giá Bán";
-        //        dgrid_sp.Columns[row++].Name = "Hình ảnh";
-        //        dgrid_sp.Columns[row++].Name = "Thêm giỏ hàng";
-        //        DataGridViewComboBoxColumn comboBox = new DataGridViewComboBoxColumn();
-        //        ArrayList row1 = new ArrayList();
-        //        row1 = new ArrayList();
-        //        row1.Add("Thêm");
-        //        row1.Add("Sửa");
-        //        row1.Add("Xóa");
-        //        DataGridViewComboBoxColumn cbo = new DataGridViewComboBoxColumn();
-        //        cbo.HeaderText = "Chức Năng";
-        //        cbo.Name = "cbo";
-        //        cbo.Items.AddRange(row1.ToArray());
-        //        dgrid_sp.Columns.Add(cbo);
-        //        DataGridViewButtonColumn button = new DataGridViewButtonColumn();
-        //        {
-        //            button.Name = "btn_dgv";
-        //            button.HeaderText = "OK";
-        //            button.Text = ("OK");
-        //            button.UseColumnTextForButtonValue = true;
-        //            this.dgrid_sp.Columns.Add(button);
-        //        }
-        //        dgrid_sp.Rows.Clear();
 
-        //        foreach (var x in PS_BUS.LoadDatafromDAL())
-        //        {
-        //            List<string> objcell = new List<string>();
-        //            objcell.Add(x.Product.products_Name);
-        //            objcell.Add(x.ProductVariant.Products_Code);
-        //            objcell.Add(x.ProductVariant.quantity + "");
-        //            //objcell.Add(x.ProductVariant.import_Price + "");
-        //            objcell.Add(x.ProductVariant.price + "");
-        //            objcell.Add(x.ImageProduct + "");
-        //            objcell.Add(x.ProductVariant.id_Product + "");
-        //            //objcell.Add(x.ProductVariant.id_Variant + "");
-        //            x.OptionValue.ForEach(i =>
-        //            {
-        //                objcell.Add(i.id_Option + "");
-        //                objcell.Add(i.id_Values + "");
-        //                objcell.Add(i.option_Values + "");
-        //            });
-        //            dgrid_sp.Rows.Add(objcell.ToArray());
-
-        //        }
-        //}
         void loadSP()
         {
             dgrid_sp.ColumnCount = 6;
@@ -168,16 +117,6 @@ namespace _3_GUI
             dgrid_sp.Columns[3].Name = "Mã Sản Phẩm";
             dgrid_sp.Columns[4].Name = "Giá Bán";
             dgrid_sp.Columns[5].Name = "Tồn Kho";
-
-            //PS_BUS.getCountOption().ForEach(x =>
-            //{
-
-            //    dgrid_sp.Columns[row++].Name = "Id option " + x.id_Option;
-            //    dgrid_sp.Columns["Id option " + x.id_Option].Visible = false;
-            //    dgrid_sp.Columns[row++].Name = "Id Value" + x.id_Option;
-            //    dgrid_sp.Columns["Id Value" + x.id_Option].Visible = false;
-            //    dgrid_sp.Columns[row++].Name = x.option_Name;
-            //});
             DataGridViewButtonColumn button = new DataGridViewButtonColumn();
             {
                 button.Name = "select";
@@ -195,51 +134,29 @@ namespace _3_GUI
                 objcell.Add(Convert.ToString(x.ProductVariant.id_Variant));
                 objcell.Add(x.Product.products_Name);
                 objcell.Add(x.ProductVariant.Products_Code);
-                //  objcell.Add(x.ProductVariant.quantity + "");
-                //objcell.Add(x.ProductVariant.import_Price + "");
                 objcell.Add(x.ProductVariant.price + "");
                 objcell.Add(x.ProductVariant.quantity + "");
-                //objcell.Add(x.ProductVariant.id_Product + "");
-                //objcell.Add(x.ProductVariant.id_Variant + "");
 
                 dgrid_sp.Rows.Add(objcell.ToArray());
+
 
             }
         }
 
         void LoadGioHang()
         {
-            int soluong = 1;
             dgrid_giohang.ColumnCount = 5;
             var row = 0;
-            dgrid_giohang.Columns[row++].Name = "Tên Sản Phẩm";
-            dgrid_giohang.Columns[row++].Name = "Mã Sản Phẩm";
-            dgrid_giohang.Columns[row++].Name = "Số Lượng";
-            //PS_BUS.getCountOption().Where(c=>c.id_Option==2 && c.id_Option==4).Select (c=>c.option_Name).ToList(). ForEach(x =>
-            //{
-
-            //    dgrid_giohang.Columns[row++].Name = x;
-            //});
-
-            dgrid_giohang.Columns[row++].Name = "Đơn Giá";
-            dgrid_giohang.Columns[row++].Name = "Tổng Tiền";
-            //PS_BUS.getCountOption().ForEach(x =>
-            //{
-            //    dgrid_giohang.Columns[row].Name = "Id option " + x.id_Option;
-            //    dgrid_giohang.Columns[row++].Visible = false;
-            //    dgrid_giohang.Columns[row].Name = "Id Value" + x.id_Option;
-            //    dgrid_giohang.Columns[row++].Visible = false;
-            //    dgrid_giohang.Columns[row++].Name = x.option_Name;
-            //});
-            DataGridViewComboBoxColumn comboBox = new DataGridViewComboBoxColumn();
-            {
-                comboBox.Name = "es";
-                comboBox.HeaderText = "Chức năng";
-                comboBox.Items.Add("Add");
-                comboBox.Items.Add("Update");
-                comboBox.Items.Add("Delete");
-                dgrid_giohang.Columns.Add(comboBox);
-            }
+            dgrid_giohang.Columns[row].Name = "ID_Product";
+            dgrid_giohang.Columns[row++].HeaderText = "Tên Sản Phẩm";
+            dgrid_giohang.Columns[row].Name = "ID_Variant";
+            dgrid_giohang.Columns[row++].HeaderText = "Mã Sản Phẩm";
+            dgrid_giohang.Columns[row].Name = "quantity";
+            dgrid_giohang.Columns[row++].HeaderText = "Số Lượng";
+            dgrid_giohang.Columns[row].Name = "price";
+            dgrid_giohang.Columns[row++].HeaderText = "Đơn Giá";
+            dgrid_giohang.Columns[row].Name = "total_Pay";
+            dgrid_giohang.Columns[row++].HeaderText = "Tổng Tiền";
             DataGridViewButtonColumn button = new DataGridViewButtonColumn();
             {
                 button.Name = "Delete";
@@ -247,7 +164,7 @@ namespace _3_GUI
 
                 button.Text = ("Delete");
                 button.UseColumnTextForButtonValue = true;
-                this.dgrid_giohang.Columns.Add(button);
+                dgrid_giohang.Columns.Add(button);
             }
             dgrid_giohang.Rows.Clear();
             foreach (var x in _lstProductDetails)
@@ -255,40 +172,39 @@ namespace _3_GUI
                 List<string> objcell = new List<string>();
                 objcell.Add(x.Product.products_Name);
                 objcell.Add(x.ProductVariant.Products_Code);
-                objcell.Add("1");
-
-                // objcell.Add(x.ProductVariant.quantity + "");
-                //objcell.Add(x.ProductVariant.import_Price + "");
-                //objcell.Add(x.OptionValue.Where(c => c.id_Option == 2).Select(c => c.option_Values)
-                // x.OptionValue.Where(c => c.id_Option == 2 || c.id_Option == 4).Select(c => c.option_Values).ToList().ForEach(y => { objcell.Add(y + ""); });
+                objcell.Add(x.ProductVariant.quantity + "");
                 objcell.Add(x.ProductVariant.price + "");
-                // objcell.Add(x.ImageProduct + "");
-                //objcell.Add(x.ProductVariant.id_Product + "");
-                //objcell.Add(x.ProductVariant.id_Variant + "");
-                objcell.Add(Convert.ToString(x.ProductVariant.price * soluong));
+                objcell.Add(Convert.ToString(x.ProductVariant.price * x.ProductVariant.quantity));
 
                 dgrid_giohang.Rows.Add(objcell.ToArray());
-
             }
-            float sum = 0;
-            for (int i = 0; i < dgrid_giohang.Rows.Count; i++)
-            {
-                sum += Convert.ToInt32(dgrid_giohang.Rows[i].Cells[4].Value);
-            }
+            float sum = _lstProductDetails.Sum(x => x.ProductVariant.quantity * x.ProductVariant.price);
             tong = Convert.ToInt32(sum);
             CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
-            tbxTongTien.Text = sum.ToString("#,###", cul.NumberFormat) + " " + "VND";
-            tbxKhachCanTra.Text = sum.ToString("#,###", cul.NumberFormat) + " " + "VND";
+            txtTongTien.Text = sum.ToString("#,###", cul.NumberFormat);
+            txtKhachCanTra.Text = sum.ToString("#,###", cul.NumberFormat);
+            txtGiamGia.Text = 0.ToString("#,###", cul.NumberFormat);
         }
 
         void loadHoaDonCho()
         {
+            Data_HoaDonCho.ColumnCount = 3;
+            var row = 0;
+            Data_HoaDonCho.Columns[row].Name = "Id_Order";
+            Data_HoaDonCho.Columns[row++].Visible = false;
+            Data_HoaDonCho.Columns[row].Name = "numberPhoneCustommer";
+            Data_HoaDonCho.Columns[row++].HeaderText = "Số điện thoại khách Hàng";
+            Data_HoaDonCho.Columns[row].Name = "Id_Employee";
+            Data_HoaDonCho.Columns[row++].HeaderText = "Mã nhân viên";
             Data_HoaDonCho.Rows.Clear();
-            var lst = _iQlOrderService.getListORDERS().ToList();
+            var lst = _iQlOrderService.getListORDERS().Where(c => c.order_status != 1).ToList();
             foreach (var x in lst)
             {
-                Data_HoaDonCho.Rows.Add(x.id_Order, _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.customer_Name).FirstOrDefault(),
-                    _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone).FirstOrDefault(), x.order_status == 1 ? "Đã Thanh Toán" : "Chưa Thanh Toán");
+                Data_HoaDonCho.Rows.Add(
+                    x.id_Order,
+                    _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone).FirstOrDefault(),
+                    "NV-NTXZ " + x.id_Employee
+                    );
             }
         }
 
@@ -304,62 +220,61 @@ namespace _3_GUI
 
                 productDetail = PS_BUS.LoadDatafromDAL().FirstOrDefault(c => c.Product.id_Product == a &&
                                                                              c.ProductVariant.id_Variant == b);
-                _lstProductDetails.Add(productDetail);
+                var checkitem = _lstProductDetails.FindIndex(c => c.Product.id_Product == a &&
+                                                                  c.ProductVariant.id_Variant == b);
+                if (checkitem < 0)
+                {
+                    productDetail.ProductVariant.quantity = 1;
+                    _lstProductDetails.Add(productDetail);
+
+                }
+                else
+                {
+                    _lstProductDetails[checkitem].ProductVariant.quantity = _lstProductDetails[checkitem].ProductVariant.quantity += 1;
+                }
                 LoadGioHang();
             }
         }
 
-        private void dgrid_sp_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void validate()
         {
-            int row = e.RowIndex;
-            if (e.ColumnIndex == dgrid_sp.Columns["select"].Index)
-            {
-                int a = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Product"].Value.ToString());
-                int b = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Variant"].Value.ToString());
-                ProductDetail productDetail = new ProductDetail();
-
-                productDetail = PS_BUS.LoadDatafromDAL().FirstOrDefault(c => c.Product.id_Product == a && c.ProductVariant.id_Variant == b);
-                _lstProductDetails.Add(productDetail);
-                LoadGioHang();
-            }
+            txtGiamGia.Text = txtGiamGia.Text.Length == 0 ? "0" : txtGiamGia.Text;
+            txtKhachCanTra.Text = txtKhachCanTra.Text.Length == 0 ? "0" : txtKhachCanTra.Text;
+            txtKhachThanhToan.Text = txtKhachThanhToan.Text.Length == 0 ? "0" : txtKhachThanhToan.Text;
+            txtSoTienHoanLai.Text = txtSoTienHoanLai.Text.Length == 0 ? "0" : txtSoTienHoanLai.Text;
+            txtTongTien.Text = txtTongTien.Text.Length == 0 ? "0" : txtTongTien.Text;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            validate();
             var idKh = _iqLCustomer.GetlstCustomerses().Where(c => c.customer_Name == cbxTenKhachhang.Text)
                 .Select(c => c.id_Customer).FirstOrDefault();
-            var idnv = _iqLEmployees.GetlstEmployeeses().Where(c => c.id_Employee == Convert.ToInt32(tbxMaNhanVien.Text))
+            var idnv = _iqLEmployees.GetlstEmployeeses().Where(c => c.id_Employee == Convert.ToInt32(txtMaNhanVien.Text))
                 .Select(c => c.id_Employee).FirstOrDefault();
             ORDERS orders = new ORDERS();
             orders.id_Customer = idKh;
-            orders.id_Employee = idnv;
-            //var idOrder = _iQLOrder.GetlstOrderses().Where(c => c.id_Order == Convert.ToInt32()).Select(c => c.id_Order)
-            //    .FirstOrDefault();
+            orders.id_Employee = 2;
+            //orders.id_Employee = idnv;
             orders.order_Time = Convert.ToDateTime(DateTime.Now);
-            orders.discount = 0;
-            orders.refunds = 0;
-            orders.amount_Pay = 0;
-            orders.paying_Customer = 0;
-            orders.total_pay = 0;
-            orders.payments = "0";
+            orders.discount = int.Parse(txtGiamGia.Text);
+            orders.refunds = int.Parse(txtSoTienHoanLai.Text);
+            orders.amount_Pay = int.Parse(txtTongTien.Text);
+            orders.paying_Customer = int.Parse(txtKhachThanhToan.Text);
+            orders.total_pay = int.Parse(txtKhachCanTra.Text);
+            orders.payments = cbxPhuongThucThanhToan.Text;
             orders.order_status = 0;
-            orders.status_Delete = false;
+            orders.status_Delete = true;
             //or.AddORDERS(orders);
             if ((MessageBox.Show("Bạn có chắc chắc sẽ dùng chức năng trên?",
                 "Thông báo !!!!!!!!!!!!!!!",
                 MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                MessageBox.Show(_iQLOrder.add(orders));
+                _iQLOrder.add(orders);
                 MessageBox.Show(_iQLOrder.Save());
+                _lstOrders = _iQLOrder.GetlstOrderses();
             }
-            Data_HoaDonCho.Rows.Clear();
-            var lst = _lstOrders.Where(c => c.status_Delete == false).ToList();
-            foreach (var x in lst)
-            {
-                Data_HoaDonCho.Rows.Add(x.id_Order, _lstcustomerses.Where(c => c.id_Customer == x.id_Customer).Select(c => c.customer_Name),
-                    _lstcustomerses.Where(c => c.id_Customer == x.id_Customer).Select(c => c.numberPhone));
-            }
-            LoadGioHang();
+            loadHoaDonCho();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -371,12 +286,34 @@ namespace _3_GUI
             ls.order_status = 1;
             _iQlOrderService.EditORDERS(ls);
             _iQlOrderService.SaveORDERS();
+            for (int i = 0; i < dgrid_giohang.Rows.Count; i++)
+            {
+                var row = dgrid_giohang.Rows[i];
+                ORDER_DETAILS orderDetails = new ORDER_DETAILS();
+                orderDetails.id_Order = toancuc;
+                orderDetails.id_Product = int.Parse(row.Cells["ID_Product"].Value + "");
+                orderDetails.id_Variant = int.Parse(row.Cells["ID_Variant"].Value + "");
+                orderDetails.quantity = int.Parse(row.Cells["quatity"].Value + "");
+                orderDetails.unit_Price = int.Parse(row.Cells["price"].Value + "");
+                orderDetails.price_Each = int.Parse(row.Cells["price"].Value + "");
+                orderDetails.Discount = 0;
+                orderDetails.status_Delete = true;
+                _lstOderDetailService.AddORDER_DETAILS(orderDetails);
+            }
+            MessageBox.Show(_lstOderDetailService.SaveORDER_DETAILS(), "Thông Báo");
+            LoadGioHang();
             loadHoaDonCho();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            //PrintDialog printDialog1 = new PrintDialog();
+            //printDialog1.Document = printDocument1;
+            //DialogResult result = printDialog1.ShowDialog();
+            //if (result == DialogResult.OK) ;
+            //{
+            //    printDocument1.Print();
+            //}
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -393,23 +330,22 @@ namespace _3_GUI
 
         private void tbxKhachThanhToan_TextChanged(object sender, EventArgs e)
         {
-            //tbxSoTienHoanLai.Text = _Tinhtien.tienthua(int.Parse(tbxKhachThanhToan.Text), tong).ToString();
-            if (tbxSoTienHoanLai.Text != "")
-            {
-                if (_Tinhtien.tienthua(int.Parse(tbxKhachThanhToan.Text), tong) == 0)
-                {
-                    tbxSoTienHoanLai.Text = "0";
-                }
-                else
-                {
-                    CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
-                    tbxSoTienHoanLai.Text = _Tinhtien.tienthua(int.Parse(tbxKhachThanhToan.Text), tong).ToString("#,###", cul.NumberFormat) + " " + "VND";
-                }
-            }
-            else
-            {
-                tbxSoTienHoanLai.Text = "0";
-            }
+            //if (txtSoTienHoanLai.Text != "")
+            //{
+            //    if (_Tinhtien.tienthua(int.Parse(txtKhachThanhToan.Text), tong) == 0)
+            //    {
+            //        txtSoTienHoanLai.Text = "0";
+            //    }
+            //    else
+            //    {
+            //        CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
+            //        txtSoTienHoanLai.Text = _Tinhtien.tienthua(int.Parse(txtKhachThanhToan.Text), tong).ToString("#,###", cul.NumberFormat) + " " + "VND";
+            //    }
+            //}
+            //else
+            //{
+            //    txtSoTienHoanLai.Text = "0";
+            //}
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -433,6 +369,63 @@ namespace _3_GUI
             {
                 dgrid_sp.Rows.Add(x.Product, x.ProductVariant);
             }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Hóa Đơn Bán ", new Font("Arial", 20, FontStyle.Bold), Brushes.Black, new PointF(10, 10));
+            e.Graphics.DrawString("" + "Tên Khách Hàng :" + Convert.ToString(cbxTenKhachhang.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Mã Nhân Viên :" + Convert.ToString(txtMaNhanVien.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Ngày Tạo :" + Convert.ToString(DateNgayTao.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Tổng Tiền :" + Convert.ToString(txtTongTien.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Khách Cần Trả  :" + Convert.ToString(txtKhachCanTra.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Khách Thanh Toán :" + Convert.ToString(txtKhachThanhToan.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("" + "Số Tiền Hoàn Lại :" + Convert.ToString(txtSoTienHoanLai.Text) + "", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+            e.Graphics.DrawString("OFFICE ADDRESS", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, new PointF(10, 150));
+        }
+
+        private void tabPage1_MouseMove(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                txtSoTienHoanLai.Text = int.Parse(txtKhachThanhToan.Text.Split(" ")[0]) - int.Parse(txtTongTien.Text) + "";
+                txtKhachCanTra.Text = int.Parse(txtTongTien.Text.Split(" ")[0]) - int.Parse(txtGiamGia.Text.Split(" ")[0]) + "";
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void Data_HoaDonCho_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgrid_giohang.Rows.Clear();
+            int index = e.RowIndex;
+            int soluong = 1;
+            toancuc = Convert.ToInt32(Data_HoaDonCho.Rows[index].Cells[0].Value.ToString());
+            MessageBox.Show(toancuc + "");
+            //var order = _lsOrderService.getListProduct().Where(c => c.id_Order == Convert.ToInt32(toancuc)).ToList();
+            var order = _lsOrderService.JoinTable().Where(c => c.OrderDetail.id_Order == Convert.ToInt32(toancuc))
+                .Select(c => c.OrderDetail.id_Product).ToList();
+            //var sp = PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == order).ToList();
+            List<ProductDetail> productDetails = new List<ProductDetail>();
+            foreach (var x in order)
+            {
+                var ps = PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == x).ToList();
+                foreach (var productDetail in ps) productDetails.Add(productDetail);
+            }
+            foreach (var x in productDetails)
+            {
+                List<string> objcell = new List<string>();
+                objcell.Add(x.Product.products_Name);
+                objcell.Add(x.ProductVariant.Products_Code);
+                objcell.Add("1");
+                objcell.Add(x.ProductVariant.price + "");
+                objcell.Add(Convert.ToString(x.ProductVariant.price * soluong));
+                dgrid_giohang.Rows.Add(objcell.ToArray());
+            }
+
+            productDetails = new List<ProductDetail>();
         }
     }
 }
