@@ -341,9 +341,9 @@ namespace _3_GUI
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(759, 243);
+            this.button2.Location = new System.Drawing.Point(728, 243);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(154, 61);
+            this.button2.Size = new System.Drawing.Size(185, 61);
             this.button2.TabIndex = 28;
             this.button2.Text = "   Gửi mail hàng loạt";
             this.button2.UseVisualStyleBackColor = false;
@@ -359,11 +359,11 @@ namespace _3_GUI
             this.button3.ForeColor = System.Drawing.Color.Black;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(179, 311);
+            this.button3.Location = new System.Drawing.Point(54, 326);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(135, 61);
+            this.button3.Size = new System.Drawing.Size(255, 61);
             this.button3.TabIndex = 29;
-            this.button3.Text = "   Xóa";
+            this.button3.Text = "   DanhSachNhanVien";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -371,15 +371,16 @@ namespace _3_GUI
             // 
             this.txt_dataemail.Location = new System.Drawing.Point(351, 341);
             this.txt_dataemail.Name = "txt_dataemail";
-            this.txt_dataemail.Size = new System.Drawing.Size(150, 31);
+            this.txt_dataemail.Size = new System.Drawing.Size(185, 31);
             this.txt_dataemail.TabIndex = 30;
+            this.txt_dataemail.TextChanged += new System.EventHandler(this.txt_dataemail_TextChanged);
             // 
             // FrmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(965, 690);
+            this.ClientSize = new System.Drawing.Size(982, 690);
             this.Controls.Add(this.txt_dataemail);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);

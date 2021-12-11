@@ -61,20 +61,20 @@ namespace _3_GUI
                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter("Select * from[Sheet1$]", conn);
                 DataSet theSD = new DataSet();
                 DataTable dt = new DataTable();
-                //dataAdapter.Fill(dt);
-                this.dataGridView1.DataSource = dt.DefaultView;
-                for (int i = 0; i < 2; i++)
+                dataAdapter.Fill(dt);
+                if (dt.Columns.Count != 8)
                 {
-                  //  this.Alert("Import Thành Công Rực Rỡ");
+                    MessageBox.Show("File này không đúng định dạng bạn muốn inport", "Thông báo");
+                    return;
                 }
-                return;
+                this.dataGridView1.DataSource = dt.DefaultView;
             };
 
             if (dialogResult == DialogResult.No)
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    // this.AlertErr("Import Thất Bại");
+                   
                 }
                 return;
             }

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,7 +15,10 @@ namespace _3_GUI
 {
     public partial class FrmMain : Form
     {
-        
+        private Form activeForm;
+        private Attachment attach = null;
+
+
         public FrmMain()
         {
             InitializeComponent();
@@ -20,7 +26,13 @@ namespace _3_GUI
 
         private void OpenChildForm(Form childForm, object btnSender)
         {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
             
+            activeForm = childForm;
+
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
@@ -92,6 +104,51 @@ namespace _3_GUI
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            
+        }
+        void GuiMail(string from, string to, string subject, string message, Attachment file = null)
+        {
+
+
+            MailMessage mailMessage = new MailMessage(from, to, subject, message);
+            if (attach != null) { mailMessage.Attachments.Add(attach); }
+
+
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+            smtpClient.EnableSsl = true;
+            smtpClient.Credentials = new NetworkCredential("trangptph15762@fpt.edu.vn", "phithitrang2706");
+            smtpClient.Send(mailMessage);
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            tudong td = new tudong();
+            td.Show();
+            td.Close();
+
+            DialogResult dialogResult = MessageBox.Show("Bạn Có Muốn Đăng Xuất Hay Không ?", "Thông Báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+
+
+                FileInfo file = new FileInfo(@"C:\\Users\\MyPC\\Documents\\Book2.xlsx");
+                attach = new Attachment(@"C:\\Users\\MyPC\\Documents\\Book2.xlsx");
+                GuiMail("trangptph15762@fpt.edu.vn", "kieuauviettour@gmail.com", "Xin mời admim xem doanh thu", "Thưa anh", attach);
+            }
+
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
 
         }
 

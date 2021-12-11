@@ -79,7 +79,7 @@ namespace _3_GUI
 
             data_NhanVien.Rows.Clear();
             var lst = _iQlEmployeesService.GetlstEmployeeses();
-            MessageBox.Show(lst.Max(i => i.id_Employee) + "");
+            //MessageBox.Show(lst.Max(i => i.id_Employee) + "");
             foreach (var x in _iQlEmployeesService.GetlstEmployeeses())
 
             {
@@ -243,6 +243,11 @@ namespace _3_GUI
                     }
                 }
             }
+        }
+
+        private void txt_dataemail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

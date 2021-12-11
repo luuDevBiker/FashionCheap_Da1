@@ -351,7 +351,7 @@ namespace _3_GUI
                 //  myCommand.CommandText = sql;
                
                 myCommand.CommandText = sql;
-                myCommand.ExecuteNonQuery();
+                myCommand.ExecuteNonQuery();//
                 myCommand.Parameters.Clear();
             }
             MyConnection.Close();
