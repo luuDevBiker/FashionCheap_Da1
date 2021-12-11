@@ -209,7 +209,7 @@ namespace _3_GUI
             this.groupBox1.Controls.Add(this.data_NhanVien);
             this.groupBox1.Location = new System.Drawing.Point(-2, 378);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(966, 300);
+            this.groupBox1.Size = new System.Drawing.Size(1755, 660);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
             // 
@@ -218,11 +218,11 @@ namespace _3_GUI
             this.data_NhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_NhanVien.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.data_NhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_NhanVien.Location = new System.Drawing.Point(14, 30);
+            this.data_NhanVien.Location = new System.Drawing.Point(-19, 30);
             this.data_NhanVien.Name = "data_NhanVien";
             this.data_NhanVien.RowHeadersWidth = 62;
             this.data_NhanVien.RowTemplate.Height = 33;
-            this.data_NhanVien.Size = new System.Drawing.Size(931, 257);
+            this.data_NhanVien.Size = new System.Drawing.Size(1742, 609);
             this.data_NhanVien.TabIndex = 0;
             this.data_NhanVien.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_NhanVien_CellContentClick);
             // 
@@ -236,7 +236,7 @@ namespace _3_GUI
             this.btn_Them.ForeColor = System.Drawing.Color.Black;
             this.btn_Them.Image = ((System.Drawing.Image)(resources.GetObject("btn_Them.Image")));
             this.btn_Them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Them.Location = new System.Drawing.Point(25, 243);
+            this.btn_Them.Location = new System.Drawing.Point(66, 243);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(135, 61);
             this.btn_Them.TabIndex = 19;
@@ -254,7 +254,7 @@ namespace _3_GUI
             this.btn_Sua.ForeColor = System.Drawing.Color.Black;
             this.btn_Sua.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sua.Image")));
             this.btn_Sua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sua.Location = new System.Drawing.Point(210, 243);
+            this.btn_Sua.Location = new System.Drawing.Point(315, 243);
             this.btn_Sua.Name = "btn_Sua";
             this.btn_Sua.Size = new System.Drawing.Size(135, 61);
             this.btn_Sua.TabIndex = 20;
@@ -272,7 +272,7 @@ namespace _3_GUI
             this.btn_Xoa.ForeColor = System.Drawing.Color.Black;
             this.btn_Xoa.Image = ((System.Drawing.Image)(resources.GetObject("btn_Xoa.Image")));
             this.btn_Xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Xoa.Location = new System.Drawing.Point(389, 243);
+            this.btn_Xoa.Location = new System.Drawing.Point(572, 243);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(135, 61);
             this.btn_Xoa.TabIndex = 21;
@@ -282,7 +282,7 @@ namespace _3_GUI
             // 
             // tbx_TimKiem
             // 
-            this.tbx_TimKiem.Location = new System.Drawing.Point(631, 341);
+            this.tbx_TimKiem.Location = new System.Drawing.Point(1091, 341);
             this.tbx_TimKiem.Name = "tbx_TimKiem";
             this.tbx_TimKiem.Size = new System.Drawing.Size(240, 31);
             this.tbx_TimKiem.TabIndex = 23;
@@ -307,7 +307,7 @@ namespace _3_GUI
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(594, 341);
+            this.pictureBox1.Location = new System.Drawing.Point(1043, 341);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 31);
             this.pictureBox1.TabIndex = 26;
@@ -323,7 +323,7 @@ namespace _3_GUI
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(571, 243);
+            this.button1.Location = new System.Drawing.Point(837, 243);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 61);
             this.button1.TabIndex = 27;
@@ -341,11 +341,11 @@ namespace _3_GUI
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(728, 243);
+            this.button2.Location = new System.Drawing.Point(1113, 243);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(185, 61);
+            this.button2.Size = new System.Drawing.Size(218, 61);
             this.button2.TabIndex = 28;
-            this.button2.Text = "   Gửi mail hàng loạt";
+            this.button2.Text = "    Gửi mail hàng loạt";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -359,7 +359,7 @@ namespace _3_GUI
             this.button3.ForeColor = System.Drawing.Color.Black;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(54, 326);
+            this.button3.Location = new System.Drawing.Point(1455, 243);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(255, 61);
             this.button3.TabIndex = 29;
@@ -369,7 +369,7 @@ namespace _3_GUI
             // 
             // txt_dataemail
             // 
-            this.txt_dataemail.Location = new System.Drawing.Point(351, 341);
+            this.txt_dataemail.Location = new System.Drawing.Point(787, 341);
             this.txt_dataemail.Name = "txt_dataemail";
             this.txt_dataemail.Size = new System.Drawing.Size(185, 31);
             this.txt_dataemail.TabIndex = 30;
@@ -380,7 +380,7 @@ namespace _3_GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.ClientSize = new System.Drawing.Size(982, 690);
+            this.ClientSize = new System.Drawing.Size(1924, 1050);
             this.Controls.Add(this.txt_dataemail);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -410,6 +410,7 @@ namespace _3_GUI
             this.Controls.Add(this.lbl_Ten);
             this.Name = "FrmNhanVien";
             this.Text = "NhanVien";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.data_NhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
