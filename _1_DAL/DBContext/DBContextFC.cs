@@ -15,7 +15,7 @@ namespace DAL_DataAccessLayers.DBContex_FC
                 optionsBuilder.UseSqlServer(
 
                            //<<<<<<< HEAD
-                           "Data Source=.\\SQLEXPRESS;Initial Catalog=Fashion_KienDuAn1;Persist Security Info=True;User ID=Kien2002;Password=123");
+                           "Data Source=.\\SQLEXPRESS;Initial Catalog=DuAn1_Fashion;Persist Security Info=True;User ID=Kien2002;Password=123");
                 //=======
                 // "Data Source=DESKTOP-NVB7S6L;Initial Catalog=DA_FashionCheap;Persist Security Info=True;User ID=kieu96;Password=123");
                 //>>>>>>> 2d9d9432cf77a78215193eb0df320c121d008921

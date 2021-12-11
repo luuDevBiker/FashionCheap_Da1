@@ -112,7 +112,6 @@ namespace _3_GUI
             this.dgrid_sp.Size = new System.Drawing.Size(764, 346);
             this.dgrid_sp.TabIndex = 0;
             this.dgrid_sp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_sp_CellContentClick);
-        
             // 
             // groupBox1
             // 
@@ -163,6 +162,7 @@ namespace _3_GUI
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(149)))), ((int)(((byte)(148)))));
             this.tabPage1.Controls.Add(this.cbxTenKhachhang);
+            this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.DateNgayTao);
             this.tabPage1.Controls.Add(this.tbxSoTienHoanLai);
             this.tabPage1.Controls.Add(this.tbxKhachThanhToan);
@@ -244,7 +244,7 @@ namespace _3_GUI
             this.button2.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(90, 646);
+            this.button2.Location = new System.Drawing.Point(63, 588);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(162, 56);
@@ -355,7 +355,6 @@ namespace _3_GUI
             this.tabPage2.Controls.Add(this.DataNgayTao1);
             this.tabPage2.Controls.Add(this.cbxKhachHang1);
             this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.tbxSdt);
             this.tabPage2.Controls.Add(this.tbxDiaChi);
             this.tabPage2.Controls.Add(this.tbxMaNV);
@@ -414,7 +413,7 @@ namespace _3_GUI
             this.button3.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(69, 632);
+            this.button3.Location = new System.Drawing.Point(66, 661);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(159, 56);

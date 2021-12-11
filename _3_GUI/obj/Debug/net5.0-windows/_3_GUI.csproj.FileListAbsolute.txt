@@ -1302,7 +1302,6 @@ C:\Users\Kien\OneDrive\Desktop\Kien_DuAn1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI
 C:\Users\Kien\OneDrive\Desktop\Kien_DuAn1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.AssemblyInfoInputs.cache
 C:\Users\Kien\OneDrive\Desktop\Kien_DuAn1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.AssemblyInfo.cs
 C:\Users\Kien\OneDrive\Desktop\Kien_DuAn1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.csproj.CoreCompileInputs.cache
-C:\Users\Kien\OneDrive\Desktop\Kien_DuAn1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.csproj.CopyComplete
 C:\Users\Kien\OneDrive\Desktop\Kien_DuAn1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.dll
 C:\Users\Kien\OneDrive\Desktop\Kien_DuAn1\_3_GUI\obj\Debug\net5.0-windows\ref\_3_GUI.dll
 C:\Users\Kien\OneDrive\Desktop\Kien_DuAn1\_3_GUI\obj\Debug\net5.0-windows\_3_GUI.pdb

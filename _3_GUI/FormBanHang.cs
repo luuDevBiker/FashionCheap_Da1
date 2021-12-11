@@ -38,8 +38,9 @@ namespace _3_GUI
         private List<PRODUCTS_OPTIONS> _lstProducts_option;
         private List<ProductDetail> _lstProductDetails;
         private IOderService _iQlOrderService;
+        private IOderDetailService _lstOderDetailService;
         public string email = FormDangNhap.email;
-        private string toancuc;
+        private int toancuc;
         private string _idhoadon;
         private int whenClick;
         private TinhTien _Tinhtien;
@@ -63,6 +64,7 @@ namespace _3_GUI
             _lstProducts = new List<PRODUCTS>();
             _lsOrderService = new QLOrDerService();
             _lstcustomerses = new List<CUSTOMERS>();
+            _lstOderDetailService = new ORDER_DETAILS_Service();
             _Tinhtien = new TinhTien();
             _lstEmployeeses = new List<EMPLOYEES>();
             _lstProducts_variants = new List<PRODUCTS_VARIANTS>();
@@ -287,7 +289,7 @@ namespace _3_GUI
         void loadHoaDonCho()
         {
             Data_HoaDonCho.Rows.Clear();
-            var lst = _iQlOrderService.getListORDERS().ToList();
+            var lst = _iQlOrderService.getListORDERS().Where(c=>c.order_status != 1).ToList();
             foreach (var x in lst)
             {
                 Data_HoaDonCho.Rows.Add(x.id_Order, _iqLCustomer.GetlstCustomerses().Where(c => c.id_Customer == x.id_Customer).Select(c => c.customer_Name).FirstOrDefault(),
@@ -300,7 +302,7 @@ namespace _3_GUI
             dgrid_giohang.Rows.Clear();
             int index = e.RowIndex;
             int soluong = 1;
-            toancuc = Data_HoaDonCho.Rows[index].Cells[0].Value.ToString();
+            toancuc = Convert.ToInt32(Data_HoaDonCho.Rows[index].Cells[0].Value.ToString());
             //var order = _lsOrderService.getListProduct().Where(c => c.id_Order == Convert.ToInt32(toancuc)).ToList();
             var order = _lsOrderService.JoinTable().Where(c => c.OrderDetail.id_Order == Convert.ToInt32(toancuc))
                 .Select(c => c.OrderDetail.id_Product).ToList();
@@ -394,6 +396,17 @@ namespace _3_GUI
             ls.order_status = 1;
             _iQlOrderService.EditORDERS(ls);
             _iQlOrderService.SaveORDERS();
+            ORDER_DETAILS orderDetails = new ORDER_DETAILS();
+            orderDetails.id_Order = toancuc;
+            orderDetails.id_Product = 3;
+            orderDetails.id_Variant = 2;
+            orderDetails.quantity = 4;
+            orderDetails.unit_Price = 10000000;
+            orderDetails.price_Each = 10000000;
+            orderDetails.Discount = 0;
+            orderDetails.status_Delete = true;
+            MessageBox.Show(_lstOderDetailService.AddORDER_DETAILS(orderDetails));
+            MessageBox.Show(_lstOderDetailService.SaveORDER_DETAILS(), "Thông Báo");
             LoadGioHang();
             loadHoaDonCho();
         }
