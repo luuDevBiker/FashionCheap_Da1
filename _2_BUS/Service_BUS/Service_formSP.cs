@@ -102,8 +102,9 @@ namespace _2_BUS.Service_BUS
                 x.Status = true;
                 _litSanPhamCuThes.Add(x);
             });
-
-            return _litSanPhamCuThes;
+            var lst = new List<ProductDetail>();
+            lst = _litSanPhamCuThes;
+            return lst;
 
         }
 
@@ -440,7 +441,26 @@ namespace _2_BUS.Service_BUS
                 return "Error removeProductVariant : " + e;
             }
         }
-
+        public string updateQuantity(ProductDetail productDetail)
+        {
+            try
+            {
+                var prv = new ProductsVariants_Service();
+                var lst = prv.getListProductses();
+                var productVariant = lst
+                    .Where(x => x.id_Product == productDetail.Product.id_Product
+                        && x.id_Variant == productDetail.ProductVariant.id_Variant).FirstOrDefault();
+                productVariant.quantity = productVariant.quantity - productDetail.ProductVariant.quantity;
+                prv.EditProductVarriant(productVariant);
+                prv.SaveProductVarriant();
+                _lstProductsVariantses = prv.getListProductses();
+                return "Successful";
+            }
+            catch (System.Exception e)
+            {
+                return "Error updateQuantity : " + e;
+            }
+        }
         #region Code anh Kieu
 
         void clearall()

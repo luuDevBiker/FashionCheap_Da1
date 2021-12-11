@@ -46,13 +46,13 @@ namespace _3_GUI
             this.txtKhachCanTra = new System.Windows.Forms.TextBox();
             this.txtGiamGia = new System.Windows.Forms.TextBox();
             this.txtTongTien = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnThanhToan = new System.Windows.Forms.Button();
             this.lblHoanLai = new System.Windows.Forms.Label();
             this.lblKhachTra = new System.Windows.Forms.Label();
             this.lblGiamGia = new System.Windows.Forms.Label();
             this.lblTongTra = new System.Windows.Forms.Label();
             this.lblTongTien = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTaoHoaDon = new System.Windows.Forms.Button();
             this.txtMaNhanVien = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,8 +60,8 @@ namespace _3_GUI
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.DataNgayTao1 = new System.Windows.Forms.DateTimePicker();
             this.cbxKhachHang1 = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnDatHang = new System.Windows.Forms.Button();
+            this.btnIn = new System.Windows.Forms.Button();
             this.tbxSdt = new System.Windows.Forms.TextBox();
             this.tbxDiaChi = new System.Windows.Forms.TextBox();
             this.tbxMaNV = new System.Windows.Forms.TextBox();
@@ -99,6 +99,8 @@ namespace _3_GUI
             // 
             // dgrid_sp
             // 
+            this.dgrid_sp.AllowUserToAddRows = false;
+            this.dgrid_sp.AllowUserToDeleteRows = false;
             this.dgrid_sp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgrid_sp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_sp.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -138,6 +140,8 @@ namespace _3_GUI
             this.dgrid_giohang.RowTemplate.Height = 33;
             this.dgrid_giohang.Size = new System.Drawing.Size(801, 376);
             this.dgrid_giohang.TabIndex = 0;
+            this.dgrid_giohang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_giohang_CellClick);
+            this.dgrid_giohang.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_giohang_CellEndEdit);
             // 
             // tbxTimKiem
             // 
@@ -146,7 +150,6 @@ namespace _3_GUI
             this.tbxTimKiem.Name = "tbxTimKiem";
             this.tbxTimKiem.Size = new System.Drawing.Size(289, 27);
             this.tbxTimKiem.TabIndex = 4;
-            this.tbxTimKiem.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // tabControl1
             // 
@@ -171,13 +174,13 @@ namespace _3_GUI
             this.tabPage1.Controls.Add(this.txtKhachCanTra);
             this.tabPage1.Controls.Add(this.txtGiamGia);
             this.tabPage1.Controls.Add(this.txtTongTien);
-            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Controls.Add(this.btnThanhToan);
             this.tabPage1.Controls.Add(this.lblHoanLai);
             this.tabPage1.Controls.Add(this.lblKhachTra);
             this.tabPage1.Controls.Add(this.lblGiamGia);
             this.tabPage1.Controls.Add(this.lblTongTra);
             this.tabPage1.Controls.Add(this.lblTongTien);
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.btnTaoHoaDon);
             this.tabPage1.Controls.Add(this.txtMaNhanVien);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
@@ -241,7 +244,6 @@ namespace _3_GUI
             this.txtKhachThanhToan.Name = "txtKhachThanhToan";
             this.txtKhachThanhToan.Size = new System.Drawing.Size(238, 27);
             this.txtKhachThanhToan.TabIndex = 14;
-            this.txtKhachThanhToan.TextChanged += new System.EventHandler(this.tbxKhachThanhToan_TextChanged);
             // 
             // txtKhachCanTra
             // 
@@ -267,23 +269,23 @@ namespace _3_GUI
             this.txtTongTien.Size = new System.Drawing.Size(238, 27);
             this.txtTongTien.TabIndex = 12;
             // 
-            // button2
+            // btnThanhToan
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(126)))), ((int)(((byte)(124)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(296, 661);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 56);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "   Thanh Toán";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(126)))), ((int)(((byte)(124)))));
+            this.btnThanhToan.FlatAppearance.BorderSize = 0;
+            this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThanhToan.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.Image")));
+            this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThanhToan.Location = new System.Drawing.Point(296, 661);
+            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(140, 56);
+            this.btnThanhToan.TabIndex = 11;
+            this.btnThanhToan.Text = "   Thanh Toán";
+            this.btnThanhToan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnThanhToan.UseVisualStyleBackColor = false;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // lblHoanLai
             // 
@@ -335,22 +337,22 @@ namespace _3_GUI
             this.lblTongTien.TabIndex = 7;
             this.lblTongTien.Text = "Tổng Tiền";
             // 
-            // button1
+            // btnTaoHoaDon
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(126)))), ((int)(((byte)(124)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(3, 661);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 56);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "   Tạo Hóa Đơn";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnTaoHoaDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(126)))), ((int)(((byte)(124)))));
+            this.btnTaoHoaDon.FlatAppearance.BorderSize = 0;
+            this.btnTaoHoaDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTaoHoaDon.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnTaoHoaDon.Image = ((System.Drawing.Image)(resources.GetObject("btnTaoHoaDon.Image")));
+            this.btnTaoHoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTaoHoaDon.Location = new System.Drawing.Point(3, 661);
+            this.btnTaoHoaDon.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTaoHoaDon.Name = "btnTaoHoaDon";
+            this.btnTaoHoaDon.Size = new System.Drawing.Size(125, 56);
+            this.btnTaoHoaDon.TabIndex = 6;
+            this.btnTaoHoaDon.Text = "   Tạo Hóa Đơn";
+            this.btnTaoHoaDon.UseVisualStyleBackColor = false;
+            this.btnTaoHoaDon.Click += new System.EventHandler(this.btnTaoHoaDon_Click);
             // 
             // txtMaNhanVien
             // 
@@ -395,8 +397,8 @@ namespace _3_GUI
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(149)))), ((int)(((byte)(148)))));
             this.tabPage2.Controls.Add(this.DataNgayTao1);
             this.tabPage2.Controls.Add(this.cbxKhachHang1);
-            this.tabPage2.Controls.Add(this.button4);
-            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.btnDatHang);
+            this.tabPage2.Controls.Add(this.btnIn);
             this.tabPage2.Controls.Add(this.tbxSdt);
             this.tabPage2.Controls.Add(this.tbxDiaChi);
             this.tabPage2.Controls.Add(this.tbxMaNV);
@@ -430,39 +432,39 @@ namespace _3_GUI
             this.cbxKhachHang1.Size = new System.Drawing.Size(134, 28);
             this.cbxKhachHang1.TabIndex = 17;
             // 
-            // button4
+            // btnDatHang
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(126)))), ((int)(((byte)(124)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(69, 546);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(159, 56);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "    Đặt Hàng";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnDatHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(126)))), ((int)(((byte)(124)))));
+            this.btnDatHang.FlatAppearance.BorderSize = 0;
+            this.btnDatHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDatHang.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDatHang.Image = ((System.Drawing.Image)(resources.GetObject("btnDatHang.Image")));
+            this.btnDatHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDatHang.Location = new System.Drawing.Point(69, 546);
+            this.btnDatHang.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDatHang.Name = "btnDatHang";
+            this.btnDatHang.Size = new System.Drawing.Size(159, 56);
+            this.btnDatHang.TabIndex = 16;
+            this.btnDatHang.Text = "    Đặt Hàng";
+            this.btnDatHang.UseVisualStyleBackColor = false;
+            this.btnDatHang.Click += new System.EventHandler(this.btnDatHang_Click);
             // 
-            // button3
+            // btnIn
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(126)))), ((int)(((byte)(124)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(69, 632);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(159, 56);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "In";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(126)))), ((int)(((byte)(124)))));
+            this.btnIn.FlatAppearance.BorderSize = 0;
+            this.btnIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIn.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnIn.Image = ((System.Drawing.Image)(resources.GetObject("btnIn.Image")));
+            this.btnIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIn.Location = new System.Drawing.Point(69, 632);
+            this.btnIn.Margin = new System.Windows.Forms.Padding(2);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(159, 56);
+            this.btnIn.TabIndex = 7;
+            this.btnIn.Text = "In";
+            this.btnIn.UseVisualStyleBackColor = false;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // tbxSdt
             // 
@@ -570,6 +572,8 @@ namespace _3_GUI
             // 
             // Data_HoaDonCho
             // 
+            this.Data_HoaDonCho.AllowUserToAddRows = false;
+            this.Data_HoaDonCho.AllowUserToDeleteRows = false;
             this.Data_HoaDonCho.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Data_HoaDonCho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Data_HoaDonCho.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -627,7 +631,7 @@ namespace _3_GUI
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label lblTongTien;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTaoHoaDon;
         private System.Windows.Forms.TextBox txtMaNhanVien;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -636,7 +640,7 @@ namespace _3_GUI
         private System.Windows.Forms.Label lblKhachTra;
         private System.Windows.Forms.Label lblTongTra;
         private System.Windows.Forms.Label lblHoanLai;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnThanhToan;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -651,8 +655,8 @@ namespace _3_GUI
         private System.Windows.Forms.TextBox txtKhachThanhToan;
         private System.Windows.Forms.TextBox txtKhachCanTra;
         private System.Windows.Forms.TextBox txtTongTien;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnDatHang;
+        private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.TextBox tbxSdt;
         private System.Windows.Forms.TextBox tbxDiaChi;
         private System.Windows.Forms.TextBox tbxMaNV;

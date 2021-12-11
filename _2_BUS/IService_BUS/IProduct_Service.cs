@@ -17,7 +17,7 @@ namespace _2_BUS.IService_BUS
         public string editProductVariant(ProductDetail productDetail);
         public string removeProductVariant(ProductDetail productDetail);
 
-
+        public string updateQuantity(ProductDetail productDetail);
         #region code anh kieu
         public List<PRODUCTS_OPTIONS> getCountOption(int a);
         public List<OPTIONS> getCountOptionloadtong();

@@ -46,7 +46,7 @@ namespace _3_GUI
         private TinhTien _Tinhtien;
         private int tong;
         private string _id;
-
+        private bool checkGiohang = false;
         private IProduct_Service PS_BUS;
 
         //private List<OPTIONS> _lstOptions;
@@ -91,6 +91,7 @@ namespace _3_GUI
             cbxPhuongThucThanhToan.Items.Add("ATM");
             cbxPhuongThucThanhToan.Items.Add("Tiền mặt");
             cbxPhuongThucThanhToan.SelectedIndex = 0;
+            dgrid_sp.Enabled = false;
         }
 
         private void OpenChildForm(Form childForm, object btnSender)
@@ -145,12 +146,14 @@ namespace _3_GUI
 
         void LoadGioHang()
         {
-            dgrid_giohang.ColumnCount = 5;
+            dgrid_giohang.ColumnCount = 6;
             var row = 0;
             dgrid_giohang.Columns[row].Name = "ID_Product";
-            dgrid_giohang.Columns[row++].HeaderText = "Tên Sản Phẩm";
+            dgrid_giohang.Columns[row++].Visible = false;
             dgrid_giohang.Columns[row].Name = "ID_Variant";
-            dgrid_giohang.Columns[row++].HeaderText = "Mã Sản Phẩm";
+            dgrid_giohang.Columns[row].Visible = false;
+            dgrid_giohang.Columns[row++].Name = "ID_Sku";
+            dgrid_giohang.Columns[row++].HeaderText = "Mã sản phẩm";
             dgrid_giohang.Columns[row].Name = "quantity";
             dgrid_giohang.Columns[row++].HeaderText = "Số Lượng";
             dgrid_giohang.Columns[row].Name = "price";
@@ -170,7 +173,8 @@ namespace _3_GUI
             foreach (var x in _lstProductDetails)
             {
                 List<string> objcell = new List<string>();
-                objcell.Add(x.Product.products_Name);
+                objcell.Add(x.Product.id_Product+"");
+                objcell.Add(x.ProductVariant.id_Variant+"");
                 objcell.Add(x.ProductVariant.Products_Code);
                 objcell.Add(x.ProductVariant.quantity + "");
                 objcell.Add(x.ProductVariant.price + "");
@@ -225,7 +229,8 @@ namespace _3_GUI
                 if (checkitem < 0)
                 {
                     productDetail.ProductVariant.quantity = 1;
-                    _lstProductDetails.Add(productDetail);
+                    var x = productDetail;
+                    _lstProductDetails.Add(x);
 
                 }
                 else
@@ -245,7 +250,7 @@ namespace _3_GUI
             txtTongTien.Text = txtTongTien.Text.Length == 0 ? "0" : txtTongTien.Text;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
             validate();
             var idKh = _iqLCustomer.GetlstCustomerses().Where(c => c.customer_Name == cbxTenKhachhang.Text)
@@ -264,7 +269,8 @@ namespace _3_GUI
             orders.total_pay = int.Parse(txtKhachCanTra.Text);
             orders.payments = cbxPhuongThucThanhToan.Text;
             orders.order_status = 0;
-            orders.status_Delete = true;
+            orders.status = ".";
+            orders.status_Delete = false;
             //or.AddORDERS(orders);
             if ((MessageBox.Show("Bạn có chắc chắc sẽ dùng chức năng trên?",
                 "Thông báo !!!!!!!!!!!!!!!",
@@ -277,11 +283,8 @@ namespace _3_GUI
             loadHoaDonCho();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                "" + _iQLOrder.JoinTable().Select(x => x.ProductDetail.Product.id_Product).FirstOrDefault() + "",
-                "Thông báo");
             var ls = _iQlOrderService.getListORDERS().Where(c => c.id_Order == Convert.ToInt32(toancuc)).FirstOrDefault();
             ls.order_status = 1;
             _iQlOrderService.EditORDERS(ls);
@@ -291,21 +294,28 @@ namespace _3_GUI
                 var row = dgrid_giohang.Rows[i];
                 ORDER_DETAILS orderDetails = new ORDER_DETAILS();
                 orderDetails.id_Order = toancuc;
-                orderDetails.id_Product = int.Parse(row.Cells["ID_Product"].Value + "");
-                orderDetails.id_Variant = int.Parse(row.Cells["ID_Variant"].Value + "");
-                orderDetails.quantity = int.Parse(row.Cells["quatity"].Value + "");
-                orderDetails.unit_Price = int.Parse(row.Cells["price"].Value + "");
-                orderDetails.price_Each = int.Parse(row.Cells["price"].Value + "");
+                orderDetails.id_Product = int.Parse(row.Cells[0].Value + "");
+                orderDetails.id_Variant = int.Parse(row.Cells[1].Value + "");
+                orderDetails.quantity = int.Parse(row.Cells[3].Value + "");
+                orderDetails.unit_Price = int.Parse(row.Cells[4].Value + "");
+                orderDetails.price_Each = int.Parse(row.Cells[5].Value + "");
                 orderDetails.Discount = 0;
-                orderDetails.status_Delete = true;
+                orderDetails.status_Delete = false;
                 _lstOderDetailService.AddORDER_DETAILS(orderDetails);
+                var producDetail = new ProductDetail();
+                producDetail.ProductVariant.id_Variant = int.Parse(row.Cells[1].Value + "");
+                producDetail.ProductVariant.quantity = int.Parse(row.Cells[3].Value + "");
+                producDetail.Product.id_Product = int.Parse(row.Cells[0].Value + "");
+                PS_BUS.updateQuantity(producDetail);
             }
             MessageBox.Show(_lstOderDetailService.SaveORDER_DETAILS(), "Thông Báo");
             LoadGioHang();
             loadHoaDonCho();
+            loadSP();
+            dgrid_sp.Enabled = true;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnIn_Click(object sender, EventArgs e)
         {
             //PrintDialog printDialog1 = new PrintDialog();
             //printDialog1.Document = printDocument1;
@@ -316,7 +326,7 @@ namespace _3_GUI
             //}
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnDatHang_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
                 "" + _iQLOrder.JoinTable().Select(x => x.ProductDetail.Product.id_Product).FirstOrDefault() + "",
@@ -328,30 +338,6 @@ namespace _3_GUI
             MessageBox.Show("Bạn có muốn in hóa đơn không", "Có");
         }
 
-        private void tbxKhachThanhToan_TextChanged(object sender, EventArgs e)
-        {
-            //if (txtSoTienHoanLai.Text != "")
-            //{
-            //    if (_Tinhtien.tienthua(int.Parse(txtKhachThanhToan.Text), tong) == 0)
-            //    {
-            //        txtSoTienHoanLai.Text = "0";
-            //    }
-            //    else
-            //    {
-            //        CultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
-            //        txtSoTienHoanLai.Text = _Tinhtien.tienthua(int.Parse(txtKhachThanhToan.Text), tong).ToString("#,###", cul.NumberFormat) + " " + "VND";
-            //    }
-            //}
-            //else
-            //{
-            //    txtSoTienHoanLai.Text = "0";
-            //}
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            loadataSearch(tbxTimKiem.Text);
-        }
         void loadataSearch(string Tensp)
         {
             PS_BUS.LoadDatafromDAL();
@@ -401,31 +387,48 @@ namespace _3_GUI
         {
             dgrid_giohang.Rows.Clear();
             int index = e.RowIndex;
-            int soluong = 1;
+            if (index < 0)
+            {
+                return;
+            }
             toancuc = Convert.ToInt32(Data_HoaDonCho.Rows[index].Cells[0].Value.ToString());
-            MessageBox.Show(toancuc + "");
-            //var order = _lsOrderService.getListProduct().Where(c => c.id_Order == Convert.ToInt32(toancuc)).ToList();
-            var order = _lsOrderService.JoinTable().Where(c => c.OrderDetail.id_Order == Convert.ToInt32(toancuc))
-                .Select(c => c.OrderDetail.id_Product).ToList();
-            //var sp = PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == order).ToList();
-            List<ProductDetail> productDetails = new List<ProductDetail>();
-            foreach (var x in order)
-            {
-                var ps = PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == x).ToList();
-                foreach (var productDetail in ps) productDetails.Add(productDetail);
-            }
-            foreach (var x in productDetails)
-            {
-                List<string> objcell = new List<string>();
-                objcell.Add(x.Product.products_Name);
-                objcell.Add(x.ProductVariant.Products_Code);
-                objcell.Add("1");
-                objcell.Add(x.ProductVariant.price + "");
-                objcell.Add(Convert.ToString(x.ProductVariant.price * soluong));
-                dgrid_giohang.Rows.Add(objcell.ToArray());
-            }
+            dgrid_sp.Enabled = true;
+        }
 
-            productDetails = new List<ProductDetail>();
+        private void dgrid_giohang_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var index = e.RowIndex;
+            var row = dgrid_giohang.Rows[index];
+            var id_Product = int.Parse(row.Cells[0].Value + "");
+            var id_Variant = int.Parse(row.Cells[1].Value + "");
+            var productDetail = PS_BUS.LoadDatafromDAL().Where(x => x.ProductVariant.id_Product == id_Product
+                && x.ProductVariant.id_Product == id_Product)
+                .FirstOrDefault();
+            var quantity = int.Parse(row.Cells[3].Value + "");
+            var quantityInCart = PS_BUS.LoadDatafromDAL().Where(x => x.ProductVariant.id_Product == id_Product
+                && x.ProductVariant.id_Product == id_Product).Select(x => x.ProductVariant.quantity).FirstOrDefault();
+            if (quantity > quantityInCart)
+            {
+                MessageBox.Show($"Số lượng trong kho không đủ !","Cảnh báo");
+            }
+            productDetail.ProductVariant.quantity = quantity;
+            LoadGioHang();   
+        }
+
+        private void dgrid_giohang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var indexRow = e.RowIndex;
+            var indexColumn = e.ColumnIndex;
+            var row = dgrid_giohang.Rows[indexRow];
+            var id_Product = int.Parse(row.Cells[0].Value + "");
+            var id_Variant = int.Parse(row.Cells[1].Value + "");
+            if (indexColumn == 6)
+            {
+                var address = _lstProductDetails.FindIndex(x => x.ProductVariant.id_Product == id_Product
+                    && x.ProductVariant.id_Variant == id_Variant);
+                _lstProductDetails.RemoveAt(address);
+            }
+            LoadGioHang();
         }
     }
 }
