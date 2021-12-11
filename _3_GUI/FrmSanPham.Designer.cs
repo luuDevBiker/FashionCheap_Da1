@@ -162,13 +162,13 @@ namespace _3_GUI
             this.data_CacPhienBan1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.data_CacPhienBan1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.data_CacPhienBan1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.data_CacPhienBan1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.data_CacPhienBan1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.data_CacPhienBan1.Location = new System.Drawing.Point(2, 23);
             this.data_CacPhienBan1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.data_CacPhienBan1.Name = "data_CacPhienBan1";
             this.data_CacPhienBan1.RowHeadersWidth = 62;
             this.data_CacPhienBan1.RowTemplate.Height = 33;
-            this.data_CacPhienBan1.Size = new System.Drawing.Size(535, 271);
+            this.data_CacPhienBan1.Size = new System.Drawing.Size(535, 331);
             this.data_CacPhienBan1.TabIndex = 2;
             this.data_CacPhienBan1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_CacPhienBan1_CellClick);
             // 
@@ -325,11 +325,11 @@ namespace _3_GUI
             this.data_ThongTinSanPham.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.data_ThongTinSanPham.Controls.Add(this.data_ThongTinSanPham1);
             this.data_ThongTinSanPham.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.data_ThongTinSanPham.Location = new System.Drawing.Point(9, 489);
+            this.data_ThongTinSanPham.Location = new System.Drawing.Point(11, 408);
             this.data_ThongTinSanPham.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.data_ThongTinSanPham.Name = "data_ThongTinSanPham";
             this.data_ThongTinSanPham.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.data_ThongTinSanPham.Size = new System.Drawing.Size(1531, 306);
+            this.data_ThongTinSanPham.Size = new System.Drawing.Size(1291, 389);
             this.data_ThongTinSanPham.TabIndex = 4;
             this.data_ThongTinSanPham.TabStop = false;
             this.data_ThongTinSanPham.Text = "Thông Tin Sản Phẩm";
@@ -345,7 +345,7 @@ namespace _3_GUI
             this.data_ThongTinSanPham1.Name = "data_ThongTinSanPham1";
             this.data_ThongTinSanPham1.RowHeadersWidth = 62;
             this.data_ThongTinSanPham1.RowTemplate.Height = 33;
-            this.data_ThongTinSanPham1.Size = new System.Drawing.Size(1527, 280);
+            this.data_ThongTinSanPham1.Size = new System.Drawing.Size(1287, 363);
             this.data_ThongTinSanPham1.TabIndex = 2;
             this.data_ThongTinSanPham1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_ThongTinSanPham1_CellClick_1);
             // 
