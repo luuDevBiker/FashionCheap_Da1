@@ -64,47 +64,13 @@ namespace _2_BUS.Service_BUS
 
         void loadAllList()
         {
-            _lstProductses = PS.getListProductses().Where(c=>c.status_Delete==true).ToList();
+            _lstProductses = PS.getListProductses().Where(c => c.status_Delete == true).ToList();
             _lstOptionsValueses = OV.getListOptionValue().Where(c => c.status_Delete == true).ToList(); ;
             _lsOptionses = OS.getListOption().Where(c => c.status_Delete == true).ToList(); ;
             _lstVariantsValueses = Vv.getListVARIANTS_VALUES().Where(c => c.status_Delete == true).ToList(); ;
             _lsProductsOptionses = PO.getListProductsesOptions().Where(c => c.status_Delete == true).ToList(); ;
             _lstProductsVariantses = PV.getListProductses().Where(c => c.status_Delete == true).ToList(); ;
 
-        }
-        void clearall()
-        {
-            _lsOptionses.Clear();
-            _lsProductsOptionses.Clear();
-            _lstOptionsValueses.Clear();
-            _lstProductsVariantses.Clear();
-            _lstProductses.Clear();
-            _lstVariantsValueses.Clear();
-        }
-        public string addImage()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public string addNewProduct(string name)
-        {
-            PRODUCTS prd = new PRODUCTS();
-            prd.products_Name = name;
-            prd.status_Delete = false;
-            PS.AddProduct(prd);
-            return "Successful";
-        }
-
-
-
-        public List<OPTIONS> getCountOptionloadtong()
-        {
-            var list = _lsOptionses; return list;
-        }
-        public List<PRODUCTS_OPTIONS> getCountOption(int a)
-        {
-            var list = _lsProductsOptionses.Where(c => c.id_Product == a).ToList();
-            return list;
         }
 
         public List<ProductDetail> LoadDatafromDAL()
@@ -141,8 +107,224 @@ namespace _2_BUS.Service_BUS
 
         }
 
+
+        public string addProductDetail(ProductDetail productDetail)
+        {
+            try
+            {
+                PS.AddProduct(productDetail.Product);
+                PS.SaveProduct();
+                _lstProductses = PS.getListProductses();
+                var idProduct = _lstProductses
+                    .Where(x => x.products_Name.ToUpper() == productDetail.Product.products_Name.ToUpper())
+                    .Select(o => o.id_Product)
+                    .FirstOrDefault();
+
+                productDetail.Option.ForEach(x =>
+                {
+                    var checkoption = _lsOptionses
+                        .Where(z => z.option_Name.ToUpper() == x.option_Name.ToUpper())
+                        .ToList();
+                    if (checkoption.Count == 0)
+                    {
+                        var option = new OPTIONS();
+                        option.option_Name = x.option_Name;
+                        OS.AddOption(option);
+                    }
+                });
+                OS.SaveOption();
+                _lsOptionses = OS.getListOption();
+                productDetail.Option.ForEach(x =>
+                {
+                    var idOption = _lsOptionses
+                    .Where(z => z.option_Name.ToUpper() == x.option_Name.ToUpper())
+                    .Select(v => v.id_Option)
+                    .FirstOrDefault();
+                    var productOption = new PRODUCTS_OPTIONS();
+                    productOption.id_Option = idOption;
+                    productOption.id_Product = idProduct;
+                    var statusAdd = PO.AddProductOptions(productOption);
+                });
+                PO.SaveProductOptions();
+                _lsProductsOptionses = PO.getListProductsesOptions();
+                return "Successful";
+            }
+            catch (System.Exception e)
+            {
+                return "Error addProductDetail : " + e;
+            }
+        }
+
+        public string editProductDetail(ProductDetail productDetail)
+        {
+            try
+            {
+                var idProduct = productDetail.Product.id_Product;
+                //-------------------------------------------------
+                productDetail.Option.ForEach(x =>
+                {
+                    var checkoption = _lsOptionses
+                        .Where(z => z.option_Name.ToUpper() == x.option_Name.ToUpper())
+                        .ToList();
+                    if (checkoption.Count == 0)
+                    {
+                        var option = new OPTIONS();
+                        option.option_Name = x.option_Name;
+                        OS.AddOption(option);
+                    }
+                });
+                OS.SaveOption();
+                _lsOptionses = OS.getListOption();
+                //-------------------------------------------------
+                _lsProductsOptionses
+                    .Where(x => x.id_Product == productDetail.Product.id_Product)
+                    .ToList()
+                    .ForEach(x =>
+                        {
+                            var variantValue = _lstVariantsValueses.Where(v => v.id_Product == x.id_Product && v.id_Option == x.id_Option).ToList();
+                            variantValue.ForEach(x =>
+                            {
+                                var statusdeleteVariantValue = Vv.DeleteVARIANTS_VALUES(x);
+                            });
+                            var statusDelate = PO.DeleteProductOptions(x);
+                        });
+                PO.SaveProductOptions();
+                Vv.SaveVARIANTS_VALUES();
+                _lsProductsOptionses = PO.getListProductsesOptions();
+                _lstVariantsValueses = Vv.getListVARIANTS_VALUES();
+                //-------------------------------------------------
+                productDetail.Option.ForEach(x =>
+                {
+                    var idOption = _lsOptionses
+                        .Where(v => v.option_Name.ToUpper() == x.option_Name.ToUpper())
+                        .Select(x=>x.id_Option)
+                        .FirstOrDefault();
+                    var checkConstrain = _lsProductsOptionses
+                    .Where(v => v.id_Option == idOption && v.id_Product == idProduct)
+                    .FirstOrDefault();
+                    if (checkConstrain == null)
+                    {
+                        var productOption = new PRODUCTS_OPTIONS();
+                        productOption.id_Option = idOption;
+                        productOption.id_Product = idProduct;
+                        var statusAdd = PO.AddProductOptions(productOption);
+                    }
+                    else
+                    {
+                        checkConstrain.status_Delete = true;
+                        PO.EditProductOptions(checkConstrain);
+                        _lstVariantsValueses
+                        .Where(x => x.id_Option == checkConstrain.id_Option 
+                            && x.id_Product == checkConstrain.id_Product)
+                        .ToList()
+                        .ForEach(v=>
+                        {
+                            v.status_Delete = true;
+                            Vv.EditVARIANTS_VALUES(v);
+                        });
+                    }
+                });
+                var statusSaveProductoption = PO.SaveProductOptions();
+                var statusSaveDeletevariantValue = Vv.SaveVARIANTS_VALUES();
+                _lsProductsOptionses = PO.getListProductsesOptions();
+                _lstVariantsValueses = Vv.getListVARIANTS_VALUES();
+                return "Successful";
+            }
+            catch (System.Exception e)
+            {
+                return "Error editProductDetail : " + e;
+            }
+        }
+
+        public string removeProductDetail(ProductDetail productDetail)
+        {
+            try
+            {
+                var product = _lstProductses.Where(x => x.products_Name.ToUpper() == productDetail.Product.products_Name.ToUpper()).FirstOrDefault();
+                PS.DeleteProduct(product);
+                PS.SaveProduct();
+                _lstProductses = PS.getListProductses();
+                //----------------------------------------------------------
+                var lstProductOption = _lsProductsOptionses.Where(x => x.id_Product == product.id_Product).ToList();
+                lstProductOption.ForEach(x =>
+                {
+                    PO.DeleteProductOptions(x);
+                    var lstVariantValue = _lstVariantsValueses
+                    .Where(v => v.id_Option == x.id_Option
+                        && v.id_Product == x.id_Product)
+                    .ToList();
+                    lstVariantValue.ForEach(b =>
+                    {
+                        var status = Vv.DeleteVARIANTS_VALUES(b);
+                    });
+                });
+                var status = Vv.SaveVARIANTS_VALUES();
+                _lstVariantsValueses = Vv.getListVARIANTS_VALUES();
+                var status2 = PO.SaveProductOptions();
+                _lsProductsOptionses = PO.getListProductsesOptions();
+                //----------------------------------------------------------
+                _lstProductsVariantses.Where(x => x.id_Product == product.id_Product)
+                    .ToList()
+                    .ForEach(x =>
+                    {
+                        PV.DeleteProductVarriant(x);
+                    });
+                PV.SaveProductVarriant();
+                _lstProductsVariantses = PV.getListProductses();
+                //----------------------------------------------------------
+                return "Successful";
+            }
+            catch (System.Exception e)
+            {
+                return "Error removeProductDetail : "+e;
+            }
+        }
+
+
+        #region Code anh Kieu
+
+        void clearall()
+        {
+            _lsOptionses.Clear();
+            _lsProductsOptionses.Clear();
+            _lstOptionsValueses.Clear();
+            _lstProductsVariantses.Clear();
+            _lstProductses.Clear();
+            _lstVariantsValueses.Clear();
+        }
+        public string addImage()
+        {
+            throw new System.NotImplementedException();
+        }
+        #region product
+
+        public string addNewProduct(string name)
+        {
+            PRODUCTS prd = new PRODUCTS();
+            prd.products_Name = name;
+            prd.status_Delete = false;
+            PS.AddProduct(prd);
+            return "Successful";
+        }
+        public List<OPTIONS> getCountOptionloadtong()
+        {
+            var list = _lsOptionses; return list;
+        }
+
+        #endregion
+
+        #region product option
+        public List<PRODUCTS_OPTIONS> getCountOption(int a)
+        {
+            var list = _lsProductsOptionses.Where(c => c.id_Product == a).ToList();
+            return list;
+        }
+        #endregion
+
+        #region product detail
         public string Addnew(ProductDetail a)
-        {// thêm Product Vảiant
+        {
+            // thêm Product Variant
             int idProduct = a.Product.id_Product;
             PV.AddProductVarriant(a.ProductVariant);
             PV.SaveProductVarriant();
@@ -408,6 +590,11 @@ namespace _2_BUS.Service_BUS
             PV.DeleteProductVarriant(newProductsVariants);
             return " Xóa Thành Công";
         }
+
+        #endregion
+
+        #region tap nham
+
         public All_List AllListPRO()
         {
             All_List a = new All_List(_lstProductses, _lstProductsVariantses, _lsProductsOptionses, _lstVariantsValueses, _lsOptionses, _lstOptionsValueses);
@@ -415,6 +602,7 @@ namespace _2_BUS.Service_BUS
             return a;
         }
 
+        #endregion
 
         #region ProDucts
         public List<PRODUCTS> GetListProductses()
@@ -670,5 +858,10 @@ namespace _2_BUS.Service_BUS
             OV.SaveOptionValue();
             Vv.SaveVARIANTS_VALUES();
         }
+        #endregion
+
+
+
+
     }
 }

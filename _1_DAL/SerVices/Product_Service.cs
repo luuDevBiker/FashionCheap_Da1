@@ -9,7 +9,6 @@ namespace DAL_DataAccessLayers.Service
     public class Product_Service: IProductService
     {
         private DbContext_FC db;
-
         public Product_Service()
         {
             
@@ -60,6 +59,7 @@ namespace DAL_DataAccessLayers.Service
             sp.status_Delete = false;
             try
             {
+
                 db.Productses.Update(sp);
                 return "successful";
             }
