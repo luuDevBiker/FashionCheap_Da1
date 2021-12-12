@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _2_BUS.IService_BUS;
-using _2_BUS.Models;
 using DAL_DataAccessLayers;
 using DAL_DataAccessLayers.IServices;
 using DAL_DataAccessLayers.Service;
@@ -16,21 +15,10 @@ namespace _2_BUS.Service_BUS
         private IEmployeeService _iEmployeeService;
         private List<EMPLOYEES> _getlstEmployeeses;
         public static bool _StatusSave = true;
-
-        private IROLES_EMPLOYEE_Service _rolesEmployeeService;
-        private List<ROLES_EMPLOYEE> _listRolesEmployees;
-        private ROLES_EMPLOYEE _rolesEmployee;
         public QLEmployessService()
         {
             _iEmployeeService = new EMPLOYEES_Service();
             _getlstEmployeeses = new List<EMPLOYEES>();
-           
-  
-            _rolesEmployeeService = new ROLES_EMPLOYEE_Service();
-            _listRolesEmployees = new List<ROLES_EMPLOYEE>();
-            _rolesEmployee = new ROLES_EMPLOYEE();
-            _getlstEmployeeses = _iEmployeeService.getListEMPLOYEES();
-            _listRolesEmployees = _rolesEmployeeService.getListORDERS();
             GetLst();
         }
 
@@ -59,7 +47,7 @@ namespace _2_BUS.Service_BUS
 
         public string Save()
         {
-            
+            _StatusSave = true;
             return _iEmployeeService.SaveOEMPLOYEES();
         }
 
@@ -70,37 +58,12 @@ namespace _2_BUS.Service_BUS
 
         public List<EMPLOYEES> GetlstEmployeeses()
         {
-            foreach (var x in _getlstEmployeeses)
-            {
-                string nv = x.employee_Name;
-                string nv1 = x.address;
-            }
             return _getlstEmployeeses;
-
         }
 
         public void GetLst()
         {
             _getlstEmployeeses = _iEmployeeService.getListEMPLOYEES();
-        }
-
-        public string[] NamSinh()
-        {
-            string[] arrYears = new string[2021 - 1900];
-                int temp = 1900;
-                for (int i = 0; i < arrYears.Length; i++)
-                {
-                    arrYears[i] = temp.ToString();
-                    temp++;
-                }
-
-                return arrYears;
-            
-        }
-
-        public void EditEMPLOYEES(EMPLOYEES pass)
-        {
-            //throw new NotImplementedException();
         }
     }
 }

@@ -68,8 +68,5 @@
     <Compile Update="ThongKe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="tudong.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

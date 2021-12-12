@@ -212,18 +212,11 @@ namespace _3_GUI
             }
         }
 
-        private void Data_HoaDonCho_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgrid_sp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgrid_giohang.Rows.Clear();
-            int index = e.RowIndex;
-            int soluong = 1;
-            toancuc = Data_HoaDonCho.Rows[index].Cells[0].Value.ToString();
-            //var order = _lsOrderService.getListProduct().Where(c => c.id_Order == Convert.ToInt32(toancuc)).ToList();
-            var order = _lsOrderService.JoinTable().Where(c => c.OrderDetail.id_Order == Convert.ToInt32(toancuc))
-                .Select(c => c.OrderDetail.id_Product).ToList();
-            //var sp = PS_BUS.LoadDatafromDAL().Where(c => c.Product.id_Product == order).ToList();
-            List<ProductDetail> productDetails = new List<ProductDetail>();
-            foreach (var x in order)
+            int row = e.RowIndex;
+            if (e.ColumnIndex == dgrid_sp.Columns["select"].Index)
             {
                 int a = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Product"].Value.ToString());
                 int b = Convert.ToInt32(dgrid_sp.Rows[row].Cells["ID_Variant"].Value.ToString());
@@ -246,8 +239,6 @@ namespace _3_GUI
                 }
                 LoadGioHang();
             }
-
-            productDetails = new List<ProductDetail>();
         }
 
         private void validate()

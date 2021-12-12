@@ -75,7 +75,7 @@ namespace _3_GUI
             this.data_TenSanPham1.Name = "data_TenSanPham1";
             this.data_TenSanPham1.RowHeadersWidth = 62;
             this.data_TenSanPham1.RowTemplate.Height = 33;
-            this.data_TenSanPham1.Size = new System.Drawing.Size(397, 241);
+            this.data_TenSanPham1.Size = new System.Drawing.Size(323, 241);
             this.data_TenSanPham1.TabIndex = 1;
             this.data_TenSanPham1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_TenSanPham1_CellClick);
             // 

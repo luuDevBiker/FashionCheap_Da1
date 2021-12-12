@@ -16,7 +16,5 @@ namespace _2_BUS.IService_BUS
         public List<EMPLOYEES> Search(string nv);
         public List<EMPLOYEES> GetlstEmployeeses();
         public void GetLst();
-        string[] NamSinh();
-        void EditEMPLOYEES(EMPLOYEES pass);
     }
 }

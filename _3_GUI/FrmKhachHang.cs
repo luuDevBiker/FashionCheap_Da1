@@ -19,20 +19,11 @@ namespace _3_GUI
         private string _TenKhachHang;
         private string _sdt;
         private List<CUSTOMERS> _lstCustomerses;
-        private IQLCustomerService _iqLCustomer;
-        private IQLCustomerService _lstCustomerService;
         public FrmKhachHang()
         {
             InitializeComponent();
             _iqlcustomersService = new QLCustomerService();
             _lstCustomerses = new List<CUSTOMERS>();
-            _iqLCustomer = new QLCustomerService();
-            _lstCustomerService = new QLCustomerService();
-            foreach (var x in _lstCustomerService.GetlstCustomerses())
-            {
-                cbxTenKhachHang.Items.Add(x.customer_Name);
-                cbxTenKhachHang.SelectedIndex = 0;
-            }
             loadata();
         }
 
@@ -78,15 +69,10 @@ namespace _3_GUI
                 this.Data_KhachHang.Columns.Add(button);
             }
             Data_KhachHang.Rows.Clear();
-            foreach (var x in _iqLCustomer.GetlstCustomerses())
+            foreach (var x in _iqlcustomersService.GetlstCustomerses())
             {
                 Data_KhachHang.Rows.Add(x.customer_Name, x.sex ? "Nam" : "Nữ", x.numberPhone, x.address, x.email, x.account_Number, x.customer_Type);
             }
-        }
-
-        private void tbxTimKiem_TextChanged(object sender, EventArgs e)
-        {
-            loadataSearch(tbxTimKiem.Text);
         }
         void loadataSearch(string ten)
         {
@@ -106,36 +92,47 @@ namespace _3_GUI
             }
         }
 
+        private void tbxTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            loadataSearch(tbxTimKiem.Text);
+        }
+
         private void Data_KhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            cbxTenKhachHang.Text = Data_KhachHang.Rows[index].Cells[0].Value.ToString();
-            cbxNam.Checked = Data_KhachHang.Rows[index].Cells[1].Value.ToString() == "Nam" ? true : false;
-            cbxNu.Checked = Data_KhachHang.Rows[index].Cells[1].Value.ToString() == "Nam" ? true : false;
-            cbxKhac.Checked = Data_KhachHang.Rows[index].Cells[1].Value.ToString() == "Nam" ? true : false;
-            tbxsdt.Text = Data_KhachHang.Rows[index].Cells[2].Value.ToString();
-            tbxDiaChi.Text = Data_KhachHang.Rows[index].Cells[3].Value.ToString();
-            tbxGmail.Text = Data_KhachHang.Rows[index].Cells[4].Value.ToString();
-
-            var kh = _iqLCustomer.GetlstCustomerses().Where(c => c.account_Number == Convert.ToInt32(tbxsdt.Text)).FirstOrDefault();
+            tbxsdt.Text = Data_KhachHang.Rows[index].Cells[0].Value.ToString();
+            tbxTenKhachHang.Text = Data_KhachHang.Rows[index].Cells[1].Value.ToString();
+            tbxDiaChi.Text = Data_KhachHang.Rows[index].Cells[2].Value.ToString();
+            tbxGmail.Text = Data_KhachHang.Rows[index].Cells[3].Value.ToString();
+            cbxNam.Checked = Data_KhachHang.Rows[index].Cells[4].Value.ToString() == "Nam" ? true : false;
+            cbxNu.Checked = Data_KhachHang.Rows[index].Cells[4].Value.ToString() == "Nữ" ? true : false;
+            cbxKhac.Checked = Data_KhachHang.Rows[index].Cells[4].Value.ToString() == "Khác" ? true : false;
+            var kh = _iqlcustomersService.GetlstCustomerses().Where(c => c.customer_Name == tbxsdt.Text).FirstOrDefault();
+            //if (kh.sex == "Nam")
+            //{
+            //    cbxNam.Checked = true;
+            //}
+            //else
+            //{
+            //    cbxNu.Checked = true;
+            //}
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            var idKh = _iqLCustomer.GetlstCustomerses().Where(c => c.customer_Name == cbxTenKhachHang.Text)
-                .Select(c => c.id_Customer).FirstOrDefault();
             CUSTOMERS customers = new CUSTOMERS();
-            customers.id_Customer = idKh;
-            customers.customer_Name = cbxTenKhachHang.Text;
+            _sdt = customers.numberPhone = tbxsdt.Text;
+            customers.customer_Name = tbxTenKhachHang.Text;
             customers.sex = cbxNam.Checked;
-            customers.account_Number = Convert.ToInt32(tbxsdt.Text);
             customers.address = tbxDiaChi.Text;
             customers.email = tbxGmail.Text;
+            //customers.account_Number
+            //customers.customer_Type
             if ((MessageBox.Show("Bạn có chắc chắc sẽ dùng chức năng trên?",
-                "Thông báo !!!!!!!!!!!!!!!",
-                MessageBoxButtons.YesNo) == DialogResult.Yes))
+                 "Thông báo !!!!!!!!!!!!!!!",
+                 MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                MessageBox.Show(_iqLCustomer.add(customers));
+                MessageBox.Show(_iqlcustomersService.add(customers));
             }
             loadata();
         }
@@ -143,7 +140,7 @@ namespace _3_GUI
         private void btnSua_Click(object sender, EventArgs e)
         {
             var kh = _iqlcustomersService.GetlstCustomerses().Where(c => c.customer_Name == _sdt).FirstOrDefault();
-            kh.customer_Name = cbxTenKhachHang.Text;
+            kh.customer_Name = tbxTenKhachHang.Text;
             kh.address = tbxDiaChi.Text;
             //kh.sex = cbxNam.Checked ? "Nam" : "Nữ";
             if ((MessageBox.Show("Bạn có chắc chắc sẽ dùng chức năng trên?",
