@@ -19,7 +19,8 @@ namespace DAL_DataAccessLayers.Service
         {
             try
             {
-                return db.ProductsVariantses.ToList();
+                var lst = db.ProductsVariantses.ToList();
+                return lst;
             }
             catch (Exception e)
             {
