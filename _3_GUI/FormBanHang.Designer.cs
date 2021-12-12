@@ -244,6 +244,7 @@ namespace _3_GUI
             this.txtKhachThanhToan.Name = "txtKhachThanhToan";
             this.txtKhachThanhToan.Size = new System.Drawing.Size(238, 27);
             this.txtKhachThanhToan.TabIndex = 14;
+            this.txtKhachThanhToan.Enter += new System.EventHandler(this.txtKhachThanhToan_Enter);
             // 
             // txtKhachCanTra
             // 

@@ -313,6 +313,7 @@ namespace _3_GUI
             loadHoaDonCho();
             loadSP();
             dgrid_sp.Enabled = true;
+            dgrid_giohang.Rows.Clear();
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -374,8 +375,8 @@ namespace _3_GUI
         {
             try
             {
-                txtSoTienHoanLai.Text = int.Parse(txtKhachThanhToan.Text.Split(" ")[0]) - int.Parse(txtTongTien.Text) + "";
-                txtKhachCanTra.Text = int.Parse(txtTongTien.Text.Split(" ")[0]) - int.Parse(txtGiamGia.Text.Split(" ")[0]) + "";
+                txtSoTienHoanLai.Text = int.Parse(string.Join("", txtKhachThanhToan.Text.Split('.'))) - int.Parse(string.Join("", txtTongTien.Text.Split('.'))) + "";
+                txtKhachCanTra.Text = int.Parse(string.Join("", txtTongTien.Text.Split('.'))) - int.Parse(string.Join("", txtGiamGia.Text.Split("."))) + "";
             }
             catch
             {
@@ -429,6 +430,19 @@ namespace _3_GUI
                 _lstProductDetails.RemoveAt(address);
             }
             LoadGioHang();
+        }
+
+        private void txtKhachThanhToan_Enter(object sender, EventArgs e)
+        {
+            try
+            {
+                txtSoTienHoanLai.Text = int.Parse(string.Join("",txtKhachThanhToan.Text.Split('.'))) - int.Parse(string.Join("",txtTongTien.Text.Split('.'))) +"";
+                txtKhachCanTra.Text = int.Parse(string.Join("", txtTongTien.Text.Split('.'))) - int.Parse(string.Join("",txtGiamGia.Text.Split(".")))+ "";
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }
