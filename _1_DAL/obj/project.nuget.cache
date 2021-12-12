@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qxOpUZqDfgxIIGOwcYEa5gtJzlxJkkSB5WRz87TFx3SLtslmXZT+sn0RY8/rzPtoA3c+aBfSHs7V6iDn0R6xcg==",
+  "dgSpecHash": "Mh5OBeByI9UUTrJcZRMSvvf+VHZsF+8yQV8678AcTz60aH5N4OEY1eU94GW3rtq8PDpGDrQ7dbNZXtmnuSb4Zg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kien\\OneDrive\\Desktop\\Kien_DuAn1\\_1_DAL\\_1_DAL.csproj",
+  "projectFilePath": "C:\\Users\\Kien\\OneDrive\\Desktop\\Fashion\\_1_DAL\\_1_DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kien\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Kien\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

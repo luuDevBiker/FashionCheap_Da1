@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kien\\OneDrive\\Desktop\\Kien_DuAn1\\_1_DAL\\_1_DAL.csproj": {}
+    "C:\\Users\\Kien\\OneDrive\\Desktop\\Fashion\\_1_DAL\\_1_DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kien\\OneDrive\\Desktop\\Kien_DuAn1\\_1_DAL\\_1_DAL.csproj": {
+    "C:\\Users\\Kien\\OneDrive\\Desktop\\Fashion\\_1_DAL\\_1_DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kien\\OneDrive\\Desktop\\Kien_DuAn1\\_1_DAL\\_1_DAL.csproj",
+        "projectUniqueName": "C:\\Users\\Kien\\OneDrive\\Desktop\\Fashion\\_1_DAL\\_1_DAL.csproj",
         "projectName": "_1_DAL",
-        "projectPath": "C:\\Users\\Kien\\OneDrive\\Desktop\\Kien_DuAn1\\_1_DAL\\_1_DAL.csproj",
+        "projectPath": "C:\\Users\\Kien\\OneDrive\\Desktop\\Fashion\\_1_DAL\\_1_DAL.csproj",
         "packagesPath": "C:\\Users\\Kien\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kien\\OneDrive\\Desktop\\Kien_DuAn1\\_1_DAL\\obj\\",
+        "outputPath": "C:\\Users\\Kien\\OneDrive\\Desktop\\Fashion\\_1_DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

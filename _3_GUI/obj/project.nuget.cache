@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PB75ViiBPdXBO94xBqHF7hskqJyLOKXTj8AgzlqfBWKnOfhxsIYxMVYiMXRSJSsY2hnrJRtix0O/Pi7FFGmEJQ==",
+  "dgSpecHash": "zgZWbSJ5rmgc65okfWOll9y/Q+2ysvJMWP9Z6EKmLQULX5UNdM5MfcEzc85EErN/AiRcGwhoR8QWECQtbGN2ow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kien\\OneDrive\\Desktop\\Kien_DuAn1\\_3_GUI\\_3_GUI.csproj",
+  "projectFilePath": "C:\\Users\\Kien\\OneDrive\\Desktop\\Fashion\\_3_GUI\\_3_GUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kien\\.nuget\\packages\\aforge\\2.2.5\\aforge.2.2.5.nupkg.sha512",
     "C:\\Users\\Kien\\.nuget\\packages\\aforge.video\\2.2.5\\aforge.video.2.2.5.nupkg.sha512",
