@@ -22,7 +22,7 @@ namespace _3_GUI
         private string _sdt;
         private List<EMPLOYEES> _lstEmployees;
         private EMPLOYEES NV;
-
+        private int idNV;
         public FrmNhanVien()
         {
             InitializeComponent();
@@ -59,23 +59,23 @@ namespace _3_GUI
             data_NhanVien.Columns[6].Name = "Trạng Thái";
             data_NhanVien.Columns[7].Name = "Id";
             data_NhanVien.Columns[7].Visible = false;
-            DataGridViewComboBoxColumn comboBox = new DataGridViewComboBoxColumn();
-            {
-                comboBox.Name = "cmb_dgv";
-                comboBox.HeaderText = "Chức năng";
-                comboBox.Items.Add("Add");
-                comboBox.Items.Add("Update");
-                comboBox.Items.Add("Delete");
-                data_NhanVien.Columns.Add(comboBox);
-            }
-            DataGridViewButtonColumn button = new DataGridViewButtonColumn();
-            {
-                button.Name = "btn_dgv";
-                button.HeaderText = "OK";
-                button.Text = ("OK");
-                button.UseColumnTextForButtonValue = true;
-                this.data_NhanVien.Columns.Add(button);
-            }
+            //DataGridViewComboBoxColumn comboBox = new DataGridViewComboBoxColumn();
+            //{
+            //    comboBox.Name = "cmb_dgv";
+            //    comboBox.HeaderText = "Chức năng";
+            //    comboBox.Items.Add("Add");
+            //    comboBox.Items.Add("Update");
+            //    comboBox.Items.Add("Delete");
+            //    data_NhanVien.Columns.Add(comboBox);
+            //}
+            //DataGridViewButtonColumn button = new DataGridViewButtonColumn();
+            //{
+            //    button.Name = "btn_dgv";
+            //    button.HeaderText = "OK";
+            //    button.Text = ("OK");
+            //    button.UseColumnTextForButtonValue = true;
+            //    this.data_NhanVien.Columns.Add(button);
+            //}
 
             data_NhanVien.Rows.Clear();
             var lst = _iQlEmployeesService.GetlstEmployeeses();
@@ -134,7 +134,7 @@ namespace _3_GUI
            cbm_NamSinh.Text = data_NhanVien.Rows[index].Cells[5].Value.ToString();
             cbx_Nam.Checked = data_NhanVien.Rows[index].Cells[1].Value.ToString() == "Nam" ? true : false;
             cbx_Nu.Checked = data_NhanVien.Rows[index].Cells[1].Value.ToString() == "Nữ" ? true : false;
-
+            idNV = Convert.ToInt32(data_NhanVien.Rows[index].Cells[7].Value.ToString());
         }
 
 
@@ -176,10 +176,13 @@ namespace _3_GUI
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            
-           
-            cbx_Nam.Checked = true;
-            if ((MessageBox.Show("Bạn có chắc chắc sẽ Xóa?",
+            NV.employee_Name = tbx_Ten.Text;
+            NV.address = tbx_DiaChi.Text;
+            NV.Email = tbx_Email.Text;
+            NV.status = false;
+            NV.sex = cbx_Nam.Checked ? true : false;
+
+            if ((MessageBox.Show("Bạn có chắc chắn muốn xóa?",
                 "Thông báo !!!!!!!!!!!!!!!",
                 MessageBoxButtons.YesNo) == DialogResult.Yes))
             {

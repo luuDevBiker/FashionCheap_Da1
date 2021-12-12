@@ -142,7 +142,7 @@ namespace _3_GUI
 
                 FileInfo file = new FileInfo(@"C:\\Users\\MyPC\\Documents\\Book2.xlsx");
                 attach = new Attachment(@"C:\\Users\\MyPC\\Documents\\Book2.xlsx");
-                GuiMail("trangptph15762@fpt.edu.vn", "kieuauviettour@gmail.com", "Xin mời admim xem doanh thu", "Thưa anh", attach);
+                GuiMail("trangptph15762@fpt.edu.vn", "phithitrang27062002@gmail.com", "Xin mời anh  xem doanh thu", "Thưa anh", attach);
             }
 
             if (dialogResult == DialogResult.No)

@@ -47,6 +47,7 @@ namespace DAL_DataAccessLayers.Service
             try
             {
                 db.Employeeses.Update(sp);
+                db.SaveChanges();
                 return "successful";
             }
             catch (Exception e)
@@ -61,6 +62,7 @@ namespace DAL_DataAccessLayers.Service
             try
             {
                 db.Employeeses.Update(sp);
+                db.SaveChanges();
                 return "successful";
             }
             catch (Exception e)
